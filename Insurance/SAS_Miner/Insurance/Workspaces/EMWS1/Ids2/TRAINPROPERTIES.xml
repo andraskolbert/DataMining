@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?><_ROOT_  DataSource="insurancebase" Scope="LOCAL" Role="RAW" Library="DM" Table="INSURANCE_BASE"
+ NCols="14" NObs="10296" NBytes="1254400" Segment="" DataSourceRole="RAW" OutputType="VIEW"
+ ForceRun="N" ComputeStatistics="N" DataSelection="DATASOURCE" NewTable="" MetaAdvisor="BASIC"
+ ApplyIntervalLevelLowerLimit="Y" IntervalLowerLimit="20" ApplyMaxPercentMissing="Y"
+ MaxPercentMissing="50" ApplyMaxClassLevels="Y" MaxClassLevels="20" IdentifyEmptyColumns="Y"
+ VariableValidation="STRICT" NewVariableRole="REJECT" DropMapVariables="Y" DsId="insurancebase"
+ DsSampleName="" DsSampleSizeType="" DsSampleSize="" DsCreatedBy="-Andris" DsCreateDate="1765668305.3"
+ DsModifiedBy="-Andris" DsModifyDate="1765668305.3" DsScope="LOCAL" Sample="D" SampleSizeType="PERCENT"
+ SampleSizePercent="20" SampleSizeObs="10000" DBPassThrough="Y" RunAction="Train"
+ Component="DataSource" RawCreateTime="1765668501.8" CreateTime="13DEC2015:23:28:22"
+ Description="" Data="DM.INSURANCE_BASE" CMeta="WORK.M3M8PBNS" RunId="bcd500c2-ca85-49f3-8813-08aa66e1ee68"
+ RawLastTimeRun="1765668512.1" RawRunTime="7.3999998569" LastTimeRun="13DEC2015:23:28:32"
+ RunTime="0 Hr. 0 Min. 7.40 Sec.">
+<VARIABLEPROPERTIES/>
+<FILEPROPERTIES/>
+</_ROOT_>

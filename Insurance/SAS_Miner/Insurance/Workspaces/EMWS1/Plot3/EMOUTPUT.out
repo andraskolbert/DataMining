@@ -1,0 +1,67 @@
+*------------------------------------------------------------*
+User:                -Andris
+Date:                13 December 2015
+Time:                23:36:20 o'clock
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+         Measurement    Frequency
+Role        Level         Count
+ 
+INPUT     BINARY             1
+INPUT     INTERVAL          10
+INPUT     NOMINAL            1
+INPUT     ORDINAL            1
+ 
+ 
+ 
+Class Variables
+ 
+Obs    NAME                    LEVEL                CODE     FREQUENCY    TYPE    CRAW               NRAW    FREQPERCENT    NMISSPERCENT
+ 
+  1    EducationalDegree                               4            17     C                           .        0.1651           .
+  2    EducationalDegree       1 - BASIC               1          1272     C      1 - Basic            .       12.3543         12.3747
+  3    EducationalDegree       2 - HIGH SCHOOL         0          3510     C      2 - High School      .       34.0909         34.1473
+  4    EducationalDegree       3 - BSC/MSC             2          4799     C      3 - BSc/MSc          .       46.6103         46.6874
+  5    EducationalDegree       4 - PHD                 3           698     C      4 - PhD              .        6.7793          6.7905
+  6    GeographicLivingArea    .                       4             1     N                           .        0.0097           .
+  7    GeographicLivingArea    1                       0          3048     N                           1       29.6037         29.6066
+  8    GeographicLivingArea    2                       3          1036     N                           2       10.0622         10.0631
+  9    GeographicLivingArea    3                       2          2066     N                           3       20.0660         20.0680
+ 10    GeographicLivingArea    4                       1          4145     N                           4       40.2584         40.2623
+ 11    HasChildren             .                       2            21     N                           .        0.2040           .
+ 12    HasChildren             0                       1          3013     N                           0       29.2638         29.3236
+ 13    HasChildren             1                       0          7262     N                           1       70.5322         70.6764
+ 
+ 
+ 
+Interval Variables
+ 
+Obs    NAME                         NMISS            N           MIN          MAX       MEAN        STD    SKEWNESS    KURTOSIS
+ 
+  1    ClaimsRate                       0        10296          0.00       256.20       0.74       2.92      71.210     5877.86
+  2    Compensation                    86        10210        -12.00      1988.70      41.28      51.51       7.438      212.78
+  3    CustomerAge                     17        10279         15.00       988.00      47.99      19.71      10.537      501.81
+  4    CustomerMonetaryValue            0        10296    -165680.42     11875.89     177.89    1945.81     -67.043     5323.18
+  5    FirstPolicyYear                 30        10266       1974.00     53784.00    1991.06     511.27     101.296    10262.57
+  6    GrossMonthlySalary              36        10260        665.00    110429.76    5012.84    2314.90      11.251      474.39
+  7    Health                          43        10253         -2.11     28272.00     171.58     296.41      84.519     7914.20
+  8    Household                        0        10296        -75.00     25048.80     210.43     352.60      36.054     2427.16
+  9    Life                           104        10192         -7.00       398.30      41.86      47.48       2.090        5.72
+ 10    Motor                           34        10262         -4.11     11604.42     300.47     211.91      23.871     1096.29
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*

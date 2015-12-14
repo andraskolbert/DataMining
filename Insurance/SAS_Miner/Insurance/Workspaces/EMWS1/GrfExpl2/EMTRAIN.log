@@ -1,0 +1,1083 @@
+MPRINT(EM_DIAGRAM):    data _null_;
+MPRINT(EM_DIAGRAM):   call symput('NLDATE', strip(put(date(), NLDATE.)));
+MPRINT(EM_DIAGRAM):   call symput('NLTIME', strip(put(datetime(), NLTIME.)));
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   data _null_;
+MPRINT(EM_DIAGRAM):   nldate= sasmsg("sashelp.dmine", "log_date_note", 'N', "13 December 2015" );
+MPRINT(EM_DIAGRAM):   nltime= sasmsg("sashelp.dmine", "log_time_note", 'N', "23:29:08 o'clock" );
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   put "* Training Log";
+MPRINT(EM_DIAGRAM):   put nldate;
+MPRINT(EM_DIAGRAM):   put nltime;
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   run;
+*------------------------------------------------------------*
+* Training Log
+Date:                13 December 2015
+Time:                23:29:08 o'clock
+*------------------------------------------------------------*
+MPRINT(EM_DIAGRAM):    filename O1QZR2NO "F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Insurance\SAS_Miner\Insurance\Workspaces\EMWS1\GrfExpl2\EMTRAIN.out" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):   proc printto print=O1QZR2NO new;
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):    filename _LOG "F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Insurance\SAS_Miner\Insurance\Workspaces\EMWS1\GrfExpl2\EMLOG.log" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):    data _null_;
+MPRINT(EM_DIAGRAM):   call symput('NLDATE', strip(put(date(), NLDATE.)));
+MPRINT(EM_DIAGRAM):   call symput('NLTIME', strip(put(datetime(), NLTIME.)));
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   data _null_;
+MPRINT(EM_DIAGRAM):   nldate= sasmsg("sashelp.dmine", "log_date_note", 'N', "13 December 2015" );
+MPRINT(EM_DIAGRAM):   nltime= sasmsg("sashelp.dmine", "log_time_note", 'N', "23:29:09 o'clock" );
+MPRINT(EM_DIAGRAM):   file _LOG;
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   put "User:                -Andris";
+MPRINT(EM_DIAGRAM):   put nldate;
+MPRINT(EM_DIAGRAM):   put nltime;
+MPRINT(EM_DIAGRAM):   put "Site:                70107571";
+MPRINT(EM_DIAGRAM):   put "Platform:            X64_8PRO";
+MPRINT(EM_DIAGRAM):   put "Maintenance Release: 9.03.01M2P081512";
+MPRINT(EM_DIAGRAM):   put "EM Version:          12.1";
+MPRINT(EM_DIAGRAM):   put "* ";
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):    filename _LOGIN "F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Insurance\SAS_Miner\Insurance\Workspaces\EMWS1\GrfExpl2\EMTRAIN.log" encoding="UTF-8" NOBOM;
+MPRINT(EM_COPYFILE):   data _null_;
+MPRINT(EM_COPYFILE):   length line $20000;
+MPRINT(EM_COPYFILE):   file _LOG MOD lrecl=20000;
+MPRINT(EM_COPYFILE):   fid=fopen("_LOGIN",'i',20000,'v');
+MPRINT(EM_COPYFILE):   if fid > 0 then do;
+MPRINT(EM_COPYFILE):   do while(^fread(fid));
+MPRINT(EM_COPYFILE):   rlen = frlen(fid);
+MPRINT(EM_COPYFILE):   rc= fget(fid,line,20000);
+MPRINT(EM_COPYFILE):   start = length(line)-length(left(line))+1;
+MPRINT(EM_COPYFILE):   line=strip(line);
+MPRINT(EM_COPYFILE):   put @start line;
+MPRINT(EM_COPYFILE):   end;
+MPRINT(EM_COPYFILE):   if fid > 0 then rc=fclose(fid);
+MPRINT(EM_COPYFILE):   end;
+MPRINT(EM_COPYFILE):   run;
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   filename _LOGIN;
+MPRINT(EM_DIAGRAM):    data _null_;
+MPRINT(EM_DIAGRAM):   file _LOG mod;
+MPRINT(EM_DIAGRAM):   put _page_;
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   filename _LOGIN "F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Insurance\SAS_Miner\Insurance\Workspaces\EMWS1\GrfExpl2\EMSCORE.log" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   data _null_;
+MPRINT(EM_DIAGRAM):   file _LOG mod;
+MPRINT(EM_DIAGRAM):   put _page_;
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):    filename _LOGIN "F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Insurance\SAS_Miner\Insurance\Workspaces\EMWS1\GrfExpl2\EMREPORT.log" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   filename _LOGIN;
+MPRINT(EM_DIAGRAM):    filename _LOG;
+MPRINT(EM_DIAGRAM):    filename _OUT "F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Insurance\SAS_Miner\Insurance\Workspaces\EMWS1\GrfExpl2\EMOUTPUT.out" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):    data _null_;
+MPRINT(EM_DIAGRAM):   call symput('NLDATE', strip(put(date(), NLDATE.)));
+MPRINT(EM_DIAGRAM):   call symput('NLTIME', strip(put(datetime(), NLTIME.)));
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   data _null_;
+MPRINT(EM_DIAGRAM):   nldate= sasmsg("sashelp.dmine", "log_date_note", 'N', "13 December 2015" );
+MPRINT(EM_DIAGRAM):   nltime= sasmsg("sashelp.dmine", "log_time_note", 'N', "23:29:09 o'clock" );
+MPRINT(EM_DIAGRAM):   file _OUT;
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   put "User:                -Andris";
+MPRINT(EM_DIAGRAM):   put nldate;
+MPRINT(EM_DIAGRAM):   put nltime;
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   put "* Training Output";
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):    filename _OUTIN "F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Insurance\SAS_Miner\Insurance\Workspaces\EMWS1\GrfExpl2\EMTRAIN.out" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):   ;
+MPRINT(EM_COPYFILE):   data _null_;
+MPRINT(EM_COPYFILE):   length line $20000;
+MPRINT(EM_COPYFILE):   file _OUT MOD lrecl=20000;
+MPRINT(EM_COPYFILE):   fid=fopen("_OUTIN",'i',20000,'v');
+MPRINT(EM_COPYFILE):   if fid > 0 then do;
+MPRINT(EM_COPYFILE):   do while(^fread(fid));
+MPRINT(EM_COPYFILE):   rlen = frlen(fid);
+MPRINT(EM_COPYFILE):   rc= fget(fid,line,20000);
+MPRINT(EM_COPYFILE):   start = length(line)-length(left(line))+1;
+MPRINT(EM_COPYFILE):   line=strip(line);
+MPRINT(EM_COPYFILE):   put @start line;
+MPRINT(EM_COPYFILE):   end;
+MPRINT(EM_COPYFILE):   if fid > 0 then rc=fclose(fid);
+MPRINT(EM_COPYFILE):   end;
+MPRINT(EM_COPYFILE):   run;
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   filename _OUTIN;
+MPRINT(EM_DIAGRAM):    data _null_;
+MPRINT(EM_DIAGRAM):   file _OUT mod;
+MPRINT(EM_DIAGRAM):   put _page_;
+MPRINT(EM_DIAGRAM):   put // "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   put "* Score Output";
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):    filename _OUTIN "F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Insurance\SAS_Miner\Insurance\Workspaces\EMWS1\GrfExpl2\EMSCORE.out" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   filename _OUTIN;
+MPRINT(EM_DIAGRAM):    data _null_;
+MPRINT(EM_DIAGRAM):   file _OUT mod;
+MPRINT(EM_DIAGRAM):   put _page_;
+MPRINT(EM_DIAGRAM):   put // "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   put "* Report Output";
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):    filename _OUTIN "F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Insurance\SAS_Miner\Insurance\Workspaces\EMWS1\GrfExpl2\EMREPORT.out" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   filename _OUTIN;
+MPRINT(EM_DIAGRAM):    filename _OUT;
+MPRINT(EM_DIAGRAM):    filename _emtool_ 'F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Insurance\SAS_Miner\Insurance\Workspaces\EMWS1\GrfExpl2\EMRUNSTATUS.xml' encoding="UTF-8" NOBOM;
+20781      proc freq data=EMWS1.GrfExpl2_VariableSet noprint;
+MPRINT(EM_DIAGRAM):    proc freq data=EMWS1.GrfExpl2_VariableSet noprint;
+20782      table ROLE*LEVEL/out=WORK.GrfExpl2META;
+MPRINT(EM_DIAGRAM):   table ROLE*LEVEL/out=WORK.GrfExpl2META;
+20783      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 14 observations read from the data set EMWS1.GRFEXPL2_VARIABLESET.
+NOTE: The data set WORK.GRFEXPL2META has 5 observations and 4 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.01 seconds
+      
+
+20784      proc print data=WORK.GrfExpl2META label noobs;
+MPRINT(EM_DIAGRAM):   proc print data=WORK.GrfExpl2META label noobs;
+20785      var ROLE LEVEL COUNT;
+MPRINT(EM_DIAGRAM):   var ROLE LEVEL COUNT;
+20786      label ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel, NOQUOTE))" LEVEL = "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel, NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel, NOQUOTE))";
+MPRINT(EM_DIAGRAM):   label ROLE = "Role" LEVEL = "Measurement Level" COUNT = "Frequency Count";
+20787      title9 ' ';
+MPRINT(EM_DIAGRAM):   title9 ' ';
+20788      title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_varSummary_title  , NOQUOTE))";
+MPRINT(EM_DIAGRAM):   title10 "Variable Summary";
+MPRINT(EM_DIAGRAM):   run;
+20789      run;
+
+NOTE: There were 5 observations read from the data set WORK.GRFEXPL2META.
+NOTE: The PROCEDURE PRINT printed page 1.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+20790      title10;
+MPRINT(EM_DIAGRAM):   title10;
+20791      %let EMEXCEPTIONSTRING=;
+MPRINT(EM_DIAGRAM):     *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * GrfExpl2: Generation of macros and macro variables;
+MPRINT(EM_DIAGRAM):   * To see the code generated, set the EM_DEBUG macro variable to SOURCE or _ALL_;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * GrfExpl2: EM Macro Variables and Macros;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------* ;
+MPRINT(EM_DIAGRAM):   * System Macro Variables;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------* ;
+MPRINT(EM_DIAGRAM):   data _null_;
+MPRINT(EM_DIAGRAM):   length string $2000;
+MPRINT(EM_DIAGRAM):   string = 'Insurance';
+MPRINT(EM_DIAGRAM):   call symput('EM_PROJECTNAME', trim(string));
+MPRINT(EM_DIAGRAM):   string = 'Segmentation';
+MPRINT(EM_DIAGRAM):   call symput('EM_WSNAME', trim(string));
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------* ;
+MPRINT(EM_DIAGRAM):   * Properties Macro Variables ;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------* ;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * Files Macro Variables;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * Import Macro Variables;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * Export Macro Variables;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * Decision Macro Variables;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * Statement Macro Variables;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   data _null_;
+MPRINT(EM_DIAGRAM):   set EMWS1.Ids2_EMINFO;
+MPRINT(EM_DIAGRAM):   where key in('HPDMSAMPLE', 'IDSTABLE');
+MPRINT(EM_DIAGRAM):   if key = 'HPDMSAMPLE' then call symput('_ForceGrid', '1');
+MPRINT(EM_DIAGRAM):   else call symput('_IDS_TABLE', DATA);
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(HPDM_PERFORMANCE):  ;
+PERFORMANCE  DETAILS
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * Variable Macros;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * General Variable Macros;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * Target Variable Macros;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * Input Variable Macros;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * Rejected Variable Macros;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * Misc Variable Macros;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * End Create EM Macro Variables and Macros;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+21113      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):    *------------------------------------------------------------*;
+21114      * GrfExpl2: Generation of macros and macro variables;
+MPRINT(EM_DIAGRAM):   * GrfExpl2: Generation of macros and macro variables;
+21115      * To see the code generated, set the EM_DEBUG macro variable to SOURCE or _ALL_;
+MPRINT(EM_DIAGRAM):   * To see the code generated, set the EM_DEBUG macro variable to SOURCE or _ALL_;
+21116      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+
+21117      %let EMEXCEPTIONSTRING=;
+21118      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):    *------------------------------------------------------------*;
+21119      * TRAIN: GrfExpl2;
+MPRINT(EM_DIAGRAM):   * TRAIN: GrfExpl2;
+21120      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+21121      %let EM_ACTION = TRAIN;
+21122      %let syscc = 0;
+21123      %macro main;
+21124         filename temp catalog 'sashelp.emexpl.graphexplore_macros.source';
+21125         %include temp;
+21126         filename temp;
+21127      
+21128         %SetProperties;
+21129      
+21130         %if %upcase(&EM_ACTION) = CREATE %then %do;
+21131      
+21132             filename temp catalog 'sashelp.emexpl.graphexplore_create.source';
+21133             %include temp;
+21134             filename temp;
+21135             %create;
+21136         %end;
+21137         %else
+21138         %if %upcase(&EM_ACTION) = TRAIN %then %do;
+21139      
+21140             filename temp catalog 'sashelp.emexpl.graphexplore_train.source';
+21141             %include temp;
+21142             filename temp;
+21143             %train;
+21144      
+21145         %end;
+21146         %else
+21147         %if %upcase(&EM_ACTION) = REPORT %then %do;
+21148      
+21149             filename temp catalog 'sashelp.emexpl.graphexplore_report.source';
+21150             %include temp;
+21151             filename temp;
+21152      
+21153             %report;
+21154         %end;
+21155      
+21156      %mend main;
+21157      
+21158      %main;
+MPRINT(EM_DIAGRAM):    
+MPRINT(MAIN):   filename temp catalog 'sashelp.emexpl.graphexplore_macros.source';
+NOTE: %INCLUDE (level 1) file TEMP is file SASHELP.EMEXPL.GRAPHEXPLORE_MACROS.SOURCE.
+21159     +%macro SetProperties;
+21160     +   %em_checkmacro(name=EM_PROPERTY_INTERVALBYTARGET,      global=Y, value=Y);
+21161     +   %em_checkmacro(name=EM_PROPERTY_CLASSBYTARGET,         global=Y, value=Y);
+21162     +   %em_checkmacro(name=EM_PROPERTY_DATASOURCE,            global=Y, value=SAMPLE);
+21163     +   %em_checkmacro(name=EM_PROPERTY_EMSAMPLEMETHOD,        global=Y, value=FIRSTN);
+21164     +   %em_checkmacro(name=EM_PROPERTY_EMSAMPLESIZE,          global=Y, value=DEFAULT);
+21165     +   %em_checkmacro(name=EM_PROPERTY_EMRANDOMSEED,          global=Y, value=12345);
+21166     +
+21167     +%mend SetProperties;
+NOTE: %INCLUDE (level 1) ending.
+MPRINT(MAIN):   filename temp;
+NOTE: Fileref TEMP has been deassigned.
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(MAIN):  ;
+MPRINT(MAIN):   filename temp catalog 'sashelp.emexpl.graphexplore_train.source';
+NOTE: %INCLUDE (level 1) file TEMP is file SASHELP.EMEXPL.GRAPHEXPLORE_TRAIN.SOURCE.
+21168     +%macro train;
+21170     +    %let graphData = &em_import_data;
+21171     +    %if "&graphData" eq "" %then
+21172     +        %let graphData = &em_import_transaction;
+21173     +    %if "&graphData" eq "" %then
+21174     +        %let graphData = &em_import_document;
+21175     +    %if "&graphData" eq "" %then
+21176     +        %let graphData = &em_import_validate;
+21177     +    %if "&graphData" eq "" %then
+21178     +        %let graphData = &em_import_test;
+21179     +    %if "&graphData" eq "" %then
+21180     +        %let graphData = &em_import_score;
+21182     +    %if "&graphData" eq "" %then %do;
+21183     +        %let emexceptionString = exception.server.IMPORT.NODATA;
+21184     +        %goto doendm;
+21185     +    %end;
+21187     +    %em_getname(key=SAMPLE_DATA, type=DATA);
+21189     +    filename vartemp catalog 'sashelp.emutil.em_varmacro.source';
+21190     +    %include vartemp;
+21191     +    filename vartemp;
+21193     +    data tempVariableSet;
+21194     +       set &em_data_variableset;
+21195     +       where (ROLE = 'REJECTED' and USE='Y') or ROLE='FREQ' or ( ROLE ne 'REJECTED' and USE in('Y', 'D'));
+21196     +       if _N_< 950 or (ROLE = 'TARGET' and USE in('Y', 'D')) or ROLE='FREQ' then output;
+21197     +    run;
+21198     +    %em_varMacro(name=varSample, metadata=tempVariableSet, where=, key=NAME, nummacro=numVarSample);
+21201     +     %exploreSample(DATA=&graphData, OUTPUT=&EM_USER_SAMPLE_DATA, METADATA=&EM_DATA_VARIABLESET, VARS=%varSample,
+21202     +                      METHOD=&EM_PROPERTY_EMSAMPLEMETHOD, SIZE=&EM_PROPERTY_EMSAMPLESIZE,
+21203     +                      ALPHA=, PVALUE=, SEED=&EM_PROPERTY_EMRANDOMSEED);
+21205     +    %doendm:
+21207     +%mend train;
+21209     +%train;
+MPRINT(TRAIN):  ;
+MPRINT(TRAIN):   filename vartemp catalog 'sashelp.emutil.em_varmacro.source';
+NOTE: %INCLUDE (level 2) file VARTEMP is file SASHELP.EMUTIL.EM_VARMACRO.SOURCE.
+21210     +%macro em_varMacro(name=emMacro, metadata=, where=, key=NAME, nummacro=);
+21211     +   filename macFile catalog 'work.emutil.macro.source';
+21212     +   %let _METAOBS = 0;
+21214     +   %if (%sysfunc(exist(&metadata))<1 and %sysfunc(exist(&metadata, VIEW))<1)
+21215     +                   or (&metadata eq ) %then %do;
+21216     +       %goto doend;
+21217     +   %end;
+21218     +   data _null_;
+21219     +      length _STRING_ $80;
+21220     +      retain _STRING_;
+21221     +      set &metadata end=eof;
+21222     +      file macFile;
+21223     +      %if %nrbquote(&where) ne %then %do;
+21224     +          %let whereClause = where (%nrbquote(&where));
+21225     +          %unquote(&whereClause);
+21226     +      %end;
+21227     +      if _N_=1 then do;
+21228     +         string = "%"!!"macro &name;";
+21229     +         put string;
+21230     +      end;
+21231     +      if (length(_STRING_) + length(trim(&key))+ 1 < 80) then do;
+21232     +         _STRING_ = trim(_STRING_)!!' '!!trim(&key);
+21233     +         if eof then do;
+21234     +            put _STRING_;
+21235     +            string = "%"!!"mend &name;";
+21236     +            put string;
+21237     +            %if (&nummacro ne ) %then %do;
+21238     +                string = strip(put(_N_, best.));
+21239     +                put "%" "global &nummacro;";
+21240     +                put "%" "let &nummacro = " string ";";
+21241     +                call symput('_METAOBS', string);
+21242     +            %end;
+21243     +         end;
+21244     +      end;
+21245     +      else do;
+21246     +         put _STRING_;
+21247     +         _string_ = TRIM(&key);
+21248     +         if eof then do;
+21249     +            put _STRING_;
+21250     +            string = "%"!!"mend &name;";
+21251     +            put string;
+21252     +        end;
+21253     +      end;
+21254     +      if eof then do;
+21255     +         string = strip(put(_N_, best.));
+21256     +         call symput('_METAOBS', string);
+21257     +         %if (&nummacro ne ) %then %do;
+21258     +             put "%" "global &nummacro;";
+21259     +             put "%" "let &nummacro = " string ";";
+21260     +         %end;
+21261     +      end;
+21262     +   run;
+21264     +   %doend:
+21265     +   %if ^&_METAOBS %then %do;
+21266     +       data _null_;
+21267     +          file macFile;
+21268     +          put "%" "macro &name;";
+21269     +          put "%" "mend &name;";
+21270     +          %if (&nummacro ne ) %then %do;
+21271     +              put "%" "global &nummacro;";
+21272     +              put "%" "let &nummacro = 0;";
+21273     +          %end;
+21274     +      run;
+21275     +   %end;
+21276     +   %inc macFile;
+21277     +   filename macFile;
+21278     +%mend em_varMacro;
+NOTE: %INCLUDE (level 2) ending.
+NOTE: %INCLUDE (level 1) resuming.
+MPRINT(TRAIN):   filename vartemp;
+NOTE: Fileref VARTEMP has been deassigned.
+MPRINT(TRAIN):   data tempVariableSet;
+MPRINT(TRAIN):   set EMWS1.GrfExpl2_VariableSet;
+MPRINT(TRAIN):   where (ROLE = 'REJECTED' and USE='Y') or ROLE='FREQ' or ( ROLE ne 'REJECTED' and USE in('Y', 'D'));
+MPRINT(TRAIN):   if _N_< 950 or (ROLE = 'TARGET' and USE in('Y', 'D')) or ROLE='FREQ' then output;
+MPRINT(TRAIN):   run;
+
+NOTE: There were 14 observations read from the data set EMWS1.GRFEXPL2_VARIABLESET.
+      WHERE ((ROLE='REJECTED') and (USE='Y')) or (ROLE='FREQ') or ((ROLE not = 'REJECTED') and USE in ('D', 'Y'));
+NOTE: The data set WORK.TEMPVARIABLESET has 14 observations and 22 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+MPRINT(EM_VARMACRO):   filename macFile catalog 'work.emutil.macro.source';
+MPRINT(EM_VARMACRO):   data _null_;
+MPRINT(EM_VARMACRO):   length _STRING_ $80;
+MPRINT(EM_VARMACRO):   retain _STRING_;
+MPRINT(EM_VARMACRO):   set tempVariableSet end=eof;
+MPRINT(EM_VARMACRO):   file macFile;
+MPRINT(EM_VARMACRO):   if _N_=1 then do;
+MPRINT(EM_VARMACRO):   string = "%"!!"macro varSample;";
+MPRINT(EM_VARMACRO):   put string;
+MPRINT(EM_VARMACRO):   end;
+MPRINT(EM_VARMACRO):   if (length(_STRING_) + length(trim(NAME))+ 1 < 80) then do;
+MPRINT(EM_VARMACRO):   _STRING_ = trim(_STRING_)!!' '!!trim(NAME);
+MPRINT(EM_VARMACRO):   if eof then do;
+MPRINT(EM_VARMACRO):   put _STRING_;
+MPRINT(EM_VARMACRO):   string = "%"!!"mend varSample;";
+MPRINT(EM_VARMACRO):   put string;
+MPRINT(EM_VARMACRO):   string = strip(put(_N_, best.));
+MPRINT(EM_VARMACRO):   put "%" "global numVarSample;";
+MPRINT(EM_VARMACRO):   put "%" "let numVarSample = " string ";";
+MPRINT(EM_VARMACRO):   call symput('_METAOBS', string);
+MPRINT(EM_VARMACRO):   end;
+MPRINT(EM_VARMACRO):   end;
+MPRINT(EM_VARMACRO):   else do;
+MPRINT(EM_VARMACRO):   put _STRING_;
+MPRINT(EM_VARMACRO):   _string_ = TRIM(NAME);
+MPRINT(EM_VARMACRO):   if eof then do;
+MPRINT(EM_VARMACRO):   put _STRING_;
+MPRINT(EM_VARMACRO):   string = "%"!!"mend varSample;";
+MPRINT(EM_VARMACRO):   put string;
+MPRINT(EM_VARMACRO):   end;
+MPRINT(EM_VARMACRO):   end;
+MPRINT(EM_VARMACRO):   if eof then do;
+MPRINT(EM_VARMACRO):   string = strip(put(_N_, best.));
+MPRINT(EM_VARMACRO):   call symput('_METAOBS', string);
+MPRINT(EM_VARMACRO):   put "%" "global numVarSample;";
+MPRINT(EM_VARMACRO):   put "%" "let numVarSample = " string ";";
+MPRINT(EM_VARMACRO):   end;
+MPRINT(EM_VARMACRO):   run;
+
+NOTE: The file MACFILE is:
+      Catalog Name=WORK.EMUTIL.MACRO.SOURCE,
+      Catalog Page Size=4096,
+      Number of Catalog Pages=4,
+      Created=13 December 2015 Sunday 23:29:10 o'clock,
+      Last Modified=13 December 2015 Sunday 23:29:10 o'clock,
+      Filename=C:\Users\-Andris\AppData\Local\Temp\SAS Temporary Files\_TD2244_ANDRAS_\Prc2\emutil.sas7bcat,
+      Release Created=9.0301M2,Host Created=X64_8PRO
+
+NOTE: 9 records were written to the file MACFILE.
+      The minimum record length was 16.
+      The maximum record length was 73.
+NOTE: There were 14 observations read from the data set WORK.TEMPVARIABLESET.
+NOTE: DATA statement used (Total process time):
+      real time           0.17 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: %INCLUDE (level 2) file MACFILE is file WORK.EMUTIL.MACRO.SOURCE.
+21279     +%macro varSample;
+21280     +ClaimsRate Compensation CustomerAge CustomerID CustomerMonetaryValue
+21281     +EducationalDegree FirstPolicyYear GeographicLivingArea GrossMonthlySalary
+21282     +HasChildren Health Household Life Motor
+21283     +%mend varSample;
+21284     +%global numVarSample;
+21285     +%let numVarSample = 14 ;
+21286     +%global numVarSample;
+21287     +%let numVarSample = 14 ;
+NOTE: %INCLUDE (level 2) ending.
+NOTE: %INCLUDE (level 1) resuming.
+MPRINT(EM_VARMACRO):   filename macFile;
+NOTE: Fileref MACFILE has been deassigned.
+MPRINT(TRAIN):  ;
+MPRINT(EXPLORESAMPLE):   filename x catalog 'sashelp.emutil.exploreobs.source';
+NOTE: %INCLUDE (level 2) file X is file SASHELP.EMUTIL.EXPLOREOBS.SOURCE.
+21288     +/*------------------------------------------------------------------
+21289     +  MACRO EXPLOREOBS
+21291     +  SUPPORT:  SASDHD - David Duling
+21292     +  PRODUCT:  Enterprise Miner
+21294     +  DESCRIPTION:
+21295     +  Generates maximum and default numbers of observations to
+21296     +  download for visualization depending on the record length.
+21298     +  Values were determined by trial and error using typical
+21299     +  Windows workstation configurations.
+21301     +  Discrete sets of values are returned so that user experience
+21302     +  will be consitent with similar sized data sets.
+21304     +  These macro variables are set:
+21305     +  _exploreobs_max -- maximum number of obs downloadable
+21306     +  _exploreobs_def -- default number of obs to be downloaded
+21307     +  _exploreobs_recl - record length.  Might be useful for reporting.
+21309     +  Use the _exploreobs_max to set limit the GUI selection of
+21310     +  observations for downloading.  The GUI selection for obs
+21311     +  could be reduced to "Default" and "Max".
+21313     +  Parameters
+21314     +  data=   libname.memname of input data
+21315     +  vars=   subset list of variables.
+21316     +          downloading 1 out of 500 really does work like downloading
+21317     +          1 out of 1 vars.  Users may select a subset of vars for
+21318     +                   visualizations.  Pass in the list as space delimited
+21319     +          var names.  If vars is not specified, the record length
+21320     +          of the entire data will be used.
+21321     +  NBYTES=   maximum number of bytes that shouldn't be exceeded.
+21323     +  Control
+21324     +  Users may control the values by entering these macro variables.
+21325     +            EM_EXPLOREOBS_MAX
+21326     +            EM_EXPLOREOBS_DEFAULT
+21327     +  These values override the computed values.
+21329     +  Debugging
+21330     +  %let _exploreobs_debug=1 ;
+21331     +--------------------------------------------------------------------
+21332     +  HISTORY: 20APR2004. sasdhd. pushed.
+21333     +           18DEC2004. sasdhd. S0280556.
+21334     +           07SEP2007. sasdhd. HK1009586
+21335     +--------------------------------------------------------------------*/
+21337     +%macro exploreobs(data=,vars=, nbytes=) ;
+21339     +   /*--- variable definitions ---*/
+21340     +   %global _exploreobs_max _exploreobs_def _exploreobs_recl _exploreobs_debug ;
+21341     +   %local xobs xvars xlen vlen xi vname vlist ;
+21342     +   %local _exp_source _exp_notes ;
+21344     +   /*--- USER definitions ---*/
+21345     +   %global EM_EXPLOREOBS_MAX EM_EXPLOREOBS_DEFAULT ;
+21347     +   /*--- variable intializations ---*/
+21348     +   %let _exploreobs_max=0 ;
+21349     +   %let _exploreobs_def=0 ;
+21350     +   %let _exploreobs_recl=0 ;
+21351     +   %let xvars= 0 ;
+21352     +   %let xlen = 0 ;
+21353     +   %let xobs = 0 ;
+21355     +   /*--- data error checks ---*/
+21356     +   %if "&data" eq "" %then %do ;
+21357     +            %put NOTE: DATA is not specified. ;
+21358     +            %goto term ;
+21359     +      %end ;
+21361     +   %let dsid=%sysfunc(open(&data)) ;
+21362     +   %if not &dsid %then %do ;
+21363     +            %put NOTE: DATA &data is not available. ;
+21364     +            %goto term ;
+21365     +      %end ;
+21367     +   /*--- if a vars list exists generate a subset ---*/
+21368     +   %if &vars ne %then %do ;
+21369     +         %let dsid=%sysfunc(close(&dsid)) ;
+21370     +         %if &_exploreobs_debug ne 1 %then %do ;
+21371     +                  %let _exp_source=%sysfunc(getoption(SOURCE)) ;
+21372     +            %let _exp_notes =%sysfunc(getoption(NOTES)) ;
+21373     +                  options nosource nonotes ;
+21374     +         %end ;
+21375     +         data _exploreobs_temp_data ;
+21376     +         set &data(obs=0) ;
+21377     +          keep &vars ;
+21378     +         run;
+21379     +         %if &_exploreobs_debug ne 1 %then %do ;
+21380     +                  options &_exp_source &_exp_notes ;
+21381     +         %end ;
+21382     +         %let dsid=%sysfunc(open(_exploreobs_temp_data)) ;
+21383     +         %if &dsid eq 0 %then %do ;
+21384     +                  %put NOTE: Sample is not available.;
+21385     +                  %goto term ;
+21386     +            %end ;
+21387     +      %end ;
+21389     +   /*--- get var attributes ---*/
+21390     +   %let xvars=%sysfunc(attrn(&dsid,nvars)) ;
+21391     +   %let xobs= %sysfunc(attrn(&dsid,nobs )) ;
+21392     +   %let xlen= %sysfunc(attrn(&dsid,lrecl)) ;
+21393     +   %let dsid= %sysfunc(close(&dsid)) ;
+21395     +   /*--- set default and max obs ---*/
+21396     +   %let _exploreobs_recl=%eval(&xlen) ;
+21397     +   %if &_exploreobs_recl eq 0 %then %do ;
+21398     +             %let _exploreobs_max= 0 ;
+21399     +             %let _exploreobs_def= 0 ;
+21400     +             %goto term ;
+21402     +   %end ;
+21403     +   %else
+21404     +   %if &_exploreobs_recl le 32 %then %do ;
+21405     +             %let _exploreobs_max=100000 ;
+21406     +             %let _exploreobs_def= 10000 ;
+21407     +   %end ;
+21408     +   %else
+21409     +   %if &_exploreobs_recl le 128 %then %do ;
+21410     +             %let _exploreobs_max=60000 ;
+21411     +             %let _exploreobs_def= 6000 ;
+21412     +   %end ;
+21413     +   %else
+21414     +   %if &_exploreobs_recl lt 1000 %then %do ;
+21415     +             %let _exploreobs_max=20000 ;
+21416     +             %let _exploreobs_def= 2000 ;
+21417     +   %end ;
+21418     +   %else
+21419     +   %if &_exploreobs_recl lt 5000 %then %do ;
+21420     +             %let _exploreobs_max= 10000 ;
+21421     +             %let _exploreobs_def=  1000 ;
+21422     +   %end ;
+21423     +   %else
+21424     +   %if &_exploreobs_recl lt 20000 %then %do ;
+21425     +             %let _exploreobs_max= 5000 ;
+21426     +             %let _exploreobs_def=  500 ;
+21427     +   %end ;
+21428     +   %else %do ;
+21429     +             %let _exploreobs_max= 1000 ;
+21430     +             %let _exploreobs_def=  200 ;
+21431     +   %end ;
+21433     +   /*--- Users options ---*/
+21434     +   %if &EM_EXPLOREOBS_MAX ne %then %do ;
+21435     +            %let _exploreobs_max= %eval(&EM_EXPLOREOBS_MAX) ;
+21436     +   %end;
+21437     +   %if &EM_EXPLOREOBS_DEFAULT ne %then %do ;
+21438     +            %let _exploreobs_def= %eval(&EM_EXPLOREOBS_DEFAULT) ;
+21439     +   %end;
+21441     +    /*--- S0868273 ---*/
+21442     +    %if "&NBYTES" ne "" %then %do;
+21443     +       %let nbytes_nrows = %eval(&nbytes/ &_exploreobs_recl);
+21444     +       %if &EM_EXPLOREOBS_MAX ne %then %do ;
+21445     +           %let _exploreobs_max   = %sysfunc(min(&nbytes_nrows , &EM_EXPLOREOBS_MAX));
+21446     +       %end;
+21448     +       %if &EM_EXPLOREOBS_DEFAULT ne %then %do ;
+21449     +          %let nbytes_nrows      = %eval(&nbytes_nrows/10);
+21450     +          %let _exploreobs_def   = %sysfunc(min(&nbytes_nrows , &EM_EXPLOREOBS_DEFAULT));
+21451     +          %if ^&_exploreobs_def %then
+21452     +              %let _exploreobs_def = 1;
+21454     +       %end;
+21455     +    %end;
+21457     +   /*--- Terminate ---*/
+21458     +   %term:
+21460     +   %put NOTE: EXPLOREOBS &data : vars= &xvars : recl= &_exploreobs_recl : max=&_exploreobs_max : def= &_exploreobs_def ;
+21461     +%mend ;
+NOTE: %INCLUDE (level 2) ending.
+NOTE: %INCLUDE (level 1) resuming.
+MPRINT(EXPLORESAMPLE):   filename x;
+NOTE: Fileref X has been deassigned.
+MPRINT(EXPLOREOBS):   options nosource nonotes ;
+MPRINT(EXPLOREOBS):   data _exploreobs_temp_data ;
+MPRINT(EXPLOREOBS):   set EMWS1.Ids2_DATA(obs=0) ;
+MPRINT(EXPLOREOBS):   keep ClaimsRate Compensation CustomerAge CustomerID CustomerMonetaryValue EducationalDegree FirstPolicyYear GeographicLivingArea GrossMonthlySalary HasChildren Health Household Life Motor ;
+MPRINT(EXPLOREOBS):   run;
+MPRINT(EXPLOREOBS):   options SOURCE NOTES ;
+NOTE: EXPLOREOBS EMWS1.Ids2_DATA : vars= 14 : recl= 120 : max=20000 : def= 6000
+MPRINT(EXPLORESAMPLE):   ;
+MPRINT(HPDM_PERFORMANCE):  ;
+PERFORMANCE  DETAILS
+MPRINT(EXPLORESAMPLE):  ;
+*------------------------------------------------------------*
+* FirstN/Top sample
+*------------------------------------------------------------*
+MPRINT(EXPLORESAMPLE):   data EMWS1.GrfExpl2_SAMPLE_DATA;
+MPRINT(EXPLORESAMPLE):   set EMWS1.Ids2_DATA(obs= 6000 Keep=ClaimsRate Compensation CustomerAge CustomerID CustomerMonetaryValue EducationalDegree FirstPolicyYear GeographicLivingArea GrossMonthlySalary HasChildren Health Household Life Motor );
+MPRINT(EXPLORESAMPLE):   run;
+
+NOTE: View EMWS1.IDS2_DATA.VIEW used (Total process time):
+      real time           0.08 seconds
+      cpu time            0.04 seconds
+      
+NOTE: There were 6000 observations read from the data set DM.INSURANCE_BASE.
+NOTE: There were 6000 observations read from the data set EMWS1.IDS2_DATA.
+NOTE: The data set EMWS1.GRFEXPL2_SAMPLE_DATA has 6000 observations and 14 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.08 seconds
+      cpu time            0.04 seconds
+      
+
+MPRINT(TRAIN):  ;
+MPRINT(MAIN):  ;
+NOTE: %INCLUDE (level 1) ending.
+MPRINT(MAIN):   filename temp;
+NOTE: Fileref TEMP has been deassigned.
+MPRINT(TRAIN):  ;
+MPRINT(TRAIN):   filename vartemp catalog 'sashelp.emutil.em_varmacro.source';
+NOTE: %INCLUDE (level 1) file VARTEMP is file SASHELP.EMUTIL.EM_VARMACRO.SOURCE.
+21464     +%macro em_varMacro(name=emMacro, metadata=, where=, key=NAME, nummacro=);
+21465     +   filename macFile catalog 'work.emutil.macro.source';
+21466     +   %let _METAOBS = 0;
+21468     +   %if (%sysfunc(exist(&metadata))<1 and %sysfunc(exist(&metadata, VIEW))<1)
+21469     +                   or (&metadata eq ) %then %do;
+21470     +       %goto doend;
+21471     +   %end;
+21472     +   data _null_;
+21473     +      length _STRING_ $80;
+21474     +      retain _STRING_;
+21475     +      set &metadata end=eof;
+21476     +      file macFile;
+21477     +      %if %nrbquote(&where) ne %then %do;
+21478     +          %let whereClause = where (%nrbquote(&where));
+21479     +          %unquote(&whereClause);
+21480     +      %end;
+21481     +      if _N_=1 then do;
+21482     +         string = "%"!!"macro &name;";
+21483     +         put string;
+21484     +      end;
+21485     +      if (length(_STRING_) + length(trim(&key))+ 1 < 80) then do;
+21486     +         _STRING_ = trim(_STRING_)!!' '!!trim(&key);
+21487     +         if eof then do;
+21488     +            put _STRING_;
+21489     +            string = "%"!!"mend &name;";
+21490     +            put string;
+21491     +            %if (&nummacro ne ) %then %do;
+21492     +                string = strip(put(_N_, best.));
+21493     +                put "%" "global &nummacro;";
+21494     +                put "%" "let &nummacro = " string ";";
+21495     +                call symput('_METAOBS', string);
+21496     +            %end;
+21497     +         end;
+21498     +      end;
+21499     +      else do;
+21500     +         put _STRING_;
+21501     +         _string_ = TRIM(&key);
+21502     +         if eof then do;
+21503     +            put _STRING_;
+21504     +            string = "%"!!"mend &name;";
+21505     +            put string;
+21506     +        end;
+21507     +      end;
+21508     +      if eof then do;
+21509     +         string = strip(put(_N_, best.));
+21510     +         call symput('_METAOBS', string);
+21511     +         %if (&nummacro ne ) %then %do;
+21512     +             put "%" "global &nummacro;";
+21513     +             put "%" "let &nummacro = " string ";";
+21514     +         %end;
+21515     +      end;
+21516     +   run;
+21518     +   %doend:
+21519     +   %if ^&_METAOBS %then %do;
+21520     +       data _null_;
+21521     +          file macFile;
+21522     +          put "%" "macro &name;";
+21523     +          put "%" "mend &name;";
+21524     +          %if (&nummacro ne ) %then %do;
+21525     +              put "%" "global &nummacro;";
+21526     +              put "%" "let &nummacro = 0;";
+21527     +          %end;
+21528     +      run;
+21529     +   %end;
+21530     +   %inc macFile;
+21531     +   filename macFile;
+21532     +%mend em_varMacro;
+NOTE: %INCLUDE (level 1) ending.
+MPRINT(TRAIN):   filename vartemp;
+NOTE: Fileref VARTEMP has been deassigned.
+MPRINT(TRAIN):   data tempVariableSet;
+MPRINT(TRAIN):   set EMWS1.GrfExpl2_VariableSet;
+MPRINT(TRAIN):   where (ROLE = 'REJECTED' and USE='Y') or ROLE='FREQ' or ( ROLE ne 'REJECTED' and USE in('Y', 'D'));
+MPRINT(TRAIN):   if _N_< 950 or (ROLE = 'TARGET' and USE in('Y', 'D')) or ROLE='FREQ' then output;
+MPRINT(TRAIN):   run;
+
+NOTE: There were 14 observations read from the data set EMWS1.GRFEXPL2_VARIABLESET.
+      WHERE ((ROLE='REJECTED') and (USE='Y')) or (ROLE='FREQ') or ((ROLE not = 'REJECTED') and USE in ('D', 'Y'));
+NOTE: The data set WORK.TEMPVARIABLESET has 14 observations and 22 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+MPRINT(EM_VARMACRO):   filename macFile catalog 'work.emutil.macro.source';
+MPRINT(EM_VARMACRO):   data _null_;
+MPRINT(EM_VARMACRO):   length _STRING_ $80;
+MPRINT(EM_VARMACRO):   retain _STRING_;
+MPRINT(EM_VARMACRO):   set tempVariableSet end=eof;
+MPRINT(EM_VARMACRO):   file macFile;
+MPRINT(EM_VARMACRO):   if _N_=1 then do;
+MPRINT(EM_VARMACRO):   string = "%"!!"macro varSample;";
+MPRINT(EM_VARMACRO):   put string;
+MPRINT(EM_VARMACRO):   end;
+MPRINT(EM_VARMACRO):   if (length(_STRING_) + length(trim(NAME))+ 1 < 80) then do;
+MPRINT(EM_VARMACRO):   _STRING_ = trim(_STRING_)!!' '!!trim(NAME);
+MPRINT(EM_VARMACRO):   if eof then do;
+MPRINT(EM_VARMACRO):   put _STRING_;
+MPRINT(EM_VARMACRO):   string = "%"!!"mend varSample;";
+MPRINT(EM_VARMACRO):   put string;
+MPRINT(EM_VARMACRO):   string = strip(put(_N_, best.));
+MPRINT(EM_VARMACRO):   put "%" "global numVarSample;";
+MPRINT(EM_VARMACRO):   put "%" "let numVarSample = " string ";";
+MPRINT(EM_VARMACRO):   call symput('_METAOBS', string);
+MPRINT(EM_VARMACRO):   end;
+MPRINT(EM_VARMACRO):   end;
+MPRINT(EM_VARMACRO):   else do;
+MPRINT(EM_VARMACRO):   put _STRING_;
+MPRINT(EM_VARMACRO):   _string_ = TRIM(NAME);
+MPRINT(EM_VARMACRO):   if eof then do;
+MPRINT(EM_VARMACRO):   put _STRING_;
+MPRINT(EM_VARMACRO):   string = "%"!!"mend varSample;";
+MPRINT(EM_VARMACRO):   put string;
+MPRINT(EM_VARMACRO):   end;
+MPRINT(EM_VARMACRO):   end;
+MPRINT(EM_VARMACRO):   if eof then do;
+MPRINT(EM_VARMACRO):   string = strip(put(_N_, best.));
+MPRINT(EM_VARMACRO):   call symput('_METAOBS', string);
+MPRINT(EM_VARMACRO):   put "%" "global numVarSample;";
+MPRINT(EM_VARMACRO):   put "%" "let numVarSample = " string ";";
+MPRINT(EM_VARMACRO):   end;
+MPRINT(EM_VARMACRO):   run;
+
+NOTE: The file MACFILE is:
+      Catalog Name=WORK.EMUTIL.MACRO.SOURCE,
+      Catalog Page Size=4096,
+      Number of Catalog Pages=5,
+      Created=13 December 2015 Sunday 23:29:10 o'clock,
+      Last Modified=13 December 2015 Sunday 23:29:10 o'clock,
+      Filename=C:\Users\-Andris\AppData\Local\Temp\SAS Temporary Files\_TD2244_ANDRAS_\Prc2\emutil.sas7bcat,
+      Release Created=9.0301M2,Host Created=X64_8PRO
+
+NOTE: 9 records were written to the file MACFILE.
+      The minimum record length was 16.
+      The maximum record length was 73.
+NOTE: There were 14 observations read from the data set WORK.TEMPVARIABLESET.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: %INCLUDE (level 1) file MACFILE is file WORK.EMUTIL.MACRO.SOURCE.
+21533     +%macro varSample;
+21534     +ClaimsRate Compensation CustomerAge CustomerID CustomerMonetaryValue
+21535     +EducationalDegree FirstPolicyYear GeographicLivingArea GrossMonthlySalary
+21536     +HasChildren Health Household Life Motor
+21537     +%mend varSample;
+21538     +%global numVarSample;
+21539     +%let numVarSample = 14 ;
+21540     +%global numVarSample;
+21541     +%let numVarSample = 14 ;
+NOTE: %INCLUDE (level 1) ending.
+MPRINT(EM_VARMACRO):   filename macFile;
+NOTE: Fileref MACFILE has been deassigned.
+MPRINT(TRAIN):  ;
+MPRINT(EXPLORESAMPLE):   filename x catalog 'sashelp.emutil.exploreobs.source';
+NOTE: %INCLUDE (level 1) file X is file SASHELP.EMUTIL.EXPLOREOBS.SOURCE.
+21542     +/*------------------------------------------------------------------
+21543     +  MACRO EXPLOREOBS
+21545     +  SUPPORT:  SASDHD - David Duling
+21546     +  PRODUCT:  Enterprise Miner
+21548     +  DESCRIPTION:
+21549     +  Generates maximum and default numbers of observations to
+21550     +  download for visualization depending on the record length.
+21552     +  Values were determined by trial and error using typical
+21553     +  Windows workstation configurations.
+21555     +  Discrete sets of values are returned so that user experience
+21556     +  will be consitent with similar sized data sets.
+21558     +  These macro variables are set:
+21559     +  _exploreobs_max -- maximum number of obs downloadable
+21560     +  _exploreobs_def -- default number of obs to be downloaded
+21561     +  _exploreobs_recl - record length.  Might be useful for reporting.
+21563     +  Use the _exploreobs_max to set limit the GUI selection of
+21564     +  observations for downloading.  The GUI selection for obs
+21565     +  could be reduced to "Default" and "Max".
+21567     +  Parameters
+21568     +  data=   libname.memname of input data
+21569     +  vars=   subset list of variables.
+21570     +          downloading 1 out of 500 really does work like downloading
+21571     +          1 out of 1 vars.  Users may select a subset of vars for
+21572     +                   visualizations.  Pass in the list as space delimited
+21573     +          var names.  If vars is not specified, the record length
+21574     +          of the entire data will be used.
+21575     +  NBYTES=   maximum number of bytes that shouldn't be exceeded.
+21577     +  Control
+21578     +  Users may control the values by entering these macro variables.
+21579     +            EM_EXPLOREOBS_MAX
+21580     +            EM_EXPLOREOBS_DEFAULT
+21581     +  These values override the computed values.
+21583     +  Debugging
+21584     +  %let _exploreobs_debug=1 ;
+21585     +--------------------------------------------------------------------
+21586     +  HISTORY: 20APR2004. sasdhd. pushed.
+21587     +           18DEC2004. sasdhd. S0280556.
+21588     +           07SEP2007. sasdhd. HK1009586
+21589     +--------------------------------------------------------------------*/
+21591     +%macro exploreobs(data=,vars=, nbytes=) ;
+21593     +   /*--- variable definitions ---*/
+21594     +   %global _exploreobs_max _exploreobs_def _exploreobs_recl _exploreobs_debug ;
+21595     +   %local xobs xvars xlen vlen xi vname vlist ;
+21596     +   %local _exp_source _exp_notes ;
+21598     +   /*--- USER definitions ---*/
+21599     +   %global EM_EXPLOREOBS_MAX EM_EXPLOREOBS_DEFAULT ;
+21601     +   /*--- variable intializations ---*/
+21602     +   %let _exploreobs_max=0 ;
+21603     +   %let _exploreobs_def=0 ;
+21604     +   %let _exploreobs_recl=0 ;
+21605     +   %let xvars= 0 ;
+21606     +   %let xlen = 0 ;
+21607     +   %let xobs = 0 ;
+21609     +   /*--- data error checks ---*/
+21610     +   %if "&data" eq "" %then %do ;
+21611     +            %put NOTE: DATA is not specified. ;
+21612     +            %goto term ;
+21613     +      %end ;
+21615     +   %let dsid=%sysfunc(open(&data)) ;
+21616     +   %if not &dsid %then %do ;
+21617     +            %put NOTE: DATA &data is not available. ;
+21618     +            %goto term ;
+21619     +      %end ;
+21621     +   /*--- if a vars list exists generate a subset ---*/
+21622     +   %if &vars ne %then %do ;
+21623     +         %let dsid=%sysfunc(close(&dsid)) ;
+21624     +         %if &_exploreobs_debug ne 1 %then %do ;
+21625     +                  %let _exp_source=%sysfunc(getoption(SOURCE)) ;
+21626     +            %let _exp_notes =%sysfunc(getoption(NOTES)) ;
+21627     +                  options nosource nonotes ;
+21628     +         %end ;
+21629     +         data _exploreobs_temp_data ;
+21630     +         set &data(obs=0) ;
+21631     +          keep &vars ;
+21632     +         run;
+21633     +         %if &_exploreobs_debug ne 1 %then %do ;
+21634     +                  options &_exp_source &_exp_notes ;
+21635     +         %end ;
+21636     +         %let dsid=%sysfunc(open(_exploreobs_temp_data)) ;
+21637     +         %if &dsid eq 0 %then %do ;
+21638     +                  %put NOTE: Sample is not available.;
+21639     +                  %goto term ;
+21640     +            %end ;
+21641     +      %end ;
+21643     +   /*--- get var attributes ---*/
+21644     +   %let xvars=%sysfunc(attrn(&dsid,nvars)) ;
+21645     +   %let xobs= %sysfunc(attrn(&dsid,nobs )) ;
+21646     +   %let xlen= %sysfunc(attrn(&dsid,lrecl)) ;
+21647     +   %let dsid= %sysfunc(close(&dsid)) ;
+21649     +   /*--- set default and max obs ---*/
+21650     +   %let _exploreobs_recl=%eval(&xlen) ;
+21651     +   %if &_exploreobs_recl eq 0 %then %do ;
+21652     +             %let _exploreobs_max= 0 ;
+21653     +             %let _exploreobs_def= 0 ;
+21654     +             %goto term ;
+21656     +   %end ;
+21657     +   %else
+21658     +   %if &_exploreobs_recl le 32 %then %do ;
+21659     +             %let _exploreobs_max=100000 ;
+21660     +             %let _exploreobs_def= 10000 ;
+21661     +   %end ;
+21662     +   %else
+21663     +   %if &_exploreobs_recl le 128 %then %do ;
+21664     +             %let _exploreobs_max=60000 ;
+21665     +             %let _exploreobs_def= 6000 ;
+21666     +   %end ;
+21667     +   %else
+21668     +   %if &_exploreobs_recl lt 1000 %then %do ;
+21669     +             %let _exploreobs_max=20000 ;
+21670     +             %let _exploreobs_def= 2000 ;
+21671     +   %end ;
+21672     +   %else
+21673     +   %if &_exploreobs_recl lt 5000 %then %do ;
+21674     +             %let _exploreobs_max= 10000 ;
+21675     +             %let _exploreobs_def=  1000 ;
+21676     +   %end ;
+21677     +   %else
+21678     +   %if &_exploreobs_recl lt 20000 %then %do ;
+21679     +             %let _exploreobs_max= 5000 ;
+21680     +             %let _exploreobs_def=  500 ;
+21681     +   %end ;
+21682     +   %else %do ;
+21683     +             %let _exploreobs_max= 1000 ;
+21684     +             %let _exploreobs_def=  200 ;
+21685     +   %end ;
+21687     +   /*--- Users options ---*/
+21688     +   %if &EM_EXPLOREOBS_MAX ne %then %do ;
+21689     +            %let _exploreobs_max= %eval(&EM_EXPLOREOBS_MAX) ;
+21690     +   %end;
+21691     +   %if &EM_EXPLOREOBS_DEFAULT ne %then %do ;
+21692     +            %let _exploreobs_def= %eval(&EM_EXPLOREOBS_DEFAULT) ;
+21693     +   %end;
+21695     +    /*--- S0868273 ---*/
+21696     +    %if "&NBYTES" ne "" %then %do;
+21697     +       %let nbytes_nrows = %eval(&nbytes/ &_exploreobs_recl);
+21698     +       %if &EM_EXPLOREOBS_MAX ne %then %do ;
+21699     +           %let _exploreobs_max   = %sysfunc(min(&nbytes_nrows , &EM_EXPLOREOBS_MAX));
+21700     +       %end;
+21702     +       %if &EM_EXPLOREOBS_DEFAULT ne %then %do ;
+21703     +          %let nbytes_nrows      = %eval(&nbytes_nrows/10);
+21704     +          %let _exploreobs_def   = %sysfunc(min(&nbytes_nrows , &EM_EXPLOREOBS_DEFAULT));
+21705     +          %if ^&_exploreobs_def %then
+21706     +              %let _exploreobs_def = 1;
+21708     +       %end;
+21709     +    %end;
+21711     +   /*--- Terminate ---*/
+21712     +   %term:
+21714     +   %put NOTE: EXPLOREOBS &data : vars= &xvars : recl= &_exploreobs_recl : max=&_exploreobs_max : def= &_exploreobs_def ;
+21715     +%mend ;
+NOTE: %INCLUDE (level 1) ending.
+MPRINT(EXPLORESAMPLE):   filename x;
+NOTE: Fileref X has been deassigned.
+MPRINT(EXPLOREOBS):   options nosource nonotes ;
+MPRINT(EXPLOREOBS):   data _exploreobs_temp_data ;
+MPRINT(EXPLOREOBS):   set EMWS1.Ids2_DATA(obs=0) ;
+MPRINT(EXPLOREOBS):   keep ClaimsRate Compensation CustomerAge CustomerID CustomerMonetaryValue EducationalDegree FirstPolicyYear GeographicLivingArea GrossMonthlySalary HasChildren Health Household Life Motor ;
+MPRINT(EXPLOREOBS):   run;
+MPRINT(EXPLOREOBS):   options SOURCE NOTES ;
+NOTE: EXPLOREOBS EMWS1.Ids2_DATA : vars= 14 : recl= 120 : max=20000 : def= 6000
+MPRINT(EXPLORESAMPLE):   ;
+MPRINT(HPDM_PERFORMANCE):  ;
+PERFORMANCE  DETAILS
+MPRINT(EXPLORESAMPLE):  ;
+*------------------------------------------------------------*
+* FirstN/Top sample
+*------------------------------------------------------------*
+MPRINT(EXPLORESAMPLE):   data EMWS1.GrfExpl2_SAMPLE_DATA;
+MPRINT(EXPLORESAMPLE):   set EMWS1.Ids2_DATA(obs= 6000 Keep=ClaimsRate Compensation CustomerAge CustomerID CustomerMonetaryValue EducationalDegree FirstPolicyYear GeographicLivingArea GrossMonthlySalary HasChildren Health Household Life Motor );
+MPRINT(EXPLORESAMPLE):   run;
+
+NOTE: View EMWS1.IDS2_DATA.VIEW used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.06 seconds
+      
+NOTE: There were 6000 observations read from the data set DM.INSURANCE_BASE.
+NOTE: There were 6000 observations read from the data set EMWS1.IDS2_DATA.
+NOTE: The data set EMWS1.GRFEXPL2_SAMPLE_DATA has 6000 observations and 14 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.06 seconds
+      
+
+MPRINT(TRAIN):  ;
+MPRINT(MAIN):  ;
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * End TRAIN: GrfExpl2;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+21718      *------------------------------------------------------------*;
+21719      * End TRAIN: GrfExpl2;
+21720      *------------------------------------------------------------*;
+21721      
+
+21722      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):    *------------------------------------------------------------*;
+21723      * Close any missing semi colons;
+MPRINT(EM_DIAGRAM):   * Close any missing semi colons;
+21724      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+21725      ;
+MPRINT(EM_DIAGRAM):   ;
+21726      ;
+MPRINT(EM_DIAGRAM):   ;
+21727      ;
+MPRINT(EM_DIAGRAM):   ;
+21728      ;
+MPRINT(EM_DIAGRAM):   ;
+21729      quit;
+MPRINT(EM_DIAGRAM):   quit;
+21730      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+21731      * Close any unbalanced quotes;
+MPRINT(EM_DIAGRAM):   * Close any unbalanced quotes;
+21732      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+21733      /*; *"; *'; */
+21734      ;
+MPRINT(EM_DIAGRAM):   ;
+21735      run;
+MPRINT(EM_DIAGRAM):   run;
+21736      quit;
+MPRINT(EM_DIAGRAM):   quit;
+21737      /* Reset EM Options */
+21738      options formchar="|----|+|---+=|-/\<>*";
+MPRINT(EM_DIAGRAM):   options formchar="|----|+|---+=|-/\<>*";
+21739      options nocenter ls=256 ps=10000;
+MPRINT(EM_DIAGRAM):   options nocenter ls=256 ps=10000;
+21740      goptions reset=all device=WMF NODISPLAY;
+MPRINT(EM_DIAGRAM):   goptions reset=all device=WMF NODISPLAY;
+MPRINT(EM_DIAGRAM):    proc printto;
+MPRINT(EM_DIAGRAM):   run;
