@@ -1,0 +1,499 @@
+*------------------------------------------------------------*
+User:                -Andris
+Date:                15 December 2015
+Time:                17:08:11 o'clock
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+            Measurement    Frequency
+Role           Level         Count
+ 
+ID           NOMINAL            1
+INPUT        INTERVAL          13
+INPUT        NOMINAL            3
+REJECTED     INTERVAL           1
+SEGMENT      NOMINAL            1
+TARGET       NOMINAL            1
+TEXT         NOMINAL            1
+ 
+ 
+ 
+ 
+Frequencies: SOM_SEGMENT
+ 
+                                       Percent of
+  Segment      Segment    Frequency       Total
+ Variable       Value       Count       Frequency
+ 
+SOM_SEGMENT    25              169       7.42531
+SOM_SEGMENT    5               165       7.24956
+SOM_SEGMENT    11              144       6.32689
+SOM_SEGMENT    4               125       5.49209
+SOM_SEGMENT    16              121       5.31634
+SOM_SEGMENT    3               120       5.27241
+SOM_SEGMENT    6               120       5.27241
+SOM_SEGMENT    10              100       4.39367
+SOM_SEGMENT    24               99       4.34974
+SOM_SEGMENT    21               95       4.17399
+SOM_SEGMENT    15               90       3.95431
+SOM_SEGMENT    14               81       3.55888
+SOM_SEGMENT    19               81       3.55888
+SOM_SEGMENT    18               77       3.38313
+SOM_SEGMENT    9                74       3.25132
+SOM_SEGMENT    13               74       3.25132
+SOM_SEGMENT    20               74       3.25132
+SOM_SEGMENT    2                73       3.20738
+SOM_SEGMENT    22               70       3.07557
+SOM_SEGMENT    23               70       3.07557
+SOM_SEGMENT    8                62       2.72408
+SOM_SEGMENT    1                57       2.50439
+SOM_SEGMENT    12               50       2.19684
+SOM_SEGMENT    _OTHER_          85       3.73462
+ 
+ 
+ 
+Variable: SOM_SEGMENT Segment: 25 Count: 169
+Decision Tree Importance Profiles
+ 
+Variable            Worth     Rank
+ 
+tempo             0.070271      1
+SOM_DIMENSION1    0.038869      2
+SOM_DIMENSION2    0.030942      3
+artist_name       0.010038      4
+energy            0.009876      5
+speechiness       0.008269      6
+acousticness      0.007493      7
+valence           0.007170      8
+danceability      0.006995      9
+loudness          0.005389     10
+ 
+ 
+ 
+Variable: SOM_SEGMENT Segment: 5 Count: 165
+Decision Tree Importance Profiles
+ 
+Variable            Worth     Rank
+ 
+valence           0.060300      1
+SOM_DIMENSION1    0.033792      2
+SOM_DIMENSION2    0.029495      3
+danceability      0.024663      4
+artist_name       0.015310      5
+tempo             0.010699      6
+energy            0.009215      7
+loudness          0.006463      8
+duration          0.006222      9
+acousticness      0.005968     10
+ 
+ 
+ 
+Variable: SOM_SEGMENT Segment: 11 Count: 144
+Decision Tree Importance Profiles
+ 
+Variable              Worth     Rank
+ 
+SOM_DIMENSION1      0.033501      1
+SOM_DIMENSION2      0.025926      2
+tempo               0.025586      3
+valence             0.021701      4
+artist_name         0.019968      5
+danceability        0.019785      6
+energy              0.018545      7
+loudness            0.016523      8
+acousticness        0.013436      9
+instrumentalness    0.010666     10
+ 
+ 
+ 
+Variable: SOM_SEGMENT Segment: 4 Count: 125
+Decision Tree Importance Profiles
+ 
+Variable            Worth     Rank
+ 
+SOM_DIMENSION2    0.023816      1
+SOM_DIMENSION1    0.019394      2
+valence           0.011898      3
+tempo             0.010284      4
+artist_name       0.009442      5
+danceability      0.005903      6
+energy            0.004432      7
+acousticness      0.003965      8
+loudness          0.002075      9
+speechiness       0.001847     10
+ 
+ 
+ 
+Variable: SOM_SEGMENT Segment: 16 Count: 121
+Decision Tree Importance Profiles
+ 
+Variable              Worth     Rank
+ 
+SOM_DIMENSION1      0.026918      1
+SOM_DIMENSION2      0.018305      2
+valence             0.015269      3
+energy              0.014806      4
+artist_name         0.014512      5
+loudness            0.012419      6
+danceability        0.012060      7
+acousticness        0.010422      8
+tempo               0.010193      9
+instrumentalness    0.007227     10
+ 
+ 
+ 
+Variable: SOM_SEGMENT Segment: 3 Count: 120
+Decision Tree Importance Profiles
+ 
+Variable            Worth     Rank
+ 
+SOM_DIMENSION2    0.025839      1
+SOM_DIMENSION1    0.017873      2
+tempo             0.010867      3
+artist_name       0.009894      4
+valence           0.005876      5
+energy            0.003169      6
+acousticness      0.002595      7
+speechiness       0.002167      8
+liveness          0.002111      9
+danceability      0.002000     10
+ 
+ 
+ 
+Variable: SOM_SEGMENT Segment: 6 Count: 120
+Decision Tree Importance Profiles
+ 
+Variable              Worth     Rank
+ 
+SOM_DIMENSION1      0.026154      1
+tempo               0.025431      2
+SOM_DIMENSION2      0.018004      3
+energy              0.010824      4
+artist_name         0.010358      5
+acousticness        0.009169      6
+loudness            0.007539      7
+valence             0.006250      8
+instrumentalness    0.004938      9
+danceability        0.003225     10
+ 
+ 
+ 
+Variable: SOM_SEGMENT Segment: 10 Count: 100
+Decision Tree Importance Profiles
+ 
+Variable            Worth     Rank
+ 
+SOM_DIMENSION1    0.018163      1
+valence           0.011011      2
+SOM_DIMENSION2    0.010834      3
+artist_name       0.010401      4
+tempo             0.007547      5
+energy            0.004143      6
+danceability      0.003266      7
+acousticness      0.002834      8
+duration          0.002452      9
+loudness          0.002150     10
+ 
+ 
+ 
+Variable: SOM_SEGMENT Segment: 24 Count: 99
+Decision Tree Importance Profiles
+ 
+Variable            Worth     Rank
+ 
+SOM_DIMENSION2    0.014939      1
+SOM_DIMENSION1    0.013338      2
+artist_name       0.009913      3
+tempo             0.008761      4
+acousticness      0.004681      5
+valence           0.004322      6
+energy            0.003971      7
+danceability      0.002092      8
+speechiness       0.001985      9
+duration          0.001834     10
+ 
+ 
+ 
+Variable: SOM_SEGMENT Segment: 21 Count: 95
+Decision Tree Importance Profiles
+ 
+Variable              Worth     Rank
+ 
+SOM_DIMENSION1      0.012282      1
+valence             0.011806      2
+energy              0.011699      3
+SOM_DIMENSION2      0.011284      4
+artist_name         0.009498      5
+loudness            0.008277      6
+acousticness        0.008125      7
+danceability        0.003947      8
+tempo               0.003679      9
+instrumentalness    0.003513     10
+ 
+ 
+ 
+Variable: SOM_SEGMENT Segment: 15 Count: 90
+Decision Tree Importance Profiles
+ 
+Variable              Worth     Rank
+ 
+SOM_DIMENSION1      0.013086      1
+SOM_DIMENSION2      0.008775      2
+tempo               0.006750      3
+artist_name         0.005960      4
+valence             0.005370      5
+energy              0.003180      6
+loudness            0.003104      7
+duration            0.002085      8
+acousticness        0.001648      9
+instrumentalness    0.001518     10
+ 
+ 
+ 
+Variable: SOM_SEGMENT Segment: 14 Count: 81
+Decision Tree Importance Profiles
+ 
+Variable            Worth     Rank
+ 
+SOM_DIMENSION1    0.010600      1
+SOM_DIMENSION2    0.010000      2
+artist_name       0.005022      3
+tempo             0.004059      4
+valence           0.003289      5
+energy            0.001603      6
+acousticness      0.001526      7
+loudness          0.001374      8
+danceability      0.001293      9
+liveness          0.001269     10
+ 
+ 
+ 
+Variable: SOM_SEGMENT Segment: 19 Count: 81
+Decision Tree Importance Profiles
+ 
+Variable              Worth     Rank
+ 
+SOM_DIMENSION1      0.012063      1
+SOM_DIMENSION2      0.010000      2
+artist_name         0.006359      3
+tempo               0.004702      4
+valence             0.003748      5
+speechiness         0.001837      6
+energy              0.001769      7
+acousticness        0.001672      8
+loudness            0.001501      9
+instrumentalness    0.001490     10
+ 
+ 
+ 
+Variable: SOM_SEGMENT Segment: 18 Count: 77
+Decision Tree Importance Profiles
+ 
+Variable              Worth     Rank
+ 
+SOM_DIMENSION1      0.010901      1
+SOM_DIMENSION2      0.010639      2
+artist_name         0.006808      3
+tempo               0.002381      4
+energy              0.002055      5
+valence             0.001732      6
+speechiness         0.001387      7
+liveness            0.001217      8
+instrumentalness    0.000891      9
+song_hotttnesss     0.000767     10
+ 
+ 
+ 
+Variable: SOM_SEGMENT Segment: 9 Count: 74
+Decision Tree Importance Profiles
+ 
+Variable               Worth    Rank
+ 
+SOM_DIMENSION1    .009945813      1
+SOM_DIMENSION2    .008346549      2
+artist_name       .005837510      3
+valence           .003587718      4
+tempo             .003530583      5
+energy            .001416862      6
+danceability      .001353332      7
+acousticness      .001245203      8
+loudness          .000942746      9
+duration          .000904063     10
+ 
+ 
+ 
+Variable: SOM_SEGMENT Segment: 13 Count: 74
+Decision Tree Importance Profiles
+ 
+Variable                 Worth    Rank
+ 
+SOM_DIMENSION2      .009826111      1
+SOM_DIMENSION1      .008846950      2
+artist_name         .005642889      3
+tempo               .003676985      4
+valence             .002245228      5
+danceability        .001677344      6
+energy              .001503574      7
+song_hotttnesss     .001397811      8
+acousticness        .001093514      9
+instrumentalness    .000895926     10
+ 
+ 
+ 
+Variable: SOM_SEGMENT Segment: 20 Count: 74
+Decision Tree Importance Profiles
+ 
+Variable            Worth     Rank
+ 
+SOM_DIMENSION1    0.010068      1
+tempo             0.007213      2
+SOM_DIMENSION2    0.005933      3
+artist_name       0.005646      4
+valence           0.004185      5
+energy            0.001823      6
+acousticness      0.001616      7
+loudness          0.001548      8
+speechiness       0.001070      9
+duration          0.000990     10
+ 
+ 
+ 
+Variable: SOM_SEGMENT Segment: 2 Count: 73
+Decision Tree Importance Profiles
+ 
+Variable            Worth     Rank
+ 
+SOM_DIMENSION2    0.014787      1
+SOM_DIMENSION1    0.006614      2
+tempo             0.006116      3
+artist_name       0.004916      4
+energy            0.002843      5
+valence           0.002677      6
+acousticness      0.001935      7
+speechiness       0.001278      8
+danceability      0.001220      9
+loudness          0.001163     10
+ 
+ 
+ 
+Variable: SOM_SEGMENT Segment: 22 Count: 70
+Decision Tree Importance Profiles
+ 
+Variable             Worth     Rank
+ 
+SOM_DIMENSION2     0.013597      1
+SOM_DIMENSION1     0.006668      2
+artist_name        0.004015      3
+valence            0.003321      4
+energy             0.002663      5
+tempo              0.002651      6
+loudness           0.001682      7
+acousticness       0.001593      8
+speechiness        0.001575      9
+song_hotttnesss    0.001135     10
+ 
+ 
+ 
+Variable: SOM_SEGMENT Segment: 23 Count: 70
+Decision Tree Importance Profiles
+ 
+Variable               Worth    Rank
+ 
+SOM_DIMENSION2    .008792539      1
+SOM_DIMENSION1    .006668410      2
+artist_name       .005073234      3
+valence           .002809790      4
+tempo             .002656907      5
+energy            .001123115      6
+duration          .001084087      7
+liveness          .001043042      8
+acousticness      .001042060      9
+loudness          .000994184     10
+ 
+ 
+ 
+Variable: SOM_SEGMENT Segment: 8 Count: 62
+Decision Tree Importance Profiles
+ 
+Variable                 Worth    Rank
+ 
+SOM_DIMENSION1      .006981685      1
+SOM_DIMENSION2      .006897657      2
+artist_name         .004781539      3
+tempo               .002171909      4
+valence             .002072474      5
+instrumentalness    .001078374      6
+acousticness        .000965562      7
+danceability        .000723324      8
+liveness            .000698061      9
+energy              .000692392     10
+ 
+ 
+ 
+Variable: SOM_SEGMENT Segment: 1 Count: 57
+Decision Tree Importance Profiles
+ 
+Variable              Worth     Rank
+ 
+tempo               0.012259      1
+artist_name         0.005486      2
+acousticness        0.004179      3
+SOM_DIMENSION2      0.004062      4
+SOM_DIMENSION1      0.004033      5
+energy              0.003353      6
+loudness            0.003073      7
+duration            0.002109      8
+instrumentalness    0.001640      9
+valence             0.001437     10
+ 
+ 
+ 
+Variable: SOM_SEGMENT Segment: 12 Count: 50
+Decision Tree Importance Profiles
+ 
+Variable                Worth    Rank
+ 
+SOM_DIMENSION2     .006937072      1
+SOM_DIMENSION1     .004038965      2
+artist_name        .003981918      3
+tempo              .001344257      4
+speechiness        .001264624      5
+valence            .001135196      6
+duration           .001067826      7
+song_hotttnesss    .000919456      8
+energy             .000819615      9
+acousticness       .000767343     10
+ 
+ 
+ 
+Variable: SOM_SEGMENT Segment: _OTHER_ Count: 85
+Decision Tree Importance Profiles
+ 
+Variable              Worth     Rank
+ 
+SOM_DIMENSION2      0.020048      1
+artist_name         0.006528      2
+SOM_DIMENSION1      0.005207      3
+valence             0.002859      4
+energy              0.002248      5
+tempo               0.001961      6
+duration            0.001236      7
+instrumentalness    0.001194      8
+acousticness        0.000948      9
+speechiness         0.000922     10
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*

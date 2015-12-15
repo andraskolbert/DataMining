@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?><_ROOT_  BySegment="N" Correlation="Y" Spearman="N" Pearson="Y" ChiSquare="Y" ChiSquareInterval="N"
+ ChiSquareIntervalNBins="5" MaximumVars="1000" HideVariable="Y" DropRejected="Y" UseValidate="N"
+ UseTest="N" UseScore="N" NObs="100000" IntervalDistribution="Y" ClassDistribution="Y"
+ LevelSummary="Y" ForceRun="N" RunAction="Train" Component="StatExplore" RawCreateTime="1765817872.4"
+ CreateTime="15DEC2015:16:57:52" RunId="d2927be7-d068-42f2-b12d-7fac90564117" RawLastTimeRun="1765818086.6"
+ RawRunTime="36.709000111" LastTimeRun="15DEC2015:17:01:27" RunTime="0 Hr. 0 Min. 36.71 Sec."
+>
+<VARIABLEPROPERTIES/>
+<FILEPROPERTIES ><![CDATA[
+CROSSTAB
+EMNOTES
+]]>
+</FILEPROPERTIES></_ROOT_>

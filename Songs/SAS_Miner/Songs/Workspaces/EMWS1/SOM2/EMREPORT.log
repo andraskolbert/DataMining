@@ -1,0 +1,175 @@
+MPRINT(EM_DIAGRAM):    data _null_;
+MPRINT(EM_DIAGRAM):   call symput('NLDATE', strip(put(date(), NLDATE.)));
+MPRINT(EM_DIAGRAM):   call symput('NLTIME', strip(put(datetime(), NLTIME.)));
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   data _null_;
+MPRINT(EM_DIAGRAM):   nldate= sasmsg("sashelp.dmine", "log_date_note", 'N', "15 December 2015" );
+MPRINT(EM_DIAGRAM):   nltime= sasmsg("sashelp.dmine", "log_time_note", 'N', "17:06:50 o'clock" );
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   put "* Report Log";
+MPRINT(EM_DIAGRAM):   put nldate;
+MPRINT(EM_DIAGRAM):   put nltime;
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   run;
+*------------------------------------------------------------*
+* Report Log
+Date:                15 December 2015
+Time:                17:06:50 o'clock
+*------------------------------------------------------------*
+MPRINT(EM_DIAGRAM):    filename O3JLX0TE "F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Songs\SAS_Miner\Songs\Workspaces\EMWS1\SOM2\EMREPORT.out" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):   proc printto print=O3JLX0TE new;
+MPRINT(EM_DIAGRAM):   run;
+22371      %let EMEXCEPTIONSTRING=;
+22372      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):    *------------------------------------------------------------*;
+22373      * REPORT: SOM2;
+MPRINT(EM_DIAGRAM):   * REPORT: SOM2;
+22374      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+22375      %let EM_ACTION = REPORT;
+22376      %let syscc = 0;
+22377      %macro main;
+22378         filename temp catalog 'sashelp.emexpl.som_macros.source';
+22379         %include temp;
+22380         filename temp;
+22381      
+22382         %SetProperties;
+22383      
+22384         %if %upcase(&EM_ACTION) = CREATE %then %do;
+22385      
+22386             filename temp catalog 'sashelp.emexpl.som_create.source';
+22387             %include temp;
+22388             filename temp;
+22389             %create;
+22390         %end;
+22391         %else
+22392         %if %upcase(&EM_ACTION) = TRAIN %then %do;
+22393      
+22394             filename temp catalog 'sashelp.emexpl.som_train.source';
+22395             %include temp;
+22396             filename temp;
+22397             %train;
+22398         %end;
+22399         %else
+22400         %if %upcase(&EM_ACTION) = SCORE %then %do;
+22401      
+22402             filename temp catalog 'sashelp.emexpl.som_score.source';
+22403             %include temp;
+22404             filename temp;
+22405      
+22406             %score;
+22407         %end;
+22408      
+22409      %mend main;
+22410      %main;
+MPRINT(EM_DIAGRAM):    
+MPRINT(MAIN):   filename temp catalog 'sashelp.emexpl.som_macros.source';
+NOTE: %INCLUDE (level 1) file TEMP is file SASHELP.EMEXPL.SOM_MACROS.SOURCE.
+22411     +%macro SetProperties;
+22412     +   %em_checkmacro(name=EM_PROPERTY_METHOD,      global=Y, value=BATCHSOM);
+22413     +   %em_checkmacro(name=EM_PROPERTY_SEGMENTROLE, global=Y, value=SEGMENT);
+22414     +   %em_checkmacro(name=EM_PROPERTY_STDMETHOD,   global=Y, value=NONE);
+22415     +   %em_checkmacro(name=EM_PROPERTY_METHOD,      global=Y, value=BATCHSOM);
+22416     +   %em_checkmacro(name=EM_PROPERTY_MAXC,        global=Y, value=10);
+22417     +   %em_checkmacro(name=EM_PROPERTY_NROW,        global=Y, value=4);
+22418     +   %em_checkmacro(name=EM_PROPERTY_NCOLUMN,     global=Y, value=6);
+22419     +   %em_checkmacro(name=EM_PROPERTY_RADIUS,      global=Y, value=0);
+22420     +   %em_checkmacro(name=EM_PROPERTY_INITIALMETHOD,    global=Y, value=DEFAULT);
+22421     +   %em_checkmacro(name=EM_PROPERTY_NOMINALENCODING,  global=Y, value=DEFAULT);
+22422     +   %em_checkmacro(name=EM_PROPERTY_ORDINALENCODING,  global=Y, value=DEFAULT);
+22423     +   %em_checkmacro(name=EM_PROPERTY_IMPUTATIONMETHOD,    global=Y, value=NONE);
+22424     +   %em_checkmacro(name=EM_PROPERTY_MISSINGINTERVAL,     global=Y, value=DEFAULT);
+22425     +   %em_checkmacro(name=EM_PROPERTY_MISSINGNOMINAL,      global=Y, value=DEFAULT);
+22426     +   %em_checkmacro(name=EM_PROPERTY_MISSINGORDINAL,      global=Y, value=DEFAULT);
+22427     +   %em_checkmacro(name=EM_PROPERTY_HIDEVARIABLE,        global=Y, value=Y);
+22428     +   %em_checkmacro(name=EM_PROPERTY_SOMDEFAULTS,         global=Y, value=Y);
+22429     +   %em_checkmacro(name=EM_PROPERTY_LLSOM,               global=Y, value=Y);
+22430     +   %em_checkmacro(name=EM_PROPERTY_NWSOM,               global=Y, value=Y);
+22431     +   %em_checkmacro(name=EM_PROPERTY_LLCONVERGE,          global=Y, value=0.0001);
+22432     +   %em_checkmacro(name=EM_PROPERTY_LLMAXITER,           global=Y, value=10);
+22433     +   %em_checkmacro(name=EM_PROPERTY_NWCONVERGE,          global=Y, value=0.0001);
+22434     +   %em_checkmacro(name=EM_PROPERTY_NWMAXITER,           global=Y, value=10);
+22435     +   %em_checkmacro(name=EM_PROPERTY_NDEFAULTS,           global=Y, value=Y);
+22436     +   %em_checkmacro(name=EM_PROPERTY_NSIZE,               global=Y, value=5);
+22437     +   %em_checkmacro(name=EM_PROPERTY_KERNEL,              global=Y, value=1);
+22438     +   %em_checkmacro(name=EM_PROPERTY_KMETRIC,             global=Y, value=0);
+22439     +   %em_checkmacro(name=EM_PROPERTY_NINITIAL,            global=Y, value=5);
+22440     +   %em_checkmacro(name=EM_PROPERTY_NFINAL,              global=Y, value=0);
+22441     +   %em_checkmacro(name=EM_PROPERTY_NRESET,              global=Y, value=100);
+22442     +   %em_checkmacro(name=EM_PROPERTY_NSTEPS,              global=Y, value=1000);
+22443     +   %em_checkmacro(name=EM_PROPERTY_NITER,               global=Y, value=3);
+22444     +   %em_checkmacro(name=EM_PROPERTY_KDEFAULTS,           global=Y, value=Y);
+22445     +   %em_checkmacro(name=EM_PROPERTY_KBATCH,              global=Y, value=N);
+22446     +   %em_checkmacro(name=EM_PROPERTY_LEARN,               global=Y, value=0.9);
+22447     +   %em_checkmacro(name=EM_PROPERTY_LEARNINITIAL,        global=Y, value=0.9);
+22448     +   %em_checkmacro(name=EM_PROPERTY_LEARNFINAL,          global=Y, value=0.2);
+22449     +   %em_checkmacro(name=EM_PROPERTY_LEARNSTEPS,          global=Y, value=1000);
+22450     +   %em_checkmacro(name=EM_PROPERTY_KMAXSTEPS,           global=Y, value=1200);
+22451     +   %em_checkmacro(name=EM_PROPERTY_KMAXITER,            global=Y, value=100);
+22452     +   %em_checkmacro(name=EM_PROPERTY_KCONVERGE,           global=Y, value=0.0001);
+22453     +   %em_checkmacro(name=EM_PROPERTY_EXPORTEDVARS,        global=Y, value=All);
+22455     +%mend SetProperties;
+NOTE: %INCLUDE (level 1) ending.
+MPRINT(MAIN):   filename temp;
+NOTE: Fileref TEMP has been deassigned.
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(SETPROPERTIES):  ;
+MPRINT(MAIN):  ;
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * End REPORT: SOM2;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+22457      
+22458      *------------------------------------------------------------*;
+22459      * End REPORT: SOM2;
+22460      *------------------------------------------------------------*;
+
+22461      /* Reset EM Options */
+22462      options formchar="|----|+|---+=|-/\<>*";
+MPRINT(EM_DIAGRAM):    options formchar="|----|+|---+=|-/\<>*";
+22463      options nocenter ls=256 ps=10000;
+MPRINT(EM_DIAGRAM):   options nocenter ls=256 ps=10000;
+22464      goptions reset=all device=WMF NODISPLAY;
+MPRINT(EM_DIAGRAM):   goptions reset=all device=WMF NODISPLAY;
+MPRINT(EM_DIAGRAM):    proc printto;
+MPRINT(EM_DIAGRAM):   run;

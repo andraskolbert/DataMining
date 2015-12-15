@@ -1,0 +1,77 @@
+*------------------------------------------------------------*
+User:                -Andris
+Date:                15 December 2015
+Time:                17:54:07 o'clock
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+         Measurement    Frequency
+Role        Level         Count
+ 
+ID        NOMINAL            1
+INPUT     INTERVAL          13
+INPUT     NOMINAL            2
+ 
+ 
+ 
+Variable Levels Summary
+(maximum 500 observations printed)
+ 
+                    Frequency
+Variable    Role      Count
+ 
+   ID        ID        2276
+ 
+ 
+ 
+Class Variable Summary Statistics
+(maximum 500 observations printed)
+ 
+Data Role=TRAIN
+ 
+                                 Number
+Data     Variable                  of                                          Mode                       Mode2
+Role     Name           Role     Levels    Missing    Mode                  Percentage    Mode2         Percentage
+ 
+TRAIN    artist_name    INPUT      513        0       Franz Joseph Haydn       0.86       Cher Lloyd       0.79
+TRAIN    genre          INPUT        5        0       metal                   20.43       pop             20.43
+ 
+ 
+ 
+Interval Variable Summary Statistics
+(maximum 500 observations printed)
+ 
+Data Role=TRAIN
+ 
+                                         Standard          Non
+Variable            Role         Mean    Deviation     Missing     Missing     Minimum      Median     Maximum    Skewness    Kurtosis
+ 
+acousticness        INPUT    0.385248    0.404783         2276           0        1E-6    0.177966    0.995796    0.432419    -1.57874
+danceability        INPUT    0.458859    0.179117         2276           0    0.061065    0.464802    0.938746    -0.06084    -0.53498
+duration            INPUT    303.2099    150.4477         2276           0       60.36    258.0133    1186.873    2.099106    5.789143
+energy              INPUT    0.569558    0.323726         2276           0    0.001545    0.650609     0.99774    -0.36258    -1.32845
+instrumentalness    INPUT    0.255954    0.355526         2276           0           0    0.011011    0.977869     0.96458    -0.82008
+key                 INPUT    5.103691    3.401068         2276           0           0           5          11    0.026475    -1.19218
+liveness            INPUT    0.202849    0.179865         2276           0     0.01983    0.130559     0.98455    2.256908    5.367727
+loudness            INPUT    -11.1779    7.136105         2276           0     -41.036      -8.794       -1.59    -1.09947    0.740798
+song_hotttnesss     INPUT    0.332801     0.15977         2276           0           0    0.332103    0.789371    0.085347    -0.50659
+speechiness         INPUT      0.0661     0.05412         2272           4    0.023648    0.046747    0.901628    4.498572    38.01911
+tempo               INPUT    117.0887    29.76103         2276           0      44.028     117.303     216.255    0.325349     -0.2766
+time_signature      INPUT     3.86775    0.465605         2276           0           1           4           5    -3.67893    18.24614
+valence             INPUT    0.418133    0.253511         2276           0     0.02579    0.397741    0.983415    0.259976    -0.92568
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*

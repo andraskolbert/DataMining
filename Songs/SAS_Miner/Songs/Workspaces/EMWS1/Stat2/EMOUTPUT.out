@@ -1,0 +1,297 @@
+*------------------------------------------------------------*
+User:                -Andris
+Date:                15 December 2015
+Time:                17:02:02 o'clock
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+          Measurement    Frequency
+Role         Level         Count
+ 
+ID         NOMINAL            1
+INPUT      INTERVAL          13
+INPUT      NOMINAL            1
+TARGET     NOMINAL            1
+ 
+ 
+ 
+Variable Levels Summary
+(maximum 500 observations printed)
+ 
+                      Frequency
+Variable    Role        Count
+ 
+ ID         ID           2276
+ genre      TARGET          5
+ 
+ 
+ 
+Class Variable Summary Statistics
+(maximum 500 observations printed)
+ 
+Data Role=TRAIN
+ 
+                                  Number
+Data     Variable                   of                                          Mode                       Mode2
+Role     Name            Role     Levels    Missing    Mode                  Percentage    Mode2         Percentage
+ 
+TRAIN    artist_name    INPUT       513        0       Franz Joseph Haydn       0.86       Cher Lloyd       0.79
+TRAIN    genre          TARGET        5        0       metal                   20.43       pop             20.43
+ 
+ 
+ 
+Distribution of Class Target and Segment Variables
+(maximum 500 observations printed)
+ 
+Data Role=TRAIN
+ 
+Data     Variable                            Frequency
+Role       Name       Role     Level             Count    Percent
+ 
+TRAIN     genre      TARGET    metal               465    20.4306
+TRAIN     genre      TARGET    pop                 465    20.4306
+TRAIN     genre      TARGET    jazz                463    20.3427
+TRAIN     genre      TARGET    rock                445    19.5518
+TRAIN     genre      TARGET    classical           438    19.2443
+ 
+ 
+ 
+Interval Variable Summary Statistics
+(maximum 500 observations printed)
+ 
+Data Role=TRAIN
+ 
+                                         Standard          Non
+Variable            Role         Mean    Deviation     Missing     Missing     Minimum      Median     Maximum    Skewness    Kurtosis
+ 
+acousticness        INPUT    0.385248    0.404783         2276           0        1E-6    0.177966    0.995796    0.432419    -1.57874
+danceability        INPUT    0.458859    0.179117         2276           0    0.061065    0.464802    0.938746    -0.06084    -0.53498
+duration            INPUT    303.2099    150.4477         2276           0       60.36    258.0133    1186.873    2.099106    5.789143
+energy              INPUT    0.569558    0.323726         2276           0    0.001545    0.650609     0.99774    -0.36258    -1.32845
+instrumentalness    INPUT    0.255954    0.355526         2276           0           0    0.011011    0.977869     0.96458    -0.82008
+key                 INPUT    5.103691    3.401068         2276           0           0           5          11    0.026475    -1.19218
+liveness            INPUT    0.202849    0.179865         2276           0     0.01983    0.130559     0.98455    2.256908    5.367727
+loudness            INPUT    -11.1779    7.136105         2276           0     -41.036      -8.794       -1.59    -1.09947    0.740798
+song_hotttnesss     INPUT    0.332801     0.15977         2276           0           0    0.332103    0.789371    0.085347    -0.50659
+speechiness         INPUT      0.0661     0.05412         2272           4    0.023648    0.046747    0.901628    4.498572    38.01911
+tempo               INPUT    117.0887    29.76103         2276           0      44.028     117.303     216.255    0.325349     -0.2766
+time_signature      INPUT     3.86775    0.465605         2276           0           1           4           5    -3.67893    18.24614
+valence             INPUT    0.418133    0.253511         2276           0     0.02579    0.397741    0.983415    0.259976    -0.92568
+ 
+ 
+ 
+Class Variable Summary Statistics by Class Target
+(maximum 500 observations printed)
+ 
+Data Role=TRAIN Variable Name=artist_name
+ 
+                          Number
+             Target         of                                           Mode                            Mode2
+Target       Level        Levels    Missing    Mode                   Percentage    Mode2              Percentage
+ 
+_OVERALL_                   513        0       Franz Joseph Haydn        0.86       Cher Lloyd            0.79
+genre        classical      137        0       Franz Joseph Haydn        2.97       Franz Schubert        2.51
+genre        jazz           135        0       Miles Davis Quintet       2.59       Thelonious Monk       2.59
+genre        metal          129        0       King Diamond              2.58       Megadeth              2.37
+genre        pop            141        0       Cher Lloyd                2.58       Bruno Mars            2.15
+genre        rock           148        0       ZZ Top                    2.47       Led Zeppelin          2.25
+ 
+ 
+ 
+Interval Variable Summary Statistics by Class Target
+(maximum 500 observations printed)
+ 
+Data Role=TRAIN Variable=acousticness
+ 
+             Target                                    Non                                        Standard
+Target       Level          Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role        Label
+ 
+_OVERALL_                 0.177966           0        2276        1E-6    0.995796    0.385248    0.404783     0.432419    -1.57874    INPUT    acousticness
+genre        classical    0.959472           0         438    0.000116    0.995796    0.905513    0.162494     -3.62443     14.4963    INPUT    acousticness
+genre        jazz         0.811087           0         463    0.005532    0.995122    0.742026    0.241382     -1.10339    0.515004    INPUT    acousticness
+genre        metal        0.000357           0         465        1E-6     0.89048    0.022457    0.094608      6.16395    41.48207    INPUT    acousticness
+genre        pop          0.059023           0         465    0.000046    0.947981    0.148003    0.201779     2.022139    3.952243    INPUT    acousticness
+genre        rock         0.031633           0         445        3E-6    0.943319    0.128962    0.196592     1.947277    3.315446    INPUT    acousticness
+ 
+ 
+Data Role=TRAIN Variable=danceability
+ 
+             Target                                    Non                                        Standard
+Target       Level          Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role        Label
+ 
+_OVERALL_                 0.464802           0        2276    0.061065    0.938746    0.458859    0.179117     -0.06084    -0.53498    INPUT    danceability
+genre        classical    0.266418           0         438    0.061065    0.845766    0.287101    0.161018     0.881483    0.577296    INPUT    danceability
+genre        jazz         0.498418           0         463    0.073856    0.791246    0.506023    0.108439     -0.02724    0.399514    INPUT    danceability
+genre        metal        0.374523           0         465    0.066058    0.729323    0.380638    0.127583     0.097383    -0.63228    INPUT    danceability
+genre        pop          0.653457           0         465    0.221286    0.938746    0.642195    0.126075     -0.47221    0.487421    INPUT    danceability
+genre        rock         0.479611           0         445    0.112793    0.935198    0.469006    0.140993     0.006746    -0.18564    INPUT    danceability
+ 
+ 
+Data Role=TRAIN Variable=duration
+ 
+             Target                                    Non                                        Standard
+Target       Level          Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role      Label
+ 
+_OVERALL_                 258.0133           0        2276       60.36    1186.873    303.2099    150.4477     2.099106    5.789143    INPUT    duration
+genre        classical    313.9733           0         438    62.53333    1186.873     379.957    237.0282     0.951428    0.346028    INPUT    duration
+genre        jazz         333.9467           0         463    80.69224    1133.567    362.6174    161.1122     1.394573    2.902726    INPUT    duration
+genre        metal          275.76           0         465       60.36    798.9053    288.5982    88.80106     1.357194    4.376399    INPUT    duration
+genre        pop          219.8933           0         465    117.6838    688.4533    224.6943    44.22423     4.150455    33.95538    INPUT    duration
+genre        rock           250.76           0         445       68.72    748.7462    263.1726    74.88872     1.570681    5.484418    INPUT    duration
+ 
+ 
+Data Role=TRAIN Variable=energy
+ 
+             Target                                    Non                                        Standard
+Target       Level          Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role     Label
+ 
+_OVERALL_                 0.650609           0        2276    0.001545     0.99774    0.569558    0.323726     -0.36258    -1.32845    INPUT    energy
+genre        classical    0.109474           0         438    0.001545       0.947      0.1416    0.136048     2.145327    7.090342    INPUT    energy
+genre        jazz         0.319709           0         463    0.007053    0.894499     0.33025    0.200575     0.464399    -0.30822    INPUT    energy
+genre        metal        0.930104           0         465    0.026324     0.99774    0.887039    0.127013     -2.41588    8.045307    INPUT    energy
+genre        pop          0.760772           0         465    0.004401     0.98122    0.725309    0.157312     -1.21731    1.858701    INPUT    energy
+genre        rock         0.799027           0         445    0.216003    0.985507    0.745269    0.178529     -0.85837    -0.09052    INPUT    energy
+ 
+ 
+Data Role=TRAIN Variable=instrumentalness
+ 
+             Target                                    Non                                        Standard
+Target       Level          Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role          Label
+ 
+_OVERALL_                 0.011011           0        2276           0    0.977869    0.255954    0.355526      0.96458    -0.82008    INPUT    instrumentalness
+genre        classical    0.809213           0         438           0    0.977869    0.632215    0.340915     -0.88566    -0.82149    INPUT    instrumentalness
+genre        jazz         0.311488           0         463           0    0.974954    0.410875    0.369789     0.219336    -1.65294    INPUT    instrumentalness
+genre        metal        0.010672           0         465           0    0.969725    0.175008    0.283109     1.532997    0.885033    INPUT    instrumentalness
+genre        pop              1E-6           0         465           0    0.789508    0.007104    0.049387      11.1574    150.4122    INPUT    instrumentalness
+genre        rock         0.000494           0         445           0    0.941141    0.069045    0.182328     3.255945    10.09794    INPUT    instrumentalness
+ 
+ 
+Data Role=TRAIN Variable=key
+ 
+             Target                                    Non                                        Standard
+Target       Level          Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role     Label
+ 
+_OVERALL_                        5           0        2276           0          11    5.103691    3.401068     0.026475    -1.19218    INPUT     key
+genre        classical           5           0         438           0          11    5.043379    3.422291     0.022419    -1.22597    INPUT     key
+genre        jazz                5           0         463           0          11    4.652268    3.332581     0.075599    -1.18222    INPUT     key
+genre        metal               5           0         465           0          11    5.298925    3.271299     0.073434    -1.12443    INPUT     key
+genre        pop                 5           0         465           0          11    5.365591    3.523887      -0.0655    -1.26122    INPUT     key
+genre        rock                5           0         445           0          11    5.155056    3.419703     0.028063      -1.188    INPUT     key
+ 
+ 
+Data Role=TRAIN Variable=liveness
+ 
+             Target                                    Non                                        Standard
+Target       Level          Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role      Label
+ 
+_OVERALL_                 0.130559           0        2276     0.01983     0.98455    0.202849    0.179865     2.256908    5.367727    INPUT    liveness
+genre        classical    0.111864           0         438    0.035728    0.833549    0.154804    0.124113     2.929038    9.916952    INPUT    liveness
+genre        jazz         0.119661           0         463    0.025472    0.973534    0.198147    0.190676     2.376378    5.132523    INPUT    liveness
+genre        metal          0.1647           0         465     0.02991    0.983608    0.241952    0.206034     1.849169    3.333959    INPUT    liveness
+genre        pop          0.123934           0         465    0.023272    0.956869    0.182195    0.144103     2.117658    5.629141    INPUT    liveness
+genre        rock         0.158818           0         445     0.01983     0.98455    0.235754    0.203165      1.92376    3.696423    INPUT    liveness
+ 
+ 
+Data Role=TRAIN Variable=loudness
+ 
+             Target                                    Non                                        Standard
+Target       Level          Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role      Label
+ 
+_OVERALL_                   -8.794           0        2276     -41.036       -1.59    -11.1779    7.136105     -1.09947    0.740798    INPUT    loudness
+genre        classical     -20.577           0         438     -41.036      -3.137    -21.1801    6.137612      -0.4311    0.365102    INPUT    loudness
+genre        jazz           -14.41           0         463     -34.055      -3.172    -14.8815    4.727729     -0.62649    0.830524    INPUT    loudness
+genre        metal          -5.881           0         465     -25.617      -1.711     -6.5907    2.906592     -1.45901    3.936587    INPUT    loudness
+genre        pop            -5.412           0         465     -18.818        -1.6    -5.80153    2.396056     -2.12525    7.652697    INPUT    loudness
+genre        rock            -7.58           0         445     -15.913       -1.59    -7.89105     3.10347      -0.4402    -0.56302    INPUT    loudness
+ 
+ 
+Data Role=TRAIN Variable=song_hotttnesss
+ 
+             Target                                    Non                                        Standard
+Target       Level          Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role          Label
+ 
+_OVERALL_                 0.332103           0        2276           0    0.789371    0.332801     0.15977     0.085347    -0.50659    INPUT    song_hotttnesss
+genre        classical    0.181073           0         438           0    0.475182    0.179401    0.105049     0.171859    -0.76442    INPUT    song_hotttnesss
+genre        jazz         0.241579           0         463           0    0.603012    0.250412    0.115009      0.23888    -0.27373    INPUT    song_hotttnesss
+genre        metal        0.363361           0         465    0.047617    0.646189    0.357544    0.114393     -0.28155    -0.08215    INPUT    song_hotttnesss
+genre        pop          0.456393           0         465           0    0.789371    0.460097    0.136957     -0.07837    -0.08241    INPUT    song_hotttnesss
+genre        rock         0.421724           0         445           0    0.761979     0.41064    0.137537     -0.44954    0.047872    INPUT    song_hotttnesss
+ 
+ 
+Data Role=TRAIN Variable=speechiness
+ 
+             Target                                    Non                                        Standard
+Target       Level          Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role        Label
+ 
+_OVERALL_                 0.046747           4        2272    0.023648    0.901628      0.0661     0.05412     4.498572    38.01911    INPUT    speechiness
+genre        classical    0.042284           2         436    0.027742    0.901628    0.050368    0.054003     12.10627     169.021    INPUT    speechiness
+genre        jazz         0.043784           0         463    0.026275    0.457402    0.054766    0.036631     4.908564    38.01556    INPUT    speechiness
+genre        metal        0.074403           0         465    0.024554    0.386588    0.090098    0.055663     1.745198    4.121522    INPUT    speechiness
+genre        pop          0.049797           1         464    0.024908    0.446917    0.077053    0.067033     2.452294    6.691814    INPUT    speechiness
+genre        rock         0.043702           1         444    0.023648    0.437053    0.056787    0.040192     4.422001       30.87    INPUT    speechiness
+ 
+ 
+Data Role=TRAIN Variable=tempo
+ 
+             Target                                    Non                                        Standard
+Target       Level          Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role     Label
+ 
+_OVERALL_                  117.303           0        2276      44.028     216.255    117.0887    29.76103     0.325349     -0.2766    INPUT    tempo
+genre        classical      91.674           0         438      44.028     185.658    97.61727    27.05593     0.815231    0.179424    INPUT    tempo
+genre        jazz           114.19           0         463      49.417     191.484    114.6614    29.52554     0.311034    -0.35489    INPUT    tempo
+genre        metal          122.97           0         465      59.854     216.255    125.8391    29.53362     0.431932    -0.29184    INPUT    tempo
+genre        pop            122.01           0         465       67.03     205.903    121.5965    24.94654     0.361878    0.172217    INPUT    tempo
+genre        rock          125.545           0         445      62.872     216.051    124.9252     28.3842     0.237742    -0.22888    INPUT    tempo
+ 
+ 
+Data Role=TRAIN Variable=time_signature
+ 
+             Target                                    Non                                        Standard
+Target       Level          Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role         Label
+ 
+_OVERALL_                        4           0        2276           1           5     3.86775    0.465605     -3.67893    18.24614    INPUT    time_signature
+genre        classical           4           0         438           1           5     3.63242    0.734597     -1.80466    4.422409    INPUT    time_signature
+genre        jazz                4           0         463           1           5    3.822894    0.508536     -3.04065    12.87415    INPUT    time_signature
+genre        metal               4           0         465           1           5    3.941935    0.276338     -4.58879     33.6296    INPUT    time_signature
+genre        pop                 4           0         465           1           5    3.978495    0.244707     -8.30184    98.71317    INPUT    time_signature
+genre        rock                4           0         445           1           4    3.952809    0.292585     -7.91015     71.1076    INPUT    time_signature
+ 
+ 
+Data Role=TRAIN Variable=valence
+ 
+             Target                                    Non                                        Standard
+Target       Level          Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role      Label
+ 
+_OVERALL_                 0.397741           0        2276     0.02579    0.983415    0.418133    0.253511     0.259976    -0.92568    INPUT    valence
+genre        classical    0.112001           0         438    0.027788    0.963407    0.185095    0.187752     1.809957    3.477535    INPUT    valence
+genre        jazz         0.467248           0         463    0.038504    0.966948    0.463921    0.232386     0.078754    -0.95534    INPUT    valence
+genre        metal        0.318728           0         465     0.02579    0.956192    0.334636    0.184249     0.617584    0.097828    INPUT    valence
+genre        pop            0.5724           0         465    0.059683    0.966271    0.568233    0.221077     -0.24803    -0.70253    INPUT    valence
+genre        rock         0.514264           0         445    0.036187    0.983415     0.53027    0.229346     0.038371    -0.83399    INPUT    valence
+ 
+ 
+ 
+Chi-Square Statistics
+(maximum 500 observations printed)
+ 
+Data Role=TRAIN Target=genre
+ 
+   Input       Chi-Square     Df       Prob
+ 
+artist_name     8951.7573    2720    <.0001
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*

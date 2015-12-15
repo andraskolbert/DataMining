@@ -1,0 +1,268 @@
+*------------------------------------------------------------*
+ Node = 8
+*------------------------------------------------------------*
+if energy < 0.25387
+AND danceability < 0.54661 or MISSING
+AND acousticness < 0.47357 or MISSING
+then 
+ Tree Node Identifier   = 8
+ Number of Observations = 10
+ Predicted: genre=classical  = 0.60
+ Predicted: genre=rock  = 0.00
+ Predicted: genre=pop  = 0.10
+ Predicted: genre=metal  = 0.00
+ Predicted: genre=jazz  = 0.30
+ 
+*------------------------------------------------------------*
+ Node = 11
+*------------------------------------------------------------*
+if instrumentalness >= 0.87434
+AND danceability >= 0.54661
+AND acousticness < 0.47357 or MISSING
+then 
+ Tree Node Identifier   = 11
+ Number of Observations = 5
+ Predicted: genre=classical  = 0.60
+ Predicted: genre=rock  = 0.00
+ Predicted: genre=pop  = 0.00
+ Predicted: genre=metal  = 0.00
+ Predicted: genre=jazz  = 0.40
+ 
+*------------------------------------------------------------*
+ Node = 12
+*------------------------------------------------------------*
+if loudness < -7.374 or MISSING
+AND danceability < 0.34475
+AND acousticness >= 0.47357
+then 
+ Tree Node Identifier   = 12
+ Number of Observations = 317
+ Predicted: genre=classical  = 0.93
+ Predicted: genre=rock  = 0.01
+ Predicted: genre=pop  = 0.01
+ Predicted: genre=metal  = 0.00
+ Predicted: genre=jazz  = 0.05
+ 
+*------------------------------------------------------------*
+ Node = 13
+*------------------------------------------------------------*
+if loudness >= -7.374
+AND danceability < 0.34475
+AND acousticness >= 0.47357
+then 
+ Tree Node Identifier   = 13
+ Number of Observations = 5
+ Predicted: genre=classical  = 0.00
+ Predicted: genre=rock  = 0.60
+ Predicted: genre=pop  = 0.00
+ Predicted: genre=metal  = 0.20
+ Predicted: genre=jazz  = 0.20
+ 
+*------------------------------------------------------------*
+ Node = 18
+*------------------------------------------------------------*
+if instrumentalness < 0.87434 or MISSING
+AND danceability >= 0.54661
+AND acousticness < 0.00088
+then 
+ Tree Node Identifier   = 18
+ Number of Observations = 40
+ Predicted: genre=classical  = 0.00
+ Predicted: genre=rock  = 0.13
+ Predicted: genre=pop  = 0.28
+ Predicted: genre=metal  = 0.60
+ Predicted: genre=jazz  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 22
+*------------------------------------------------------------*
+if loudness < -10.354
+AND instrumentalness < 0.00004
+AND danceability >= 0.34475 or MISSING
+AND acousticness >= 0.47357
+then 
+ Tree Node Identifier   = 22
+ Number of Observations = 21
+ Predicted: genre=classical  = 0.33
+ Predicted: genre=rock  = 0.19
+ Predicted: genre=pop  = 0.05
+ Predicted: genre=metal  = 0.00
+ Predicted: genre=jazz  = 0.43
+ 
+*------------------------------------------------------------*
+ Node = 23
+*------------------------------------------------------------*
+if loudness >= -10.354 or MISSING
+AND instrumentalness < 0.00004
+AND danceability >= 0.34475 or MISSING
+AND acousticness >= 0.47357
+then 
+ Tree Node Identifier   = 23
+ Number of Observations = 34
+ Predicted: genre=classical  = 0.00
+ Predicted: genre=rock  = 0.24
+ Predicted: genre=pop  = 0.74
+ Predicted: genre=metal  = 0.03
+ Predicted: genre=jazz  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 24
+*------------------------------------------------------------*
+if loudness < -5.6925 or MISSING
+AND instrumentalness >= 0.00004 or MISSING
+AND danceability >= 0.34475 or MISSING
+AND acousticness >= 0.47357
+then 
+ Tree Node Identifier   = 24
+ Number of Observations = 516
+ Predicted: genre=classical  = 0.23
+ Predicted: genre=rock  = 0.03
+ Predicted: genre=pop  = 0.01
+ Predicted: genre=metal  = 0.01
+ Predicted: genre=jazz  = 0.72
+ 
+*------------------------------------------------------------*
+ Node = 25
+*------------------------------------------------------------*
+if loudness >= -5.6925
+AND instrumentalness >= 0.00004 or MISSING
+AND danceability >= 0.34475 or MISSING
+AND acousticness >= 0.47357
+then 
+ Tree Node Identifier   = 25
+ Number of Observations = 9
+ Predicted: genre=classical  = 0.11
+ Predicted: genre=rock  = 0.11
+ Predicted: genre=pop  = 0.44
+ Predicted: genre=metal  = 0.00
+ Predicted: genre=jazz  = 0.33
+ 
+*------------------------------------------------------------*
+ Node = 26
+*------------------------------------------------------------*
+if energy < 0.48212 AND energy >= 0.25387
+AND danceability < 0.54661 or MISSING
+AND acousticness < 0.04696 or MISSING
+then 
+ Tree Node Identifier   = 26
+ Number of Observations = 5
+ Predicted: genre=classical  = 0.20
+ Predicted: genre=rock  = 0.20
+ Predicted: genre=pop  = 0.00
+ Predicted: genre=metal  = 0.20
+ Predicted: genre=jazz  = 0.40
+ 
+*------------------------------------------------------------*
+ Node = 28
+*------------------------------------------------------------*
+if instrumentalness < 0.75663 or MISSING
+AND energy >= 0.25387 or MISSING
+AND danceability < 0.54661 or MISSING
+AND acousticness < 0.47357 AND acousticness >= 0.04696
+then 
+ Tree Node Identifier   = 28
+ Number of Observations = 200
+ Predicted: genre=classical  = 0.00
+ Predicted: genre=rock  = 0.52
+ Predicted: genre=pop  = 0.22
+ Predicted: genre=metal  = 0.10
+ Predicted: genre=jazz  = 0.17
+ 
+*------------------------------------------------------------*
+ Node = 29
+*------------------------------------------------------------*
+if instrumentalness >= 0.75663
+AND energy >= 0.25387 or MISSING
+AND danceability < 0.54661 or MISSING
+AND acousticness < 0.47357 AND acousticness >= 0.04696
+then 
+ Tree Node Identifier   = 29
+ Number of Observations = 11
+ Predicted: genre=classical  = 0.27
+ Predicted: genre=rock  = 0.18
+ Predicted: genre=pop  = 0.00
+ Predicted: genre=metal  = 0.18
+ Predicted: genre=jazz  = 0.36
+ 
+*------------------------------------------------------------*
+ Node = 31
+*------------------------------------------------------------*
+if loudness >= -8.4785 or MISSING
+AND instrumentalness < 0.87434 or MISSING
+AND danceability >= 0.54661
+AND acousticness < 0.47357 AND acousticness >= 0.00088 or MISSING
+then 
+ Tree Node Identifier   = 31
+ Number of Observations = 407
+ Predicted: genre=classical  = 0.00
+ Predicted: genre=rock  = 0.15
+ Predicted: genre=pop  = 0.80
+ Predicted: genre=metal  = 0.04
+ Predicted: genre=jazz  = 0.01
+ 
+*------------------------------------------------------------*
+ Node = 36
+*------------------------------------------------------------*
+if instrumentalness < 5E-7
+AND energy >= 0.48212 or MISSING
+AND danceability < 0.54661 or MISSING
+AND acousticness < 0.04696 or MISSING
+then 
+ Tree Node Identifier   = 36
+ Number of Observations = 41
+ Predicted: genre=classical  = 0.00
+ Predicted: genre=rock  = 0.37
+ Predicted: genre=pop  = 0.44
+ Predicted: genre=metal  = 0.20
+ Predicted: genre=jazz  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 37
+*------------------------------------------------------------*
+if instrumentalness >= 5E-7 or MISSING
+AND energy >= 0.48212 or MISSING
+AND danceability < 0.54661 or MISSING
+AND acousticness < 0.04696 or MISSING
+then 
+ Tree Node Identifier   = 37
+ Number of Observations = 560
+ Predicted: genre=classical  = 0.00
+ Predicted: genre=rock  = 0.30
+ Predicted: genre=pop  = 0.01
+ Predicted: genre=metal  = 0.69
+ Predicted: genre=jazz  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 40
+*------------------------------------------------------------*
+if loudness < -8.4785
+AND instrumentalness < 0.87434 or MISSING
+AND energy < 0.38689
+AND danceability >= 0.54661
+AND acousticness < 0.47357 AND acousticness >= 0.00088 or MISSING
+then 
+ Tree Node Identifier   = 40
+ Number of Observations = 9
+ Predicted: genre=classical  = 0.00
+ Predicted: genre=rock  = 0.00
+ Predicted: genre=pop  = 0.33
+ Predicted: genre=metal  = 0.00
+ Predicted: genre=jazz  = 0.67
+ 
+*------------------------------------------------------------*
+ Node = 41
+*------------------------------------------------------------*
+if loudness < -8.4785
+AND instrumentalness < 0.87434 or MISSING
+AND energy >= 0.38689 or MISSING
+AND danceability >= 0.54661
+AND acousticness < 0.47357 AND acousticness >= 0.00088 or MISSING
+then 
+ Tree Node Identifier   = 41
+ Number of Observations = 86
+ Predicted: genre=classical  = 0.02
+ Predicted: genre=rock  = 0.63
+ Predicted: genre=pop  = 0.20
+ Predicted: genre=metal  = 0.05
+ Predicted: genre=jazz  = 0.10
+ 

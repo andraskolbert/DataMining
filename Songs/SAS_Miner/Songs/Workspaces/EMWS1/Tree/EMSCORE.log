@@ -1,0 +1,1258 @@
+MPRINT(EM_DIAGRAM):    data _null_;
+MPRINT(EM_DIAGRAM):   call symput('NLDATE', strip(put(date(), NLDATE.)));
+MPRINT(EM_DIAGRAM):   call symput('NLTIME', strip(put(datetime(), NLTIME.)));
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   data _null_;
+MPRINT(EM_DIAGRAM):   nldate= sasmsg("sashelp.dmine", "log_date_note", 'N', "15 December 2015" );
+MPRINT(EM_DIAGRAM):   nltime= sasmsg("sashelp.dmine", "log_time_note", 'N', "16:52:47 o'clock" );
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   put "* Score Log";
+MPRINT(EM_DIAGRAM):   put nldate;
+MPRINT(EM_DIAGRAM):   put nltime;
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   run;
+*------------------------------------------------------------*
+* Score Log
+Date:                15 December 2015
+Time:                16:52:47 o'clock
+*------------------------------------------------------------*
+MPRINT(EM_DIAGRAM):    filename O06N4VIJ "F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Songs\SAS_Miner\Songs\Workspaces\EMWS1\Tree\EMSCORE.out" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):   proc printto print=O06N4VIJ new;
+MPRINT(EM_DIAGRAM):   run;
+21620      filename emflow "F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Songs\SAS_Miner\Songs\Workspaces\EMWS1\Tree\EMFLOWSCORE.sas";
+MPRINT(EM_DIAGRAM):    filename emflow "F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Songs\SAS_Miner\Songs\Workspaces\EMWS1\Tree\EMFLOWSCORE.sas";
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * Tree: Scoring DATA data;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+21621      *------------------------------------------------------------*;
+21622      * Tree: Scoring DATA data;
+21623      *------------------------------------------------------------*;
+21624      data EMWS1.Tree_TRAIN
+21625      / view=EMWS1.Tree_TRAIN
+21626      ;
+MPRINT(EM_DIAGRAM):   data EMWS1.Tree_TRAIN / view=EMWS1.Tree_TRAIN ;
+21627      set EMWS1.GrfExpl_TRAIN
+21628      ;
+MPRINT(EM_DIAGRAM):   set EMWS1.GrfExpl_TRAIN ;
+21629      %inc emflow;
+NOTE: %INCLUDE (level 1) file EMFLOW is file F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Songs\SAS_Miner\Songs\Workspaces\EMWS1\Tree\EMFLOWSCORE.sas.
+21630     +****************************************************************;
+MPRINT(EM_DIAGRAM):   ****************************************************************;
+21631     +******             DECISION TREE SCORING CODE             ******;
+MPRINT(EM_DIAGRAM):   ****** DECISION TREE SCORING CODE ******;
+21632     +****************************************************************;
+MPRINT(EM_DIAGRAM):   ****************************************************************;
+21633     +
+21634     +******         LENGTHS OF NEW CHARACTER VARIABLES         ******;
+MPRINT(EM_DIAGRAM):   ****** LENGTHS OF NEW CHARACTER VARIABLES ******;
+21635     +LENGTH F_genre  $    9;
+MPRINT(EM_DIAGRAM):   LENGTH F_genre $ 9;
+21636     +LENGTH I_genre  $    9;
+MPRINT(EM_DIAGRAM):   LENGTH I_genre $ 9;
+21637     +LENGTH U_genre  $    9;
+MPRINT(EM_DIAGRAM):   LENGTH U_genre $ 9;
+21638     +LENGTH _WARN_  $    4;
+MPRINT(EM_DIAGRAM):   LENGTH _WARN_ $ 4;
+21639     +
+21640     +******              LABELS FOR NEW VARIABLES              ******;
+MPRINT(EM_DIAGRAM):   ****** LABELS FOR NEW VARIABLES ******;
+21641     +LABEL _NODE_  = 'Node' ;
+MPRINT(EM_DIAGRAM):   LABEL _NODE_ = 'Node' ;
+21642     +LABEL _LEAF_  = 'Leaf' ;
+MPRINT(EM_DIAGRAM):   LABEL _LEAF_ = 'Leaf' ;
+21643     +LABEL P_genreclassical  = 'Predicted: genre=classical' ;
+MPRINT(EM_DIAGRAM):   LABEL P_genreclassical = 'Predicted: genre=classical' ;
+21644     +LABEL P_genrerock  = 'Predicted: genre=rock' ;
+MPRINT(EM_DIAGRAM):   LABEL P_genrerock = 'Predicted: genre=rock' ;
+21645     +LABEL P_genrepop  = 'Predicted: genre=pop' ;
+MPRINT(EM_DIAGRAM):   LABEL P_genrepop = 'Predicted: genre=pop' ;
+21646     +LABEL P_genremetal  = 'Predicted: genre=metal' ;
+MPRINT(EM_DIAGRAM):   LABEL P_genremetal = 'Predicted: genre=metal' ;
+21647     +LABEL P_genrejazz  = 'Predicted: genre=jazz' ;
+MPRINT(EM_DIAGRAM):   LABEL P_genrejazz = 'Predicted: genre=jazz' ;
+21648     +LABEL Q_genreclassical  = 'Unadjusted P: genre=classical' ;
+MPRINT(EM_DIAGRAM):   LABEL Q_genreclassical = 'Unadjusted P: genre=classical' ;
+21649     +LABEL Q_genrerock  = 'Unadjusted P: genre=rock' ;
+MPRINT(EM_DIAGRAM):   LABEL Q_genrerock = 'Unadjusted P: genre=rock' ;
+21650     +LABEL Q_genrepop  = 'Unadjusted P: genre=pop' ;
+MPRINT(EM_DIAGRAM):   LABEL Q_genrepop = 'Unadjusted P: genre=pop' ;
+21651     +LABEL Q_genremetal  = 'Unadjusted P: genre=metal' ;
+MPRINT(EM_DIAGRAM):   LABEL Q_genremetal = 'Unadjusted P: genre=metal' ;
+21652     +LABEL Q_genrejazz  = 'Unadjusted P: genre=jazz' ;
+MPRINT(EM_DIAGRAM):   LABEL Q_genrejazz = 'Unadjusted P: genre=jazz' ;
+21653     +LABEL R_genreclassical  = 'Residual: genre=classical' ;
+MPRINT(EM_DIAGRAM):   LABEL R_genreclassical = 'Residual: genre=classical' ;
+21654     +LABEL R_genrerock  = 'Residual: genre=rock' ;
+MPRINT(EM_DIAGRAM):   LABEL R_genrerock = 'Residual: genre=rock' ;
+21655     +LABEL R_genrepop  = 'Residual: genre=pop' ;
+MPRINT(EM_DIAGRAM):   LABEL R_genrepop = 'Residual: genre=pop' ;
+21656     +LABEL R_genremetal  = 'Residual: genre=metal' ;
+MPRINT(EM_DIAGRAM):   LABEL R_genremetal = 'Residual: genre=metal' ;
+21657     +LABEL R_genrejazz  = 'Residual: genre=jazz' ;
+MPRINT(EM_DIAGRAM):   LABEL R_genrejazz = 'Residual: genre=jazz' ;
+21658     +LABEL F_genre  = 'From: genre' ;
+MPRINT(EM_DIAGRAM):   LABEL F_genre = 'From: genre' ;
+21659     +LABEL I_genre  = 'Into: genre' ;
+MPRINT(EM_DIAGRAM):   LABEL I_genre = 'Into: genre' ;
+21660     +LABEL U_genre  = 'Unnormalized Into: genre' ;
+MPRINT(EM_DIAGRAM):   LABEL U_genre = 'Unnormalized Into: genre' ;
+21661     +LABEL _WARN_  = 'Warnings' ;
+MPRINT(EM_DIAGRAM):   LABEL _WARN_ = 'Warnings' ;
+21662     +
+21663     +
+21664     +******      TEMPORARY VARIABLES FOR FORMATTED VALUES      ******;
+MPRINT(EM_DIAGRAM):   ****** TEMPORARY VARIABLES FOR FORMATTED VALUES ******;
+21665     +LENGTH _ARBFMT_9 $      9; DROP _ARBFMT_9;
+MPRINT(EM_DIAGRAM):   LENGTH _ARBFMT_9 $ 9;
+MPRINT(EM_DIAGRAM):   DROP _ARBFMT_9;
+21666     +_ARBFMT_9 = ' '; /* Initialize to avoid warning. */
+MPRINT(EM_DIAGRAM):   _ARBFMT_9 = ' ';
+21667     +
+21668     +
+21669     +_ARBFMT_9 = PUT( genre , $CHAR9.);
+MPRINT(EM_DIAGRAM):   _ARBFMT_9 = PUT( genre , $CHAR9.);
+21670     + %DMNORMCP( _ARBFMT_9, F_genre );
+MPRINT(DMNORMCP):   F_genre=dmnorm(_ARBFMT_9,
+MPRINT(DMNORLEN):  32
+MPRINT(DMNORMCP):  );
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   ****** ASSIGN OBSERVATION TO NODE ******;
+MPRINT(EM_DIAGRAM):   IF NOT MISSING(acousticness ) AND 0.4735715 <= acousticness THEN DO;
+21671     +
+MPRINT(EM_DIAGRAM):   IF NOT MISSING(danceability ) AND danceability < 0.344749 THEN DO;
+21672     +******             ASSIGN OBSERVATION TO NODE             ******;
+21673     +IF  NOT MISSING(acousticness ) AND
+MPRINT(EM_DIAGRAM):   IF NOT MISSING(loudness ) AND -7.374 <= loudness THEN DO;
+21674     +             0.4735715 <= acousticness  THEN DO;
+MPRINT(EM_DIAGRAM):   _NODE_ = 13;
+21675     +  IF  NOT MISSING(danceability ) AND
+MPRINT(EM_DIAGRAM):   _LEAF_ = 13;
+21676     +    danceability  <             0.344749 THEN DO;
+MPRINT(EM_DIAGRAM):   P_genreclassical = 0;
+21677     +    IF  NOT MISSING(loudness ) AND
+MPRINT(EM_DIAGRAM):   P_genrerock = 0.6;
+21678     +                    -7.374 <= loudness  THEN DO;
+MPRINT(EM_DIAGRAM):   P_genrepop = 0;
+21679     +      _NODE_  =                   13;
+MPRINT(EM_DIAGRAM):   P_genremetal = 0.2;
+21680     +      _LEAF_  =                   13;
+MPRINT(EM_DIAGRAM):   P_genrejazz = 0.2;
+21681     +      P_genreclassical  =                    0;
+MPRINT(EM_DIAGRAM):   Q_genreclassical = 0;
+21682     +      P_genrerock  =                  0.6;
+MPRINT(EM_DIAGRAM):   Q_genrerock = 0.6;
+21683     +      P_genrepop  =                    0;
+MPRINT(EM_DIAGRAM):   Q_genrepop = 0;
+21684     +      P_genremetal  =                  0.2;
+MPRINT(EM_DIAGRAM):   Q_genremetal = 0.2;
+21685     +      P_genrejazz  =                  0.2;
+MPRINT(EM_DIAGRAM):   Q_genrejazz = 0.2;
+21686     +      Q_genreclassical  =                    0;
+MPRINT(EM_DIAGRAM):   I_genre = 'ROCK' ;
+21687     +      Q_genrerock  =                  0.6;
+MPRINT(EM_DIAGRAM):   U_genre = 'rock' ;
+21688     +      Q_genrepop  =                    0;
+MPRINT(EM_DIAGRAM):   END;
+21689     +      Q_genremetal  =                  0.2;
+21690     +      Q_genrejazz  =                  0.2;
+MPRINT(EM_DIAGRAM):   ELSE DO;
+21691     +      I_genre  = 'ROCK' ;
+MPRINT(EM_DIAGRAM):   _NODE_ = 12;
+21692     +      U_genre  = 'rock' ;
+MPRINT(EM_DIAGRAM):   _LEAF_ = 12;
+21693     +      END;
+MPRINT(EM_DIAGRAM):   P_genreclassical = 0.93059936908517;
+21694     +    ELSE DO;
+MPRINT(EM_DIAGRAM):   P_genrerock = 0.00946372239747;
+MPRINT(EM_DIAGRAM):   P_genrepop = 0.00946372239747;
+21695     +      _NODE_  =                   12;
+MPRINT(EM_DIAGRAM):   P_genremetal = 0;
+21696     +      _LEAF_  =                   12;
+MPRINT(EM_DIAGRAM):   P_genrejazz = 0.05047318611987;
+21697     +      P_genreclassical  =     0.93059936908517;
+MPRINT(EM_DIAGRAM):   Q_genreclassical = 0.93059936908517;
+21698     +      P_genrerock  =     0.00946372239747;
+MPRINT(EM_DIAGRAM):   Q_genrerock = 0.00946372239747;
+21699     +      P_genrepop  =     0.00946372239747;
+MPRINT(EM_DIAGRAM):   Q_genrepop = 0.00946372239747;
+21700     +      P_genremetal  =                    0;
+MPRINT(EM_DIAGRAM):   Q_genremetal = 0;
+21701     +      P_genrejazz  =     0.05047318611987;
+MPRINT(EM_DIAGRAM):   Q_genrejazz = 0.05047318611987;
+21702     +      Q_genreclassical  =     0.93059936908517;
+MPRINT(EM_DIAGRAM):   I_genre = 'CLASSICAL' ;
+21703     +      Q_genrerock  =     0.00946372239747;
+MPRINT(EM_DIAGRAM):   U_genre = 'classical' ;
+21704     +      Q_genrepop  =     0.00946372239747;
+MPRINT(EM_DIAGRAM):   END;
+21705     +      Q_genremetal  =                    0;
+MPRINT(EM_DIAGRAM):   END;
+21706     +      Q_genrejazz  =     0.05047318611987;
+21707     +      I_genre  = 'CLASSICAL' ;
+MPRINT(EM_DIAGRAM):   ELSE DO;
+21708     +      U_genre  = 'classical' ;
+21709     +      END;
+MPRINT(EM_DIAGRAM):   IF NOT MISSING(instrumentalness ) AND instrumentalness < 0.0000395 THEN DO;
+21710     +    END;
+21711     +  ELSE DO;
+MPRINT(EM_DIAGRAM):   IF NOT MISSING(loudness ) AND loudness < -10.354 THEN DO;
+MPRINT(EM_DIAGRAM):   _NODE_ = 22;
+21712     +    IF  NOT MISSING(instrumentalness ) AND
+MPRINT(EM_DIAGRAM):   _LEAF_ = 14;
+21713     +      instrumentalness  <            0.0000395 THEN DO;
+MPRINT(EM_DIAGRAM):   P_genreclassical = 0.33333333333333;
+21714     +      IF  NOT MISSING(loudness ) AND
+MPRINT(EM_DIAGRAM):   P_genrerock = 0.19047619047619;
+21715     +        loudness  <              -10.354 THEN DO;
+MPRINT(EM_DIAGRAM):   P_genrepop = 0.04761904761904;
+21716     +        _NODE_  =                   22;
+MPRINT(EM_DIAGRAM):   P_genremetal = 0;
+21717     +        _LEAF_  =                   14;
+MPRINT(EM_DIAGRAM):   P_genrejazz = 0.42857142857142;
+21718     +        P_genreclassical  =     0.33333333333333;
+MPRINT(EM_DIAGRAM):   Q_genreclassical = 0.33333333333333;
+21719     +        P_genrerock  =     0.19047619047619;
+MPRINT(EM_DIAGRAM):   Q_genrerock = 0.19047619047619;
+21720     +        P_genrepop  =     0.04761904761904;
+MPRINT(EM_DIAGRAM):   Q_genrepop = 0.04761904761904;
+21721     +        P_genremetal  =                    0;
+MPRINT(EM_DIAGRAM):   Q_genremetal = 0;
+21722     +        P_genrejazz  =     0.42857142857142;
+MPRINT(EM_DIAGRAM):   Q_genrejazz = 0.42857142857142;
+21723     +        Q_genreclassical  =     0.33333333333333;
+MPRINT(EM_DIAGRAM):   I_genre = 'JAZZ' ;
+21724     +        Q_genrerock  =     0.19047619047619;
+MPRINT(EM_DIAGRAM):   U_genre = 'jazz' ;
+21725     +        Q_genrepop  =     0.04761904761904;
+MPRINT(EM_DIAGRAM):   END;
+21726     +        Q_genremetal  =                    0;
+21727     +        Q_genrejazz  =     0.42857142857142;
+MPRINT(EM_DIAGRAM):   ELSE DO;
+21728     +        I_genre  = 'JAZZ' ;
+MPRINT(EM_DIAGRAM):   _NODE_ = 23;
+21729     +        U_genre  = 'jazz' ;
+MPRINT(EM_DIAGRAM):   _LEAF_ = 15;
+21730     +        END;
+MPRINT(EM_DIAGRAM):   P_genreclassical = 0;
+21731     +      ELSE DO;
+MPRINT(EM_DIAGRAM):   P_genrerock = 0.23529411764705;
+MPRINT(EM_DIAGRAM):   P_genrepop = 0.73529411764705;
+21732     +        _NODE_  =                   23;
+MPRINT(EM_DIAGRAM):   P_genremetal = 0.02941176470588;
+21733     +        _LEAF_  =                   15;
+MPRINT(EM_DIAGRAM):   P_genrejazz = 0;
+21734     +        P_genreclassical  =                    0;
+MPRINT(EM_DIAGRAM):   Q_genreclassical = 0;
+21735     +        P_genrerock  =     0.23529411764705;
+MPRINT(EM_DIAGRAM):   Q_genrerock = 0.23529411764705;
+21736     +        P_genrepop  =     0.73529411764705;
+MPRINT(EM_DIAGRAM):   Q_genrepop = 0.73529411764705;
+21737     +        P_genremetal  =     0.02941176470588;
+MPRINT(EM_DIAGRAM):   Q_genremetal = 0.02941176470588;
+21738     +        P_genrejazz  =                    0;
+MPRINT(EM_DIAGRAM):   Q_genrejazz = 0;
+21739     +        Q_genreclassical  =                    0;
+MPRINT(EM_DIAGRAM):   I_genre = 'POP' ;
+21740     +        Q_genrerock  =     0.23529411764705;
+MPRINT(EM_DIAGRAM):   U_genre = 'pop' ;
+21741     +        Q_genrepop  =     0.73529411764705;
+MPRINT(EM_DIAGRAM):   END;
+21742     +        Q_genremetal  =     0.02941176470588;
+MPRINT(EM_DIAGRAM):   END;
+21743     +        Q_genrejazz  =                    0;
+21744     +        I_genre  = 'POP' ;
+MPRINT(EM_DIAGRAM):   ELSE DO;
+21745     +        U_genre  = 'pop' ;
+21746     +        END;
+MPRINT(EM_DIAGRAM):   IF NOT MISSING(loudness ) AND -5.6925 <= loudness THEN DO;
+21747     +      END;
+MPRINT(EM_DIAGRAM):   _NODE_ = 25;
+21748     +    ELSE DO;
+MPRINT(EM_DIAGRAM):   _LEAF_ = 17;
+MPRINT(EM_DIAGRAM):   P_genreclassical = 0.11111111111111;
+21749     +      IF  NOT MISSING(loudness ) AND
+MPRINT(EM_DIAGRAM):   P_genrerock = 0.11111111111111;
+21750     +                     -5.6925 <= loudness  THEN DO;
+MPRINT(EM_DIAGRAM):   P_genrepop = 0.44444444444444;
+21751     +        _NODE_  =                   25;
+MPRINT(EM_DIAGRAM):   P_genremetal = 0;
+21752     +        _LEAF_  =                   17;
+MPRINT(EM_DIAGRAM):   P_genrejazz = 0.33333333333333;
+21753     +        P_genreclassical  =     0.11111111111111;
+MPRINT(EM_DIAGRAM):   Q_genreclassical = 0.11111111111111;
+21754     +        P_genrerock  =     0.11111111111111;
+MPRINT(EM_DIAGRAM):   Q_genrerock = 0.11111111111111;
+21755     +        P_genrepop  =     0.44444444444444;
+MPRINT(EM_DIAGRAM):   Q_genrepop = 0.44444444444444;
+21756     +        P_genremetal  =                    0;
+MPRINT(EM_DIAGRAM):   Q_genremetal = 0;
+21757     +        P_genrejazz  =     0.33333333333333;
+MPRINT(EM_DIAGRAM):   Q_genrejazz = 0.33333333333333;
+21758     +        Q_genreclassical  =     0.11111111111111;
+MPRINT(EM_DIAGRAM):   I_genre = 'POP' ;
+21759     +        Q_genrerock  =     0.11111111111111;
+MPRINT(EM_DIAGRAM):   U_genre = 'pop' ;
+21760     +        Q_genrepop  =     0.44444444444444;
+MPRINT(EM_DIAGRAM):   END;
+21761     +        Q_genremetal  =                    0;
+21762     +        Q_genrejazz  =     0.33333333333333;
+MPRINT(EM_DIAGRAM):   ELSE DO;
+21763     +        I_genre  = 'POP' ;
+MPRINT(EM_DIAGRAM):   _NODE_ = 24;
+21764     +        U_genre  = 'pop' ;
+MPRINT(EM_DIAGRAM):   _LEAF_ = 16;
+21765     +        END;
+MPRINT(EM_DIAGRAM):   P_genreclassical = 0.23062015503875;
+21766     +      ELSE DO;
+MPRINT(EM_DIAGRAM):   P_genrerock = 0.0329457364341;
+MPRINT(EM_DIAGRAM):   P_genrepop = 0.00581395348837;
+21767     +        _NODE_  =                   24;
+MPRINT(EM_DIAGRAM):   P_genremetal = 0.01162790697674;
+21768     +        _LEAF_  =                   16;
+MPRINT(EM_DIAGRAM):   P_genrejazz = 0.71899224806201;
+21769     +        P_genreclassical  =     0.23062015503875;
+MPRINT(EM_DIAGRAM):   Q_genreclassical = 0.23062015503875;
+21770     +        P_genrerock  =      0.0329457364341;
+MPRINT(EM_DIAGRAM):   Q_genrerock = 0.0329457364341;
+21771     +        P_genrepop  =     0.00581395348837;
+MPRINT(EM_DIAGRAM):   Q_genrepop = 0.00581395348837;
+21772     +        P_genremetal  =     0.01162790697674;
+MPRINT(EM_DIAGRAM):   Q_genremetal = 0.01162790697674;
+21773     +        P_genrejazz  =     0.71899224806201;
+MPRINT(EM_DIAGRAM):   Q_genrejazz = 0.71899224806201;
+21774     +        Q_genreclassical  =     0.23062015503875;
+MPRINT(EM_DIAGRAM):   I_genre = 'JAZZ' ;
+21775     +        Q_genrerock  =      0.0329457364341;
+MPRINT(EM_DIAGRAM):   U_genre = 'jazz' ;
+21776     +        Q_genrepop  =     0.00581395348837;
+MPRINT(EM_DIAGRAM):   END;
+21777     +        Q_genremetal  =     0.01162790697674;
+MPRINT(EM_DIAGRAM):   END;
+21778     +        Q_genrejazz  =     0.71899224806201;
+MPRINT(EM_DIAGRAM):   END;
+21779     +        I_genre  = 'JAZZ' ;
+MPRINT(EM_DIAGRAM):   END;
+21780     +        U_genre  = 'jazz' ;
+21781     +        END;
+MPRINT(EM_DIAGRAM):   ELSE DO;
+21782     +      END;
+21783     +    END;
+MPRINT(EM_DIAGRAM):   IF NOT MISSING(danceability ) AND 0.546611 <= danceability THEN DO;
+21784     +  END;
+21785     +ELSE DO;
+MPRINT(EM_DIAGRAM):   IF NOT MISSING(instrumentalness ) AND 0.874341 <= instrumentalness THEN DO;
+MPRINT(EM_DIAGRAM):   _NODE_ = 11;
+21786     +  IF  NOT MISSING(danceability ) AND
+MPRINT(EM_DIAGRAM):   _LEAF_ = 11;
+21787     +                0.546611 <= danceability  THEN DO;
+MPRINT(EM_DIAGRAM):   P_genreclassical = 0.6;
+21788     +    IF  NOT MISSING(instrumentalness ) AND
+MPRINT(EM_DIAGRAM):   P_genrerock = 0;
+21789     +                  0.874341 <= instrumentalness  THEN DO;
+MPRINT(EM_DIAGRAM):   P_genrepop = 0;
+21790     +      _NODE_  =                   11;
+MPRINT(EM_DIAGRAM):   P_genremetal = 0;
+21791     +      _LEAF_  =                   11;
+MPRINT(EM_DIAGRAM):   P_genrejazz = 0.4;
+21792     +      P_genreclassical  =                  0.6;
+MPRINT(EM_DIAGRAM):   Q_genreclassical = 0.6;
+21793     +      P_genrerock  =                    0;
+MPRINT(EM_DIAGRAM):   Q_genrerock = 0;
+21794     +      P_genrepop  =                    0;
+MPRINT(EM_DIAGRAM):   Q_genrepop = 0;
+21795     +      P_genremetal  =                    0;
+MPRINT(EM_DIAGRAM):   Q_genremetal = 0;
+21796     +      P_genrejazz  =                  0.4;
+MPRINT(EM_DIAGRAM):   Q_genrejazz = 0.4;
+21797     +      Q_genreclassical  =                  0.6;
+MPRINT(EM_DIAGRAM):   I_genre = 'CLASSICAL' ;
+21798     +      Q_genrerock  =                    0;
+MPRINT(EM_DIAGRAM):   U_genre = 'classical' ;
+21799     +      Q_genrepop  =                    0;
+MPRINT(EM_DIAGRAM):   END;
+21800     +      Q_genremetal  =                    0;
+21801     +      Q_genrejazz  =                  0.4;
+MPRINT(EM_DIAGRAM):   ELSE DO;
+21802     +      I_genre  = 'CLASSICAL' ;
+21803     +      U_genre  = 'classical' ;
+MPRINT(EM_DIAGRAM):   IF NOT MISSING(acousticness ) AND acousticness < 0.0008825 THEN DO;
+21804     +      END;
+MPRINT(EM_DIAGRAM):   _NODE_ = 18;
+21805     +    ELSE DO;
+MPRINT(EM_DIAGRAM):   _LEAF_ = 7;
+MPRINT(EM_DIAGRAM):   P_genreclassical = 0;
+21806     +      IF  NOT MISSING(acousticness ) AND
+MPRINT(EM_DIAGRAM):   P_genrerock = 0.125;
+21807     +        acousticness  <            0.0008825 THEN DO;
+MPRINT(EM_DIAGRAM):   P_genrepop = 0.275;
+21808     +        _NODE_  =                   18;
+MPRINT(EM_DIAGRAM):   P_genremetal = 0.6;
+21809     +        _LEAF_  =                    7;
+MPRINT(EM_DIAGRAM):   P_genrejazz = 0;
+21810     +        P_genreclassical  =                    0;
+MPRINT(EM_DIAGRAM):   Q_genreclassical = 0;
+21811     +        P_genrerock  =                0.125;
+MPRINT(EM_DIAGRAM):   Q_genrerock = 0.125;
+21812     +        P_genrepop  =                0.275;
+MPRINT(EM_DIAGRAM):   Q_genrepop = 0.275;
+21813     +        P_genremetal  =                  0.6;
+MPRINT(EM_DIAGRAM):   Q_genremetal = 0.6;
+21814     +        P_genrejazz  =                    0;
+MPRINT(EM_DIAGRAM):   Q_genrejazz = 0;
+21815     +        Q_genreclassical  =                    0;
+MPRINT(EM_DIAGRAM):   I_genre = 'METAL' ;
+21816     +        Q_genrerock  =                0.125;
+MPRINT(EM_DIAGRAM):   U_genre = 'metal' ;
+21817     +        Q_genrepop  =                0.275;
+MPRINT(EM_DIAGRAM):   END;
+21818     +        Q_genremetal  =                  0.6;
+21819     +        Q_genrejazz  =                    0;
+MPRINT(EM_DIAGRAM):   ELSE DO;
+21820     +        I_genre  = 'METAL' ;
+21821     +        U_genre  = 'metal' ;
+MPRINT(EM_DIAGRAM):   IF NOT MISSING(loudness ) AND loudness < -8.4785 THEN DO;
+21822     +        END;
+21823     +      ELSE DO;
+MPRINT(EM_DIAGRAM):   IF NOT MISSING(energy ) AND energy < 0.3868935 THEN DO;
+MPRINT(EM_DIAGRAM):   _NODE_ = 40;
+21824     +        IF  NOT MISSING(loudness ) AND
+MPRINT(EM_DIAGRAM):   _LEAF_ = 8;
+21825     +          loudness  <              -8.4785 THEN DO;
+MPRINT(EM_DIAGRAM):   P_genreclassical = 0;
+21826     +          IF  NOT MISSING(energy ) AND
+MPRINT(EM_DIAGRAM):   P_genrerock = 0;
+21827     +            energy  <            0.3868935 THEN DO;
+MPRINT(EM_DIAGRAM):   P_genrepop = 0.33333333333333;
+21828     +            _NODE_  =                   40;
+MPRINT(EM_DIAGRAM):   P_genremetal = 0;
+21829     +            _LEAF_  =                    8;
+MPRINT(EM_DIAGRAM):   P_genrejazz = 0.66666666666666;
+21830     +            P_genreclassical  =                    0;
+MPRINT(EM_DIAGRAM):   Q_genreclassical = 0;
+21831     +            P_genrerock  =                    0;
+MPRINT(EM_DIAGRAM):   Q_genrerock = 0;
+21832     +            P_genrepop  =     0.33333333333333;
+MPRINT(EM_DIAGRAM):   Q_genrepop = 0.33333333333333;
+21833     +            P_genremetal  =                    0;
+MPRINT(EM_DIAGRAM):   Q_genremetal = 0;
+21834     +            P_genrejazz  =     0.66666666666666;
+MPRINT(EM_DIAGRAM):   Q_genrejazz = 0.66666666666666;
+21835     +            Q_genreclassical  =                    0;
+MPRINT(EM_DIAGRAM):   I_genre = 'JAZZ' ;
+21836     +            Q_genrerock  =                    0;
+MPRINT(EM_DIAGRAM):   U_genre = 'jazz' ;
+21837     +            Q_genrepop  =     0.33333333333333;
+MPRINT(EM_DIAGRAM):   END;
+21838     +            Q_genremetal  =                    0;
+21839     +            Q_genrejazz  =     0.66666666666666;
+MPRINT(EM_DIAGRAM):   ELSE DO;
+21840     +            I_genre  = 'JAZZ' ;
+MPRINT(EM_DIAGRAM):   _NODE_ = 41;
+21841     +            U_genre  = 'jazz' ;
+MPRINT(EM_DIAGRAM):   _LEAF_ = 9;
+21842     +            END;
+MPRINT(EM_DIAGRAM):   P_genreclassical = 0.02325581395348;
+21843     +          ELSE DO;
+MPRINT(EM_DIAGRAM):   P_genrerock = 0.62790697674418;
+MPRINT(EM_DIAGRAM):   P_genrepop = 0.19767441860465;
+21844     +            _NODE_  =                   41;
+MPRINT(EM_DIAGRAM):   P_genremetal = 0.04651162790697;
+21845     +            _LEAF_  =                    9;
+MPRINT(EM_DIAGRAM):   P_genrejazz = 0.10465116279069;
+21846     +            P_genreclassical  =     0.02325581395348;
+MPRINT(EM_DIAGRAM):   Q_genreclassical = 0.02325581395348;
+21847     +            P_genrerock  =     0.62790697674418;
+MPRINT(EM_DIAGRAM):   Q_genrerock = 0.62790697674418;
+21848     +            P_genrepop  =     0.19767441860465;
+MPRINT(EM_DIAGRAM):   Q_genrepop = 0.19767441860465;
+21849     +            P_genremetal  =     0.04651162790697;
+MPRINT(EM_DIAGRAM):   Q_genremetal = 0.04651162790697;
+21850     +            P_genrejazz  =     0.10465116279069;
+MPRINT(EM_DIAGRAM):   Q_genrejazz = 0.10465116279069;
+21851     +            Q_genreclassical  =     0.02325581395348;
+MPRINT(EM_DIAGRAM):   I_genre = 'ROCK' ;
+21852     +            Q_genrerock  =     0.62790697674418;
+MPRINT(EM_DIAGRAM):   U_genre = 'rock' ;
+21853     +            Q_genrepop  =     0.19767441860465;
+MPRINT(EM_DIAGRAM):   END;
+21854     +            Q_genremetal  =     0.04651162790697;
+MPRINT(EM_DIAGRAM):   END;
+21855     +            Q_genrejazz  =     0.10465116279069;
+21856     +            I_genre  = 'ROCK' ;
+MPRINT(EM_DIAGRAM):   ELSE DO;
+21857     +            U_genre  = 'rock' ;
+MPRINT(EM_DIAGRAM):   _NODE_ = 31;
+21858     +            END;
+MPRINT(EM_DIAGRAM):   _LEAF_ = 10;
+21859     +          END;
+MPRINT(EM_DIAGRAM):   P_genreclassical = 0.002457002457;
+21860     +        ELSE DO;
+MPRINT(EM_DIAGRAM):   P_genrerock = 0.14987714987714;
+MPRINT(EM_DIAGRAM):   P_genrepop = 0.8034398034398;
+21861     +          _NODE_  =                   31;
+MPRINT(EM_DIAGRAM):   P_genremetal = 0.03685503685503;
+21862     +          _LEAF_  =                   10;
+MPRINT(EM_DIAGRAM):   P_genrejazz = 0.007371007371;
+21863     +          P_genreclassical  =       0.002457002457;
+MPRINT(EM_DIAGRAM):   Q_genreclassical = 0.002457002457;
+21864     +          P_genrerock  =     0.14987714987714;
+MPRINT(EM_DIAGRAM):   Q_genrerock = 0.14987714987714;
+21865     +          P_genrepop  =      0.8034398034398;
+MPRINT(EM_DIAGRAM):   Q_genrepop = 0.8034398034398;
+21866     +          P_genremetal  =     0.03685503685503;
+MPRINT(EM_DIAGRAM):   Q_genremetal = 0.03685503685503;
+21867     +          P_genrejazz  =       0.007371007371;
+MPRINT(EM_DIAGRAM):   Q_genrejazz = 0.007371007371;
+21868     +          Q_genreclassical  =       0.002457002457;
+MPRINT(EM_DIAGRAM):   I_genre = 'POP' ;
+21869     +          Q_genrerock  =     0.14987714987714;
+MPRINT(EM_DIAGRAM):   U_genre = 'pop' ;
+21870     +          Q_genrepop  =      0.8034398034398;
+MPRINT(EM_DIAGRAM):   END;
+21871     +          Q_genremetal  =     0.03685503685503;
+MPRINT(EM_DIAGRAM):   END;
+21872     +          Q_genrejazz  =       0.007371007371;
+MPRINT(EM_DIAGRAM):   END;
+21873     +          I_genre  = 'POP' ;
+MPRINT(EM_DIAGRAM):   END;
+21874     +          U_genre  = 'pop' ;
+21875     +          END;
+MPRINT(EM_DIAGRAM):   ELSE DO;
+21876     +        END;
+21877     +      END;
+MPRINT(EM_DIAGRAM):   IF NOT MISSING(energy ) AND energy < 0.253875 THEN DO;
+21878     +    END;
+MPRINT(EM_DIAGRAM):   _NODE_ = 8;
+21879     +  ELSE DO;
+MPRINT(EM_DIAGRAM):   _LEAF_ = 1;
+MPRINT(EM_DIAGRAM):   P_genreclassical = 0.6;
+21880     +    IF  NOT MISSING(energy ) AND
+MPRINT(EM_DIAGRAM):   P_genrerock = 0;
+21881     +      energy  <             0.253875 THEN DO;
+MPRINT(EM_DIAGRAM):   P_genrepop = 0.1;
+21882     +      _NODE_  =                    8;
+MPRINT(EM_DIAGRAM):   P_genremetal = 0;
+21883     +      _LEAF_  =                    1;
+MPRINT(EM_DIAGRAM):   P_genrejazz = 0.3;
+21884     +      P_genreclassical  =                  0.6;
+MPRINT(EM_DIAGRAM):   Q_genreclassical = 0.6;
+21885     +      P_genrerock  =                    0;
+MPRINT(EM_DIAGRAM):   Q_genrerock = 0;
+21886     +      P_genrepop  =                  0.1;
+MPRINT(EM_DIAGRAM):   Q_genrepop = 0.1;
+21887     +      P_genremetal  =                    0;
+MPRINT(EM_DIAGRAM):   Q_genremetal = 0;
+21888     +      P_genrejazz  =                  0.3;
+MPRINT(EM_DIAGRAM):   Q_genrejazz = 0.3;
+21889     +      Q_genreclassical  =                  0.6;
+MPRINT(EM_DIAGRAM):   I_genre = 'CLASSICAL' ;
+21890     +      Q_genrerock  =                    0;
+MPRINT(EM_DIAGRAM):   U_genre = 'classical' ;
+21891     +      Q_genrepop  =                  0.1;
+MPRINT(EM_DIAGRAM):   END;
+21892     +      Q_genremetal  =                    0;
+21893     +      Q_genrejazz  =                  0.3;
+MPRINT(EM_DIAGRAM):   ELSE DO;
+21894     +      I_genre  = 'CLASSICAL' ;
+21895     +      U_genre  = 'classical' ;
+MPRINT(EM_DIAGRAM):   IF NOT MISSING(acousticness ) AND 0.046963 <= acousticness THEN DO;
+21896     +      END;
+21897     +    ELSE DO;
+MPRINT(EM_DIAGRAM):   IF NOT MISSING(instrumentalness ) AND 0.756626 <= instrumentalness THEN DO;
+MPRINT(EM_DIAGRAM):   _NODE_ = 29;
+21898     +      IF  NOT MISSING(acousticness ) AND
+MPRINT(EM_DIAGRAM):   _LEAF_ = 6;
+21899     +                    0.046963 <= acousticness  THEN DO;
+MPRINT(EM_DIAGRAM):   P_genreclassical = 0.27272727272727;
+21900     +        IF  NOT MISSING(instrumentalness ) AND
+MPRINT(EM_DIAGRAM):   P_genrerock = 0.18181818181818;
+21901     +                      0.756626 <= instrumentalness  THEN DO;
+MPRINT(EM_DIAGRAM):   P_genrepop = 0;
+21902     +          _NODE_  =                   29;
+MPRINT(EM_DIAGRAM):   P_genremetal = 0.18181818181818;
+21903     +          _LEAF_  =                    6;
+MPRINT(EM_DIAGRAM):   P_genrejazz = 0.36363636363636;
+21904     +          P_genreclassical  =     0.27272727272727;
+MPRINT(EM_DIAGRAM):   Q_genreclassical = 0.27272727272727;
+21905     +          P_genrerock  =     0.18181818181818;
+MPRINT(EM_DIAGRAM):   Q_genrerock = 0.18181818181818;
+21906     +          P_genrepop  =                    0;
+MPRINT(EM_DIAGRAM):   Q_genrepop = 0;
+21907     +          P_genremetal  =     0.18181818181818;
+MPRINT(EM_DIAGRAM):   Q_genremetal = 0.18181818181818;
+21908     +          P_genrejazz  =     0.36363636363636;
+MPRINT(EM_DIAGRAM):   Q_genrejazz = 0.36363636363636;
+21909     +          Q_genreclassical  =     0.27272727272727;
+MPRINT(EM_DIAGRAM):   I_genre = 'JAZZ' ;
+21910     +          Q_genrerock  =     0.18181818181818;
+MPRINT(EM_DIAGRAM):   U_genre = 'jazz' ;
+21911     +          Q_genrepop  =                    0;
+MPRINT(EM_DIAGRAM):   END;
+21912     +          Q_genremetal  =     0.18181818181818;
+21913     +          Q_genrejazz  =     0.36363636363636;
+MPRINT(EM_DIAGRAM):   ELSE DO;
+21914     +          I_genre  = 'JAZZ' ;
+MPRINT(EM_DIAGRAM):   _NODE_ = 28;
+21915     +          U_genre  = 'jazz' ;
+MPRINT(EM_DIAGRAM):   _LEAF_ = 5;
+21916     +          END;
+MPRINT(EM_DIAGRAM):   P_genreclassical = 0;
+21917     +        ELSE DO;
+MPRINT(EM_DIAGRAM):   P_genrerock = 0.52;
+MPRINT(EM_DIAGRAM):   P_genrepop = 0.22;
+21918     +          _NODE_  =                   28;
+MPRINT(EM_DIAGRAM):   P_genremetal = 0.095;
+21919     +          _LEAF_  =                    5;
+MPRINT(EM_DIAGRAM):   P_genrejazz = 0.165;
+21920     +          P_genreclassical  =                    0;
+MPRINT(EM_DIAGRAM):   Q_genreclassical = 0;
+21921     +          P_genrerock  =                 0.52;
+MPRINT(EM_DIAGRAM):   Q_genrerock = 0.52;
+21922     +          P_genrepop  =                 0.22;
+MPRINT(EM_DIAGRAM):   Q_genrepop = 0.22;
+21923     +          P_genremetal  =                0.095;
+MPRINT(EM_DIAGRAM):   Q_genremetal = 0.095;
+21924     +          P_genrejazz  =                0.165;
+MPRINT(EM_DIAGRAM):   Q_genrejazz = 0.165;
+21925     +          Q_genreclassical  =                    0;
+MPRINT(EM_DIAGRAM):   I_genre = 'ROCK' ;
+21926     +          Q_genrerock  =                 0.52;
+MPRINT(EM_DIAGRAM):   U_genre = 'rock' ;
+21927     +          Q_genrepop  =                 0.22;
+MPRINT(EM_DIAGRAM):   END;
+21928     +          Q_genremetal  =                0.095;
+MPRINT(EM_DIAGRAM):   END;
+21929     +          Q_genrejazz  =                0.165;
+21930     +          I_genre  = 'ROCK' ;
+MPRINT(EM_DIAGRAM):   ELSE DO;
+21931     +          U_genre  = 'rock' ;
+21932     +          END;
+MPRINT(EM_DIAGRAM):   IF NOT MISSING(energy ) AND energy < 0.4821155 THEN DO;
+21933     +        END;
+MPRINT(EM_DIAGRAM):   _NODE_ = 26;
+21934     +      ELSE DO;
+MPRINT(EM_DIAGRAM):   _LEAF_ = 2;
+MPRINT(EM_DIAGRAM):   P_genreclassical = 0.2;
+21935     +        IF  NOT MISSING(energy ) AND
+MPRINT(EM_DIAGRAM):   P_genrerock = 0.2;
+21936     +          energy  <            0.4821155 THEN DO;
+MPRINT(EM_DIAGRAM):   P_genrepop = 0;
+21937     +          _NODE_  =                   26;
+MPRINT(EM_DIAGRAM):   P_genremetal = 0.2;
+21938     +          _LEAF_  =                    2;
+MPRINT(EM_DIAGRAM):   P_genrejazz = 0.4;
+21939     +          P_genreclassical  =                  0.2;
+MPRINT(EM_DIAGRAM):   Q_genreclassical = 0.2;
+21940     +          P_genrerock  =                  0.2;
+MPRINT(EM_DIAGRAM):   Q_genrerock = 0.2;
+21941     +          P_genrepop  =                    0;
+MPRINT(EM_DIAGRAM):   Q_genrepop = 0;
+21942     +          P_genremetal  =                  0.2;
+MPRINT(EM_DIAGRAM):   Q_genremetal = 0.2;
+21943     +          P_genrejazz  =                  0.4;
+MPRINT(EM_DIAGRAM):   Q_genrejazz = 0.4;
+21944     +          Q_genreclassical  =                  0.2;
+MPRINT(EM_DIAGRAM):   I_genre = 'JAZZ' ;
+21945     +          Q_genrerock  =                  0.2;
+MPRINT(EM_DIAGRAM):   U_genre = 'jazz' ;
+21946     +          Q_genrepop  =                    0;
+MPRINT(EM_DIAGRAM):   END;
+21947     +          Q_genremetal  =                  0.2;
+21948     +          Q_genrejazz  =                  0.4;
+MPRINT(EM_DIAGRAM):   ELSE DO;
+21949     +          I_genre  = 'JAZZ' ;
+21950     +          U_genre  = 'jazz' ;
+MPRINT(EM_DIAGRAM):   IF NOT MISSING(instrumentalness ) AND instrumentalness < 5E-7 THEN DO;
+21951     +          END;
+MPRINT(EM_DIAGRAM):   _NODE_ = 36;
+21952     +        ELSE DO;
+MPRINT(EM_DIAGRAM):   _LEAF_ = 3;
+MPRINT(EM_DIAGRAM):   P_genreclassical = 0;
+21953     +          IF  NOT MISSING(instrumentalness ) AND
+MPRINT(EM_DIAGRAM):   P_genrerock = 0.36585365853658;
+21954     +            instrumentalness  <                 5E-7 THEN DO;
+MPRINT(EM_DIAGRAM):   P_genrepop = 0.4390243902439;
+21955     +            _NODE_  =                   36;
+MPRINT(EM_DIAGRAM):   P_genremetal = 0.19512195121951;
+21956     +            _LEAF_  =                    3;
+MPRINT(EM_DIAGRAM):   P_genrejazz = 0;
+21957     +            P_genreclassical  =                    0;
+MPRINT(EM_DIAGRAM):   Q_genreclassical = 0;
+21958     +            P_genrerock  =     0.36585365853658;
+MPRINT(EM_DIAGRAM):   Q_genrerock = 0.36585365853658;
+21959     +            P_genrepop  =      0.4390243902439;
+MPRINT(EM_DIAGRAM):   Q_genrepop = 0.4390243902439;
+21960     +            P_genremetal  =     0.19512195121951;
+MPRINT(EM_DIAGRAM):   Q_genremetal = 0.19512195121951;
+21961     +            P_genrejazz  =                    0;
+MPRINT(EM_DIAGRAM):   Q_genrejazz = 0;
+21962     +            Q_genreclassical  =                    0;
+MPRINT(EM_DIAGRAM):   I_genre = 'POP' ;
+21963     +            Q_genrerock  =     0.36585365853658;
+MPRINT(EM_DIAGRAM):   U_genre = 'pop' ;
+21964     +            Q_genrepop  =      0.4390243902439;
+MPRINT(EM_DIAGRAM):   END;
+21965     +            Q_genremetal  =     0.19512195121951;
+21966     +            Q_genrejazz  =                    0;
+MPRINT(EM_DIAGRAM):   ELSE DO;
+21967     +            I_genre  = 'POP' ;
+MPRINT(EM_DIAGRAM):   _NODE_ = 37;
+21968     +            U_genre  = 'pop' ;
+MPRINT(EM_DIAGRAM):   _LEAF_ = 4;
+21969     +            END;
+MPRINT(EM_DIAGRAM):   P_genreclassical = 0;
+21970     +          ELSE DO;
+MPRINT(EM_DIAGRAM):   P_genrerock = 0.29821428571428;
+MPRINT(EM_DIAGRAM):   P_genrepop = 0.01428571428571;
+21971     +            _NODE_  =                   37;
+MPRINT(EM_DIAGRAM):   P_genremetal = 0.68571428571428;
+21972     +            _LEAF_  =                    4;
+MPRINT(EM_DIAGRAM):   P_genrejazz = 0.00178571428571;
+21973     +            P_genreclassical  =                    0;
+MPRINT(EM_DIAGRAM):   Q_genreclassical = 0;
+21974     +            P_genrerock  =     0.29821428571428;
+MPRINT(EM_DIAGRAM):   Q_genrerock = 0.29821428571428;
+21975     +            P_genrepop  =     0.01428571428571;
+MPRINT(EM_DIAGRAM):   Q_genrepop = 0.01428571428571;
+21976     +            P_genremetal  =     0.68571428571428;
+MPRINT(EM_DIAGRAM):   Q_genremetal = 0.68571428571428;
+21977     +            P_genrejazz  =     0.00178571428571;
+MPRINT(EM_DIAGRAM):   Q_genrejazz = 0.00178571428571;
+21978     +            Q_genreclassical  =                    0;
+MPRINT(EM_DIAGRAM):   I_genre = 'METAL' ;
+21979     +            Q_genrerock  =     0.29821428571428;
+MPRINT(EM_DIAGRAM):   U_genre = 'metal' ;
+21980     +            Q_genrepop  =     0.01428571428571;
+MPRINT(EM_DIAGRAM):   END;
+21981     +            Q_genremetal  =     0.68571428571428;
+MPRINT(EM_DIAGRAM):   END;
+21982     +            Q_genrejazz  =     0.00178571428571;
+MPRINT(EM_DIAGRAM):   END;
+21983     +            I_genre  = 'METAL' ;
+MPRINT(EM_DIAGRAM):   END;
+21984     +            U_genre  = 'metal' ;
+MPRINT(EM_DIAGRAM):   END;
+21985     +            END;
+MPRINT(EM_DIAGRAM):   END;
+21986     +          END;
+21987     +        END;
+MPRINT(EM_DIAGRAM):   ***** RESIDUALS R_ *************;
+21988     +      END;
+21989     +    END;
+21990     +  END;
+21991     +
+21992     +*****  RESIDUALS R_ *************;
+MPRINT(EM_DIAGRAM):   IF F_genre NE 'CLASSICAL' AND F_genre NE 'ROCK' AND F_genre NE 'POP' AND F_genre NE 'METAL' AND F_genre NE 'JAZZ' THEN DO;
+21993     +IF  F_genre  NE 'CLASSICAL'
+MPRINT(EM_DIAGRAM):   R_genreclassical = .;
+21994     +AND F_genre  NE 'ROCK'
+MPRINT(EM_DIAGRAM):   R_genrerock = .;
+21995     +AND F_genre  NE 'POP'
+MPRINT(EM_DIAGRAM):   R_genrepop = .;
+21996     +AND F_genre  NE 'METAL'
+MPRINT(EM_DIAGRAM):   R_genremetal = .;
+21997     +AND F_genre  NE 'JAZZ'  THEN DO;
+MPRINT(EM_DIAGRAM):   R_genrejazz = .;
+21998     +        R_genreclassical  = .;
+MPRINT(EM_DIAGRAM):   END;
+21999     +        R_genrerock  = .;
+22000     +        R_genrepop  = .;
+MPRINT(EM_DIAGRAM):   ELSE DO;
+22001     +        R_genremetal  = .;
+MPRINT(EM_DIAGRAM):   R_genreclassical = -P_genreclassical ;
+22002     +        R_genrejazz  = .;
+MPRINT(EM_DIAGRAM):   R_genrerock = -P_genrerock ;
+22003     + END;
+MPRINT(EM_DIAGRAM):   R_genrepop = -P_genrepop ;
+22004     + ELSE DO;
+MPRINT(EM_DIAGRAM):   R_genremetal = -P_genremetal ;
+MPRINT(EM_DIAGRAM):   R_genrejazz = -P_genrejazz ;
+22005     +       R_genreclassical  =  -P_genreclassical ;
+MPRINT(EM_DIAGRAM):   SELECT( F_genre );
+22006     +       R_genrerock  =  -P_genrerock ;
+MPRINT(EM_DIAGRAM):   WHEN( 'CLASSICAL' ) R_genreclassical = R_genreclassical +1;
+22007     +       R_genrepop  =  -P_genrepop ;
+MPRINT(EM_DIAGRAM):   WHEN( 'ROCK' ) R_genrerock = R_genrerock +1;
+22008     +       R_genremetal  =  -P_genremetal ;
+MPRINT(EM_DIAGRAM):   WHEN( 'POP' ) R_genrepop = R_genrepop +1;
+22009     +       R_genrejazz  =  -P_genrejazz ;
+MPRINT(EM_DIAGRAM):   WHEN( 'METAL' ) R_genremetal = R_genremetal +1;
+22010     +       SELECT( F_genre  );
+MPRINT(EM_DIAGRAM):   WHEN( 'JAZZ' ) R_genrejazz = R_genrejazz +1;
+22011     +          WHEN( 'CLASSICAL'  ) R_genreclassical  = R_genreclassical  +1;
+MPRINT(EM_DIAGRAM):   END;
+22012     +          WHEN( 'ROCK'  ) R_genrerock  = R_genrerock  +1;
+MPRINT(EM_DIAGRAM):   END;
+22013     +          WHEN( 'POP'  ) R_genrepop  = R_genrepop  +1;
+22014     +          WHEN( 'METAL'  ) R_genremetal  = R_genremetal  +1;
+MPRINT(EM_DIAGRAM):   ****************************************************************;
+22015     +          WHEN( 'JAZZ'  ) R_genrejazz  = R_genrejazz  +1;
+MPRINT(EM_DIAGRAM):   ****** END OF DECISION TREE SCORING CODE ******;
+22016     +       END;
+MPRINT(EM_DIAGRAM):   ****************************************************************;
+22017     + END;
+MPRINT(EM_DIAGRAM):   drop _LEAF_;
+22018     +
+22019     +****************************************************************;
+22020     +******          END OF DECISION TREE SCORING CODE         ******;
+22021     +****************************************************************;
+22022     +drop _LEAF_;
+NOTE: %INCLUDE (level 1) ending.
+MPRINT(EM_DIAGRAM):   run;
+22023      run;
+
+NOTE: DATA STEP view saved on file EMWS1.TREE_TRAIN.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: View EMWS1.GRFEXPL_TRAIN.VIEW used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.09 seconds
+      
+NOTE: DATA statement used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.10 seconds
+      
+
+MPRINT(EM_DIAGRAM):   quit;
+22024      quit;
+22025      filename emflow;
+MPRINT(EM_DIAGRAM):   filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+22026      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):    *------------------------------------------------------------*;
+22027      * Tree: Computing metadata for TRAIN data;
+MPRINT(EM_DIAGRAM):   * Tree: Computing metadata for TRAIN data;
+22028      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+
+NOTE: View EMWS1.TREE_TRAIN.VIEW used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+      
+MPRINT(EM_DIAGRAM):    *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * &nodeid: Computing Metadata for TRAIN data;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   filename _delta "F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Songs\SAS_Miner\Songs\Workspaces\EMWS1\Tree\CDELTA_TRAIN.sas";
+MPRINT(EMADVISECOLUMNS):   proc display c=sashelp.emmeta.advisecolumns.scl;
+MPRINT(EMADVISECOLUMNS):   run;
+MPRINT(EMADVISECOLUMNS):    options validvarname=any;
+MPRINT(EMADVISECOLUMNS):   proc contents data=EMWS1.Tree_TRAIN out=_tempAdvisor noprint;
+MPRINT(EMADVISECOLUMNS):   run;
+MPRINT(EMADVISECOLUMNS):   options validvarname=V7;
+MPRINT(EMADVISECOLUMNS):    data _null_;
+MPRINT(EMADVISECOLUMNS):   dsid = open('EMWS1.Tree_TRAIN');
+MPRINT(EMADVISECOLUMNS):   call symput('_dsidTable', strip(put(dsid, best.)));
+MPRINT(EMADVISECOLUMNS):   if dsid then do;
+MPRINT(EMADVISECOLUMNS):   call symput('_engineTable', attrc(dsid, 'ENGINE'));
+MPRINT(EMADVISECOLUMNS):   dsid = close(dsid);
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   run;
+MPRINT(EMADVISECOLUMNS):    proc contents data=EMWS1.Tree_TRAIN out=WORK.M2C6TTIV noprint;
+MPRINT(EMADVISECOLUMNS):   run;
+MPRINT(EMADVISECOLUMNS):    data WORK.M2C6TTIV;
+MPRINT(EMADVISECOLUMNS):   length NAME $ 64 TYPE $ 1 LABEL $ 200 FORMAT $ 20 INFORMAT $20 INDEX $ 1 INDEXTYPE $ 9;
+MPRINT(EMADVISECOLUMNS):   label NAME =;
+MPRINT(EMADVISECOLUMNS):   set WORK.M2C6TTIV(keep=name type length label format formatl formatd informat informl informd idxusage rename=(type=itype));
+MPRINT(EMADVISECOLUMNS):   if itype = 1 then type = 'N';
+MPRINT(EMADVISECOLUMNS):   else type = 'C';
+MPRINT(EMADVISECOLUMNS):   if formatl > 0 then do;
+MPRINT(EMADVISECOLUMNS):   if format ne ' ' then format = strip(format)!!strip(put(formatl, best12.))!!'.'!!strip(put(formatd, best12.));
+MPRINT(EMADVISECOLUMNS):   else format = strip(put(formatl, best12.))!!'.'!!strip(put(formatd, best12.));
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   else if format ne '' then format = strip(format)!!'.';
+MPRINT(EMADVISECOLUMNS):   if informl > 0 then do;
+MPRINT(EMADVISECOLUMNS):   if informat ne ' ' then informat = strip(informat)!!strip(put(informl, best12.))!!'.'!!strip(put(informd, best12.));
+MPRINT(EMADVISECOLUMNS):   else informat = strip(put(informl, best12.))!!'.'!!strip(put(informd, best12.));
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   else if informat ne '' then informat = strip(informat)!!'.';
+MPRINT(EMADVISECOLUMNS):   if idxusage = 'NONE' then index ="N";
+MPRINT(EMADVISECOLUMNS):   else index = "Y";
+MPRINT(EMADVISECOLUMNS):   indextype = idxusage;
+MPRINT(EMADVISECOLUMNS):   drop idxusage itype formatl formatd informl informd;
+MPRINT(EMADVISECOLUMNS):   run;
+MPRINT(EMADVISECOLUMNS):    data WORK.M2C6TTIV;
+MPRINT(EMADVISECOLUMNS):   length UNAME $64;
+MPRINT(EMADVISECOLUMNS):   set WORK.M2C6TTIV;
+MPRINT(EMADVISECOLUMNS):   UNAME = upcase(NAME);
+MPRINT(EMADVISECOLUMNS):   run;
+MPRINT(EMADVISECOLUMNS):    proc sort data=WORK.M3VKVKS0 NOTHREADS;
+MPRINT(EMADVISECOLUMNS):   by UNAME;
+MPRINT(EMADVISECOLUMNS):   run;
+MPRINT(EMADVISECOLUMNS):    data WORK.M3VKVKS0;
+MPRINT(EMADVISECOLUMNS):   drop UNAME;
+MPRINT(EMADVISECOLUMNS):   set WORK.M3VKVKS0;
+MPRINT(EMADVISECOLUMNS):   run;
+MPRINT(EMADVISECOLUMNS):    data WORK.M0NDYFO8(keep=NAME ATTR);
+MPRINT(EMADVISECOLUMNS):   length ATTR $ 20;
+MPRINT(EMADVISECOLUMNS):   set WORK.M3VKVKS0;
+MPRINT(EMADVISECOLUMNS):   if level ne "INTERVAL" then do;
+MPRINT(EMADVISECOLUMNS):   if order = ' ' then do;
+MPRINT(EMADVISECOLUMNS):   attr = 'ORDER';
+MPRINT(EMADVISECOLUMNS):   output;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   if format ne ' ' and formattype = ' ' then do;
+MPRINT(EMADVISECOLUMNS):   attr = 'FORMATTYPE';
+MPRINT(EMADVISECOLUMNS):   output;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   if role = ' ' then do;
+MPRINT(EMADVISECOLUMNS):   attr = 'ROLE';
+MPRINT(EMADVISECOLUMNS):   output;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   if level = ' ' then do;
+MPRINT(EMADVISECOLUMNS):   attr = 'LEVEL';
+MPRINT(EMADVISECOLUMNS):   output;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   if type = ' ' then do;
+MPRINT(EMADVISECOLUMNS):   attr = 'TYPE';
+MPRINT(EMADVISECOLUMNS):   output;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   if index = ' ' then do;
+MPRINT(EMADVISECOLUMNS):   attr = 'INDEX';
+MPRINT(EMADVISECOLUMNS):   output;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   if report = ' ' then do;
+MPRINT(EMADVISECOLUMNS):   attr = 'REPORT';
+MPRINT(EMADVISECOLUMNS):   output;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   run;
+MPRINT(EMADVISECOLUMNS):   proc sort NOTHREADS;
+MPRINT(EMADVISECOLUMNS):   by attr;
+MPRINT(EMADVISECOLUMNS):   run;
+MPRINT(EMADVISECOLUMNS):    data WORK.M3VKVKS0;
+MPRINT(EMADVISECOLUMNS):   length NAME $64 ROLE $ 32 LEVEL $ 10 ORDER $ 8 CREATOR $32 FORMATTYPE $ 10 FAMILY $ 10 LOWERLIMIT 8 UPPERLIMIT 8 REPORT $1 DISTRIBUTION $ 20 COMMENT $64;
+MPRINT(EMADVISECOLUMNS):   length levelAssigned 8 roleAssigned 8 PRICE 8;
+MPRINT(EMADVISECOLUMNS):   set WORK.M3VKVKS0;
+MPRINT(EMADVISECOLUMNS):   if formattype = ' ' then do;
+MPRINT(EMADVISECOLUMNS):   if format ne ' ' then do;
+MPRINT(EMADVISECOLUMNS):   if type = 'N' then do;
+MPRINT(EMADVISECOLUMNS):   pos = indexc(format,'.1234567890');
+MPRINT(EMADVISECOLUMNS):   if pos > 1 then tempfmt = substr(format,1, pos-1);
+MPRINT(EMADVISECOLUMNS):   else tempfmt = ' ';
+MPRINT(EMADVISECOLUMNS):   flen = length(tempfmt);
+MPRINT(EMADVISECOLUMNS):   select;
+MPRINT(EMADVISECOLUMNS):   when(tempfmt in ("DATE" "DAY" "DDMMYY" "DOWNAME" "JULDAY" "JULIAN" "MMDDYY" "MMDDYYD" "MMDDYYC" "MMDDYYN" "MMDDYYP" "MMDDYYS" "MONNAME" "MONTH" "MONYY" "NENGO" "QTR" "QTRR" "WEEKDATE" "WEEKDATX" "WEEKDAY" "WORDDATE" "WORDDATX" 
+"YEAR" "YYMMDD" "YYMON" "YYMMDDC" "YYMMDDD" "YYMMDDN" "YYMMDDP" "YYMMDDS" "EURDFDE" "NJDATE" "NLDATE" "EURDFDD" "EURDFDWN" "EURDFMN" "EURDFMY" "EURDFWK" "EURDFWKX" "EURDFWDX" "EURDFDN" "EURDFDE" )) formattype = 'DATE';
+MPRINT(EMADVISECOLUMNS):   when(tempfmt in ("DATETIME" "EURDFDT" "TOD" )) formattype = "DATETIME";
+MPRINT(EMADVISECOLUMNS):   when(tempfmt in ("HHMM" "HOUR" "MMSS" "TIME" "TIMEAMPM" )) formattype = "TIME";
+MPRINT(EMADVISECOLUMNS):   when(tempfmt in ("COMMA" "COMMAX" "DOLLAR" "DOLLARX" "E" "FRACT" "NEGPAREN" "PERCENT")) formattype="QUANTITY";
+MPRINT(EMADVISECOLUMNS):   when(tempfmt in ("BINARY" "HEX" "IB" "OCTAL" "PD" "PIB" "PK" "RB" "SSN" "Z" "ZD")) formattype = "CODING";
+MPRINT(EMADVISECOLUMNS):   otherwise do;
+MPRINT(EMADVISECOLUMNS):   formattype = "USER";
+MPRINT(EMADVISECOLUMNS):   if substr(tempfmt, 1, 6)='NLDATE' then formattype = "DATE";
+MPRINT(EMADVISECOLUMNS):   else if substr(tempfmt, 1, 6)='NLDATM' then formattype = "DATETIME";
+MPRINT(EMADVISECOLUMNS):   else if substr(tempfmt, 1, 4)='NLTIM' then formattype = "TIME";
+MPRINT(EMADVISECOLUMNS):   else if flen >= 4 then do;
+MPRINT(EMADVISECOLUMNS):   str = substr(tempfmt,1,4);
+MPRINT(EMADVISECOLUMNS):   if str in ("MMYY" "YYMM" "YYQR") then formattype ="DATE";
+MPRINT(EMADVISECOLUMNS):   else if str = "S370" then formattype = "CODING";
+MPRINT(EMADVISECOLUMNS):   else if str = "BEST" then formattype = "NUM";
+MPRINT(EMADVISECOLUMNS):   drop str;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   else if flen >=3 and substr(tempfmt,1,3) = "YYQ" then formatType = "DATE";
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   drop flen tempfmt pos;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   else do;
+MPRINT(EMADVISECOLUMNS):   formatType = "CATEGORY";
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   if formatType = "NUM" then do;
+MPRINT(EMADVISECOLUMNS):   if index = "Y" then formatType = "DISCRETE";
+MPRINT(EMADVISECOLUMNS):   else formatType = "QUANTITY";
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   if level = ' ' then do;
+MPRINT(EMADVISECOLUMNS):   if formatType in ("CATEGORY", "CODING", "ID") or type = "C" then level = "NOMINAL";
+MPRINT(EMADVISECOLUMNS):   else level = "INTERVAL";
+MPRINT(EMADVISECOLUMNS):   levelAssigned = 1;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   else level = upcase(level);
+MPRINT(EMADVISECOLUMNS):   if role = ' ' then do;
+MPRINT(EMADVISECOLUMNS):   length name_prefix $8 _uname $64;
+MPRINT(EMADVISECOLUMNS):   drop name_prefix _uname _freqflag;
+MPRINT(EMADVISECOLUMNS):   retain _freqflag;
+MPRINT(EMADVISECOLUMNS):   if LENGTH> 80 then ROLE = 'TEXT';
+MPRINT(EMADVISECOLUMNS):   _uname = upcase(NAME);
+MPRINT(EMADVISECOLUMNS):   select(_uname);
+MPRINT(EMADVISECOLUMNS):   when('_WARN_') ROLE = 'ASSESS';
+MPRINT(EMADVISECOLUMNS):   when('EM_SEGMENT') do;
+MPRINT(EMADVISECOLUMNS):   ROLE = 'SEGMENT';
+MPRINT(EMADVISECOLUMNS):   LEVEL = 'NOMINAL';
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   when('_NODE_') do;
+MPRINT(EMADVISECOLUMNS):   ROLE = 'SEGMENT';
+MPRINT(EMADVISECOLUMNS):   LEVEL = 'NOMINAL';
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   when('EM_CLASSTARGET') ROLE = 'ASSESS';
+MPRINT(EMADVISECOLUMNS):   when('EM_VALUETARGET') ROLE = 'ASSESS';
+MPRINT(EMADVISECOLUMNS):   when('EM_PREDICTION') ROLE = 'PREDICT';
+MPRINT(EMADVISECOLUMNS):   when('EM_PROBABILITY') ROLE = 'PREDICT';
+MPRINT(EMADVISECOLUMNS):   when('EM_EVENTPROBABILITY') ROLE = 'PREDICT';
+MPRINT(EMADVISECOLUMNS):   when('EM_CLASSIFICATION') ROLE = 'CLASSIFICATION';
+MPRINT(EMADVISECOLUMNS):   when('EM_DECISION') ROLE = 'DECISION';
+MPRINT(EMADVISECOLUMNS):   when('EM_PROFIT') ROLE = 'ASSESS';
+MPRINT(EMADVISECOLUMNS):   when('EM_LOSS') ROLE = 'ASSESS';
+MPRINT(EMADVISECOLUMNS):   when('EM_ROI') ROLE = 'ASSESS';
+MPRINT(EMADVISECOLUMNS):   when('URI') ROLE = 'URL';
+MPRINT(EMADVISECOLUMNS):   when('FILTERED') ROLE = 'TEXTLOC';
+MPRINT(EMADVISECOLUMNS):   otherwise do;
+MPRINT(EMADVISECOLUMNS):   if upcase(NAME) =: 'ZIP' then do;
+MPRINT(EMADVISECOLUMNS):   ROLE = 'REJECTED';
+MPRINT(EMADVISECOLUMNS):   LEVEL = 'NOMINAL';
+MPRINT(EMADVISECOLUMNS):   COMMENT = 'Rejected by: Exceed the maximum class level of %s';
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   else if upcase(NAME) in('FREQ', 'FREQUENCY') then do;
+MPRINT(EMADVISECOLUMNS):   ROLE = 'FREQ';
+MPRINT(EMADVISECOLUMNS):   if TYPE = 'C' then ROLE = 'INPUT';
+MPRINT(EMADVISECOLUMNS):   else if _freqflag =1 then ROLE='REJECTED';
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   else do;
+MPRINT(EMADVISECOLUMNS):   name_prefix = scan(_uname, 1, '_');
+MPRINT(EMADVISECOLUMNS):   if scan(_uname, 2, '_') = '' then name_prefix='';
+MPRINT(EMADVISECOLUMNS):   if name_prefix in('F', 'I', 'U') then do;
+MPRINT(EMADVISECOLUMNS):   ROLE = 'CLASSIFICATION';
+MPRINT(EMADVISECOLUMNS):   LEVEL = 'NOMINAL';
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   else if name_prefix in('P', 'V') then ROLE = 'PREDICT';
+MPRINT(EMADVISECOLUMNS):   else if name_prefix in('R', 'RS', 'RT', 'RD', 'RDS', 'RDT', 'RA', 'RAS', 'RAT') then ROLE = 'RESIDUAL';
+MPRINT(EMADVISECOLUMNS):   else if name_prefix ='D' then do;
+MPRINT(EMADVISECOLUMNS):   ROLE = 'DECISION';
+MPRINT(EMADVISECOLUMNS):   LEVEL = 'NOMINAL';
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   else if name_prefix ='B' then do;
+MPRINT(EMADVISECOLUMNS):   ROLE = 'SEGMENT';
+MPRINT(EMADVISECOLUMNS):   LEVEL = 'NOMINAL';
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   else if name_prefix in('EP', 'BP', 'CP', 'EL', 'CL', 'BL', 'W', 'ROI', 'IC') then ROLE = 'ASSESS';
+MPRINT(EMADVISECOLUMNS):   else do;
+MPRINT(EMADVISECOLUMNS):   array _ROLE_ (19) $32 _TEMPORARY_ ('ASSESS','CLASSIFICATION','CENSOR', 'COST', 'CROSSID', 'DECISION', 'ID','INPUT', 'LABEL', 'MISSING','PREDICT','REFERRER','REJECTED', 'RESIDUAL','SEGMENT', 'SEQUENCE','TARGET', 'TEXT', 'TIMEID');
+MPRINT(EMADVISECOLUMNS):   drop _found_ i;
+MPRINT(EMADVISECOLUMNS):   _found_=0;
+MPRINT(EMADVISECOLUMNS):   do i=1 to 19 until(_found_=1);
+MPRINT(EMADVISECOLUMNS):   if index(_uname, trim(_ROLE_{i}))=1 then do;
+MPRINT(EMADVISECOLUMNS):   ROLE=_ROLE_{i};
+MPRINT(EMADVISECOLUMNS):   if ROLE = 'ID' then LEVEL = 'NOMINAL';
+MPRINT(EMADVISECOLUMNS):   else if ROLE = 'SEGMENT' then LEVEL = 'NOMINAL';
+MPRINT(EMADVISECOLUMNS):   else if ROLE = 'TIMEID' and TYPE='N' then LEVEL = 'INTERVAL';
+MPRINT(EMADVISECOLUMNS):   _found_=1;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   if length(_uname)>2 then do;
+MPRINT(EMADVISECOLUMNS):   if substr(reverse(trim(_uname)), 1, 3) = 'DI_' then do;
+MPRINT(EMADVISECOLUMNS):   ROLE = 'ID';
+MPRINT(EMADVISECOLUMNS):   LEVEL = 'NOMINAL';
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   if ROLE='FREQ' then _freqflag=1;
+MPRINT(EMADVISECOLUMNS):   else if ROLE = 'CLASSIFICATION' then LEVEL = 'NOMINAL';
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   if role = ' ' then do;
+MPRINT(EMADVISECOLUMNS):   if formattype in('DATE', 'DATETIME', 'TIME') then role = 'TIMEID';
+MPRINT(EMADVISECOLUMNS):   else role = 'INPUT';
+MPRINT(EMADVISECOLUMNS):   roleAssigned = 1;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   else role = upcase(role);
+MPRINT(EMADVISECOLUMNS):   if REPORT = '' then REPORT = 'N';
+MPRINT(EMADVISECOLUMNS):   run;
+MPRINT(EMADVISECOLUMNS):    data WORK.M3VKVKS0;
+MPRINT(EMADVISECOLUMNS):   set WORK.M3VKVKS0;
+MPRINT(EMADVISECOLUMNS):   label NAME = "Variable Name" TYPE = "Type" ROLE = "Role" LEVEL= "Measurement Level" ORDER= "Order" CREATOR= "Creator" FORMATTYPE= "Format Type" FAMILY= "Family" DISTRIBUTION= "Distribution" PRICE= "Price" LOWERLIMIT= "Lower 
+limit" UPPERLIMIT= "Upper Limit" REPORT= "Report" COMMENT= "Comment" INDEX= "Index" INDEXTYPE= "IndexType" LABEL= "Label" LENGTH= "Length";
+MPRINT(EMADVISECOLUMNS):   drop levelAssigned roleAssigned;
+MPRINT(EMADVISECOLUMNS):   run;
+MPRINT(EMADVISECOLUMNS):   
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   proc sort data=WORK.COLUMNMETA;
+MPRINT(EM_DIAGRAM):   by NAME;
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * &nodeid: Merge incoming metadata;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   proc contents data=EMWS1.GrfExpl_TRAIN noprint out=_temp2(keep=NAME);
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   proc sort data=_temp2;
+MPRINT(EM_DIAGRAM):   by NAME;
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   proc sort data=EMWS1.GrfExpl_CMeta_TRAIN out=_temp;
+MPRINT(EM_DIAGRAM):   by NAME;
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   data EMWS1.Tree_CMeta_TRAIN;
+MPRINT(EM_DIAGRAM):   merge WORK.COLUMNMETA(in=_a) _temp2(in=_b) _temp(drop=FORMAT INFORMAT LENGTH INDEX INDEXTYPE in=_c) end=_eof_;
+MPRINT(EM_DIAGRAM):   by NAME;
+MPRINT(EM_DIAGRAM):   if (^_a and _b) or (^_c and _a and _b) then delete;
+MPRINT(EM_DIAGRAM):   if ^_b then CREATOR = "Tree";
+MPRINT(EM_DIAGRAM):   select(upcase(name));
+MPRINT(EM_DIAGRAM):   when("P_GENREROCK") creator = "Tree";
+MPRINT(EM_DIAGRAM):   when("R_GENREROCK") creator = "Tree";
+MPRINT(EM_DIAGRAM):   when("P_GENREPOP") creator = "Tree";
+MPRINT(EM_DIAGRAM):   when("R_GENREPOP") creator = "Tree";
+MPRINT(EM_DIAGRAM):   when("P_GENREMETAL") creator = "Tree";
+MPRINT(EM_DIAGRAM):   when("R_GENREMETAL") creator = "Tree";
+MPRINT(EM_DIAGRAM):   when("P_GENREJAZZ") creator = "Tree";
+MPRINT(EM_DIAGRAM):   when("R_GENREJAZZ") creator = "Tree";
+MPRINT(EM_DIAGRAM):   when("P_GENRECLASSICAL") creator = "Tree";
+MPRINT(EM_DIAGRAM):   when("R_GENRECLASSICAL") creator = "Tree";
+MPRINT(EM_DIAGRAM):   when("F_GENRE") creator = "Tree";
+MPRINT(EM_DIAGRAM):   when("I_GENRE") creator = "Tree";
+MPRINT(EM_DIAGRAM):   when("U_GENRE") creator = "Tree";
+MPRINT(EM_DIAGRAM):   when("_WARN_") creator = "Tree";
+MPRINT(EM_DIAGRAM):   when("GENRE") model = "Tree";
+MPRINT(EM_DIAGRAM):   when('');
+MPRINT(EM_DIAGRAM):   otherwise;
+MPRINT(EM_DIAGRAM):   end;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * Tree: Apply Delta Code;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   if name = '_NODE_' then do;
+MPRINT(EM_DIAGRAM):   role = 'SEGMENT';
+MPRINT(EM_DIAGRAM):   level = 'NOMINAL';
+MPRINT(EM_DIAGRAM):   end;
+MPRINT(EM_DIAGRAM):   if upcase(name) = 'ACOUSTICNESS' then role = 'INPUT';
+MPRINT(EM_DIAGRAM):   else if upcase(name) = 'DANCEABILITY' then role = 'INPUT';
+MPRINT(EM_DIAGRAM):   else if upcase(name) = 'LOUDNESS' then role = 'INPUT';
+MPRINT(EM_DIAGRAM):   else if upcase(name) = 'INSTRUMENTALNESS' then role = 'INPUT';
+MPRINT(EM_DIAGRAM):   else if upcase(name) = 'ENERGY' then role = 'INPUT';
+MPRINT(EM_DIAGRAM):   if upcase(name) = 'Q_genrerock' then role = "ASSESS";
+MPRINT(EM_DIAGRAM):   if upcase(name) = 'Q_genrepop' then role = "ASSESS";
+MPRINT(EM_DIAGRAM):   if upcase(name) = 'Q_genremetal' then role = "ASSESS";
+MPRINT(EM_DIAGRAM):   if upcase(name) = 'Q_genrejazz' then role = "ASSESS";
+MPRINT(EM_DIAGRAM):   if upcase(name) = 'Q_genreclassical' then role = "ASSESS";
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   filename _delta;
+22364      data WORK.MODELTEMP_INFO;
+MPRINT(EM_DIAGRAM):    data WORK.MODELTEMP_INFO;
+22365      set EMWS1.Tree_EMINFO;
+MPRINT(EM_DIAGRAM):   set EMWS1.Tree_EMINFO;
+22366      where DATA='Tree' and KEY ^in('DECDATA', 'DECMETA', 'IMPORTANCE', 'MODEL');
+MPRINT(EM_DIAGRAM):   where DATA='Tree' and KEY ^in('DECDATA', 'DECMETA', 'IMPORTANCE', 'MODEL');
+22367      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 0 observations read from the data set EMWS1.TREE_EMINFO.
+      WHERE (DATA='Tree') and KEY not in ('DECDATA', 'DECMETA', 'IMPORTANCE', 'MODEL');
+NOTE: The data set WORK.MODELTEMP_INFO has 0 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+22368      data EMWS1.Tree_EMINFO;
+MPRINT(EM_DIAGRAM):    data EMWS1.Tree_EMINFO;
+22369      length TARGET KEY $32 DATA $43;
+MPRINT(EM_DIAGRAM):   length TARGET KEY $32 DATA $43;
+22370      input TARGET KEY DATA $;
+MPRINT(EM_DIAGRAM):   input TARGET KEY DATA $;
+22371      cards;
+MPRINT(EM_DIAGRAM):   cards;
+
+NOTE: The data set EMWS1.TREE_EMINFO has 3 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+MPRINT(EM_DIAGRAM):   run;
+22375      run;
+22376      data EMWS1.Tree_EMINFO;
+MPRINT(EM_DIAGRAM):   data EMWS1.Tree_EMINFO;
+22377      set EMWS1.Tree_EMINFO WORK.MODELTEMP_INFO;
+MPRINT(EM_DIAGRAM):   set EMWS1.Tree_EMINFO WORK.MODELTEMP_INFO;
+22378      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 3 observations read from the data set EMWS1.TREE_EMINFO.
+NOTE: There were 0 observations read from the data set WORK.MODELTEMP_INFO.
+NOTE: The data set EMWS1.TREE_EMINFO has 3 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+22379      proc sort data = EMWS1.Tree_EMINFO NOTHREADS;
+MPRINT(EM_DIAGRAM):    proc sort data = EMWS1.Tree_EMINFO NOTHREADS;
+22380      by TARGET KEY;
+MPRINT(EM_DIAGRAM):   by TARGET KEY;
+22381      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 3 observations read from the data set EMWS1.TREE_EMINFO.
+NOTE: The data set EMWS1.TREE_EMINFO has 3 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+22382      proc sort data = EMWS1.Ids_EMINFO OUT=WORK.SORTEDEMINFO NOTHREADS;
+MPRINT(EM_DIAGRAM):    proc sort data = EMWS1.Ids_EMINFO OUT=WORK.SORTEDEMINFO NOTHREADS;
+22383      by TARGET KEY;
+MPRINT(EM_DIAGRAM):   by TARGET KEY;
+22384      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 3 observations read from the data set EMWS1.IDS_EMINFO.
+NOTE: The data set WORK.SORTEDEMINFO has 3 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+22385      proc sort data = EMWS1.Tree_EMINFO OUT=WORK.TEMP_INFO NOTHREADS;
+MPRINT(EM_DIAGRAM):   proc sort data = EMWS1.Tree_EMINFO OUT=WORK.TEMP_INFO NOTHREADS;
+22386      by TARGET KEY;
+MPRINT(EM_DIAGRAM):   by TARGET KEY;
+22387      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: Input data set is already sorted; it has been copied to the output data set.
+NOTE: There were 3 observations read from the data set EMWS1.TREE_EMINFO.
+NOTE: The data set WORK.TEMP_INFO has 3 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+22388      data EMWS1.Tree_EMINFO;
+MPRINT(EM_DIAGRAM):   data EMWS1.Tree_EMINFO;
+22389      merge WORK.SORTEDEMINFO WORK.TEMP_INFO;
+MPRINT(EM_DIAGRAM):   merge WORK.SORTEDEMINFO WORK.TEMP_INFO;
+22390      by TARGET KEY;
+MPRINT(EM_DIAGRAM):   by TARGET KEY;
+22391      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 3 observations read from the data set WORK.SORTEDEMINFO.
+NOTE: There were 3 observations read from the data set WORK.TEMP_INFO.
+NOTE: The data set EMWS1.TREE_EMINFO has 4 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+22392      proc datasets lib=work nolist;
+MPRINT(EM_DIAGRAM):   proc datasets lib=work nolist;
+22393      delete TEMP_INFO SORTEDEMINFO;
+MPRINT(EM_DIAGRAM):   delete TEMP_INFO SORTEDEMINFO;
+22394      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: Deleting WORK.TEMP_INFO (memtype=DATA).
+NOTE: Deleting WORK.SORTEDEMINFO (memtype=DATA).
+22395      quit;
+MPRINT(EM_DIAGRAM):   quit;
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: View EMWS1.TREE_TRAIN.VIEW used (Total process time):
+      real time           0.08 seconds
+      cpu time            0.09 seconds
+      
+MPRINT(EM_DIAGRAM):    proc printto;
+MPRINT(EM_DIAGRAM):   run;

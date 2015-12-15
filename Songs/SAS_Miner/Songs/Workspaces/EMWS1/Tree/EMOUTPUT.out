@@ -1,0 +1,218 @@
+*------------------------------------------------------------*
+User:                -Andris
+Date:                15 December 2015
+Time:                16:52:52 o'clock
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+          Measurement    Frequency
+ Role        Level         Count
+ 
+INPUT      INTERVAL          13
+INPUT      NOMINAL            1
+TARGET     NOMINAL            1
+ 
+ 
+ 
+ 
+Model Events
+ 
+                                  Number
+                   Measurement      of
+Target    Event       Level       Levels      Order       Label
+ 
+genre     ROCK       NOMINAL         5      Descending
+ 
+ 
+ 
+ 
+Predicted and decision variables
+ 
+Type         Variable            Label
+ 
+TARGET       genre
+PREDICTED    P_genrerock         Predicted: genre=rock
+RESIDUAL     R_genrerock         Residual: genre=rock
+PREDICTED    P_genrepop          Predicted: genre=pop
+RESIDUAL     R_genrepop          Residual: genre=pop
+PREDICTED    P_genremetal        Predicted: genre=metal
+RESIDUAL     R_genremetal        Residual: genre=metal
+PREDICTED    P_genrejazz         Predicted: genre=jazz
+RESIDUAL     R_genrejazz         Residual: genre=jazz
+PREDICTED    P_genreclassical    Predicted: genre=classical
+RESIDUAL     R_genreclassical    Residual: genre=classical
+FROM         F_genre             From: genre
+INTO         I_genre             Into: genre
+ 
+ 
+ 
+ 
+Variable Importance
+ 
+Obs    NAME                LABEL    NRULES    IMPORTANCE
+ 
+ 1     acousticness                    3        1.0000
+ 2     danceability                    2        0.9176
+ 3     loudness                        4        0.3865
+ 4     instrumentalness                4        0.3537
+ 5     energy                          3        0.1961
+ 
+ 
+ 
+Tree Leaf Report
+ 
+                                 Training
+                   Training       Percent
+Node    Depth    Observations      ROCK
+ 
+ 37       6           560          0.30
+ 24       4           516          0.03
+ 31       5           407          0.15
+ 12       3           317          0.01
+ 28       5           200          0.52
+ 41       6            86          0.63
+ 36       6            41          0.37
+ 18       4            40          0.13
+ 23       4            34          0.24
+ 22       4            21          0.19
+ 29       5            11          0.18
+  8       3            10          0.00
+ 25       4             9          0.11
+ 40       6             9          0.00
+ 11       3             5          0.00
+ 13       3             5          0.60
+ 26       5             5          0.20
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Fit Statistics
+ 
+Target=genre Target Label=' '
+ 
+   Fit
+Statistics    Statistics Label                 Train
+ 
+  _NOBS_      Sum of Frequencies             2276.00
+  _MISC_      Misclassification Rate            0.28
+  _MAX_       Maximum Absolute Error            1.00
+  _SSE_       Sum of Squared Errors           928.55
+  _ASE_       Average Squared Error             0.08
+  _RASE_      Root Average Squared Error        0.29
+  _DIV_       Divisor for ASE               11380.00
+  _DFT_       Total Degrees of Freedom       9104.00
+ 
+ 
+ 
+ 
+Classification Table
+ 
+Data Role=TRAIN Target Variable=genre Target Label=' '
+ 
+                            Target        Outcome     Frequency       Total
+Target       Outcome      Percentage    Percentage      Count      Percentage
+ 
+CLASSICAL    CLASSICAL      91.5663       69.4064        304         13.3568
+JAZZ         CLASSICAL       6.3253        4.5356         21          0.9227
+POP          CLASSICAL       1.2048        0.8602          4          0.1757
+ROCK         CLASSICAL       0.9036        0.6742          3          0.1318
+CLASSICAL    JAZZ           23.1317       29.6804        130          5.7118
+JAZZ         JAZZ           69.7509       84.6652        392         17.2232
+METAL        JAZZ            1.6014        1.9355          9          0.3954
+POP          JAZZ            1.2456        1.5054          7          0.3076
+ROCK         JAZZ            4.2705        5.3933         24          1.0545
+JAZZ         METAL           0.1667        0.2160          1          0.0439
+METAL        METAL          68.0000       87.7419        408         17.9262
+POP          METAL           3.1667        4.0860         19          0.8348
+ROCK         METAL          28.6667       38.6517        172          7.5571
+CLASSICAL    POP             0.4073        0.4566          2          0.0879
+JAZZ         POP             1.2220        1.2959          6          0.2636
+METAL        POP             4.8880        5.1613         24          1.0545
+POP          POP            76.1711       80.4301        374         16.4323
+ROCK         POP            17.3116       19.1011         85          3.7346
+CLASSICAL    ROCK            0.6873        0.4566          2          0.0879
+JAZZ         ROCK           14.7766        9.2873         43          1.8893
+METAL        ROCK            8.2474        5.1613         24          1.0545
+POP          ROCK           20.9622       13.1183         61          2.6801
+ROCK         ROCK           55.3265       36.1798        161          7.0738
+ 
+ 
+ 
+ 
+Event Classification Table
+ 
+Data Role=TRAIN Target=genre Target Label=' '
+ 
+  False       True        False       True
+Negative    Negative    Positive    Positive
+ 
+   284        1701         130         161
+ 
+ 
+ 
+ 
+Assessment Score Rankings
+ 
+Data Role=TRAIN Target Variable=genre Target Label=' '
+ 
+                                                                                    Mean
+                            Cumulative       %      Cumulative     Number of     Posterior
+Depth      Gain     Lift       Lift      Response   % Response   Observations   Probability
+ 
+   5    209.389   3.09389     3.09389     60.4912     60.4912         114         0.60491
+  10    187.674   2.65960     2.87674     52.0000     56.2456         114         0.52000
+  15    167.668   2.27654     2.67668     44.5107     52.3340         114         0.44511
+  20    138.882   1.52525     2.38882     29.8214     46.7058         114         0.29821
+  25    121.732   1.52525     2.21732     29.8214     43.3527         113         0.29821
+  30    110.181   1.52525     2.10181     29.8214     41.0942         114         0.29821
+  35    101.934   1.52525     2.01934     29.8214     39.4818         114         0.29821
+  40     95.080   1.47161     1.95080     28.7728     38.1417         114         0.28773
+  45     83.274   0.88930     1.83274     17.3875     35.8334         114         0.17388
+  50     72.687   0.76656     1.72687     14.9877     33.7635         113         0.14988
+  55     63.943   0.76656     1.63943     14.9877     32.0539         114         0.14988
+  60     56.658   0.76656     1.56658     14.9877     30.6296         114         0.14988
+  65     47.567   0.38625     1.47567      7.5519     28.8520         114         0.07552
+  70     38.218   0.16850     1.38218      3.2946     27.0242         114         0.03295
+  75     30.184   0.16850     1.30184      3.2946     25.4533         113         0.03295
+  80     23.089   0.16850     1.23089      3.2946     24.0661         114         0.03295
+  85     16.830   0.16850     1.16830      3.2946     22.8424         114         0.03295
+  90     10.599   0.04840     1.10599      0.9464     21.6242         114         0.00946
+  95      5.025   0.04840     1.05025      0.9464     20.5343         114         0.00946
+ 100      0.000   0.03812     1.00000      0.7454     19.5518         113         0.00745
+ 
+ 
+ 
+ 
+Assessment Score Distribution
+ 
+Data Role=TRAIN Target Variable=genre Target Label=' '
+ 
+ Posterior     Number                     Mean
+Probability      of      Number of     Posterior
+   Range       Events    Nonevents    Probability    Percentage
+ 
+ 0.60-0.65        54         32         0.62791         3.7786
+ 0.55-0.60         3          2         0.60000         0.2197
+ 0.50-0.55       104         96         0.52000         8.7873
+ 0.35-0.40        15         26         0.36585         1.8014
+ 0.25-0.30       167        393         0.29821        24.6046
+ 0.20-0.25         8         26         0.23529         1.4938
+ 0.15-0.20         7         30         0.18919         1.6257
+ 0.10-0.15        67        389         0.14693        20.0351
+ 0.00-0.05        20        837         0.02334        37.6538

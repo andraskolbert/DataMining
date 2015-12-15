@@ -1,0 +1,83 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Summary
+
+          Measurement    Frequency
+ Role        Level         Count
+
+INPUT      INTERVAL          13   
+INPUT      NOMINAL            1   
+TARGET     NOMINAL            1   
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Model Events
+
+                                  Number
+                   Measurement      of
+Target    Event       Level       Levels      Order       Label
+
+genre     ROCK       NOMINAL         5      Descending         
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Predicted and decision variables
+
+Type         Variable            Label
+
+TARGET       genre                                         
+PREDICTED    P_genrerock         Predicted: genre=rock     
+RESIDUAL     R_genrerock         Residual: genre=rock      
+PREDICTED    P_genrepop          Predicted: genre=pop      
+RESIDUAL     R_genrepop          Residual: genre=pop       
+PREDICTED    P_genremetal        Predicted: genre=metal    
+RESIDUAL     R_genremetal        Residual: genre=metal     
+PREDICTED    P_genrejazz         Predicted: genre=jazz     
+RESIDUAL     R_genrejazz         Residual: genre=jazz      
+PREDICTED    P_genreclassical    Predicted: genre=classical
+RESIDUAL     R_genreclassical    Residual: genre=classical 
+FROM         F_genre             From: genre               
+INTO         I_genre             Into: genre               
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Importance
+
+Obs    NAME                LABEL    NRULES    IMPORTANCE
+
+ 1     acousticness                    3        1.0000  
+ 2     danceability                    2        0.9176  
+ 3     loudness                        4        0.3865  
+ 4     instrumentalness                4        0.3537  
+ 5     energy                          3        0.1961  
+ 
+                                                                                                                                                                                                                                                                
+ 
+Tree Leaf Report
+
+                                 Training
+                   Training       Percent
+Node    Depth    Observations      ROCK
+
+ 37       6           560          0.30  
+ 24       4           516          0.03  
+ 31       5           407          0.15  
+ 12       3           317          0.01  
+ 28       5           200          0.52  
+ 41       6            86          0.63  
+ 36       6            41          0.37  
+ 18       4            40          0.13  
+ 23       4            34          0.24  
+ 22       4            21          0.19  
+ 29       5            11          0.18  
+  8       3            10          0.00  
+ 25       4             9          0.11  
+ 40       6             9          0.00  
+ 11       3             5          0.00  
+ 13       3             5          0.60  
+ 26       5             5          0.20  

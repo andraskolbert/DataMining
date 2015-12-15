@@ -1,0 +1,147 @@
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+1 
+Traverser: Traverser invoked.  MPCONNECT command is sas. 
+Traverser: Beginning flow traversal 
+*------------------------------------------------------------* 
+* 
+* Ids : Beginning Update 
+* datetime : 15DEC2015:17:24:24 
+* 
+*------------------------------------------------------------* 
+*------------------------------------------------------------* 
+* 
+* Ids : End Update 
+* datetime : 15DEC2015:17:24:24 
+* 
+*------------------------------------------------------------* 
+Traverser: WaitingNode "SOM2" 
+traverser_readyNode_note 
+*------------------------------------------------------------* 
+* 
+* Stat2 : Beginning Update 
+* datetime : 15DEC2015:17:24:25 
+* 
+*------------------------------------------------------------* 
+*------------------------------------------------------------* 
+* 
+* Stat2 : End Update 
+* datetime : 15DEC2015:17:24:25 
+* 
+*------------------------------------------------------------* 
+traverser_readyNode_note 
+*------------------------------------------------------------* 
+* 
+* SOM2 : Beginning Update 
+* datetime : 15DEC2015:17:24:25 
+* 
+*------------------------------------------------------------* 
+PERFORMANCE  DETAILS
+62373      %let emexceptionString =;
+62374      %let EMEXCEPTIONSTRING=;
+62375      *------------------------------------------------------------*;
+62376      * UPDATE: SOM2;
+62377      *------------------------------------------------------------*;
+62378      %let EM_ACTION = UPDATE;
+62379      %let syscc = 0;
+62380      %macro main;
+62381         filename temp catalog 'sashelp.emexpl.som_macros.source';
+62382         %include temp;
+62383         filename temp;
+62384      
+62385         %SetProperties;
+62386      
+62387         %if %upcase(&EM_ACTION) = CREATE %then %do;
+62388      
+62389             filename temp catalog 'sashelp.emexpl.som_create.source';
+62390             %include temp;
+62391             filename temp;
+62392             %create;
+62393         %end;
+62394         %else
+62395         %if %upcase(&EM_ACTION) = TRAIN %then %do;
+62396      
+62397             filename temp catalog 'sashelp.emexpl.som_train.source';
+62398             %include temp;
+62399             filename temp;
+62400             %train;
+62401         %end;
+62402         %else
+62403         %if %upcase(&EM_ACTION) = SCORE %then %do;
+62404      
+62405             filename temp catalog 'sashelp.emexpl.som_score.source';
+62406             %include temp;
+62407             filename temp;
+62408      
+62409             %score;
+62410         %end;
+62411      
+62412      %mend main;
+62413      %main;
+NOTE: %INCLUDE (level 1) file TEMP is file SASHELP.EMEXPL.SOM_MACROS.SOURCE.
+62414     +%macro SetProperties;
+62415     +   %em_checkmacro(name=EM_PROPERTY_METHOD,      global=Y, value=BATCHSOM);
+62416     +   %em_checkmacro(name=EM_PROPERTY_SEGMENTROLE, global=Y, value=SEGMENT);
+62417     +   %em_checkmacro(name=EM_PROPERTY_STDMETHOD,   global=Y, value=NONE);
+62418     +   %em_checkmacro(name=EM_PROPERTY_METHOD,      global=Y, value=BATCHSOM);
+62419     +   %em_checkmacro(name=EM_PROPERTY_MAXC,        global=Y, value=10);
+62420     +   %em_checkmacro(name=EM_PROPERTY_NROW,        global=Y, value=4);
+62421     +   %em_checkmacro(name=EM_PROPERTY_NCOLUMN,     global=Y, value=6);
+62422     +   %em_checkmacro(name=EM_PROPERTY_RADIUS,      global=Y, value=0);
+62423     +   %em_checkmacro(name=EM_PROPERTY_INITIALMETHOD,    global=Y, value=DEFAULT);
+62424     +   %em_checkmacro(name=EM_PROPERTY_NOMINALENCODING,  global=Y, value=DEFAULT);
+62425     +   %em_checkmacro(name=EM_PROPERTY_ORDINALENCODING,  global=Y, value=DEFAULT);
+62426     +   %em_checkmacro(name=EM_PROPERTY_IMPUTATIONMETHOD,    global=Y, value=NONE);
+62427     +   %em_checkmacro(name=EM_PROPERTY_MISSINGINTERVAL,     global=Y, value=DEFAULT);
+62428     +   %em_checkmacro(name=EM_PROPERTY_MISSINGNOMINAL,      global=Y, value=DEFAULT);
+62429     +   %em_checkmacro(name=EM_PROPERTY_MISSINGORDINAL,      global=Y, value=DEFAULT);
+62430     +   %em_checkmacro(name=EM_PROPERTY_HIDEVARIABLE,        global=Y, value=Y);
+62431     +   %em_checkmacro(name=EM_PROPERTY_SOMDEFAULTS,         global=Y, value=Y);
+62432     +   %em_checkmacro(name=EM_PROPERTY_LLSOM,               global=Y, value=Y);
+62433     +   %em_checkmacro(name=EM_PROPERTY_NWSOM,               global=Y, value=Y);
+62434     +   %em_checkmacro(name=EM_PROPERTY_LLCONVERGE,          global=Y, value=0.0001);
+62435     +   %em_checkmacro(name=EM_PROPERTY_LLMAXITER,           global=Y, value=10);
+62436     +   %em_checkmacro(name=EM_PROPERTY_NWCONVERGE,          global=Y, value=0.0001);
+62437     +   %em_checkmacro(name=EM_PROPERTY_NWMAXITER,           global=Y, value=10);
+62438     +   %em_checkmacro(name=EM_PROPERTY_NDEFAULTS,           global=Y, value=Y);
+62439     +   %em_checkmacro(name=EM_PROPERTY_NSIZE,               global=Y, value=5);
+62440     +   %em_checkmacro(name=EM_PROPERTY_KERNEL,              global=Y, value=1);
+62441     +   %em_checkmacro(name=EM_PROPERTY_KMETRIC,             global=Y, value=0);
+62442     +   %em_checkmacro(name=EM_PROPERTY_NINITIAL,            global=Y, value=5);
+62443     +   %em_checkmacro(name=EM_PROPERTY_NFINAL,              global=Y, value=0);
+62444     +   %em_checkmacro(name=EM_PROPERTY_NRESET,              global=Y, value=100);
+62445     +   %em_checkmacro(name=EM_PROPERTY_NSTEPS,              global=Y, value=1000);
+62446     +   %em_checkmacro(name=EM_PROPERTY_NITER,               global=Y, value=3);
+62447     +   %em_checkmacro(name=EM_PROPERTY_KDEFAULTS,           global=Y, value=Y);
+62448     +   %em_checkmacro(name=EM_PROPERTY_KBATCH,              global=Y, value=N);
+62449     +   %em_checkmacro(name=EM_PROPERTY_LEARN,               global=Y, value=0.9);
+62450     +   %em_checkmacro(name=EM_PROPERTY_LEARNINITIAL,        global=Y, value=0.9);
+62451     +   %em_checkmacro(name=EM_PROPERTY_LEARNFINAL,          global=Y, value=0.2);
+62452     +   %em_checkmacro(name=EM_PROPERTY_LEARNSTEPS,          global=Y, value=1000);
+62453     +   %em_checkmacro(name=EM_PROPERTY_KMAXSTEPS,           global=Y, value=1200);
+62454     +   %em_checkmacro(name=EM_PROPERTY_KMAXITER,            global=Y, value=100);
+62455     +   %em_checkmacro(name=EM_PROPERTY_KCONVERGE,           global=Y, value=0.0001);
+62456     +   %em_checkmacro(name=EM_PROPERTY_EXPORTEDVARS,        global=Y, value=All);
+62458     +%mend SetProperties;
+NOTE: %INCLUDE (level 1) ending.
+NOTE: Fileref TEMP has been deassigned.
+62460      
+62461      *------------------------------------------------------------*;
+62462      * End UPDATE: SOM2;
+62463      *------------------------------------------------------------*;
+
+62464      %em_delMacro;
+
+*------------------------------------------------------------* 
+* 
+* SOM2 : End Update 
+* datetime : 15DEC2015:17:24:25 
+* 
+*------------------------------------------------------------* 
+Traverser: Run Completed 
+62466      proc printto;
+62467      run;
+
