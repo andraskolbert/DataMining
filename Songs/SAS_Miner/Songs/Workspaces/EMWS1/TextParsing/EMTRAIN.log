@@ -1,0 +1,1885 @@
+MPRINT(EM_DIAGRAM):    data _null_;
+MPRINT(EM_DIAGRAM):   call symput('NLDATE', strip(put(date(), NLDATE.)));
+MPRINT(EM_DIAGRAM):   call symput('NLTIME', strip(put(datetime(), NLTIME.)));
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   data _null_;
+MPRINT(EM_DIAGRAM):   nldate= sasmsg("sashelp.dmine", "log_date_note", 'N', "16 December 2015" );
+MPRINT(EM_DIAGRAM):   nltime= sasmsg("sashelp.dmine", "log_time_note", 'N', "16:52:28 o'clock" );
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   put "* Training Log";
+MPRINT(EM_DIAGRAM):   put nldate;
+MPRINT(EM_DIAGRAM):   put nltime;
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   run;
+*------------------------------------------------------------*
+* Training Log
+Date:                16 December 2015
+Time:                16:52:28 o'clock
+*------------------------------------------------------------*
+MPRINT(EM_DIAGRAM):    filename O0ZCQTHK "F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Songs\SAS_Miner\Songs\Workspaces\EMWS1\TextParsing\EMTRAIN.out" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):   proc printto print=O0ZCQTHK new;
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):    filename _LOG "F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Songs\SAS_Miner\Songs\Workspaces\EMWS1\TextParsing\EMLOG.log" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):    data _null_;
+MPRINT(EM_DIAGRAM):   call symput('NLDATE', strip(put(date(), NLDATE.)));
+MPRINT(EM_DIAGRAM):   call symput('NLTIME', strip(put(datetime(), NLTIME.)));
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   data _null_;
+MPRINT(EM_DIAGRAM):   nldate= sasmsg("sashelp.dmine", "log_date_note", 'N', "16 December 2015" );
+MPRINT(EM_DIAGRAM):   nltime= sasmsg("sashelp.dmine", "log_time_note", 'N', "16:52:28 o'clock" );
+MPRINT(EM_DIAGRAM):   file _LOG;
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   put "User:                -Andris";
+MPRINT(EM_DIAGRAM):   put nldate;
+MPRINT(EM_DIAGRAM):   put nltime;
+MPRINT(EM_DIAGRAM):   put "Site:                70107571";
+MPRINT(EM_DIAGRAM):   put "Platform:            X64_8PRO";
+MPRINT(EM_DIAGRAM):   put "Maintenance Release: 9.03.01M2P081512";
+MPRINT(EM_DIAGRAM):   put "EM Version:          12.1";
+MPRINT(EM_DIAGRAM):   put "* ";
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):    filename _LOGIN "F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Songs\SAS_Miner\Songs\Workspaces\EMWS1\TextParsing\EMTRAIN.log" encoding="UTF-8" NOBOM;
+MPRINT(EM_COPYFILE):   data _null_;
+MPRINT(EM_COPYFILE):   length line $20000;
+MPRINT(EM_COPYFILE):   file _LOG MOD lrecl=20000;
+MPRINT(EM_COPYFILE):   fid=fopen("_LOGIN",'i',20000,'v');
+MPRINT(EM_COPYFILE):   if fid > 0 then do;
+MPRINT(EM_COPYFILE):   do while(^fread(fid));
+MPRINT(EM_COPYFILE):   rlen = frlen(fid);
+MPRINT(EM_COPYFILE):   rc= fget(fid,line,20000);
+MPRINT(EM_COPYFILE):   start = length(line)-length(left(line))+1;
+MPRINT(EM_COPYFILE):   line=strip(line);
+MPRINT(EM_COPYFILE):   put @start line;
+MPRINT(EM_COPYFILE):   end;
+MPRINT(EM_COPYFILE):   if fid > 0 then rc=fclose(fid);
+MPRINT(EM_COPYFILE):   end;
+MPRINT(EM_COPYFILE):   run;
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   filename _LOGIN;
+MPRINT(EM_DIAGRAM):    data _null_;
+MPRINT(EM_DIAGRAM):   file _LOG mod;
+MPRINT(EM_DIAGRAM):   put _page_;
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   filename _LOGIN "F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Songs\SAS_Miner\Songs\Workspaces\EMWS1\TextParsing\EMSCORE.log" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   data _null_;
+MPRINT(EM_DIAGRAM):   file _LOG mod;
+MPRINT(EM_DIAGRAM):   put _page_;
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):    filename _LOGIN "F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Songs\SAS_Miner\Songs\Workspaces\EMWS1\TextParsing\EMREPORT.log" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   filename _LOGIN;
+MPRINT(EM_DIAGRAM):    filename _LOG;
+MPRINT(EM_DIAGRAM):    filename _OUT "F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Songs\SAS_Miner\Songs\Workspaces\EMWS1\TextParsing\EMOUTPUT.out" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):    data _null_;
+MPRINT(EM_DIAGRAM):   call symput('NLDATE', strip(put(date(), NLDATE.)));
+MPRINT(EM_DIAGRAM):   call symput('NLTIME', strip(put(datetime(), NLTIME.)));
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   data _null_;
+MPRINT(EM_DIAGRAM):   nldate= sasmsg("sashelp.dmine", "log_date_note", 'N', "16 December 2015" );
+MPRINT(EM_DIAGRAM):   nltime= sasmsg("sashelp.dmine", "log_time_note", 'N', "16:52:28 o'clock" );
+MPRINT(EM_DIAGRAM):   file _OUT;
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   put "User:                -Andris";
+MPRINT(EM_DIAGRAM):   put nldate;
+MPRINT(EM_DIAGRAM):   put nltime;
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   put "* Training Output";
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):    filename _OUTIN "F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Songs\SAS_Miner\Songs\Workspaces\EMWS1\TextParsing\EMTRAIN.out" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):   ;
+MPRINT(EM_COPYFILE):   data _null_;
+MPRINT(EM_COPYFILE):   length line $20000;
+MPRINT(EM_COPYFILE):   file _OUT MOD lrecl=20000;
+MPRINT(EM_COPYFILE):   fid=fopen("_OUTIN",'i',20000,'v');
+MPRINT(EM_COPYFILE):   if fid > 0 then do;
+MPRINT(EM_COPYFILE):   do while(^fread(fid));
+MPRINT(EM_COPYFILE):   rlen = frlen(fid);
+MPRINT(EM_COPYFILE):   rc= fget(fid,line,20000);
+MPRINT(EM_COPYFILE):   start = length(line)-length(left(line))+1;
+MPRINT(EM_COPYFILE):   line=strip(line);
+MPRINT(EM_COPYFILE):   put @start line;
+MPRINT(EM_COPYFILE):   end;
+MPRINT(EM_COPYFILE):   if fid > 0 then rc=fclose(fid);
+MPRINT(EM_COPYFILE):   end;
+MPRINT(EM_COPYFILE):   run;
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   filename _OUTIN;
+MPRINT(EM_DIAGRAM):    data _null_;
+MPRINT(EM_DIAGRAM):   file _OUT mod;
+MPRINT(EM_DIAGRAM):   put _page_;
+MPRINT(EM_DIAGRAM):   put // "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   put "* Score Output";
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):    filename _OUTIN "F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Songs\SAS_Miner\Songs\Workspaces\EMWS1\TextParsing\EMSCORE.out" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   filename _OUTIN;
+MPRINT(EM_DIAGRAM):    data _null_;
+MPRINT(EM_DIAGRAM):   file _OUT mod;
+MPRINT(EM_DIAGRAM):   put _page_;
+MPRINT(EM_DIAGRAM):   put // "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   put "* Report Output";
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):    filename _OUTIN "F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Songs\SAS_Miner\Songs\Workspaces\EMWS1\TextParsing\EMREPORT.out" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   filename _OUTIN;
+MPRINT(EM_DIAGRAM):    filename _OUT;
+MPRINT(EM_DIAGRAM):    filename _emtool_ 'F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Songs\SAS_Miner\Songs\Workspaces\EMWS1\TextParsing\EMRUNSTATUS.xml' encoding="UTF-8" NOBOM;
+20675      proc freq data=EMWS1.TextParsing_VariableSet noprint;
+MPRINT(EM_DIAGRAM):    proc freq data=EMWS1.TextParsing_VariableSet noprint;
+20676      table ROLE*LEVEL/out=WORK.TextParsingMETA;
+MPRINT(EM_DIAGRAM):   table ROLE*LEVEL/out=WORK.TextParsingMETA;
+20677      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 1 observations read from the data set EMWS1.TEXTPARSING_VARIABLESET.
+NOTE: The data set WORK.TEXTPARSINGMETA has 1 observations and 4 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.18 seconds
+      cpu time            0.00 seconds
+      
+
+20678      proc print data=WORK.TextParsingMETA label noobs;
+MPRINT(EM_DIAGRAM):   proc print data=WORK.TextParsingMETA label noobs;
+20679      var ROLE LEVEL COUNT;
+MPRINT(EM_DIAGRAM):   var ROLE LEVEL COUNT;
+20680      label ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel, NOQUOTE))" LEVEL = "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel, NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel, NOQUOTE))";
+MPRINT(EM_DIAGRAM):   label ROLE = "Role" LEVEL = "Measurement Level" COUNT = "Frequency Count";
+20681      title9 ' ';
+MPRINT(EM_DIAGRAM):   title9 ' ';
+20682      title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_varSummary_title  , NOQUOTE))";
+MPRINT(EM_DIAGRAM):   title10 "Variable Summary";
+MPRINT(EM_DIAGRAM):   run;
+20683      run;
+
+NOTE: There were 1 observations read from the data set WORK.TEXTPARSINGMETA.
+NOTE: The PROCEDURE PRINT printed page 1.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.32 seconds
+      cpu time            0.01 seconds
+      
+
+20684      title10;
+MPRINT(EM_DIAGRAM):   title10;
+20685      %let EMEXCEPTIONSTRING=;
+MPRINT(EM_DIAGRAM):     *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * TextParsing: Generation of macros and macro variables;
+MPRINT(EM_DIAGRAM):   * To see the code generated, set the EM_DEBUG macro variable to SOURCE or _ALL_;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * TextParsing: EM Macro Variables and Macros;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------* ;
+MPRINT(EM_DIAGRAM):   * System Macro Variables;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------* ;
+MPRINT(EM_DIAGRAM):   data _null_;
+MPRINT(EM_DIAGRAM):   length string $2000;
+MPRINT(EM_DIAGRAM):   string = 'Songs';
+MPRINT(EM_DIAGRAM):   call symput('EM_PROJECTNAME', trim(string));
+MPRINT(EM_DIAGRAM):   string = 'Songs';
+MPRINT(EM_DIAGRAM):   call symput('EM_WSNAME', trim(string));
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------* ;
+MPRINT(EM_DIAGRAM):   * Properties Macro Variables ;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------* ;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * Files Macro Variables;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * Import Macro Variables;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * Export Macro Variables;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * Decision Macro Variables;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * Statement Macro Variables;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   data _null_;
+MPRINT(EM_DIAGRAM):   set EMWS1.Ids2_EMINFO;
+MPRINT(EM_DIAGRAM):   where key in('HPDMSAMPLE', 'IDSTABLE');
+MPRINT(EM_DIAGRAM):   if key = 'HPDMSAMPLE' then call symput('_ForceGrid', '1');
+MPRINT(EM_DIAGRAM):   else call symput('_IDS_TABLE', DATA);
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(HPDM_PERFORMANCE):  ;
+PERFORMANCE  DETAILS
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * Variable Macros;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * General Variable Macros;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * Target Variable Macros;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * Input Variable Macros;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * Rejected Variable Macros;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * Misc Variable Macros;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * End Create EM Macro Variables and Macros;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+21017      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):    *------------------------------------------------------------*;
+21018      * TextParsing: Generation of macros and macro variables;
+MPRINT(EM_DIAGRAM):   * TextParsing: Generation of macros and macro variables;
+21019      * To see the code generated, set the EM_DEBUG macro variable to SOURCE or _ALL_;
+MPRINT(EM_DIAGRAM):   * To see the code generated, set the EM_DEBUG macro variable to SOURCE or _ALL_;
+21020      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+
+21021      %let EMEXCEPTIONSTRING=;
+21022      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):    *------------------------------------------------------------*;
+21023      * TRAIN: TextParsing;
+MPRINT(EM_DIAGRAM):   * TRAIN: TextParsing;
+21024      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+21025      %let EM_ACTION = TRAIN;
+21026      %let syscc = 0;
+21027      %macro main();
+21028        %if %upcase(&EM_ACTION) eq CREATE %then %do;
+21029          filename temp catalog 'sashelp.emtxtext.parse_create.source';
+21030          %include temp;
+21031          %create();
+21032        %end;
+21033        %if %upcase(&EM_ACTION) eq TRAIN %then %do;
+21034          filename temp catalog 'sashelp.emtxtext.parse_train.source';
+21035          %include temp;
+21036          %train();
+21037        %end;
+21038        %if %upcase(&EM_ACTION) eq REPORT %then %do;
+21039          filename temp catalog 'sashelp.emtxtext.parse_report.source';
+21040          %include temp;
+21041          %report();
+21042        %end;
+21043      /*  %if %upcase(&EM_ACTION) eq SCORE %then %do;
+21044          filename temp catalog 'sashelp.emtxtext.parse_score.source';
+21045          %include temp;
+21046          %score();
+21047        %end; */
+21048          %if %upcase(&EM_ACTION) eq OPENTABLE1 %then %do;
+21049             filename temp catalog 'sashelp.emtxtext.parse_actions.source';
+21050             %include temp;
+21051             filename temp;
+21052             %openTable1;
+21053         %end;
+21054      %mend main;
+21055      
+21056      %main();
+MPRINT(EM_DIAGRAM):    
+MPRINT(MAIN):   filename temp catalog 'sashelp.emtxtext.parse_train.source';
+NOTE: %INCLUDE (level 1) file TEMP is file SASHELP.EMTXTEXT.PARSE_TRAIN.SOURCE.
+21057     +%macro train();
+21058     +   %global EM_SASMSG;
+21059     +   %global sysdocparse;
+21060     +   %let EM_SASMSG=TMINE;
+21061     +   %let sysdocparse = ;
+21062     +   %let last_parse_node= ;
+21064     +   /* Make sure there are no prior text parsing nodes in diagram */
+21065     +   %if %sysfunc(exist(&EM_IMPORT_DATA_EMINFO)) %then %do;
+21066     +      proc sql noprint;
+21067     +      select data into :last_parse_node from &EM_IMPORT_DATA_EMINFO
+21068     +         where key="LastTextParsing";
+21069     +      quit;
+21070     +      %if &last_parse_node ne %then %do;
+21071     +         %let EMEXCEPTIONSTRING = EMTOOL.PRIORPARSINGNODE;
+21072     +         %goto end_parse_train;
+21073     +         %end;
+21075     +      %end;
+21078     +   /* make sure datasets are inited*/
+21079     +    filename temp catalog 'sashelp.emtxtext.parse_actions.source';
+21080     +    %include temp;
+21081     +    filename temp;
+21082     +    %openTable1();
+21084     +   /* check language setinit at runtime */
+21085     +   filename temp catalog "sashelp.emtxtext.getlanguages.source";
+21086     +   %include temp;
+21087     +   %let found_language = ;
+21088     +   proc sql noprint;
+21089     +      select language into :found_language
+21090     +      from work.tm_languages
+21091     +      where upcase("&EM_PROPERTY_LANGUAGE") eq upcase(language);
+21092     +   quit;
+21093     +   %if &found_language eq %then %do;
+21094     +      * error if language setinit expired ;
+21095     +      /* %let EMEXCEPTIONSTRING = EMTOOL.NOTMLICENSE; */
+21096     +      %let EMEXCEPTIONSTRING = EMTOOL.NOLANGLICENSE, %upcase(&EM_PROPERTY_LANGUAGE);
+21097     +      %goto end_parse_train;
+21098     +   %end;
+21100     +   /* There must be a training or raw data set passed in */
+21101     +    %if &em_import_data= %then %do;
+21102     +      %let EMEXCEPTIONSTRING = EMTOOL.NOTRAINDS;
+21103     +      %goto end_parse_train;
+21104     +   %end;
+21107     +   /* load docparse macro */
+21108     +   filename temp catalog "sashelp.emtxtext.tm_parse.source";
+21109     +   %include temp;
+21111     +   /* load multiword write to xml macro */
+21112     +   filename temp catalog "sashelp.emtxtext.tmwritemulti.source";
+21113     +   %include temp;
+21114     +   filename temp;
+21116     +   /* retrieve the output datasets so we can write to them */
+21117     +   %em_getname(key=terms, type=data);
+21118     +   %em_getname(key=tmout, type=data);
+21119     +   %em_getname(key=tmoutpos, type=data);
+21120     +   %em_getname(key=tmconfig, type=data);
+21121     +   %em_getname(key=synonymDS, type=data);
+21122     +   %em_getname(key=multiDS, type=data);
+21123     +   %em_getname(key=stopList, type=data);
+21124     +   %em_getname(key=startList, type=data);
+21126     +   %em_getname(key=multiword, type=file, extension=txt);
+21128     +   /* variables for choosing the parsing column */
+21129     +   %let tm_parsevar = ;
+21130     +   %let tm_urivar = ;
+21131     +   %let tm_filteredvar = ;
+21132     +   %let tm_displayVar = ;
+21134     +   /* crawl through the metadata to set some property defaults */
+21135     +   data _null_;
+21136     +      length parsevar urivar filteredvar $32;
+21137     +      retain max_len 0;
+21138     +      retain parsevar '';
+21139     +      retain urivar '';
+21140     +      retain filteredvar '';
+21142     +      set &em_data_variableset end=eof;
+21144     +      if upcase(ROLE)='TEXT' and USE in ('Y', 'D') and length > max_len then do;
+21145     +         parsevar = name;
+21146     +         max_len = length;
+21147     +      end;
+21148     +      if upcase(ROLE)='TEXTLOC' and USE in ('D', 'Y') then filteredvar = name;
+21149     +      if ROLE='URIVAR' and USE in ('D', 'Y') then urivar = name;
+21151     +      if eof then do;
+21152     +         call symput('tm_parsevar', parsevar);
+21153     +         call symput('tm_urivar', urivar);
+21154     +         call symput('tm_filteredvar', filteredvar);
+21155     +      end;
+21156     +   run;
+21159     +   %if %trim(%left(&tm_filteredvar)) ne %then %do;
+21160     +      %let tm_displayVar = &tm_parseVar;
+21161     +      %let tm_parsevar = &tm_filteredvar;
+21162     +   %end;
+21164     +   %em_propertychange(NAME=parseVar, VALUE=&tm_parsevar);
+21166     +   %if %trim(%left(&tm_parsevar)) eq %then %do;
+21167     +      /* error if no parsevar is found */
+21168     +      %let EMEXCEPTIONSTRING = EMTOOL.NOPARSEVAR;
+21169     +      %goto end_parse_train;
+21170     +   %end;
+21171     +   %else %do;
+21172     +      /* identify which variable we are parsing */
+21173     +      %put &em_codebar;
+21174     +      %let errormsg = %sysfunc(sasmsg(sashelp.tmine, EMTOOL.PARSEVAR_NOTE, NOQUOTE, &tm_parsevar));
+21175     +      %put &errormsg;
+21176     +      %put &em_codebar;
+21177     +   %end;
+21179     +   /* retrieve session encoding for tmwritemulti */
+21180     +   %local txtencoding;
+21181     +   %local encoding;
+21182     +   %let xmlencoding = ;
+21183     +   %let encoding = ;
+21185     +   data _null_;
+21186     +      call symput("encoding", upcase(getoption("ENCODING")));
+21187     +   run;
+21189     +   %if "&encoding" eq "WLATIN1" or "&encoding" eq "LATIN1" %then %do;
+21190     +      %let txtencoding = windows-1252;
+21191     +   %end;
+21192     +   %else %if "&encoding" eq "WLATIN2" or "&encoding" eq "LATIN2" %then %do;
+21193     +      %let txtencoding = windows-1250;
+21194     +   %end;
+21195     +   %else %if "&encoding" eq "BIG5" or "&encoding" eq "MS-950" %then %do;
+21196     +      %let txtencoding = big5;
+21197     +   %end;
+21198     +   %else %if "&encoding" eq "EUC-KR" or "&encoding" eq "MS-949 "%then %do;
+21199     +      %let txtencoding = euc-kr;
+21200     +   %end;
+21201     +   %else %if "&encoding" eq "SHIFT-JIS"  %then %do;
+21202     +      %let txtencoding = shift-jis;
+21203     +   %end;
+21204     +   %else %if "&encoding" eq "UTF-8"  %then %do;
+21205     +      %let txtencoding = utf-8;
+21206     +   %end;
+21207     +   %else %if "&encoding" eq "EUC-CN"  %then %do;
+21208     +      %let txtencoding = euc-cn;
+21209     +   %end;
+21210     +   %else %do;
+21211     +      %let txtencoding = utf-8;
+21212     +   %end;
+21215     +   /* prepare training dataset for processing */
+21216     +   data &EM_EXPORT_TRAIN.(compress=yes);
+21217     +      set &EM_IMPORT_DATA;
+21219     +      _document_ = _n_;
+21220     +   run;
+21222     +   /* set metadata on &EM_EXPORT_TRAIN to give _document_ a role of id and
+21223     +      measurement level of nominal
+21224     +    */
+21225     +   %em_metachange(name=_document_, role=ID, level=NOMINAL);
+21227     +   /* *** synonym data set changes *** */
+21228     +   /* modify the synonymDS to a format that docparse can take (term, termrole, parent, parentrole) */
+21229     +   %let category_exists = 0;
+21230     +   %let termrole_exists = 0;
+21231     +   %let parentrole_exists = 0;
+21232     +   %let synonym_warning = ;
+21233     +   data _null_;
+21234     +      dsid=open("&EM_USER_SYNONYMDS");
+21235     +      check=varnum(dsid,'category');
+21236     +      if check ne 0 then call symput('category_exists', '1');
+21237     +      check=varnum(dsid,'termrole');
+21238     +      if check ne 0 then call symput('termrole_exists', '1');
+21239     +      check=varnum(dsid,'parentrole');
+21240     +      if check ne 0 then call symput('parentrole_exists', '1');
+21241     +   run;
+21243     +   proc sql noprint;
+21244     +      create table work.internal_synds as
+21245     +         select term, parent,
+21246     +            %if &termrole_exists ne 0 and &parentrole_exists ne 0 %then %do;
+21247     +            /* termrole exists and parentrole exists, so just use them */
+21248     +               termrole, parentrole
+21249     +            %end;
+21250     +            %else %if &category_exists ne 0 %then %do;
+21251     +            /* we're either missing termrole or parentrole, but we have category, so just use that */
+21252     +               category
+21253     +            %end;
+21254     +            %else %if &termrole_exists ne 0 and &parentrole_exists eq 0 %then %do;
+21255     +            /* no parentrole or category, so convert termrole to category */
+21256     +               %let synonym_warning = 1 ;
+21257     +               termrole as category
+21258     +            %end;
+21259     +            %else %if &termrole_exists eq 0 and &parentrole_exists ne 0 %then %do;
+21260     +            /* no termrole or category, so convert parentrole to category */
+21261     +               %let synonym_warning = 1 ;
+21262     +               parentrole as category
+21263     +            %end;
+21264     +            %else %if &termrole_exists eq 0 and &parentrole_exists eq 0 and &category_exists eq 0 %then %do;
+21265     +            /* no termrole, parentrole, or category, so create a blank category */
+21266     +               "" as category
+21267     +            %end;
+21268     +         from &EM_USER_SYNONYMDS;
+21269     +   quit;
+21270     +   %let EM_USER_SYNONYMDS = work.internal_synds;
+21271     +   %if &synonym_warning ne %then %do;
+21272     +      %put &em_codebar;
+21273     +      %let errormsg = %sysfunc(sasmsg(sashelp.tmine, EMTOOL.SYN_CHANGE_WARN, NOQUOTE));
+21274     +      %put &errormsg;
+21275     +      %put &em_codebar;
+21276     +   %end;
+21277     +/*
+21278     +   data _train;
+21279     +        set &EM_IMPORT_DATA;
+21280     +   run;
+21281     +*/
+21282     +   /* Filter out unwanted languages */
+21283     +/*   %let language_type=;
+21284     +   data _null_;
+21285     +      dsid=open("&EM_IMPORT_DATA");
+21286     +      lvid=varnum(dsid, 'LANGUAGE');
+21287     +      call symput('language_var', lvid);
+21289     +      if lvid > 0 then call symput('language_type', vartype(dsid, lvid));
+21290     +   run;
+21292     +   %let filt=;
+21293     +   %if &language_var > 0 and &language_type = C and "%ktrim(&EM_PROPERTY_filterlang)" ne "" %then %do;
+21294     +       %let filt=%upcase(&EM_PROPERTY_FILTERLANG);
+21295     +       %let filt=%sysfunc(TRANSLATE("%ktrim(&filt)",", "," "));
+21296     +       %let filt=%sysfunc(TRANSTRN("&filt", 'BLANK', ''));
+21297     +       %let filt=%sysfunc(DEQUOTE(&filt));
+21299     +       proc sql noprint;
+21300     +           create table _train as
+21301     +                select * from &EM_IMPORT_DATA
+21302     +                where upcase(language) NOT IN (&filt);
+21303     +           delete from &EM_EXPORT_TRAIN
+21304     +                where upcase(language) IN (&filt);
+21305     +           select count(*) into :doccnt from _train;
+21306     +       quit;
+21308     +       %if &doccnt = 0 %then %do;
+21309     +           %let emexceptionstring=EMTOOL.FILTER_DATA_ZERO;
+21310     +           %goto end_parse_train;
+21311     +       %end;
+21312     +*/
+21313     +       /* Print filtered languages to output */
+21314     +/*       proc sql noprint;
+21315     +           create table _filterResults as
+21316     +             select language, count(*) as numdocs
+21317     +             from &EM_IMPORT_DATA
+21318     +             where upcase(language) IN (&filt)
+21319     +             group by language;
+21320     +           update _filterResults
+21321     +             set language="%sysfunc(sasmsg(sashelp.tmine, rpt_text_blank_value, NOQUOTE))" where language="";
+21322     +       quit;
+21324     +       proc print data=_filterResults noobs label;
+21325     +           var language numdocs;
+21326     +           label language="%sysfunc(sasmsg(sashelp.tmine, rpt_text_language_vlabel, NOQUOTE))"
+21327     +                 numdocs="%sysfunc(sasmsg(sashelp.tmine, rpt_text_numdocs_title, NOQUOTE))";
+21328     +           title "%sysfunc(sasmsg(sashelp.tmine, rpt_text_filteredlang_title, NOQUOTE, TRAIN))";
+21329     +       run;
+21330     +   %end;
+21331     +*/
+21332     +   /* Write the multiword XML out */
+21333     +   %tmwritemulti(multids=&EM_USER_MULTIDS,
+21334     +                 stopds=&EM_USER_STOPLIST,
+21335     +                 startds=&EM_USER_STARTLIST,
+21336     +                 synds=&EM_USER_SYNONYMDS,
+21337     +                 multi=&EM_USER_MULTIWORD,
+21338     +                 multidsout= &EM_LIB..&EM_NODEID._multiall,
+21339     +                 encoding=&txtencoding);
+21341     +   /* The main parsing call for the docs */
+21342     +   %tm_parse(inds=&EM_IMPORT_DATA,
+21343     +             outds=&em_user_tmout,
+21344     +             keyds=&EM_USER_TERMS,
+21345     +             config=&EM_USER_TMCONFIG,
+21346     +             multisyn=&EM_USER_MULTIWORD,
+21347     +             var=&TM_PARSEVAR,
+21348     +             stemming=&EM_PROPERTY_BSTEMS,
+21349     +             encoding=&encoding,
+21350     +             filevar=&tm_filteredvar,
+21351     +             stoplist=&EM_USER_stopList,
+21352     +             startlist=&EM_USER_startList,
+21353     +             delimit=&EM_PROPERTY_DELIMIT,
+21354     +             tagging=&EM_PROPERTY_BPARTOFSPEECH,
+21355     +             language=&EM_PROPERTY_LANGUAGE,
+21356     +             ng=&EM_PROPERTY_NOUNGROUPS,
+21357     +             TGConcepts=&EM_PROPERTY_TGConcepts,
+21358     +             TGCategories=&EM_PROPERTY_TGCategories,
+21359     +             indexDir=&EM_NODEDIR.&EM_DSEP.,
+21360     +             entities=&EM_PROPERTY_BPATTERNS,
+21361     +             posignore=&EM_PROPERTY_IGNOREPOS,
+21362     +             entignore=&EM_PROPERTY_IGNOREENTITIES,
+21363     +             attribignore=&EM_PROPERTY_IGNOREATTRIB,
+21364     +             filterds=,
+21365     +             filterstatus=,
+21366     +             synDS=&EM_USER_SYNONYMDS,
+21367     +             outpos=&EM_USER_TMOUTPOS);
+21369     +   %if %superq(sysdocparse) ne  %then %do;
+21370     +      %let EMEXCEPTIONSTRING = EMTOOL.DOCPARSE,%superq(sysdocparse);
+21371     +      /* emexceptionstring not resolving in log, no tgparse error code >4
+21372     +      /*%put emexceptionstring ="&EMEXCEPTIONSTRING"*/;
+21373     +      %let syscc=0;
+21374     +      %goto end_parse_train;
+21375     +   %end;
+21377     +    /* add rolestring and attrstring labels for  roles and strings to data set*/
+21378     +    proc sql;
+21379     +       create table &EM_USER_TERMS as
+21380     +         select
+21381     +            a.key label= "%sysfunc(sasmsg(sashelp.tmine,rpt_text_key_vlabel,NOQUOTE))",
+21382     +            a.term label= "%sysfunc(sasmsg(sashelp.tmine,rpt_text_term_vlabel,NOQUOTE))",
+21383     +            a.role,
+21384     +            case a.role
+21385     +               when 'Abbr'          then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_posabbr_value,   NOQUOTE))"
+21386     +               when 'Adj'           then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_posadj_value,   NOQUOTE))"
+21387     +               when 'Adv'           then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_posadv_value,   NOQUOTE))"
+21388     +               when 'Aux'           then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_posaux_value,   NOQUOTE))"
+21389     +               when 'Conj'          then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_posconj_value,   NOQUOTE))"
+21390     +               when 'Det'           then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_posdet_value,   NOQUOTE))"
+21391     +               when 'Interj'        then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_posinterj_value,   NOQUOTE))"
+21392     +               when 'Noun'          then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_posnoun_value,   NOQUOTE))"
+21393     +               when 'Num'           then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_posnum_value,   NOQUOTE))"
+21394     +               when 'Part'          then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_pospart_value,   NOQUOTE))"
+21395     +               when 'Pref'          then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_pospref_value,   NOQUOTE))"
+21396     +               when 'Prep'          then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_posprep_value,   NOQUOTE))"
+21397     +               when 'Pron'          then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_pospron_value,   NOQUOTE))"
+21398     +               when 'Prop'          then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_posprop_value,   NOQUOTE))"
+21399     +               when 'Punct'         then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_pospunct_value,   NOQUOTE))"
+21400     +               when 'Verb'          then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_posverb_value,   NOQUOTE))"
+21401     +               when 'VerbAdj'       then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_posverbadj_value,   NOQUOTE))"
+21402     +               when 'PERSON'        then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_posperson_value,   NOQUOTE))"
+21403     +               when 'ORGANIZATION'  then  "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_posorganizationerson_value, NOQUOTE))"
+21404     +               when 'LOCATION'      then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_poslocation_value, NOQUOTE))"
+21405     +               when 'COMPANY'       then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_poscompany_value,  NOQUOTE))"
+21406     +               when 'TITLE'         then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_postitle_value,    NOQUOTE))"
+21407     +               when 'PHONE'         then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_posphone_value,    NOQUOTE))"
+21408     +               when 'DATE'          then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_posdate_value,     NOQUOTE))"
+21409     +               when 'TIME'          then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_postime_value,     NOQUOTE))"
+21410     +               when 'INTERNET'      then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_posinternet_value, NOQUOTE))"
+21411     +               when 'MEASURE'       then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_posmeasure_value,  NOQUOTE))"
+21412     +               when 'NOUN_GROUP'    then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_posnoungroup_value,  NOQUOTE))"
+21413     +               when 'SSN'           then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_posssn_value,        NOQUOTE))"
+21414     +               when 'CURRENCY'      then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_poscurrency_value,   NOQUOTE))"
+21415     +               when 'PERCENT'       then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_pospercent_value,    NOQUOTE))"
+21416     +               when 'TIME_PERIOD'   then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_postimeperiod_value, NOQUOTE))"
+21417     +               when 'PROP_MISC'     then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_pospropmisc_value,   NOQUOTE))"
+21418     +               when 'VEHICLE'       then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_posvehicle_value,    NOQUOTE))"
+21419     +               when 'ADDRESS'       then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_posaddress_value,    NOQUOTE))"
+21420     +               else              a.role
+21421     +          end as rolestring label="%sysfunc(sasmsg(sashelp.tmine, rpt_text_role_vlabel,NOQUOTE))",
+21422     +          a.attribute,
+21423     +          case a.attribute
+21424     +              when 'Alpha'         then  "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_attralpha_value,   NOQUOTE))"
+21425     +              when 'Mixed'         then  "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_attrmixed_value,   NOQUOTE))"
+21426     +              when 'Num'           then    "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_attrnum_value,   NOQUOTE))"
+21427     +              when 'Entity'        then "%sysfunc(sasmsg(sashelp.tmine,  rpt_text_attrentity_value,   NOQUOTE))"
+21428     +               else             a.ATTRIBUTE
+21429     +          end as attrstring label="%sysfunc(sasmsg(sashelp.tmine, rpt_text_attribute_vlabel,NOQUOTE))",
+21430     +          /*No weight var at this point*/
+21431     +           /*a.weight label="%sysfunc(sasmsg(sashelp.tmine, rpt_text_weight_vlabel,NOQUOTE))" format=5.3,*/
+21432     +           a.freq label="%sysfunc(sasmsg(sashelp.tmine, rpt_text_freq_vlabel,NOQUOTE))",
+21433     +           a.numdocs label="%sysfunc(sasmsg(sashelp.tmine, rpt_text_numdocs_vlabel,NOQUOTE))",
+21434     +           a.keep label="%sysfunc(sasmsg(sashelp.tmine, rpt_text_keep_vlabel,NOQUOTE))",
+21435     +           a._ispar label="%sysfunc(sasmsg(sashelp.tmine, rpt_text_isparent_vlabel,NOQUOTE))",
+21436     +           a.parent label="%sysfunc(sasmsg(sashelp.tmine, rpt_text_parent_vlabel,NOQUOTE))",
+21437     +           a.parent_id label="%sysfunc(sasmsg(sashelp.tmine, rpt_text_parentid_vlabel,NOQUOTE))"
+21438     +         from &EM_USER_TERMS  a;
+21439     +    quit;
+21441     +   data &EM_USER_tmconfig;
+21442     +      length multiencoding $24;
+21443     +      set &EM_USER_tmconfig;
+21445     +      parseVar = lowcase("&tm_parseVar");
+21446     +      displayVar = lowcase("&tm_displayVar");
+21447     +      indexpath = "&EM_NODEDIR.&EM_DSEP.";
+21448     +      multiencoding="&txtencoding";
+21449     +/*      %if &filt ne %then filterLangs="&filt"; %else filterLangs="";; */
+21450     +   run;
+21453     +   /* Sort our terms data set and create an index for it
+21454     +      Sort by term */
+21455     +   proc sort data=&em_user_terms;
+21456     +      %if %sysfunc(strip(&EM_PROPERTY_IGNOREPOS)) ne %then %do;
+21457     +         by term role;
+21458     +      %end;
+21459     +      %else %do;
+21460     +         by term;
+21461     +      %end;
+21462     +   run;
+21464     +   /* Save the dataset information out to EMINFO */
+21465     +   data &EM_DATA_EMINFO;
+21466     +      length TARGET KEY $32 DATA $43;
+21468     +      key="LastTMNode";
+21469     +      data="&EM_NODEID";
+21470     +      output;
+21472     +      key="LastTMNodeType";
+21473     +      data="TextParsing";
+21474     +      output;
+21476     +      key="LastTextParsing";
+21477     +      data="&EM_NODEID";
+21478     +      output;
+21480     +      key="PRESCORECODE";
+21481     +      data="&EM_NODEID";
+21482     +      output;
+21483     +   run;
+21485     +%end_parse_train:
+21486     +   filename temp;
+21487     +   %if ^%symexist(tm_debug) %then %let tm_debug=0;
+21488     +   %if &tm_debug =0 %then %do;
+21489     +      proc sql noprint;
+21490     +         drop table internal_synds;
+21491     +         drop table tm_languages;
+21492     +/*         drop table _train;
+21493     +         drop table _filterResults; */
+21494     +      quit;
+21495     +   %end;
+21498     +%mend train;
+NOTE: %INCLUDE (level 1) ending.
+MPRINT(TRAIN):   proc sql noprint;
+MPRINT(TRAIN):   select data into :last_parse_node from EMWS1.Ids2_EMINFO where key="LastTextParsing";
+NOTE: No rows were selected.
+MPRINT(TRAIN):   quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+MPRINT(TRAIN):   filename temp catalog 'sashelp.emtxtext.parse_actions.source';
+NOTE: %INCLUDE (level 1) file TEMP is file SASHELP.EMTXTEXT.PARSE_ACTIONS.SOURCE.
+21499     +%macro openTable1();
+21500     +/* initiate all possible tables if not already there*/
+21502     +   %em_getname(key=synonymDS, type=data);
+21503     +   %em_getname(key=multiDS, type=data);
+21504     +   %em_getname(key=stopList, type=data);
+21505     +   %em_getname(key=startList, type=data);
+21507     +   %if ^%sysfunc(exist(&em_user_stoplist)) %then %do;
+21508     +      proc sql noprint;
+21509     +         create table &em_user_stopList
+21510     +         (term char(256)
+21511     +label="%sysfunc(sasmsg(sashelp.tmine, rpt_text_stop_term_vlabel, NOQUOTE))",
+21512     +          role char(256)
+21513     +label="%sysfunc(sasmsg(sashelp.tmine, rpt_text_stop_role_vlabel, NOQUOTE))"
+21514     +             );
+21515     +      quit;
+21516     +      data &em_user_stoplist;
+21517     +         format term $256.;
+21518     +         set &em_user_stoplist &em_property_stoplist;
+21519     +      run;
+21520     +   %end;
+21522     +   %if ^%sysfunc(exist(&em_user_synonymds)) %then %do;
+21523     +      proc sql noprint;
+21524     +         create table &em_user_synonymDS
+21525     +         (term char(256)
+21526     +label="%sysfunc(sasmsg(sashelp.tmine,  rpt_text_syn_term_vlabel, NOQUOTE))",
+21527     +          termrole char(256)
+21528     +label="%sysfunc(sasmsg(sashelp.tmine,  rpt_text_syn_termrole_vlabel, NOQUOTE))",
+21529     +          parent char(256)
+21530     +label="%sysfunc(sasmsg(sashelp.tmine, rpt_text_syn_parent_vlabel, NOQUOTE))",
+21531     +          parentrole char(256)
+21532     +label="%sysfunc(sasmsg(sashelp.tmine, rpt_text_syn_parentrole_vlabel, NOQUOTE))"
+21533     +             );
+21534     +      quit;
+21535     +      data &em_user_synonymds;
+21536     +         set &em_user_synonymDS &em_property_synonymds;
+21537     +      run;
+21538     +   %end;
+21540     +   %if ^%sysfunc(exist(&em_user_multids)) %then %do;
+21541     +      proc sql noprint;
+21542     +         create table &em_user_multiDS
+21543     +         (term char(256)
+21544     +label="%sysfunc(sasmsg(sashelp.tmine, RPT_TEXT_STOP_TERM_VLABEL, NOQUOTE))",
+21545     +          role char(256)
+21546     +label="%sysfunc(sasmsg(sashelp.tmine, RPT_TEXT_STOP_ROLE_VLABEL, NOQUOTE))"
+21547     +             );
+21548     +       quit;
+21550     +      data &em_user_multids;
+21551     +         set &em_user_multids &em_property_multids;
+21552     +      run;
+21553     +   %end;
+21555     +   %if ^%sysfunc(exist(&em_user_startList)) %then %do;
+21556     +     proc sql noprint;
+21557     +      create table &EM_USER_startList
+21558     +         (term char(256)
+21559     +label="%sysfunc(sasmsg(sashelp.tmine, rpt_text_stop_term_vlabel, NOQUOTE))",
+21560     +          role char(256)
+21561     +label="%sysfunc(sasmsg(sashelp.tmine, rpt_text_stop_role_vlabel, NOQUOTE))"
+21562     +             );
+21563     +    quit;
+21564     +    data &em_user_startlist;
+21565     +         set &em_user_startlist &em_property_startlist;
+21566     +      run;
+21568     +   %end;
+21570     +%mend openTable1;
+NOTE: %INCLUDE (level 1) ending.
+MPRINT(TRAIN):   filename temp;
+NOTE: Fileref TEMP has been deassigned.
+MPRINT(OPENTABLE1):  ;
+MPRINT(OPENTABLE1):  ;
+MPRINT(OPENTABLE1):  ;
+MPRINT(OPENTABLE1):  ;
+MPRINT(OPENTABLE1):   proc sql noprint;
+MPRINT(OPENTABLE1):   create table EMWS1.TextParsing_stopList (term char(256) label="Term", role char(256) label="Role" );
+NOTE: Table EMWS1.TEXTPARSING_STOPLIST created, with 0 rows and 2 columns.
+MPRINT(OPENTABLE1):   quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.17 seconds
+      cpu time            0.03 seconds
+      
+
+MPRINT(OPENTABLE1):   data EMWS1.TextParsing_stopList;
+MPRINT(OPENTABLE1):   format term $256.;
+MPRINT(OPENTABLE1):   set EMWS1.TextParsing_stopList SASHELP.ENGSTOP;
+MPRINT(OPENTABLE1):   run;
+
+NOTE: There were 0 observations read from the data set EMWS1.TEXTPARSING_STOPLIST.
+NOTE: There were 509 observations read from the data set SASHELP.ENGSTOP.
+NOTE: The data set EMWS1.TEXTPARSING_STOPLIST has 509 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.01 seconds
+      
+
+MPRINT(OPENTABLE1):   proc sql noprint;
+MPRINT(OPENTABLE1):   create table EMWS1.TextParsing_synonymDS (term char(256) label="Child Term", termrole char(256) label="Term Role", parent char(256) label="Parent Term", parentrole char(256) label="Parent Role" );
+NOTE: Table EMWS1.TEXTPARSING_SYNONYMDS created, with 0 rows and 4 columns.
+MPRINT(OPENTABLE1):   quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+MPRINT(OPENTABLE1):   data EMWS1.TextParsing_synonymDS;
+MPRINT(OPENTABLE1):   set EMWS1.TextParsing_synonymDS SASHELP.ENGSYNMS;
+MPRINT(OPENTABLE1):   run;
+
+NOTE: There were 0 observations read from the data set EMWS1.TEXTPARSING_SYNONYMDS.
+NOTE: There were 1 observations read from the data set SASHELP.ENGSYNMS.
+NOTE: The data set EMWS1.TEXTPARSING_SYNONYMDS has 1 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+      
+
+MPRINT(OPENTABLE1):   proc sql noprint;
+MPRINT(OPENTABLE1):   create table EMWS1.TextParsing_multiDS (term char(256) label="Term", role char(256) label="Role" );
+NOTE: Table EMWS1.TEXTPARSING_MULTIDS created, with 0 rows and 2 columns.
+MPRINT(OPENTABLE1):   quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+MPRINT(OPENTABLE1):   data EMWS1.TextParsing_multiDS;
+MPRINT(OPENTABLE1):   set EMWS1.TextParsing_multiDS SASHELP.ENG_MULTI;
+MPRINT(OPENTABLE1):   run;
+
+NOTE: There were 0 observations read from the data set EMWS1.TEXTPARSING_MULTIDS.
+NOTE: There were 398 observations read from the data set SASHELP.ENG_MULTI.
+NOTE: The data set EMWS1.TEXTPARSING_MULTIDS has 398 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.01 seconds
+      
+
+MPRINT(OPENTABLE1):   proc sql noprint;
+MPRINT(OPENTABLE1):   create table EMWS1.TextParsing_startList (term char(256) label="Term", role char(256) label="Role" );
+NOTE: Table EMWS1.TEXTPARSING_STARTLIST created, with 0 rows and 2 columns.
+MPRINT(OPENTABLE1):   quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+MPRINT(OPENTABLE1):   data EMWS1.TextParsing_startList;
+MPRINT(OPENTABLE1):   set EMWS1.TextParsing_startList ;
+MPRINT(OPENTABLE1):   run;
+
+NOTE: There were 0 observations read from the data set EMWS1.TEXTPARSING_STARTLIST.
+NOTE: The data set EMWS1.TEXTPARSING_STARTLIST has 0 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+MPRINT(TRAIN):  ;
+MPRINT(TRAIN):   filename temp catalog "sashelp.emtxtext.getlanguages.source";
+NOTE: %INCLUDE (level 1) file TEMP is file SASHELP.EMTXTEXT.GETLANGUAGES.SOURCE.
+21572     +data work.raw_tm_languages work.all_languages;
+MPRINT(TRAIN):   data work.raw_tm_languages work.all_languages;
+21573     +   length language $20;
+MPRINT(TRAIN):   length language $20;
+21574     +   input language $1-14 displaytext $15-69 prodnum;
+MPRINT(TRAIN):   input language $1-14 displaytext $15-69 prodnum;
+21576     +   output work.all_languages;
+MPRINT(TRAIN):   output work.all_languages;
+21577     +   if prodnum = 0 or sysprod("PRODNUM"||left(trim(put(prodnum, 8.))))
+21578     +        then output work.raw_tm_languages;
+MPRINT(TRAIN):   if prodnum = 0 or sysprod("PRODNUM"||left(trim(put(prodnum, 8.)))) then output work.raw_tm_languages;
+21579     +   drop prodnum;
+MPRINT(TRAIN):   drop prodnum;
+21581     +   datalines;
+MPRINT(TRAIN):   datalines;
+
+NOTE: The data set WORK.RAW_TM_LANGUAGES has 2 observations and 2 variables.
+NOTE: The data set WORK.ALL_LANGUAGES has 28 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+MPRINT(TRAIN):   ;
+MPRINT(TRAIN):   run;
+21610     +;
+21611     +run;
+21616     +proc sql noprint;
+MPRINT(TRAIN):   proc sql noprint;
+21617     +   create table work.tm_languages as
+21618     +      select distinct(language), displaytext
+21619     +      from work.raw_tm_languages;
+MPRINT(TRAIN):   create table work.tm_languages as select distinct(language), displaytext from work.raw_tm_languages;
+NOTE: Table WORK.TM_LANGUAGES created, with 2 rows and 2 columns.
+
+21620     +   create table work.all_tm_languages as
+21621     +      select distinct(language), displaytext
+21622     +      from work.all_languages;
+MPRINT(TRAIN):   create table work.all_tm_languages as select distinct(language), displaytext from work.all_languages;
+NOTE: Table WORK.ALL_TM_LANGUAGES created, with 27 rows and 2 columns.
+
+21623     +   drop table work.raw_tm_languages;
+MPRINT(TRAIN):   drop table work.raw_tm_languages;
+NOTE: Table WORK.RAW_TM_LANGUAGES has been dropped.
+21624     +   drop table work.all_languages;
+MPRINT(TRAIN):   drop table work.all_languages;
+NOTE: Table WORK.ALL_LANGUAGES has been dropped.
+21625     +quit;
+MPRINT(TRAIN):   quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+NOTE: %INCLUDE (level 1) ending.
+MPRINT(TRAIN):   proc sql noprint;
+MPRINT(TRAIN):   select language into :found_language from work.tm_languages where upcase("ENGLISH") eq upcase(language);
+MPRINT(TRAIN):   quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+MPRINT(TRAIN):   filename temp catalog "sashelp.emtxtext.tm_parse.source";
+NOTE: %INCLUDE (level 1) file TEMP is file SASHELP.EMTXTEXT.TM_PARSE.SOURCE.
+21627     +/* ****************************************************************
+21628     + * Name:    tmparse (macro)
+21629     + *
+21630     + * Support: Jim Cox
+21631     + *
+21632     + * Usage: %tmparse(inds=,outds=,keyds=,stopds=,startds=,synds=,
+21633     + *                 var=,targvar=,filevar=,
+21634     + *                 stemming=yes,tagging=yes,ng=yes,entities=no,punct=no,num=no,
+21635     + *                 language=ENGLISH,encoding=cp1252,
+21636     + *                 entkeep=,posignore=,
+21637     + *                 minNumDocs=2);
+21638     + * Purpose: To run new Text Mining process
+21639     + *
+21640     + * Parms:
+21641     + * Returns:
+21642     + *
+21643     + * History:
+21644     + * 01Dec05 Initial Coding [cox]
+21645     + *
+21646     + * Notes:
+21647     + * Last Modified By:
+21648     + * Last Modified On: Tue Nov 16 15:41:40 2010
+21649     + * End
+21650     + * ************************************************************** */
+21654     +%macro tm_parse(inds=,outds=,keyds=,synds=sashelp.engsynms,
+21655     +                 var=,filevar=,config=,
+21656     +                 stemming=Y,tagging=Y,ng=std,entities=NONE,
+21657     +                 stoplist=, startlist=,
+21658     +                 posignore=, entignore=, attribignore=,
+21659     +                 language=english,encoding=, multisyn=, nopos=, TGConcepts=,
+21660     +                 TGCategories=, indexDir=,
+21661     +                 delimit=Formal,outpos=,filterds=,filterstatus=drop);
+21664     +   /* delete the tmconfig file so we do not use another tmconfig from a previous node */
+21665     +   %if &config ne %then %do;
+21666     +      proc sql noprint;
+21667     +         drop table &config;
+21668     +      quit;
+21669     +   %end;
+21672     +   /* fix quote problems (replace single quote with double quotes) in posignore=, entignore=, attribignore=*/
+21673     +   data _null_;
+21674     +      %if %sysfunc(strip(&posignore)) ne %then %do;
+21675     +         posignore = "&posignore";
+21676     +         posignore = transtrn(posignore, "'", '"');
+21677     +         call symput("posignore", posignore);
+21678     +      %end;
+21679     +      %if %sysfunc(strip(&entignore)) ne %then %do;
+21680     +         entignore = "&entignore";
+21681     +         entignore = transtrn(entignore, "'", '"');
+21682     +         call symput("entignore", entignore);
+21683     +      %end;
+21684     +      %if %sysfunc(strip(&attribignore)) ne %then %do;
+21685     +         attribignore = "&attribignore";
+21686     +         attribignore = transtrn(attribignore, "'", '"');
+21687     +         call symput("attribignore", attribignore);
+21688     +      %end;
+21689     +   run;
+21691     +   %let stoplist_count = 0;
+21692     +   %let startlist_count = 0;
+21693     +   %let synds_count = 0;
+21694     +   proc sql noprint;
+21695     +      %if "&stoplist" ne "" %then %do;
+21696     +         select count(*) into :stoplist_count
+21697     +         from &stoplist;
+21698     +      %end;
+21699     +      %if "&startlist" ne "" %then %do;
+21700     +         select count(*) into :startlist_count
+21701     +         from &startlist;
+21702     +      %end;
+21703     +      %if "&synds" ne "" %then %do;
+21704     +         select count(*) into :synds_count
+21705     +         from &synds;
+21706     +      %end;
+21707     +   quit;
+21709     +   /* control behavior of custom entities */
+21710     +   %let entity_info = ;
+21711     +   %if &entities eq NONE %then %do;
+21712     +      %let entity_info = entities=no ;
+21713     +      %let entignore = ;
+21714     +   %end;
+21715     +   %else %if &entities eq DEFAULT %then %do;
+21716     +      %let entity_info = entities=yes ;
+21717     +   %end;
+21718     +   %else %if &entities eq CUSTOM %then %do;
+21719     +      %if %nrbquote(&TGConcepts) ne %then %do;
+21720     +         %let entity_info = entities=yes litilist=("&TGConcepts") ;
+21721     +      %end;
+21722     +      %else %do;
+21723     +         %let entity_info = entities=no ;
+21724     +      %end;
+21726     +      %let entignore = ;
+21727     +   %end;
+21728     +   %else %if &entities eq ALL %then %do;
+21730     +      %let default_entity = %sysfunc(pathname(SASROOT))&EM_DSEP ;
+21732     +      %if "&EM_DSEP" eq "/" %then %do;
+21733     +      /* unix */
+21734     +         %let default_entity = &default_entity.misc&EM_DSEP.tktg&EM_DSEP. ;
+21735     +      %end;
+21736     +      %else %if "&EM_DSEP" eq "\" %then %do;
+21737     +      /* windows */
+21738     +         %let default_entity = &default_entity.tktg&EM_DSEP.sasmisc&EM_DSEP. ;
+21739     +      %end;
+21742     +      %let entity_language = %lowcase(&language);
+21744     +      %if "&entity_language" eq "arabic" %then %do;
+21745     +         %let default_entity = &default_entity.ar-ne.li ;
+21746     +      %end;
+21747     +      %else %if "&entity_language" eq "german" %then %do;
+21748     +         %let default_entity = &default_entity.de-ne.li ;
+21749     +      %end;
+21750     +      %else %if "&entity_language" eq "english" %then %do;
+21751     +         %let default_entity = &default_entity.en-ne.li ;
+21752     +      %end;
+21753     +      %else %if "&entity_language" eq "spanish" %then %do;
+21754     +         %let default_entity = &default_entity.es-ne.li ;
+21755     +      %end;
+21756     +      %else %if "&entity_language" eq "french" %then %do;
+21757     +         %let default_entity = &default_entity.fr-ne.li ;
+21758     +      %end;
+21759     +      %else %if "&entity_language" eq "italian" %then %do;
+21760     +         %let default_entity = &default_entity.it-ne.li ;
+21761     +      %end;
+21762     +      %else %if "&entity_language" eq "japanese" %then %do;
+21763     +         %let default_entity = &default_entity.jp-ne.li ;
+21764     +      %end;
+21765     +      %else %if "&entity_language" eq "korean" %then %do;
+21766     +         %let default_entity = &default_entity.kr-ne.li ;
+21767     +      %end;
+21768     +      %else %if "&entity_language" eq "dutch" %then %do;
+21769     +         %let default_entity = &default_entity.nl-ne.li ;
+21770     +      %end;
+21771     +      %else %if "&entity_language" eq "polish" %then %do;
+21772     +         %let default_entity = &default_entity.pl-ne.li ;
+21773     +      %end;
+21774     +      %else %if "&entity_language" eq "portuguese" %then %do;
+21775     +         %let default_entity = &default_entity.pt-ne.li ;
+21776     +      %end;
+21777     +      %else %if "&entity_language" eq "chinese" %then %do;
+21778     +         %let default_entity = &default_entity.zh-ne.li ;
+21779     +      %end;
+21780     +      %else %if "&entity_language" eq "russian" %then %do;
+21781     +         %let default_entity = &default_entity.ru-ne.li ;
+21782     +      %end;
+21783     +      %else %if "&entity_language" eq "turkish" %then %do;
+21784     +         %let default_entity = &default_entity.tr-ne.li ;
+21785     +      %end;
+21786     +      %else %if "&entity_language" eq "thai" %then %do;
+21787     +         %let default_entity = &default_entity.th-ne.li ;
+21788     +      %end;
+21789     +      %else %if "&entity_language" eq "vietnamese" %then %do;
+21790     +         %let default_entity = &default_entity.vi-ne.li ;
+21791     +      %end;
+21792     +      %else %if "&entity_language" eq "norwegian" %then %do;
+21793     +         %let default_entity = &default_entity.no-ne.li ;
+21794     +      %end;
+21795     +      %else %if "&entity_language" eq "danish" %then %do;
+21796     +         %let default_entity = &default_entity.da-ne.li ;
+21797     +      %end;
+21798     +      %else %if "&entity_language" eq "greek" %then %do;
+21799     +         %let default_entity = &default_entity.el-ne.li ;
+21800     +      %end;
+21801     +      %else %if "&entity_language" eq "romanian" %then %do;
+21802     +         %let default_entity = &default_entity.ro-ne.li ;
+21803     +      %end;
+21804     +      %else %if "&entity_language" eq "hebrew" %then %do;
+21805     +         %let default_entity = &default_entity.he-ne.li ;
+21806     +      %end;
+21807     +      %else %if "&entity_language" eq "czech" %then %do;
+21808     +         %let default_entity = &default_entity.cs-ne.li ;
+21809     +      %end;
+21810     +      %else %if "&entity_language" eq "slovak" %then %do;
+21811     +         %let default_entity = &default_entity.sk-ne.li ;
+21812     +      %end;
+21813     +      %else %if "&entity_language" eq "hungarian" %then %do;
+21814     +         %let default_entity = &default_entity.hu-ne.li ;
+21815     +      %end;
+21816     +      %else %if "&entity_language" eq "indonesian" %then %do;
+21817     +         %let default_entity = &default_entity.id-ne.li ;
+21818     +      %end;
+21819     +      %else %if "&entity_language" eq "finnish" %then %do;
+21820     +         %let default_entity = &default_entity.fi-ne.li ;
+21821     +      %end;
+21823     +      %let entity_info = entities=yes ;
+21824     +      %if %nrbquote(&TGConcepts) ne %then %let entity_info = entities=yes litilist=("&default_entity" "&TGConcepts") ;
+21825     +   %end;
+21828     +   /* main docparse call */
+21829     +      proc tgparse data=&inds key=&keyds out=&outds
+21830     +         %if &filterds ne %then %do;
+21831     +            %if %upcase(&filterstatus) eq DROP %then stop=&filterds;
+21832     +            %else %if %upcase(&filterstatus) eq KEEP %then start=&filterds;
+21833     +            %else %if %upcase(&filterstatus) eq IGNORE %then ignore=&filterds;
+21834     +            %else %if %upcase(&filterstatus) eq RETAIN %then retain=&filterds;
+21835     +            %end;
+21836     +         %if &config ne %then config=&config;
+21837     +         %if &nopos ne %then NOPOS;
+21838     +         %if &synds_count ne 0 %then syn=&synds;
+21839     +         %if "&multisyn" ne "" %then multiterm="&multisyn";
+21840     +         %if %upcase(&stemming) eq Y %then stemming=yes ; %else stemming=no ;
+21841     +         %if %upcase(&tagging) eq Y %then tagging=yes ; %else tagging=no ;
+21842     +         &entity_info
+21843     +         /* %if "%trim(%left(&TGCategories))" ne "" %then TGCategories=&TGCategories ; */
+21844     +         %if "&indexDir" ne "" %then %do;
+21845     +            buildindex=yes
+21846     +            indexpath="&indexDir"
+21847     +         %end;
+21848     +         %if &stoplist_count ne 0 and &startlist_count eq 0 %then stop=&stoplist;
+21849     +         %if &startlist_count ne 0 and &stoplist_count eq 0 %then start=&startlist;
+21850     +         %if %upcase(&ng) eq Y %then ng=std ;
+21851     +         %else ng=off ;
+21852     +         %if &filevar ne %then namedfile;
+21853     +         %if %lowcase(&language) ne other %then language=%lowcase(&language);
+21854     +         %else plugin="SAS";
+21855     +         %if &outpos ne %then %do; outoffset=&outpos addsentence addparagraph %end;
+21856     +         ;
+21857     +      var %if &filevar ne %then &filevar; %else &var; ;
+21858     +      select &posignore "Newline" / drop;
+21859     +      %if &attribignore ne %then select &attribignore / group="attributes" drop; ;
+21860     +      %if &entignore ne %then select &entignore / group="entities" drop; ;
+21862     +      run;
+21864     +%mend;
+NOTE: %INCLUDE (level 1) ending.
+MPRINT(TRAIN):   filename temp catalog "sashelp.emtxtext.tmwritemulti.source";
+NOTE: %INCLUDE (level 1) file TEMP is file SASHELP.EMTXTEXT.TMWRITEMULTI.SOURCE.
+21865     +/* ****************************************************************
+21866     + * Name:    tmwritemulti.sas (macro)
+21867     + *
+21868     + * Support: Jake Bartlett
+21869     + *
+21870     + * Usage: %tmwritemulti(multids=, stopds=, startds=, synds=, multi=, encoding=utf-8);
+21871     + * Purpose: To write out the text file for the multiword dictionary.  This will
+21872     + *  include multiword term in the data= file as well as
+21873     + * Parameters
+21874     + * multids   = data set with multiword terms and their roles
+21875     + * stopds    = stop word list - look for multiword terms
+21876     + * startds   = start word list - look for multiword terms
+21877     + * synds     = data set with synonyms and their roles
+21878     + * multi     = multiterm text file.
+21879     + * encoding  = encoding of txt file format
+21880     + * End
+21881     + * ************************************************************** */
+21884     +%macro tmwritemulti(multids=, stopds=, startds=, synds=, multi=, multidsout=, encoding=utf-8);
+21886     +   * create a multiword terms data set ;
+21887     +   proc sql noprint;
+21888     +      create table _multiterms_
+21889     +         (term   char(256),
+21890     +          role   char(256));
+21891     +   quit;
+21893     +   %let synds_count = ;
+21894     +   %let stopds_count = ;
+21895     +   %let startds_count = ;
+21896     +   %let multids_count = ;
+21897     +   proc sql noprint;
+21898     +      select count(*) into :synds_count
+21899     +      from &synds;
+21901     +      select count(*) into :stopds_count
+21902     +      from &stopds;
+21904     +      %if &startds ne %then
+21905     +      select count(*) into :startds_count
+21906     +      from &startds;
+21907     +      %else %let startds_count = 0;;
+21909     +      select count(*) into :multids_count
+21910     +      from &multids;
+21911     +   quit;
+21913     +   * check the synonym ds for multiword terms ;
+21914     +   %if &synds_count ne 0 %then %do;
+21915     +      %find_multiword_terms(data_in=&synds, data_append=_multiterms_);
+21916     +   %end;
+21918     +   * check the stopTerms ds for multiword terms ;
+21919     +   %if &stopds_count ne 0 %then %do;
+21920     +      %find_multiword_terms(data_in=&stopds, data_append=_multiterms_);
+21921     +   %end;
+21923     +   * check the startTerms ds for multiword terms;
+21924     +   %if &startds_count ne 0 %then %do;
+21925     +      %find_multiword_terms(data_in=&startds, data_append=_multiterms_);
+21926     +   %end;
+21928     +   * check the multids for multiword terms ;
+21929     +   %if &multids_count ne 0 %then %do;
+21930     +      data &multids._temp;
+21931     +         length term $256 role $256;
+21932     +         set &multids;
+21933     +         if role eq '' then role='Noun';
+21934     +      run;
+21935     +      proc append base=_multiterms_ data=&multids._temp force;
+21936     +      run;
+21937     +      proc sql noprint;
+21938     +         drop table &multids._temp;
+21939     +      run;
+21940     +   %end;
+21942     +   * add lower and upper case variations to the multi word terms ;
+21944     +   data _multiterms_;
+21945     +      set _multiterms_;
+21947     +      * output exactly as is ;
+21948     +      output;
+21949     +      * output lower case versions ;
+21950     +      term=lowcase(term);
+21951     +      output;
+21952     +      * output upper case versions ;
+21953     +      term=upcase(term);
+21954     +      output;
+21955     +      * output uppercase first letter of each term, lower rest ;
+21956     +      term = propcase(term);
+21957     +      output;
+21958     +   run;
+21960     +   * remove duplicate term entries ;
+21961     +   proc sort data= _multiterms_ nodupkey;
+21962     +      by term role;
+21963     +   run;
+21965     +   filename _multout "&multi";
+21967     +   * write out all the multiword terms ;
+21968     +   data &multidsout;
+21969     +      set _multiterms_;
+21970     +      file _multout encoding="&encoding";
+21971     +      put term ':3:' role;
+21972     +   run;
+21974     +   %if ^%symexist(tm_debug) %then %let tm_debug=0;
+21975     +   %if &tm_debug =0 %then %do;
+21976     +      proc sql noprint;
+21977     +         drop table work._multiterms_;
+21978     +      quit;
+21979     +   %end;
+21981     +%mend tmwritemulti;
+21984     +/*
+21986     +%tmwritemulti(language="english", data=sashelp.engsynms);
+21988     +*/
+21990     +%macro find_multiword_terms(data_in=, data_append=);
+21992     +   data &data_in._temp (keep=term role);
+21993     +      length term $ 256 role $ 256 category $ 256 child $ 256 childrole $ 256 parent $ 256 parentrole $ 256;
+21995     +      set &data_in;
+21997     +      if lengthn(kcompress(ktrim(term))) < lengthn(ktrim(term)) then do;
+21998     +         if childrole ne '' then category = childrole;
+21999     +         if role ne '' then category = role;
+22001     +         if lowcase(category) eq category then category=propcase(category) ;
+22003     +         if category in ('Adj','Adv','Noun','Prep','Conj','Interj','Pron','Prop', 'Verbadj') then role=category;
+22004     +         else if category eq 'NOUN_GROUP' then role = 'Noun';
+22005     +         else if category eq '' then role='Noun';
+22006     +         else role = 'Prop';
+22008     +         output;
+22009     +      end;
+22011     +      if "&data_in"="&synds" and anypunct(term,1) > 0 then do;
+22012     +         term = prxchange('s/([\/\\<>,()])/ $1 /', -1, term);
+22013     +         if role ne '' then category = role;
+22015     +         if category in ('Adj','Adv','Noun','Prep','Conj','Interj','Pron','Prop', 'Verbadj') then role=category;
+22016     +         else if category eq 'NOUN_GROUP' then role = 'Noun';
+22017     +         else if category eq '' then role='Noun';
+22018     +         else role = 'Prop';
+22020     +         output;
+22021     +      end;
+22023     +      if lengthn(kcompress(ktrim(parent))) < lengthn(ktrim(parent)) and ktrim(parent) ne ktrim(term) then do;
+22024     +         term = parent;
+22025     +         if parentrole ne '' then category = childrole;
+22027     +         if category in ('Adj','Adv','Noun','Prep','Conj','Interj','Pron','Prop', 'Verbadj') then role=category;
+22028     +         else if category eq 'NOUN_GROUP' then role = 'Noun';
+22029     +         else if category eq '' then role='Noun';
+22030     +         else role = 'Prop';
+22031     +         output;
+22032     +      end;
+22033     +   run;
+22035     +   proc append base=&data_append data=&data_in._temp force;
+22036     +   run;
+22038     +   proc sql noprint;
+22039     +      drop table &data_in._temp;
+22040     +   quit;
+22041     +%mend find_multiword_terms;
+NOTE: %INCLUDE (level 1) ending.
+MPRINT(TRAIN):   filename temp;
+NOTE: Fileref TEMP has been deassigned.
+MPRINT(TRAIN):  ;
+MPRINT(TRAIN):  ;
+MPRINT(TRAIN):  ;
+MPRINT(TRAIN):  ;
+MPRINT(TRAIN):  ;
+MPRINT(TRAIN):  ;
+MPRINT(TRAIN):  ;
+MPRINT(TRAIN):  ;
+MPRINT(TRAIN):  ;
+MPRINT(TRAIN):   data _null_;
+MPRINT(TRAIN):   length parsevar urivar filteredvar $32;
+MPRINT(TRAIN):   retain max_len 0;
+MPRINT(TRAIN):   retain parsevar '';
+MPRINT(TRAIN):   retain urivar '';
+MPRINT(TRAIN):   retain filteredvar '';
+MPRINT(TRAIN):   set EMWS1.TextParsing_VariableSet end=eof;
+MPRINT(TRAIN):   if upcase(ROLE)='TEXT' and USE in ('Y', 'D') and length > max_len then do;
+MPRINT(TRAIN):   parsevar = name;
+MPRINT(TRAIN):   max_len = length;
+MPRINT(TRAIN):   end;
+MPRINT(TRAIN):   if upcase(ROLE)='TEXTLOC' and USE in ('D', 'Y') then filteredvar = name;
+MPRINT(TRAIN):   if ROLE='URIVAR' and USE in ('D', 'Y') then urivar = name;
+MPRINT(TRAIN):   if eof then do;
+MPRINT(TRAIN):   call symput('tm_parsevar', parsevar);
+MPRINT(TRAIN):   call symput('tm_urivar', urivar);
+MPRINT(TRAIN):   call symput('tm_filteredvar', filteredvar);
+MPRINT(TRAIN):   end;
+MPRINT(TRAIN):   run;
+
+NOTE: There were 1 observations read from the data set EMWS1.TEXTPARSING_VARIABLESET.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+MPRINT(EM_PROPERTYCHANGE):   data WORK.EM_USER_PROPERTY;
+MPRINT(EM_PROPERTYCHANGE):   length NAME $32 VALUE $400;
+MPRINT(EM_PROPERTYCHANGE):   NAME = "parseVar";
+MPRINT(EM_PROPERTYCHANGE):   VALUE = "song_name";
+MPRINT(EM_PROPERTYCHANGE):   output;
+MPRINT(EM_PROPERTYCHANGE):   run;
+
+NOTE: The data set WORK.EM_USER_PROPERTY has 1 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+MPRINT(EM_PROPERTYCHANGE):   run;
+MPRINT(TRAIN):  ;
+*------------------------------------------------------------*
+NOTE: Variable used for parsing is: song_name
+*------------------------------------------------------------*
+MPRINT(TRAIN):   data _null_;
+MPRINT(TRAIN):   call symput("encoding", upcase(getoption("ENCODING")));
+MPRINT(TRAIN):   run;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.00 seconds
+      
+
+MPRINT(TRAIN):   data EMWS1.TextParsing_TRAIN(compress=yes);
+MPRINT(TRAIN):   set EMWS1.Ids2_DATA;
+MPRINT(TRAIN):   _document_ = _n_;
+MPRINT(TRAIN):   run;
+
+NOTE: View EMWS1.IDS2_DATA.VIEW used (Total process time):
+      real time           0.20 seconds
+      cpu time            0.06 seconds
+      
+NOTE: There were 2276 observations read from the data set DM.SONGS_WITHID.
+NOTE: There were 2276 observations read from the data set EMWS1.IDS2_DATA.
+NOTE: The data set EMWS1.TEXTPARSING_TRAIN has 2276 observations and 18 variables.
+NOTE: Compressing data set EMWS1.TEXTPARSING_TRAIN decreased size by 42.86 percent. 
+      Compressed is 24 pages; un-compressed would require 42 pages.
+NOTE: DATA statement used (Total process time):
+      real time           0.37 seconds
+      cpu time            0.09 seconds
+      
+
+MPRINT(EM_METACHANGE):   data WORK.EM_METACHANGE;
+MPRINT(EM_METACHANGE):   length KEY $32 DELETE $1 UNAME $32 ROLE $32 LEVEL $10 ORDER $8 COMMENT $64 LOWERLIMIT 8 UPPERLIMIT 8;
+MPRINT(EM_METACHANGE):   KEY = upcase("CDELTA_TRAIN");
+MPRINT(EM_METACHANGE):   UNAME = upcase("_document_");
+MPRINT(EM_METACHANGE):   DELETE = upcase("N");
+MPRINT(EM_METACHANGE):   ROLE = upcase("ID");
+MPRINT(EM_METACHANGE):   LEVEL = upcase("NOMINAL");
+MPRINT(EM_METACHANGE):   ORDER = upcase("");
+MPRINT(EM_METACHANGE):   COMMENT = "";
+MPRINT(EM_METACHANGE):   LOWERLIMIT = .;
+MPRINT(EM_METACHANGE):   UPPERLIMIT = .;
+MPRINT(EM_METACHANGE):   output;
+MPRINT(EM_METACHANGE):   run;
+
+NOTE: The data set WORK.EM_METACHANGE has 1 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+MPRINT(TRAIN):  ;
+MPRINT(TRAIN):   data _null_;
+MPRINT(TRAIN):   dsid=open("EMWS1.TextParsing_synonymDS");
+MPRINT(TRAIN):   check=varnum(dsid,'category');
+MPRINT(TRAIN):   if check ne 0 then call symput('category_exists', '1');
+MPRINT(TRAIN):   check=varnum(dsid,'termrole');
+MPRINT(TRAIN):   if check ne 0 then call symput('termrole_exists', '1');
+MPRINT(TRAIN):   check=varnum(dsid,'parentrole');
+MPRINT(TRAIN):   if check ne 0 then call symput('parentrole_exists', '1');
+MPRINT(TRAIN):   run;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+MPRINT(TRAIN):   proc sql noprint;
+MPRINT(TRAIN):   create table work.internal_synds as select term, parent, termrole, parentrole from EMWS1.TextParsing_synonymDS;
+NOTE: Table WORK.INTERNAL_SYNDS created, with 1 rows and 4 columns.
+
+MPRINT(TRAIN):   quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+MPRINT(TMWRITEMULTI):   * create a multiword terms data set ;
+MPRINT(TMWRITEMULTI):   proc sql noprint;
+MPRINT(TMWRITEMULTI):   create table _multiterms_ (term char(256), role char(256));
+NOTE: Table WORK._MULTITERMS_ created, with 0 rows and 2 columns.
+MPRINT(TMWRITEMULTI):   quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+MPRINT(TMWRITEMULTI):   proc sql noprint;
+MPRINT(TMWRITEMULTI):   select count(*) into :synds_count from work.internal_synds;
+MPRINT(TMWRITEMULTI):   select count(*) into :stopds_count from EMWS1.TextParsing_stopList;
+MPRINT(TMWRITEMULTI):   select count(*) into :startds_count from EMWS1.TextParsing_startList;
+MPRINT(TMWRITEMULTI):   select count(*) into :multids_count from EMWS1.TextParsing_multiDS;
+MPRINT(TMWRITEMULTI):   quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+MPRINT(TMWRITEMULTI):   * check the synonym ds for multiword terms ;
+MPRINT(FIND_MULTIWORD_TERMS):   data work.internal_synds_temp (keep=term role);
+MPRINT(FIND_MULTIWORD_TERMS):   length term $ 256 role $ 256 category $ 256 child $ 256 childrole $ 256 parent $ 256 parentrole $ 256;
+MPRINT(FIND_MULTIWORD_TERMS):   set work.internal_synds;
+MPRINT(FIND_MULTIWORD_TERMS):   if lengthn(kcompress(ktrim(term))) < lengthn(ktrim(term)) then do;
+MPRINT(FIND_MULTIWORD_TERMS):   if childrole ne '' then category = childrole;
+MPRINT(FIND_MULTIWORD_TERMS):   if role ne '' then category = role;
+MPRINT(FIND_MULTIWORD_TERMS):   if lowcase(category) eq category then category=propcase(category) ;
+MPRINT(FIND_MULTIWORD_TERMS):   if category in ('Adj','Adv','Noun','Prep','Conj','Interj','Pron','Prop', 'Verbadj') then role=category;
+MPRINT(FIND_MULTIWORD_TERMS):   else if category eq 'NOUN_GROUP' then role = 'Noun';
+MPRINT(FIND_MULTIWORD_TERMS):   else if category eq '' then role='Noun';
+MPRINT(FIND_MULTIWORD_TERMS):   else role = 'Prop';
+MPRINT(FIND_MULTIWORD_TERMS):   output;
+MPRINT(FIND_MULTIWORD_TERMS):   end;
+MPRINT(FIND_MULTIWORD_TERMS):   if "work.internal_synds"="work.internal_synds" and anypunct(term,1) > 0 then do;
+MPRINT(FIND_MULTIWORD_TERMS):   term = prxchange('s/([\/\\<>,()])/ $1 /', -1, term);
+MPRINT(FIND_MULTIWORD_TERMS):   if role ne '' then category = role;
+MPRINT(FIND_MULTIWORD_TERMS):   if category in ('Adj','Adv','Noun','Prep','Conj','Interj','Pron','Prop', 'Verbadj') then role=category;
+MPRINT(FIND_MULTIWORD_TERMS):   else if category eq 'NOUN_GROUP' then role = 'Noun';
+MPRINT(FIND_MULTIWORD_TERMS):   else if category eq '' then role='Noun';
+MPRINT(FIND_MULTIWORD_TERMS):   else role = 'Prop';
+MPRINT(FIND_MULTIWORD_TERMS):   output;
+MPRINT(FIND_MULTIWORD_TERMS):   end;
+MPRINT(FIND_MULTIWORD_TERMS):   if lengthn(kcompress(ktrim(parent))) < lengthn(ktrim(parent)) and ktrim(parent) ne ktrim(term) then do;
+MPRINT(FIND_MULTIWORD_TERMS):   term = parent;
+MPRINT(FIND_MULTIWORD_TERMS):   if parentrole ne '' then category = childrole;
+MPRINT(FIND_MULTIWORD_TERMS):   if category in ('Adj','Adv','Noun','Prep','Conj','Interj','Pron','Prop', 'Verbadj') then role=category;
+MPRINT(FIND_MULTIWORD_TERMS):   else if category eq 'NOUN_GROUP' then role = 'Noun';
+MPRINT(FIND_MULTIWORD_TERMS):   else if category eq '' then role='Noun';
+MPRINT(FIND_MULTIWORD_TERMS):   else role = 'Prop';
+MPRINT(FIND_MULTIWORD_TERMS):   output;
+MPRINT(FIND_MULTIWORD_TERMS):   end;
+MPRINT(FIND_MULTIWORD_TERMS):   run;
+
+NOTE: Variable child is uninitialized.
+NOTE: Variable childrole is uninitialized.
+NOTE: There were 1 observations read from the data set WORK.INTERNAL_SYNDS.
+NOTE: The data set WORK.INTERNAL_SYNDS_TEMP has 1 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.20 seconds
+      cpu time            0.00 seconds
+      
+
+MPRINT(FIND_MULTIWORD_TERMS):   proc append base=_multiterms_ data=work.internal_synds_temp force;
+MPRINT(FIND_MULTIWORD_TERMS):   run;
+
+NOTE: Appending WORK.INTERNAL_SYNDS_TEMP to WORK._MULTITERMS_.
+NOTE: There were 1 observations read from the data set WORK.INTERNAL_SYNDS_TEMP.
+NOTE: 1 observations added.
+NOTE: The data set WORK._MULTITERMS_ has 1 observations and 2 variables.
+NOTE: PROCEDURE APPEND used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+MPRINT(FIND_MULTIWORD_TERMS):   proc sql noprint;
+MPRINT(FIND_MULTIWORD_TERMS):   drop table work.internal_synds_temp;
+NOTE: Table WORK.INTERNAL_SYNDS_TEMP has been dropped.
+MPRINT(FIND_MULTIWORD_TERMS):   quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+MPRINT(TMWRITEMULTI):  ;
+MPRINT(TMWRITEMULTI):   * check the stopTerms ds for multiword terms ;
+MPRINT(FIND_MULTIWORD_TERMS):   data EMWS1.TextParsing_stopList_temp (keep=term role);
+MPRINT(FIND_MULTIWORD_TERMS):   length term $ 256 role $ 256 category $ 256 child $ 256 childrole $ 256 parent $ 256 parentrole $ 256;
+MPRINT(FIND_MULTIWORD_TERMS):   set EMWS1.TextParsing_stopList;
+MPRINT(FIND_MULTIWORD_TERMS):   if lengthn(kcompress(ktrim(term))) < lengthn(ktrim(term)) then do;
+MPRINT(FIND_MULTIWORD_TERMS):   if childrole ne '' then category = childrole;
+MPRINT(FIND_MULTIWORD_TERMS):   if role ne '' then category = role;
+MPRINT(FIND_MULTIWORD_TERMS):   if lowcase(category) eq category then category=propcase(category) ;
+MPRINT(FIND_MULTIWORD_TERMS):   if category in ('Adj','Adv','Noun','Prep','Conj','Interj','Pron','Prop', 'Verbadj') then role=category;
+MPRINT(FIND_MULTIWORD_TERMS):   else if category eq 'NOUN_GROUP' then role = 'Noun';
+MPRINT(FIND_MULTIWORD_TERMS):   else if category eq '' then role='Noun';
+MPRINT(FIND_MULTIWORD_TERMS):   else role = 'Prop';
+MPRINT(FIND_MULTIWORD_TERMS):   output;
+MPRINT(FIND_MULTIWORD_TERMS):   end;
+MPRINT(FIND_MULTIWORD_TERMS):   if "EMWS1.TextParsing_stopList"="work.internal_synds" and anypunct(term,1) > 0 then do;
+MPRINT(FIND_MULTIWORD_TERMS):   term = prxchange('s/([\/\\<>,()])/ $1 /', -1, term);
+MPRINT(FIND_MULTIWORD_TERMS):   if role ne '' then category = role;
+MPRINT(FIND_MULTIWORD_TERMS):   if category in ('Adj','Adv','Noun','Prep','Conj','Interj','Pron','Prop', 'Verbadj') then role=category;
+MPRINT(FIND_MULTIWORD_TERMS):   else if category eq 'NOUN_GROUP' then role = 'Noun';
+MPRINT(FIND_MULTIWORD_TERMS):   else if category eq '' then role='Noun';
+MPRINT(FIND_MULTIWORD_TERMS):   else role = 'Prop';
+MPRINT(FIND_MULTIWORD_TERMS):   output;
+MPRINT(FIND_MULTIWORD_TERMS):   end;
+MPRINT(FIND_MULTIWORD_TERMS):   if lengthn(kcompress(ktrim(parent))) < lengthn(ktrim(parent)) and ktrim(parent) ne ktrim(term) then do;
+MPRINT(FIND_MULTIWORD_TERMS):   term = parent;
+MPRINT(FIND_MULTIWORD_TERMS):   if parentrole ne '' then category = childrole;
+MPRINT(FIND_MULTIWORD_TERMS):   if category in ('Adj','Adv','Noun','Prep','Conj','Interj','Pron','Prop', 'Verbadj') then role=category;
+MPRINT(FIND_MULTIWORD_TERMS):   else if category eq 'NOUN_GROUP' then role = 'Noun';
+MPRINT(FIND_MULTIWORD_TERMS):   else if category eq '' then role='Noun';
+MPRINT(FIND_MULTIWORD_TERMS):   else role = 'Prop';
+MPRINT(FIND_MULTIWORD_TERMS):   output;
+MPRINT(FIND_MULTIWORD_TERMS):   end;
+MPRINT(FIND_MULTIWORD_TERMS):   run;
+
+NOTE: Variable child is uninitialized.
+NOTE: Variable childrole is uninitialized.
+NOTE: Variable parent is uninitialized.
+NOTE: Variable parentrole is uninitialized.
+NOTE: There were 509 observations read from the data set EMWS1.TEXTPARSING_STOPLIST.
+NOTE: The data set EMWS1.TEXTPARSING_STOPLIST_TEMP has 2 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+MPRINT(FIND_MULTIWORD_TERMS):   proc append base=_multiterms_ data=EMWS1.TextParsing_stopList_temp force;
+MPRINT(FIND_MULTIWORD_TERMS):   run;
+
+NOTE: Appending EMWS1.TEXTPARSING_STOPLIST_TEMP to WORK._MULTITERMS_.
+NOTE: There were 2 observations read from the data set EMWS1.TEXTPARSING_STOPLIST_TEMP.
+NOTE: 2 observations added.
+NOTE: The data set WORK._MULTITERMS_ has 3 observations and 2 variables.
+NOTE: PROCEDURE APPEND used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+MPRINT(FIND_MULTIWORD_TERMS):   proc sql noprint;
+MPRINT(FIND_MULTIWORD_TERMS):   drop table EMWS1.TextParsing_stopList_temp;
+NOTE: Table EMWS1.TEXTPARSING_STOPLIST_TEMP has been dropped.
+MPRINT(FIND_MULTIWORD_TERMS):   quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+MPRINT(TMWRITEMULTI):  ;
+MPRINT(TMWRITEMULTI):   * check the startTerms ds for multiword terms;
+MPRINT(TMWRITEMULTI):   * check the multids for multiword terms ;
+MPRINT(TMWRITEMULTI):   data EMWS1.TextParsing_multiDS_temp;
+MPRINT(TMWRITEMULTI):   length term $256 role $256;
+MPRINT(TMWRITEMULTI):   set EMWS1.TextParsing_multiDS;
+MPRINT(TMWRITEMULTI):   if role eq '' then role='Noun';
+MPRINT(TMWRITEMULTI):   run;
+
+NOTE: There were 398 observations read from the data set EMWS1.TEXTPARSING_MULTIDS.
+NOTE: The data set EMWS1.TEXTPARSING_MULTIDS_TEMP has 398 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+MPRINT(TMWRITEMULTI):   proc append base=_multiterms_ data=EMWS1.TextParsing_multiDS_temp force;
+MPRINT(TMWRITEMULTI):   run;
+
+NOTE: Appending EMWS1.TEXTPARSING_MULTIDS_TEMP to WORK._MULTITERMS_.
+NOTE: There were 398 observations read from the data set EMWS1.TEXTPARSING_MULTIDS_TEMP.
+NOTE: 398 observations added.
+NOTE: The data set WORK._MULTITERMS_ has 401 observations and 2 variables.
+NOTE: PROCEDURE APPEND used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+MPRINT(TMWRITEMULTI):   proc sql noprint;
+MPRINT(TMWRITEMULTI):   drop table EMWS1.TextParsing_multiDS_temp;
+NOTE: Table EMWS1.TEXTPARSING_MULTIDS_TEMP has been dropped.
+NOTE: PROC SQL statements are executed immediately; The RUN statement has no effect.
+MPRINT(TMWRITEMULTI):   run;
+MPRINT(TMWRITEMULTI):   * add lower and upper case variations to the multi word terms ;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+MPRINT(TMWRITEMULTI):   data _multiterms_;
+MPRINT(TMWRITEMULTI):   set _multiterms_;
+MPRINT(TMWRITEMULTI):   * output exactly as is ;
+MPRINT(TMWRITEMULTI):   output;
+MPRINT(TMWRITEMULTI):   * output lower case versions ;
+MPRINT(TMWRITEMULTI):   term=lowcase(term);
+MPRINT(TMWRITEMULTI):   output;
+MPRINT(TMWRITEMULTI):   * output upper case versions ;
+MPRINT(TMWRITEMULTI):   term=upcase(term);
+MPRINT(TMWRITEMULTI):   output;
+MPRINT(TMWRITEMULTI):   * output uppercase first letter of each term, lower rest ;
+MPRINT(TMWRITEMULTI):   term = propcase(term);
+MPRINT(TMWRITEMULTI):   output;
+MPRINT(TMWRITEMULTI):   run;
+
+NOTE: There were 401 observations read from the data set WORK._MULTITERMS_.
+NOTE: The data set WORK._MULTITERMS_ has 1604 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+MPRINT(TMWRITEMULTI):   * remove duplicate term entries ;
+MPRINT(TMWRITEMULTI):   proc sort data= _multiterms_ nodupkey;
+MPRINT(TMWRITEMULTI):   by term role;
+MPRINT(TMWRITEMULTI):   run;
+
+NOTE: There were 1604 observations read from the data set WORK._MULTITERMS_.
+NOTE: 401 observations with duplicate key values were deleted.
+NOTE: The data set WORK._MULTITERMS_ has 1203 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+MPRINT(TMWRITEMULTI):   filename _multout "F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Songs\SAS_Miner\Songs\Workspaces\EMWS1\TextParsing\multiword.txt";
+MPRINT(TMWRITEMULTI):   * write out all the multiword terms ;
+MPRINT(TMWRITEMULTI):   data EMWS1.TextParsing_multiall;
+MPRINT(TMWRITEMULTI):   set _multiterms_;
+MPRINT(TMWRITEMULTI):   file _multout encoding="windows-1252";
+MPRINT(TMWRITEMULTI):   put term ':3:' role;
+MPRINT(TMWRITEMULTI):   run;
+
+NOTE: The file _MULTOUT is:
+      Filename=F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Songs\SAS_Miner\Songs\Workspaces\EMWS1\TextParsing\multiword.txt,
+      RECFM=V,LRECL=256,File Size (bytes)=0,
+      Last Modified=16 December 2015 16:52:33 o'cl,
+      Create Time=16 December 2015 16:52:33 o'cl
+
+NOTE: 1203 records were written to the file _MULTOUT.
+      The minimum record length was 12.
+      The maximum record length was 29.
+NOTE: There were 1203 observations read from the data set WORK._MULTITERMS_.
+NOTE: The data set EMWS1.TEXTPARSING_MULTIALL has 1203 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+      
+
+MPRINT(TRAIN):  ;
+MPRINT(TM_PARSE):   proc sql noprint;
+MPRINT(TM_PARSE):   drop table EMWS1.TextParsing_tmconfig;
+WARNING: File EMWS1.TEXTPARSING_TMCONFIG.DATA does not exist.
+WARNING: Table EMWS1.TEXTPARSING_TMCONFIG has not been dropped.
+MPRINT(TM_PARSE):   quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+MPRINT(TM_PARSE):   data _null_;
+MPRINT(TM_PARSE):   posignore = "'AUX' 'CONJ' 'DET' 'INTERJ' 'PART' 'PREP' 'PRON'";
+MPRINT(TM_PARSE):   posignore = transtrn(posignore, "'", '"');
+MPRINT(TM_PARSE):   call symput("posignore", posignore);
+MPRINT(TM_PARSE):   attribignore = "'NUM' 'PUNCT'";
+MPRINT(TM_PARSE):   attribignore = transtrn(attribignore, "'", '"');
+MPRINT(TM_PARSE):   call symput("attribignore", attribignore);
+MPRINT(TM_PARSE):   run;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+MPRINT(TM_PARSE):   proc sql noprint;
+MPRINT(TM_PARSE):   select count(*) into :stoplist_count from EMWS1.TextParsing_stopList;
+MPRINT(TM_PARSE):   select count(*) into :startlist_count from EMWS1.TextParsing_startList;
+MPRINT(TM_PARSE):   select count(*) into :synds_count from work.internal_synds;
+MPRINT(TM_PARSE):   quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: Begin parsing the document.
+MPRINT(TM_PARSE):   proc tgparse data=EMWS1.Ids2_DATA key=EMWS1.TextParsing_terms out=EMWS1.TextParsing_tmout config=EMWS1.TextParsing_tmconfig syn=work.internal_synds 
+multiterm="F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Songs\SAS_Miner\Songs\Workspaces\EMWS1\TextParsing\multiword.txt" stemming=yes tagging=yes entities=no buildindex=yes 
+indexpath="F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Songs\SAS_Miner\Songs\Workspaces\EMWS1\TextParsing\" stop=EMWS1.TextParsing_stopList ng=std
+MPRINT(TM_PARSE):   language=
+MPRINT(LOWCASE):  english
+MPRINT(TM_PARSE):   outoffset=EMWS1.TextParsing_tmoutpos addsentence addparagraph ;
+MPRINT(TM_PARSE):   var song_name ;
+MPRINT(TM_PARSE):   select "AUX" "CONJ" "DET" "INTERJ" "PART" "PREP" "PRON" "Newline" / drop;
+MPRINT(TM_PARSE):   select "NUM" "PUNCT" / group="attributes" drop ;
+MPRINT(TM_PARSE):   ;
+MPRINT(TM_PARSE):   run;
+
+NOTE: Input data set EMWS1.IDS2_DATA successfully opened.
+NOTE: Input data set WORK.INTERNAL_SYNDS successfully opened.
+NOTE: Reading variable number 15 as a body of text.
+NOTE: The data set EMWS1.TEXTPARSING_TERMS has 3397 observations and 10 variables.
+NOTE: The data set EMWS1.TEXTPARSING_TMOUT has 6406 observations and 3 variables.
+NOTE: View EMWS1.IDS2_DATA.VIEW used (Total process time):
+      real time           6.18 seconds
+      cpu time            3.12 seconds
+      
+NOTE: There were 2276 observations read from the data set DM.SONGS_WITHID.
+NOTE: There were 2276 observations read from the data set EMWS1.IDS2_DATA.
+NOTE: There were 509 observations read from the data set EMWS1.TEXTPARSING_STOPLIST.
+NOTE: The data set EMWS1.TEXTPARSING_TMOUTPOS has 6459 observations and 7 variables.
+NOTE: PROCEDURE TGPARSE used (Total process time):
+      real time           6.23 seconds
+      cpu time            3.14 seconds
+      
+
+MPRINT(TRAIN):  ;
+MPRINT(TRAIN):   proc sql;
+MPRINT(TRAIN):   create table EMWS1.TextParsing_terms as select a.key label= "Key", a.term label= "Term", a.role, case a.role when 'Abbr' then "Abbr" when 'Adj' then "Adj" when 'Adv' then "Adv" when 'Aux' then "Aux" when 'Conj' then "Conj" when 'Det' then 
+"Det" when 'Interj' then "Interj" when 'Noun' then "Noun" when 'Num' then "Num" when 'Part' then "Part" when 'Pref' then "Pref" when 'Prep' then "Prep" when 'Pron' then "Pron" when 'Prop' then "Prop" when 'Punct' then "Punct" when 'Verb' then "Verb" when 
+'VerbAdj' then "VerbAdj" when 'PERSON' then "Person" when 'ORGANIZATION' then "Organization" when 'LOCATION' then "Location" when 'COMPANY' then "Company" when 'TITLE' then "Title" when 'PHONE' then "Phone Number" when 'DATE' then "Date" when 'TIME' then 
+"Time" when 'INTERNET' then "Internet" when 'MEASURE' then "Measure" when 'NOUN_GROUP' then "Noun Group" when 'SSN' then "Social Security Number" when 'CURRENCY' then "Currency" when 'PERCENT' then "Percent" when 'TIME_PERIOD' then "Time Period" when 
+'PROP_MISC' then "Miscellaneous Proper Noun" when 'VEHICLE' then "Vehicle" when 'ADDRESS' then "Address" else a.role end as rolestring label="Role", a.attribute, case a.attribute when 'Alpha' then "Alpha" when 'Mixed' then "Mixed" when 'Num' then "Num" 
+when 'Entity' then "Entity" else a.ATTRIBUTE end as attrstring label="Attribute", a.freq label="Freq", a.numdocs label="# Docs", a.keep label="Keep", a._ispar label="Parent/Child Status", a.parent label="Parent", a.parent_id label="Parent ID" from 
+EMWS1.TextParsing_terms a;
+WARNING: This CREATE TABLE statement recursively references the target table. A consequence of this is a possible data integrity problem.
+NOTE: Table EMWS1.TEXTPARSING_TERMS created, with 3397 rows and 12 columns.
+
+MPRINT(TRAIN):   quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.28 seconds
+      cpu time            0.18 seconds
+      
+
+MPRINT(TRAIN):   data EMWS1.TextParsing_tmconfig;
+MPRINT(TRAIN):   length multiencoding $24;
+MPRINT(TRAIN):   set EMWS1.TextParsing_tmconfig;
+MPRINT(TRAIN):   parseVar = lowcase("song_name                       ");
+MPRINT(TRAIN):   displayVar = lowcase("");
+MPRINT(TRAIN):   indexpath = "F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Songs\SAS_Miner\Songs\Workspaces\EMWS1\TextParsing\";
+MPRINT(TRAIN):   multiencoding="windows-1252";
+MPRINT(TRAIN):   run;
+
+NOTE: There were 1 observations read from the data set EMWS1.TEXTPARSING_TMCONFIG.
+NOTE: The data set EMWS1.TEXTPARSING_TMCONFIG has 1 observations and 19 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+MPRINT(TRAIN):   proc sort data=EMWS1.TextParsing_terms;
+MPRINT(TRAIN):   by term role;
+MPRINT(TRAIN):   run;
+
+NOTE: There were 3397 observations read from the data set EMWS1.TEXTPARSING_TERMS.
+NOTE: The data set EMWS1.TEXTPARSING_TERMS has 3397 observations and 12 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.03 seconds
+      
+
+MPRINT(TRAIN):   data EMWS1.TextParsing_EMINFO;
+MPRINT(TRAIN):   length TARGET KEY $32 DATA $43;
+MPRINT(TRAIN):   key="LastTMNode";
+MPRINT(TRAIN):   data="TextParsing";
+MPRINT(TRAIN):   output;
+MPRINT(TRAIN):   key="LastTMNodeType";
+MPRINT(TRAIN):   data="TextParsing";
+MPRINT(TRAIN):   output;
+MPRINT(TRAIN):   key="LastTextParsing";
+MPRINT(TRAIN):   data="TextParsing";
+MPRINT(TRAIN):   output;
+MPRINT(TRAIN):   key="PRESCORECODE";
+MPRINT(TRAIN):   data="TextParsing";
+MPRINT(TRAIN):   output;
+MPRINT(TRAIN):   run;
+
+NOTE: Variable TARGET is uninitialized.
+NOTE: The data set EMWS1.TEXTPARSING_EMINFO has 4 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+MPRINT(TRAIN):   filename temp;
+WARNING: No logical assign for filename TEMP.
+MPRINT(MAIN):  ;
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * End TRAIN: TextParsing;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+22042      
+22043      
+22044      *------------------------------------------------------------*;
+22045      * End TRAIN: TextParsing;
+22046      *------------------------------------------------------------*;
+
+22047      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):    *------------------------------------------------------------*;
+22048      * Close any missing semi colons;
+MPRINT(EM_DIAGRAM):   * Close any missing semi colons;
+22049      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+22050      ;
+MPRINT(EM_DIAGRAM):   ;
+22051      ;
+MPRINT(EM_DIAGRAM):   ;
+22052      ;
+MPRINT(EM_DIAGRAM):   ;
+22053      ;
+MPRINT(EM_DIAGRAM):   ;
+22054      quit;
+MPRINT(EM_DIAGRAM):   quit;
+22055      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+22056      * Close any unbalanced quotes;
+MPRINT(EM_DIAGRAM):   * Close any unbalanced quotes;
+22057      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+22058      /*; *"; *'; */
+22059      ;
+MPRINT(EM_DIAGRAM):   ;
+22060      run;
+MPRINT(EM_DIAGRAM):   run;
+22061      quit;
+MPRINT(EM_DIAGRAM):   quit;
+22062      /* Reset EM Options */
+22063      options formchar="|----|+|---+=|-/\<>*";
+MPRINT(EM_DIAGRAM):   options formchar="|----|+|---+=|-/\<>*";
+22064      options nocenter ls=256 ps=10000;
+MPRINT(EM_DIAGRAM):   options nocenter ls=256 ps=10000;
+22065      goptions reset=all device=WMF NODISPLAY;
+MPRINT(EM_DIAGRAM):   goptions reset=all device=WMF NODISPLAY;
+22066      proc sort data=WORK.EM_METACHANGE;
+MPRINT(EM_DIAGRAM):    proc sort data=WORK.EM_METACHANGE;
+22067      by key uname;
+MPRINT(EM_DIAGRAM):   by key uname;
+22068      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 1 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 1 observations and 9 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+22069      filename x "F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Songs\SAS_Miner\Songs\Workspaces\EMWS1\TextParsing\CDELTA_TRAIN.sas";
+MPRINT(EM_DIAGRAM):    filename x "F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Songs\SAS_Miner\Songs\Workspaces\EMWS1\TextParsing\CDELTA_TRAIN.sas";
+22070      data _null_;
+MPRINT(EM_DIAGRAM):   data _null_;
+22071      file x;
+MPRINT(EM_DIAGRAM):   file x;
+22072      put 'if upcase(NAME) = "_DOCUMENT_" then do;';
+MPRINT(EM_DIAGRAM):   put 'if upcase(NAME) = "_DOCUMENT_" then do;';
+22073      put 'ROLE = "ID";';
+MPRINT(EM_DIAGRAM):   put 'ROLE = "ID";';
+22074      put 'LEVEL = "NOMINAL";';
+MPRINT(EM_DIAGRAM):   put 'LEVEL = "NOMINAL";';
+22075      put 'end;';
+MPRINT(EM_DIAGRAM):   put 'end;';
+22076      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: The file X is:
+      Filename=F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Songs\SAS_Miner\Songs\Workspaces\EMWS1\TextParsing\CDELTA_TRAIN.sas,
+      RECFM=V,LRECL=256,File Size (bytes)=0,
+      Last Modified=16 December 2015 16:52:40 o'cl,
+      Create Time=16 December 2015 16:51:37 o'cl
+
+NOTE: 4 records were written to the file X.
+      The minimum record length was 4.
+      The maximum record length was 39.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+22077      filename x;
+MPRINT(EM_DIAGRAM):   filename x;
+NOTE: Fileref X has been deassigned.
+MPRINT(EM_DIAGRAM):    proc printto;
+MPRINT(EM_DIAGRAM):   run;

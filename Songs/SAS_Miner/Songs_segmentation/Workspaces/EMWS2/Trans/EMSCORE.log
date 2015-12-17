@@ -1,0 +1,971 @@
+MPRINT(EM_DIAGRAM):    data _null_;
+MPRINT(EM_DIAGRAM):   call symput('NLDATE', strip(put(date(), NLDATE.)));
+MPRINT(EM_DIAGRAM):   call symput('NLTIME', strip(put(datetime(), NLTIME.)));
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   data _null_;
+MPRINT(EM_DIAGRAM):   nldate= sasmsg("sashelp.dmine", "log_date_note", 'N', "17-12-2015" );
+MPRINT(EM_DIAGRAM):   nltime= sasmsg("sashelp.dmine", "log_time_note", 'N', "00H42m" );
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   put "* Score Log";
+MPRINT(EM_DIAGRAM):   put nldate;
+MPRINT(EM_DIAGRAM):   put nltime;
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   run;
+*------------------------------------------------------------*
+* Score Log
+Date:                17-12-2015
+Time:                00H42m
+*------------------------------------------------------------*
+MPRINT(EM_DIAGRAM):    filename O3A56YYM "C:\Users\VM-SAS\Documents\GitHub\DataMining\Songs\SAS_Miner\Songs_segmentation\Workspaces\EMWS2\Trans\EMSCORE.out" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):   proc printto print=O3A56YYM new;
+MPRINT(EM_DIAGRAM):   run;
+27838      proc FCMP NOEXECUTE IMPUTEDDEPS OUTDEPS=WORK._CODEINPUT1;
+MPRINT(EM_DIAGRAM):    proc FCMP NOEXECUTE IMPUTEDDEPS OUTDEPS=WORK._CODEINPUT1;
+27839      R_energy = (1/3)*(energy - MIN(energy,energy)) /(MAX(energy,energy) - MIN(energy,energy));
+MPRINT(EM_DIAGRAM):   R_energy = (1/3)*(energy - MIN(energy,energy)) /(MAX(energy,energy) - MIN(energy,energy));
+27840      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: Dependency structure written to data set WORK._CODEINPUT1.
+NOTE: PROCEDURE FCMP used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+MPRINT(EM_DIAGRAM):   quit;
+27841      quit;
+
+27842      data WORK._CODEINPUT1;
+MPRINT(EM_DIAGRAM):    data WORK._CODEINPUT1;
+27843      length ROLE $32 LEVEL $8 REPORT $1;
+MPRINT(EM_DIAGRAM):   length ROLE $32 LEVEL $8 REPORT $1;
+27844      retain _FormulaNum 1 ROLE "INPUT" REPORT "N" LEVEL "INTERVAL";
+MPRINT(EM_DIAGRAM):   retain _FormulaNum 1 ROLE "INPUT" REPORT "N" LEVEL "INTERVAL";
+27845      set WORK._CODEINPUT1(keep=RHS rename=(RHS=INPUTNAME));
+MPRINT(EM_DIAGRAM):   set WORK._CODEINPUT1(keep=RHS rename=(RHS=INPUTNAME));
+27846      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 1 observations read from the data set WORK._CODEINPUT1.
+NOTE: The data set WORK._CODEINPUT1 has 1 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.00 seconds
+      
+
+27847      proc sort data=WORK._CODEINPUT1 NODUPKEY;
+MPRINT(EM_DIAGRAM):   proc sort data=WORK._CODEINPUT1 NODUPKEY;
+27848      by INPUTNAME;
+MPRINT(EM_DIAGRAM):   by INPUTNAME;
+27849      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 1 observations read from the data set WORK._CODEINPUT1.
+NOTE: 0 observations with duplicate key values were deleted.
+NOTE: The data set WORK._CODEINPUT1 has 1 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.00 seconds
+      
+
+27850      proc append base=WORK.TRANS_FORMULAVARS data=WORK._CODEINPUT1;
+MPRINT(EM_DIAGRAM):   proc append base=WORK.TRANS_FORMULAVARS data=WORK._CODEINPUT1;
+27851      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: Appending WORK._CODEINPUT1 to WORK.TRANS_FORMULAVARS.
+NOTE: BASE data set does not exist. DATA file is being copied to BASE file.
+NOTE: There were 1 observations read from the data set WORK._CODEINPUT1.
+NOTE: The data set WORK.TRANS_FORMULAVARS has 1 observations and 5 variables.
+NOTE: PROCEDURE APPEND used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.00 seconds
+      
+
+27852      proc FCMP NOEXECUTE IMPUTEDDEPS OUTDEPS=WORK._CODEINPUT2;
+MPRINT(EM_DIAGRAM):    proc FCMP NOEXECUTE IMPUTEDDEPS OUTDEPS=WORK._CODEINPUT2;
+27853      R_electro = (1/3)*(1-(acousticness - MIN(acousticness,acousticness)) /(MAX(acousticness,acousticness) - MIN(acousticness,acousticness)));
+MPRINT(EM_DIAGRAM):   R_electro = (1/3)*(1-(acousticness - MIN(acousticness,acousticness)) /(MAX(acousticness,acousticness) - MIN(acousticness,acousticness)));
+27854      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: Dependency structure written to data set WORK._CODEINPUT2.
+NOTE: PROCEDURE FCMP used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+MPRINT(EM_DIAGRAM):   quit;
+27855      quit;
+
+27856      data WORK._CODEINPUT2;
+MPRINT(EM_DIAGRAM):    data WORK._CODEINPUT2;
+27857      length ROLE $32 LEVEL $8 REPORT $1;
+MPRINT(EM_DIAGRAM):   length ROLE $32 LEVEL $8 REPORT $1;
+27858      retain _FormulaNum 2 ROLE "INPUT" REPORT "N" LEVEL "INTERVAL";
+MPRINT(EM_DIAGRAM):   retain _FormulaNum 2 ROLE "INPUT" REPORT "N" LEVEL "INTERVAL";
+27859      set WORK._CODEINPUT2(keep=RHS rename=(RHS=INPUTNAME));
+MPRINT(EM_DIAGRAM):   set WORK._CODEINPUT2(keep=RHS rename=(RHS=INPUTNAME));
+27860      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 1 observations read from the data set WORK._CODEINPUT2.
+NOTE: The data set WORK._CODEINPUT2 has 1 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+27861      proc sort data=WORK._CODEINPUT2 NODUPKEY;
+MPRINT(EM_DIAGRAM):   proc sort data=WORK._CODEINPUT2 NODUPKEY;
+27862      by INPUTNAME;
+MPRINT(EM_DIAGRAM):   by INPUTNAME;
+27863      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 1 observations read from the data set WORK._CODEINPUT2.
+NOTE: 0 observations with duplicate key values were deleted.
+NOTE: The data set WORK._CODEINPUT2 has 1 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.12 seconds
+      cpu time            0.00 seconds
+      
+
+27864      proc append base=WORK.TRANS_FORMULAVARS data=WORK._CODEINPUT2;
+MPRINT(EM_DIAGRAM):   proc append base=WORK.TRANS_FORMULAVARS data=WORK._CODEINPUT2;
+27865      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: Appending WORK._CODEINPUT2 to WORK.TRANS_FORMULAVARS.
+NOTE: There were 1 observations read from the data set WORK._CODEINPUT2.
+NOTE: 1 observations added.
+NOTE: The data set WORK.TRANS_FORMULAVARS has 2 observations and 5 variables.
+NOTE: PROCEDURE APPEND used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+27866      proc FCMP NOEXECUTE IMPUTEDDEPS OUTDEPS=WORK._CODEINPUT3;
+MPRINT(EM_DIAGRAM):    proc FCMP NOEXECUTE IMPUTEDDEPS OUTDEPS=WORK._CODEINPUT3;
+27867      R_loud = (1/3)* (loudness- MIN(loudness,loudness)) /(MAX(loudness,loudness) - MIN(loudness,loudness));
+MPRINT(EM_DIAGRAM):   R_loud = (1/3)* (loudness- MIN(loudness,loudness)) /(MAX(loudness,loudness) - MIN(loudness,loudness));
+27868      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: Dependency structure written to data set WORK._CODEINPUT3.
+NOTE: PROCEDURE FCMP used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+MPRINT(EM_DIAGRAM):   quit;
+27869      quit;
+
+27870      data WORK._CODEINPUT3;
+MPRINT(EM_DIAGRAM):    data WORK._CODEINPUT3;
+27871      length ROLE $32 LEVEL $8 REPORT $1;
+MPRINT(EM_DIAGRAM):   length ROLE $32 LEVEL $8 REPORT $1;
+27872      retain _FormulaNum 3 ROLE "INPUT" REPORT "N" LEVEL "INTERVAL";
+MPRINT(EM_DIAGRAM):   retain _FormulaNum 3 ROLE "INPUT" REPORT "N" LEVEL "INTERVAL";
+27873      set WORK._CODEINPUT3(keep=RHS rename=(RHS=INPUTNAME));
+MPRINT(EM_DIAGRAM):   set WORK._CODEINPUT3(keep=RHS rename=(RHS=INPUTNAME));
+27874      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 1 observations read from the data set WORK._CODEINPUT3.
+NOTE: The data set WORK._CODEINPUT3 has 1 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+27875      proc sort data=WORK._CODEINPUT3 NODUPKEY;
+MPRINT(EM_DIAGRAM):   proc sort data=WORK._CODEINPUT3 NODUPKEY;
+27876      by INPUTNAME;
+MPRINT(EM_DIAGRAM):   by INPUTNAME;
+27877      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 1 observations read from the data set WORK._CODEINPUT3.
+NOTE: 0 observations with duplicate key values were deleted.
+NOTE: The data set WORK._CODEINPUT3 has 1 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+27878      proc append base=WORK.TRANS_FORMULAVARS data=WORK._CODEINPUT3;
+MPRINT(EM_DIAGRAM):   proc append base=WORK.TRANS_FORMULAVARS data=WORK._CODEINPUT3;
+27879      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: Appending WORK._CODEINPUT3 to WORK.TRANS_FORMULAVARS.
+NOTE: There were 1 observations read from the data set WORK._CODEINPUT3.
+NOTE: 1 observations added.
+NOTE: The data set WORK.TRANS_FORMULAVARS has 3 observations and 5 variables.
+NOTE: PROCEDURE APPEND used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+27880      data WORK.TRANS_FORMULAVARS;
+MPRINT(EM_DIAGRAM):    data WORK.TRANS_FORMULAVARS;
+27881      length UNAME $32;
+MPRINT(EM_DIAGRAM):   length UNAME $32;
+27882      set WORK.TRANS_FORMULAVARS;
+MPRINT(EM_DIAGRAM):   set WORK.TRANS_FORMULAVARS;
+27883      UNAME = upcase(INPUTNAME);
+MPRINT(EM_DIAGRAM):   UNAME = upcase(INPUTNAME);
+27884      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 3 observations read from the data set WORK.TRANS_FORMULAVARS.
+NOTE: The data set WORK.TRANS_FORMULAVARS has 3 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+27885      proc sort data=WORK.TRANS_FORMULAVARS;
+MPRINT(EM_DIAGRAM):   proc sort data=WORK.TRANS_FORMULAVARS;
+27886      by UNAME;
+MPRINT(EM_DIAGRAM):   by UNAME;
+27887      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 3 observations read from the data set WORK.TRANS_FORMULAVARS.
+NOTE: The data set WORK.TRANS_FORMULAVARS has 3 observations and 6 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+27888      data _temp;
+MPRINT(EM_DIAGRAM):   data _temp;
+27889      set EMWS2.Trans_VariableSet(keep=NAME LEVEL ROLE TYPE REPORT rename=(NAME=INPUTNAME LEVEL=INPUTLEVEL ROLE=INPUTROLE TYPE=INPUTTYPE REPORT=INPUTREPORT));
+MPRINT(EM_DIAGRAM):   set EMWS2.Trans_VariableSet(keep=NAME LEVEL ROLE TYPE REPORT rename=(NAME=INPUTNAME LEVEL=INPUTLEVEL ROLE=INPUTROLE TYPE=INPUTTYPE REPORT=INPUTREPORT));
+27890      length UNAME $32;
+MPRINT(EM_DIAGRAM):   length UNAME $32;
+27891      UNAME = upcase(INPUTNAME);
+MPRINT(EM_DIAGRAM):   UNAME = upcase(INPUTNAME);
+27892      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 13 observations read from the data set EMWS2.TRANS_VARIABLESET.
+NOTE: The data set WORK._TEMP has 13 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+27893      proc sort data=_temp;
+MPRINT(EM_DIAGRAM):   proc sort data=_temp;
+27894      by UNAME;
+MPRINT(EM_DIAGRAM):   by UNAME;
+27895      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 13 observations read from the data set WORK._TEMP.
+NOTE: The data set WORK._TEMP has 13 observations and 6 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+27896      data WORK.TRANS_FORMULAVARS;
+MPRINT(EM_DIAGRAM):   data WORK.TRANS_FORMULAVARS;
+27897      merge WORK.TRANS_FORMULAVARS(in=_a) _temp(in=_b);
+MPRINT(EM_DIAGRAM):   merge WORK.TRANS_FORMULAVARS(in=_a) _temp(in=_b);
+27898      by UNAME;
+MPRINT(EM_DIAGRAM):   by UNAME;
+27899      if _a and _b then output;
+MPRINT(EM_DIAGRAM):   if _a and _b then output;
+27900      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 3 observations read from the data set WORK.TRANS_FORMULAVARS.
+NOTE: There were 13 observations read from the data set WORK._TEMP.
+NOTE: The data set WORK.TRANS_FORMULAVARS has 3 observations and 10 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+27901      proc sort data=WORK.TRANS_FORMULAVARS;
+MPRINT(EM_DIAGRAM):   proc sort data=WORK.TRANS_FORMULAVARS;
+27902      by _FormulaNum UNAME;
+MPRINT(EM_DIAGRAM):   by _FormulaNum UNAME;
+27903      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 3 observations read from the data set WORK.TRANS_FORMULAVARS.
+NOTE: The data set WORK.TRANS_FORMULAVARS has 3 observations and 10 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.00 seconds
+      
+
+27904      data WORK.TRANS_FORMULAVARS _target(keep=_FormulaNum);
+MPRINT(EM_DIAGRAM):   data WORK.TRANS_FORMULAVARS _target(keep=_FormulaNum);
+27905      length ROLE $32 REPORT $1;
+MPRINT(EM_DIAGRAM):   length ROLE $32 REPORT $1;
+27906      set WORK.TRANS_FORMULAVARS;
+MPRINT(EM_DIAGRAM):   set WORK.TRANS_FORMULAVARS;
+27907      by _FormulaNum;
+MPRINT(EM_DIAGRAM):   by _FormulaNum;
+27908      if INPUTROLE = 'TARGET' then output _target;
+MPRINT(EM_DIAGRAM):   if INPUTROLE = 'TARGET' then output _target;
+27909      if first._FormulaNum then do;
+MPRINT(EM_DIAGRAM):   if first._FormulaNum then do;
+27910      if ^last._FormulaNum then do;
+MPRINT(EM_DIAGRAM):   if ^last._FormulaNum then do;
+27911      INPUTNAME='';
+MPRINT(EM_DIAGRAM):   INPUTNAME='';
+27912      INPUTROLE='';
+MPRINT(EM_DIAGRAM):   INPUTROLE='';
+27913      INPUTTYPE='';
+MPRINT(EM_DIAGRAM):   INPUTTYPE='';
+27914      INPUTREPORT='';
+MPRINT(EM_DIAGRAM):   INPUTREPORT='';
+27915      end;
+MPRINT(EM_DIAGRAM):   end;
+27916      output WORK.TRANS_FORMULAVARS;
+MPRINT(EM_DIAGRAM):   output WORK.TRANS_FORMULAVARS;
+27917      end;
+MPRINT(EM_DIAGRAM):   end;
+27918      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 3 observations read from the data set WORK.TRANS_FORMULAVARS.
+NOTE: The data set WORK.TRANS_FORMULAVARS has 3 observations and 10 variables.
+NOTE: The data set WORK._TARGET has 0 observations and 1 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+27919      data _temp;
+MPRINT(EM_DIAGRAM):   data _temp;
+27920      set EMWS2.Trans_FORMULA;
+MPRINT(EM_DIAGRAM):   set EMWS2.Trans_FORMULA;
+27921      _FormulaNum = _N_;
+MPRINT(EM_DIAGRAM):   _FormulaNum = _N_;
+27922      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 3 observations read from the data set EMWS2.TRANS_FORMULA.
+NOTE: The data set WORK._TEMP has 3 observations and 18 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+27923      data WORK.TRANS_CODEFORMULA;
+MPRINT(EM_DIAGRAM):   data WORK.TRANS_CODEFORMULA;
+27924      length Name $32 Formula $300 Role $32 Level $10 REPORT $1;
+MPRINT(EM_DIAGRAM):   length Name $32 Formula $300 Role $32 Level $10 REPORT $1;
+27925      label NAME = "%sysfunc(sasmsg(sashelp.dmine, meta_name_vlabel,  NOQUOTE))" FORMULA = "%sysfunc(sasmsg(sashelp.dmine, rpt_formula_vlabel,  NOQUOTE))" ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel,  NOQUOTE))" LEVEL =
+27926         "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel,  NOQUOTE))" REPORT = "%sysfunc(sasmsg(sashelp.dmine, meta_report_vlabel,  NOQUOTE))" _targetFlag = "%sysfunc(sasmsg(sashelp.dmine, rpt_targetbased_vlabel,  NOQUOTE))" INPUTNAME =
+27927         "%sysfunc(sasmsg(sashelp.dmine, rpt_inputname_vlabel,  NOQUOTE))" INPUTLEVEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_inputlevel_vlabel,  NOQUOTE))" INPUTROLE = "%sysfunc(sasmsg(sashelp.dmine, rpt_inputrole_vlabel,  NOQUOTE))" INPUTTYPE =
+27928         "%sysfunc(sasmsg(sashelp.dmine, rpt_inputtype_vlabel,  NOQUOTE))";
+MPRINT(EM_DIAGRAM):   label NAME = "Variable Name" FORMULA = "Formula" ROLE = "Role" LEVEL = "Measurement Level" REPORT = "Report" _targetFlag = "Target Based" INPUTNAME = "Input Name" INPUTLEVEL = "Input Level" INPUTROLE = "Input Role" INPUTTYPE = "Input 
+Type";
+27929      drop _FormulaNum UNAME;
+MPRINT(EM_DIAGRAM):   drop _FormulaNum UNAME;
+27930      _targetFlag = 0;
+MPRINT(EM_DIAGRAM):   _targetFlag = 0;
+27931      merge _temp(in=_a) WORK.TRANS_FORMULAVARS(in=_b) _target(in=_c);
+MPRINT(EM_DIAGRAM):   merge _temp(in=_a) WORK.TRANS_FORMULAVARS(in=_b) _target(in=_c);
+27932      by _FormulaNum;
+MPRINT(EM_DIAGRAM):   by _FormulaNum;
+27933      _targetFlag = 0;
+MPRINT(EM_DIAGRAM):   _targetFlag = 0;
+27934      if _c then _targetFlag=1;
+MPRINT(EM_DIAGRAM):   if _c then _targetFlag=1;
+27935      if INPUT ne '' then if _a and ^_b then delete;
+MPRINT(EM_DIAGRAM):   if INPUT ne '' then if _a and ^_b then delete;
+27936      if ROLE = '' then do;
+MPRINT(EM_DIAGRAM):   if ROLE = '' then do;
+27937      if INPUTROLE = '' then ROLE='INPUT';
+MPRINT(EM_DIAGRAM):   if INPUTROLE = '' then ROLE='INPUT';
+27938      else ROLE = INPUTROLE;
+MPRINT(EM_DIAGRAM):   else ROLE = INPUTROLE;
+27939      end;
+MPRINT(EM_DIAGRAM):   end;
+27940      if REPORT = '' then do;
+MPRINT(EM_DIAGRAM):   if REPORT = '' then do;
+27941      if INPUTREPORT = '' then REPORT='N';
+MPRINT(EM_DIAGRAM):   if INPUTREPORT = '' then REPORT='N';
+27942      else REPORT = INPUTREPORT;
+MPRINT(EM_DIAGRAM):   else REPORT = INPUTREPORT;
+27943      end;
+MPRINT(EM_DIAGRAM):   end;
+27944      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: Variable INPUT is uninitialized.
+NOTE: There were 3 observations read from the data set WORK._TEMP.
+NOTE: There were 3 observations read from the data set WORK.TRANS_FORMULAVARS.
+NOTE: There were 0 observations read from the data set WORK._TARGET.
+NOTE: The data set WORK.TRANS_CODEFORMULA has 3 observations and 24 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+27945      filename _code "C:\Users\VM-SAS\Documents\GitHub\DataMining\Songs\SAS_Miner\Songs_segmentation\Workspaces\EMWS2\Trans\FORMULAFLOWCODE.sas";
+MPRINT(EM_DIAGRAM):    filename _code "C:\Users\VM-SAS\Documents\GitHub\DataMining\Songs\SAS_Miner\Songs_segmentation\Workspaces\EMWS2\Trans\FORMULAFLOWCODE.sas";
+27946      data _null_;
+MPRINT(EM_DIAGRAM):   data _null_;
+27947      set WORK.TRANS_CODEFORMULA;
+MPRINT(EM_DIAGRAM):   set WORK.TRANS_CODEFORMULA;
+27948      file _code;
+MPRINT(EM_DIAGRAM):   file _code;
+27949      if type eq 'C' and length > 0 then do;
+MPRINT(EM_DIAGRAM):   if type eq 'C' and length > 0 then do;
+27950      put 'length ' name ' $' length ';';
+MPRINT(EM_DIAGRAM):   put 'length ' name ' $' length ';';
+27951      end;
+MPRINT(EM_DIAGRAM):   end;
+27952      if format ne '' then do;
+MPRINT(EM_DIAGRAM):   if format ne '' then do;
+27953      put 'format ' name format ';';
+MPRINT(EM_DIAGRAM):   put 'format ' name format ';';
+27954      end;
+MPRINT(EM_DIAGRAM):   end;
+27955      length deqLabel $202;
+MPRINT(EM_DIAGRAM):   length deqLabel $202;
+27956      if label ne '' then do;
+MPRINT(EM_DIAGRAM):   if label ne '' then do;
+27957      deqlabel = tranwrd(label, '"', '""');
+MPRINT(EM_DIAGRAM):   deqlabel = tranwrd(label, '"', '""');
+27958      put 'label ' name '="' deqlabel '";';
+MPRINT(EM_DIAGRAM):   put 'label ' name '="' deqlabel '";';
+27959      end;
+MPRINT(EM_DIAGRAM):   end;
+27960      if name ne '' and formula ne '' then do;
+MPRINT(EM_DIAGRAM):   if name ne '' and formula ne '' then do;
+27961      put name '=' formula ';';
+MPRINT(EM_DIAGRAM):   put name '=' formula ';';
+27962      end;
+MPRINT(EM_DIAGRAM):   end;
+27963      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: The file _CODE is:
+      Filename=C:\Users\VM-SAS\Documents\GitHub\DataMining\Songs\SAS_Miner\Songs_segmentation\Workspaces\EMWS2\Trans\FORMULAFLOWCODE.sas,
+      RECFM=V,LRECL=256,File Size (bytes)=0,
+      Last Modified=17 de Dezembro de 2015 00H42m,
+      Create Time=17 de Dezembro de 2015 00H40m
+
+NOTE: 3 records were written to the file _CODE.
+      The minimum record length was 90.
+      The maximum record length was 137.
+NOTE: There were 3 observations read from the data set WORK.TRANS_CODEFORMULA.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+27964      filename _code;
+MPRINT(EM_DIAGRAM):   filename _code;
+NOTE: Fileref _CODE has been deassigned.
+27965      filename _code "C:\Users\VM-SAS\Documents\GitHub\DataMining\Songs\SAS_Miner\Songs_segmentation\Workspaces\EMWS2\Trans\FORMULAPUBLISHCODE.sas";
+MPRINT(EM_DIAGRAM):    filename _code "C:\Users\VM-SAS\Documents\GitHub\DataMining\Songs\SAS_Miner\Songs_segmentation\Workspaces\EMWS2\Trans\FORMULAPUBLISHCODE.sas";
+27966      data _null_;
+MPRINT(EM_DIAGRAM):   data _null_;
+27967      set WORK.TRANS_CODEFORMULA;
+MPRINT(EM_DIAGRAM):   set WORK.TRANS_CODEFORMULA;
+27968      file _code;
+MPRINT(EM_DIAGRAM):   file _code;
+27969      if _targetFlag eq 0 then do;
+MPRINT(EM_DIAGRAM):   if _targetFlag eq 0 then do;
+27970      if type eq 'C' and length > 0 then do;
+MPRINT(EM_DIAGRAM):   if type eq 'C' and length > 0 then do;
+27971      put 'length ' name ' $' length ';';
+MPRINT(EM_DIAGRAM):   put 'length ' name ' $' length ';';
+27972      end;
+MPRINT(EM_DIAGRAM):   end;
+27973      if format ne '' then do;
+MPRINT(EM_DIAGRAM):   if format ne '' then do;
+27974      put 'format ' name format ';';
+MPRINT(EM_DIAGRAM):   put 'format ' name format ';';
+27975      end;
+MPRINT(EM_DIAGRAM):   end;
+27976      length deqLabel $202;
+MPRINT(EM_DIAGRAM):   length deqLabel $202;
+27977      if label ne '' then do;
+MPRINT(EM_DIAGRAM):   if label ne '' then do;
+27978      deqlabel = tranwrd(label, '"', '""');
+MPRINT(EM_DIAGRAM):   deqlabel = tranwrd(label, '"', '""');
+27979      put 'label ' name '="' deqlabel '";';
+MPRINT(EM_DIAGRAM):   put 'label ' name '="' deqlabel '";';
+27980      end;
+MPRINT(EM_DIAGRAM):   end;
+27981      if name ne '' and formula ne '' then do;
+MPRINT(EM_DIAGRAM):   if name ne '' and formula ne '' then do;
+27982      put name '=' formula ';';
+MPRINT(EM_DIAGRAM):   put name '=' formula ';';
+27983      end;
+MPRINT(EM_DIAGRAM):   end;
+27984      end;
+MPRINT(EM_DIAGRAM):   end;
+27985      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: The file _CODE is:
+      Filename=C:\Users\VM-SAS\Documents\GitHub\DataMining\Songs\SAS_Miner\Songs_segmentation\Workspaces\EMWS2\Trans\FORMULAPUBLISHCODE.sas,
+      RECFM=V,LRECL=256,File Size (bytes)=0,
+      Last Modified=17 de Dezembro de 2015 00H42m,
+      Create Time=17 de Dezembro de 2015 00H40m
+
+NOTE: 3 records were written to the file _CODE.
+      The minimum record length was 90.
+      The maximum record length was 137.
+NOTE: There were 3 observations read from the data set WORK.TRANS_CODEFORMULA.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+27986      filename _code;
+MPRINT(EM_DIAGRAM):   filename _code;
+NOTE: Fileref _CODE has been deassigned.
+27987      filename _code "C:\Users\VM-SAS\Documents\GitHub\DataMining\Songs\SAS_Miner\Songs_segmentation\Workspaces\EMWS2\Trans\FORMULADELTACODE.sas";
+MPRINT(EM_DIAGRAM):    filename _code "C:\Users\VM-SAS\Documents\GitHub\DataMining\Songs\SAS_Miner\Songs_segmentation\Workspaces\EMWS2\Trans\FORMULADELTACODE.sas";
+27988      data _null_;
+MPRINT(EM_DIAGRAM):   data _null_;
+27989      set WORK.TRANS_CODEFORMULA;
+MPRINT(EM_DIAGRAM):   set WORK.TRANS_CODEFORMULA;
+27990      file _code;
+MPRINT(EM_DIAGRAM):   file _code;
+27991      length String $200;
+MPRINT(EM_DIAGRAM):   length String $200;
+27992      if ROLE eq '' then ROLE = 'REJECTED';
+MPRINT(EM_DIAGRAM):   if ROLE eq '' then ROLE = 'REJECTED';
+27993      if REPORT eq '' then REPORT = 'N';
+MPRINT(EM_DIAGRAM):   if REPORT eq '' then REPORT = 'N';
+27994      String = 'if NAME="'!!strip(name)!!'" then do;';
+MPRINT(EM_DIAGRAM):   String = 'if NAME="'!!strip(name)!!'" then do;';
+27995      put / string;
+MPRINT(EM_DIAGRAM):   put / string;
+27996      String = '   ROLE ="'!!strip(role)!!'";';
+MPRINT(EM_DIAGRAM):   String = '   ROLE ="'!!strip(role)!!'";';
+27997      put string;
+MPRINT(EM_DIAGRAM):   put string;
+27998      String = '   REPORT ="'!!strip(report)!!'";';
+MPRINT(EM_DIAGRAM):   String = '   REPORT ="'!!strip(report)!!'";';
+27999      put string;
+MPRINT(EM_DIAGRAM):   put string;
+28000      if LEVEL ne '' then do;
+MPRINT(EM_DIAGRAM):   if LEVEL ne '' then do;
+28001      String = '   LEVEL ="'!!strip(level)!!'";';
+MPRINT(EM_DIAGRAM):   String = '   LEVEL ="'!!strip(level)!!'";';
+28002      put string;
+MPRINT(EM_DIAGRAM):   put string;
+28003      end;
+MPRINT(EM_DIAGRAM):   end;
+28004      put 'end;';
+MPRINT(EM_DIAGRAM):   put 'end;';
+28005      if INPUTNAME ne '' then do;
+MPRINT(EM_DIAGRAM):   if INPUTNAME ne '' then do;
+28006      String = 'if NAME="'!!strip(INPUTNAME)!!'" then delete;';
+MPRINT(EM_DIAGRAM):   String = 'if NAME="'!!strip(INPUTNAME)!!'" then delete;';
+28007      put String;
+MPRINT(EM_DIAGRAM):   put String;
+28008      end;
+MPRINT(EM_DIAGRAM):   end;
+28009      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: The file _CODE is:
+      Filename=C:\Users\VM-SAS\Documents\GitHub\DataMining\Songs\SAS_Miner\Songs_segmentation\Workspaces\EMWS2\Trans\FORMULADELTACODE.sas,
+      RECFM=V,LRECL=256,File Size (bytes)=0,
+      Last Modified=17 de Dezembro de 2015 00H42m,
+      Create Time=17 de Dezembro de 2015 00H40m
+
+NOTE: 21 records were written to the file _CODE.
+      The minimum record length was 0.
+      The maximum record length was 35.
+NOTE: There were 3 observations read from the data set WORK.TRANS_CODEFORMULA.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+28010      filename _code;
+MPRINT(EM_DIAGRAM):   filename _code;
+NOTE: Fileref _CODE has been deassigned.
+NOTE: This SAS session is using a registry in WORK.  All changes will be lost at the end of this session.
+28011      proc print data = EMWS2.Trans_FORMULA(obs=500) noobs label;
+MPRINT(EM_DIAGRAM):    proc print data = EMWS2.Trans_FORMULA(obs=500) noobs label;
+28012      title9 "%sysfunc(sasmsg(sashelp.dmine, rpt_formulatransformations_title, NOQUOTE))";
+MPRINT(EM_DIAGRAM):   title9 "Formula Transformations";
+28013      title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_maxObsPrinted_title, NOQUOTE))";
+MPRINT(EM_DIAGRAM):   title10 "(maximum 500 observations printed)";
+MPRINT(EM_DIAGRAM):   var Name ROLE LEVEL FORMULA;
+MPRINT(EM_DIAGRAM):   run;
+28014      var Name ROLE LEVEL FORMULA;
+28015      run;
+
+NOTE: There were 3 observations read from the data set EMWS2.TRANS_FORMULA.
+NOTE: The PROCEDURE PRINT printed page 3.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+28016      title9;
+MPRINT(EM_DIAGRAM):   title9;
+28017      title10;
+MPRINT(EM_DIAGRAM):   title10;
+28018      filename emflow "C:\Users\VM-SAS\Documents\GitHub\DataMining\Songs\SAS_Miner\Songs_segmentation\Workspaces\EMWS2\Trans\EMFLOWSCORE.sas";
+MPRINT(EM_DIAGRAM):    filename emflow "C:\Users\VM-SAS\Documents\GitHub\DataMining\Songs\SAS_Miner\Songs_segmentation\Workspaces\EMWS2\Trans\EMFLOWSCORE.sas";
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * Trans: Scoring DATA data;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+28019      *------------------------------------------------------------*;
+28020      * Trans: Scoring DATA data;
+28021      *------------------------------------------------------------*;
+28022      data EMWS2.Trans_TRAIN
+28023      / view=EMWS2.Trans_TRAIN
+28024      ;
+MPRINT(EM_DIAGRAM):   data EMWS2.Trans_TRAIN / view=EMWS2.Trans_TRAIN ;
+28025      set EMWS2.GrfExpl_TRAIN
+28026      ;
+MPRINT(EM_DIAGRAM):   set EMWS2.GrfExpl_TRAIN ;
+28027      %inc emflow;
+NOTE: %INCLUDE (level 1) file EMFLOW is file C:\Users\VM-SAS\Documents\GitHub\DataMining\Songs\SAS_Miner\Songs_segmentation\Workspaces\EMWS2\Trans\EMFLOWSCORE.sas.
+28028     +*------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+28029     +* Formula Code;
+MPRINT(EM_DIAGRAM):   * Formula Code;
+28030     +*------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+28031     +R_energy =(1/3)*(energy - MIN(energy,energy)) /(MAX(energy,energy) - MIN(energy,energy)) ;
+MPRINT(EM_DIAGRAM):   R_energy =(1/3)*(energy - MIN(energy,energy)) /(MAX(energy,energy) - MIN(energy,energy)) ;
+28032     +R_electro =(1/3)*(1-(acousticness - MIN(acousticness,acousticness)) /(MAX(acousticness,acousticness) - MIN(acousticness,acousticness))) ;
+MPRINT(EM_DIAGRAM):   R_electro =(1/3)*(1-(acousticness - MIN(acousticness,acousticness)) /(MAX(acousticness,acousticness) - MIN(acousticness,acousticness))) ;
+28033     +R_loud =(1/3)* (loudness- MIN(loudness,loudness)) /(MAX(loudness,loudness) - MIN(loudness,loudness)) ;
+MPRINT(EM_DIAGRAM):   R_loud =(1/3)* (loudness- MIN(loudness,loudness)) /(MAX(loudness,loudness) - MIN(loudness,loudness)) ;
+NOTE: %INCLUDE (level 1) ending.
+MPRINT(EM_DIAGRAM):   run;
+28034      run;
+
+NOTE: DATA STEP view saved on file EMWS2.TRANS_TRAIN.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: View EMWS2.GRFEXPL_TRAIN.VIEW used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.03 seconds
+      
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.03 seconds
+      
+
+MPRINT(EM_DIAGRAM):   quit;
+28035      quit;
+28036      filename emflow;
+MPRINT(EM_DIAGRAM):   filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+28037      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):    *------------------------------------------------------------*;
+28038      * Trans: Computing metadata for TRAIN data;
+MPRINT(EM_DIAGRAM):   * Trans: Computing metadata for TRAIN data;
+28039      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+
+NOTE: View EMWS2.TRANS_TRAIN.VIEW used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.07 seconds
+      
+MPRINT(EM_DIAGRAM):    *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * &nodeid: Computing Metadata for TRAIN data;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   filename _delta "C:\Users\VM-SAS\Documents\GitHub\DataMining\Songs\SAS_Miner\Songs_segmentation\Workspaces\EMWS2\Trans\CDELTA_TRAIN.sas";
+MPRINT(EMADVISECOLUMNS):   proc display c=sashelp.emmeta.advisecolumns.scl;
+MPRINT(EMADVISECOLUMNS):   run;
+MPRINT(EMADVISECOLUMNS):    options validvarname=any;
+MPRINT(EMADVISECOLUMNS):   proc contents data=EMWS2.Trans_TRAIN out=_tempAdvisor noprint;
+MPRINT(EMADVISECOLUMNS):   run;
+MPRINT(EMADVISECOLUMNS):   options validvarname=V7;
+MPRINT(EMADVISECOLUMNS):    data _null_;
+MPRINT(EMADVISECOLUMNS):   dsid = open('EMWS2.Trans_TRAIN');
+MPRINT(EMADVISECOLUMNS):   call symput('_dsidTable', strip(put(dsid, best.)));
+MPRINT(EMADVISECOLUMNS):   if dsid then do;
+MPRINT(EMADVISECOLUMNS):   call symput('_engineTable', attrc(dsid, 'ENGINE'));
+MPRINT(EMADVISECOLUMNS):   dsid = close(dsid);
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   run;
+MPRINT(EMADVISECOLUMNS):    proc contents data=EMWS2.Trans_TRAIN out=WORK.M18XI7L7 noprint;
+MPRINT(EMADVISECOLUMNS):   run;
+MPRINT(EMADVISECOLUMNS):    data WORK.M18XI7L7;
+MPRINT(EMADVISECOLUMNS):   length NAME $ 64 TYPE $ 1 LABEL $ 200 FORMAT $ 20 INFORMAT $20 INDEX $ 1 INDEXTYPE $ 9;
+MPRINT(EMADVISECOLUMNS):   label NAME =;
+MPRINT(EMADVISECOLUMNS):   set WORK.M18XI7L7(keep=name type length label format formatl formatd informat informl informd idxusage rename=(type=itype));
+MPRINT(EMADVISECOLUMNS):   if itype = 1 then type = 'N';
+MPRINT(EMADVISECOLUMNS):   else type = 'C';
+MPRINT(EMADVISECOLUMNS):   if formatl > 0 then do;
+MPRINT(EMADVISECOLUMNS):   if format ne ' ' then format = strip(format)!!strip(put(formatl, best12.))!!'.'!!strip(put(formatd, best12.));
+MPRINT(EMADVISECOLUMNS):   else format = strip(put(formatl, best12.))!!'.'!!strip(put(formatd, best12.));
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   else if format ne '' then format = strip(format)!!'.';
+MPRINT(EMADVISECOLUMNS):   if informl > 0 then do;
+MPRINT(EMADVISECOLUMNS):   if informat ne ' ' then informat = strip(informat)!!strip(put(informl, best12.))!!'.'!!strip(put(informd, best12.));
+MPRINT(EMADVISECOLUMNS):   else informat = strip(put(informl, best12.))!!'.'!!strip(put(informd, best12.));
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   else if informat ne '' then informat = strip(informat)!!'.';
+MPRINT(EMADVISECOLUMNS):   if idxusage = 'NONE' then index ="N";
+MPRINT(EMADVISECOLUMNS):   else index = "Y";
+MPRINT(EMADVISECOLUMNS):   indextype = idxusage;
+MPRINT(EMADVISECOLUMNS):   drop idxusage itype formatl formatd informl informd;
+MPRINT(EMADVISECOLUMNS):   run;
+MPRINT(EMADVISECOLUMNS):    data WORK.M18XI7L7;
+MPRINT(EMADVISECOLUMNS):   length UNAME $64;
+MPRINT(EMADVISECOLUMNS):   set WORK.M18XI7L7;
+MPRINT(EMADVISECOLUMNS):   UNAME = upcase(NAME);
+MPRINT(EMADVISECOLUMNS):   run;
+MPRINT(EMADVISECOLUMNS):    proc sort data=WORK.M37KZT71 NOTHREADS;
+MPRINT(EMADVISECOLUMNS):   by UNAME;
+MPRINT(EMADVISECOLUMNS):   run;
+MPRINT(EMADVISECOLUMNS):    data WORK.M37KZT71;
+MPRINT(EMADVISECOLUMNS):   drop UNAME;
+MPRINT(EMADVISECOLUMNS):   set WORK.M37KZT71;
+MPRINT(EMADVISECOLUMNS):   run;
+MPRINT(EMADVISECOLUMNS):    data WORK.M3KAG3SD(keep=NAME ATTR);
+MPRINT(EMADVISECOLUMNS):   length ATTR $ 20;
+MPRINT(EMADVISECOLUMNS):   set WORK.M37KZT71;
+MPRINT(EMADVISECOLUMNS):   if level ne "INTERVAL" then do;
+MPRINT(EMADVISECOLUMNS):   if order = ' ' then do;
+MPRINT(EMADVISECOLUMNS):   attr = 'ORDER';
+MPRINT(EMADVISECOLUMNS):   output;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   if format ne ' ' and formattype = ' ' then do;
+MPRINT(EMADVISECOLUMNS):   attr = 'FORMATTYPE';
+MPRINT(EMADVISECOLUMNS):   output;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   if role = ' ' then do;
+MPRINT(EMADVISECOLUMNS):   attr = 'ROLE';
+MPRINT(EMADVISECOLUMNS):   output;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   if level = ' ' then do;
+MPRINT(EMADVISECOLUMNS):   attr = 'LEVEL';
+MPRINT(EMADVISECOLUMNS):   output;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   if type = ' ' then do;
+MPRINT(EMADVISECOLUMNS):   attr = 'TYPE';
+MPRINT(EMADVISECOLUMNS):   output;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   if index = ' ' then do;
+MPRINT(EMADVISECOLUMNS):   attr = 'INDEX';
+MPRINT(EMADVISECOLUMNS):   output;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   if report = ' ' then do;
+MPRINT(EMADVISECOLUMNS):   attr = 'REPORT';
+MPRINT(EMADVISECOLUMNS):   output;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   run;
+MPRINT(EMADVISECOLUMNS):   proc sort NOTHREADS;
+MPRINT(EMADVISECOLUMNS):   by attr;
+MPRINT(EMADVISECOLUMNS):   run;
+MPRINT(EMADVISECOLUMNS):    data WORK.M37KZT71;
+MPRINT(EMADVISECOLUMNS):   length NAME $64 ROLE $ 32 LEVEL $ 10 ORDER $ 8 CREATOR $32 FORMATTYPE $ 10 FAMILY $ 10 LOWERLIMIT 8 UPPERLIMIT 8 REPORT $1 DISTRIBUTION $ 20 COMMENT $64;
+MPRINT(EMADVISECOLUMNS):   length levelAssigned 8 roleAssigned 8 PRICE 8;
+MPRINT(EMADVISECOLUMNS):   set WORK.M37KZT71;
+MPRINT(EMADVISECOLUMNS):   if formattype = ' ' then do;
+MPRINT(EMADVISECOLUMNS):   if format ne ' ' then do;
+MPRINT(EMADVISECOLUMNS):   if type = 'N' then do;
+MPRINT(EMADVISECOLUMNS):   pos = indexc(format,'.1234567890');
+MPRINT(EMADVISECOLUMNS):   if pos > 1 then tempfmt = substr(format,1, pos-1);
+MPRINT(EMADVISECOLUMNS):   else tempfmt = ' ';
+MPRINT(EMADVISECOLUMNS):   flen = length(tempfmt);
+MPRINT(EMADVISECOLUMNS):   select;
+MPRINT(EMADVISECOLUMNS):   when(tempfmt in ("DATE" "DAY" "DDMMYY" "DOWNAME" "JULDAY" "JULIAN" "MMDDYY" "MMDDYYD" "MMDDYYC" "MMDDYYN" "MMDDYYP" "MMDDYYS" "MONNAME" "MONTH" "MONYY" "NENGO" "QTR" "QTRR" "WEEKDATE" "WEEKDATX" "WEEKDAY" "WORDDATE" "WORDDATX" 
+"YEAR" "YYMMDD" "YYMON" "YYMMDDC" "YYMMDDD" "YYMMDDN" "YYMMDDP" "YYMMDDS" "EURDFDE" "NJDATE" "NLDATE" "EURDFDD" "EURDFDWN" "EURDFMN" "EURDFMY" "EURDFWK" "EURDFWKX" "EURDFWDX" "EURDFDN" "EURDFDE" )) formattype = 'DATE';
+MPRINT(EMADVISECOLUMNS):   when(tempfmt in ("DATETIME" "EURDFDT" "TOD" )) formattype = "DATETIME";
+MPRINT(EMADVISECOLUMNS):   when(tempfmt in ("HHMM" "HOUR" "MMSS" "TIME" "TIMEAMPM" )) formattype = "TIME";
+MPRINT(EMADVISECOLUMNS):   when(tempfmt in ("COMMA" "COMMAX" "DOLLAR" "DOLLARX" "E" "FRACT" "NEGPAREN" "PERCENT")) formattype="QUANTITY";
+MPRINT(EMADVISECOLUMNS):   when(tempfmt in ("BINARY" "HEX" "IB" "OCTAL" "PD" "PIB" "PK" "RB" "SSN" "Z" "ZD")) formattype = "CODING";
+MPRINT(EMADVISECOLUMNS):   otherwise do;
+MPRINT(EMADVISECOLUMNS):   formattype = "USER";
+MPRINT(EMADVISECOLUMNS):   if substr(tempfmt, 1, 6)='NLDATE' then formattype = "DATE";
+MPRINT(EMADVISECOLUMNS):   else if substr(tempfmt, 1, 6)='NLDATM' then formattype = "DATETIME";
+MPRINT(EMADVISECOLUMNS):   else if substr(tempfmt, 1, 4)='NLTIM' then formattype = "TIME";
+MPRINT(EMADVISECOLUMNS):   else if flen >= 4 then do;
+MPRINT(EMADVISECOLUMNS):   str = substr(tempfmt,1,4);
+MPRINT(EMADVISECOLUMNS):   if str in ("MMYY" "YYMM" "YYQR") then formattype ="DATE";
+MPRINT(EMADVISECOLUMNS):   else if str = "S370" then formattype = "CODING";
+MPRINT(EMADVISECOLUMNS):   else if str = "BEST" then formattype = "NUM";
+MPRINT(EMADVISECOLUMNS):   drop str;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   else if flen >=3 and substr(tempfmt,1,3) = "YYQ" then formatType = "DATE";
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   drop flen tempfmt pos;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   else do;
+MPRINT(EMADVISECOLUMNS):   formatType = "CATEGORY";
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   if formatType = "NUM" then do;
+MPRINT(EMADVISECOLUMNS):   if index = "Y" then formatType = "DISCRETE";
+MPRINT(EMADVISECOLUMNS):   else formatType = "QUANTITY";
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   if level = ' ' then do;
+MPRINT(EMADVISECOLUMNS):   if formatType in ("CATEGORY", "CODING", "ID") or type = "C" then level = "NOMINAL";
+MPRINT(EMADVISECOLUMNS):   else level = "INTERVAL";
+MPRINT(EMADVISECOLUMNS):   levelAssigned = 1;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   else level = upcase(level);
+MPRINT(EMADVISECOLUMNS):   if role = ' ' then do;
+MPRINT(EMADVISECOLUMNS):   length name_prefix $8 _uname $64;
+MPRINT(EMADVISECOLUMNS):   drop name_prefix _uname _freqflag;
+MPRINT(EMADVISECOLUMNS):   retain _freqflag;
+MPRINT(EMADVISECOLUMNS):   if LENGTH> 80 then ROLE = 'TEXT';
+MPRINT(EMADVISECOLUMNS):   _uname = upcase(NAME);
+MPRINT(EMADVISECOLUMNS):   select(_uname);
+MPRINT(EMADVISECOLUMNS):   when('_WARN_') ROLE = 'ASSESS';
+MPRINT(EMADVISECOLUMNS):   when('EM_SEGMENT') do;
+MPRINT(EMADVISECOLUMNS):   ROLE = 'SEGMENT';
+MPRINT(EMADVISECOLUMNS):   LEVEL = 'NOMINAL';
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   when('_NODE_') do;
+MPRINT(EMADVISECOLUMNS):   ROLE = 'SEGMENT';
+MPRINT(EMADVISECOLUMNS):   LEVEL = 'NOMINAL';
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   when('EM_CLASSTARGET') ROLE = 'ASSESS';
+MPRINT(EMADVISECOLUMNS):   when('EM_VALUETARGET') ROLE = 'ASSESS';
+MPRINT(EMADVISECOLUMNS):   when('EM_PREDICTION') ROLE = 'PREDICT';
+MPRINT(EMADVISECOLUMNS):   when('EM_PROBABILITY') ROLE = 'PREDICT';
+MPRINT(EMADVISECOLUMNS):   when('EM_EVENTPROBABILITY') ROLE = 'PREDICT';
+MPRINT(EMADVISECOLUMNS):   when('EM_CLASSIFICATION') ROLE = 'CLASSIFICATION';
+MPRINT(EMADVISECOLUMNS):   when('EM_DECISION') ROLE = 'DECISION';
+MPRINT(EMADVISECOLUMNS):   when('EM_PROFIT') ROLE = 'ASSESS';
+MPRINT(EMADVISECOLUMNS):   when('EM_LOSS') ROLE = 'ASSESS';
+MPRINT(EMADVISECOLUMNS):   when('EM_ROI') ROLE = 'ASSESS';
+MPRINT(EMADVISECOLUMNS):   when('URI') ROLE = 'URL';
+MPRINT(EMADVISECOLUMNS):   when('FILTERED') ROLE = 'TEXTLOC';
+MPRINT(EMADVISECOLUMNS):   otherwise do;
+MPRINT(EMADVISECOLUMNS):   if upcase(NAME) =: 'ZIP' then do;
+MPRINT(EMADVISECOLUMNS):   ROLE = 'REJECTED';
+MPRINT(EMADVISECOLUMNS):   LEVEL = 'NOMINAL';
+MPRINT(EMADVISECOLUMNS):   COMMENT = 'Rejected by: Exceed the maximum class level of %s';
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   else if upcase(NAME) in('FREQ', 'FREQUENCY') then do;
+MPRINT(EMADVISECOLUMNS):   ROLE = 'FREQ';
+MPRINT(EMADVISECOLUMNS):   if TYPE = 'C' then ROLE = 'INPUT';
+MPRINT(EMADVISECOLUMNS):   else if _freqflag =1 then ROLE='REJECTED';
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   else do;
+MPRINT(EMADVISECOLUMNS):   name_prefix = scan(_uname, 1, '_');
+MPRINT(EMADVISECOLUMNS):   if scan(_uname, 2, '_') = '' then name_prefix='';
+MPRINT(EMADVISECOLUMNS):   if name_prefix in('F', 'I', 'U') then do;
+MPRINT(EMADVISECOLUMNS):   ROLE = 'CLASSIFICATION';
+MPRINT(EMADVISECOLUMNS):   LEVEL = 'NOMINAL';
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   else if name_prefix in('P', 'V') then ROLE = 'PREDICT';
+MPRINT(EMADVISECOLUMNS):   else if name_prefix in('R', 'RS', 'RT', 'RD', 'RDS', 'RDT', 'RA', 'RAS', 'RAT') then ROLE = 'RESIDUAL';
+MPRINT(EMADVISECOLUMNS):   else if name_prefix ='D' then do;
+MPRINT(EMADVISECOLUMNS):   ROLE = 'DECISION';
+MPRINT(EMADVISECOLUMNS):   LEVEL = 'NOMINAL';
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   else if name_prefix ='B' then do;
+MPRINT(EMADVISECOLUMNS):   ROLE = 'SEGMENT';
+MPRINT(EMADVISECOLUMNS):   LEVEL = 'NOMINAL';
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   else if name_prefix in('EP', 'BP', 'CP', 'EL', 'CL', 'BL', 'W', 'ROI', 'IC') then ROLE = 'ASSESS';
+MPRINT(EMADVISECOLUMNS):   else do;
+MPRINT(EMADVISECOLUMNS):   array _ROLE_ (19) $32 _TEMPORARY_ ('ASSESS','CLASSIFICATION','CENSOR', 'COST', 'CROSSID', 'DECISION', 'ID','INPUT', 'LABEL', 'MISSING','PREDICT','REFERRER','REJECTED', 'RESIDUAL','SEGMENT', 'SEQUENCE','TARGET', 'TEXT', 'TIMEID');
+MPRINT(EMADVISECOLUMNS):   drop _found_ i;
+MPRINT(EMADVISECOLUMNS):   _found_=0;
+MPRINT(EMADVISECOLUMNS):   do i=1 to 19 until(_found_=1);
+MPRINT(EMADVISECOLUMNS):   if index(_uname, trim(_ROLE_{i}))=1 then do;
+MPRINT(EMADVISECOLUMNS):   ROLE=_ROLE_{i};
+MPRINT(EMADVISECOLUMNS):   if ROLE = 'ID' then LEVEL = 'NOMINAL';
+MPRINT(EMADVISECOLUMNS):   else if ROLE = 'SEGMENT' then LEVEL = 'NOMINAL';
+MPRINT(EMADVISECOLUMNS):   else if ROLE = 'TIMEID' and TYPE='N' then LEVEL = 'INTERVAL';
+MPRINT(EMADVISECOLUMNS):   _found_=1;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   if length(_uname)>2 then do;
+MPRINT(EMADVISECOLUMNS):   if substr(reverse(trim(_uname)), 1, 3) = 'DI_' then do;
+MPRINT(EMADVISECOLUMNS):   ROLE = 'ID';
+MPRINT(EMADVISECOLUMNS):   LEVEL = 'NOMINAL';
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   if ROLE='FREQ' then _freqflag=1;
+MPRINT(EMADVISECOLUMNS):   else if ROLE = 'CLASSIFICATION' then LEVEL = 'NOMINAL';
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   if role = ' ' then do;
+MPRINT(EMADVISECOLUMNS):   if formattype in('DATE', 'DATETIME', 'TIME') then role = 'TIMEID';
+MPRINT(EMADVISECOLUMNS):   else role = 'INPUT';
+MPRINT(EMADVISECOLUMNS):   roleAssigned = 1;
+MPRINT(EMADVISECOLUMNS):   end;
+MPRINT(EMADVISECOLUMNS):   else role = upcase(role);
+MPRINT(EMADVISECOLUMNS):   if REPORT = '' then REPORT = 'N';
+MPRINT(EMADVISECOLUMNS):   run;
+MPRINT(EMADVISECOLUMNS):    data WORK.M37KZT71;
+MPRINT(EMADVISECOLUMNS):   set WORK.M37KZT71;
+MPRINT(EMADVISECOLUMNS):   label NAME = "Variable Name" TYPE = "Type" ROLE = "Role" LEVEL= "Measurement Level" ORDER= "Order" CREATOR= "Creator" FORMATTYPE= "Format Type" FAMILY= "Family" DISTRIBUTION= "Distribution" PRICE= "Price" LOWERLIMIT= "Lower 
+limit" UPPERLIMIT= "Upper Limit" REPORT= "Report" COMMENT= "Comment" INDEX= "Index" INDEXTYPE= "IndexType" LABEL= "Label" LENGTH= "Length";
+MPRINT(EMADVISECOLUMNS):   drop levelAssigned roleAssigned;
+MPRINT(EMADVISECOLUMNS):   run;
+MPRINT(EMADVISECOLUMNS):   
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   proc sort data=WORK.COLUMNMETA;
+MPRINT(EM_DIAGRAM):   by NAME;
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * &nodeid: Merge incoming metadata;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   proc contents data=EMWS2.GrfExpl_TRAIN noprint out=_temp2(keep=NAME);
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   proc sort data=_temp2;
+MPRINT(EM_DIAGRAM):   by NAME;
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   proc sort data=EMWS2.GrfExpl_CMeta_TRAIN out=_temp;
+MPRINT(EM_DIAGRAM):   by NAME;
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   data EMWS2.Trans_CMeta_TRAIN;
+MPRINT(EM_DIAGRAM):   merge WORK.COLUMNMETA(in=_a) _temp2(in=_b) _temp(drop=FORMAT INFORMAT LENGTH INDEX INDEXTYPE in=_c) end=_eof_;
+MPRINT(EM_DIAGRAM):   by NAME;
+MPRINT(EM_DIAGRAM):   if (^_a and _b) or (^_c and _a and _b) then delete;
+MPRINT(EM_DIAGRAM):   if ^_b then CREATOR = "Trans";
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * Trans: Apply Delta Code;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * Formula Code;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   if NAME="R_energy" then do;
+MPRINT(EM_DIAGRAM):   ROLE ="INPUT";
+MPRINT(EM_DIAGRAM):   REPORT ="N";
+MPRINT(EM_DIAGRAM):   LEVEL ="INTERVAL";
+MPRINT(EM_DIAGRAM):   end;
+MPRINT(EM_DIAGRAM):   if NAME="energy" then delete;
+MPRINT(EM_DIAGRAM):   if NAME="R_electro" then do;
+MPRINT(EM_DIAGRAM):   ROLE ="INPUT";
+MPRINT(EM_DIAGRAM):   REPORT ="N";
+MPRINT(EM_DIAGRAM):   LEVEL ="INTERVAL";
+MPRINT(EM_DIAGRAM):   end;
+MPRINT(EM_DIAGRAM):   if NAME="acousticness" then delete;
+MPRINT(EM_DIAGRAM):   if NAME="R_loud" then do;
+MPRINT(EM_DIAGRAM):   ROLE ="INPUT";
+MPRINT(EM_DIAGRAM):   REPORT ="N";
+MPRINT(EM_DIAGRAM):   LEVEL ="INTERVAL";
+MPRINT(EM_DIAGRAM):   end;
+MPRINT(EM_DIAGRAM):   if NAME="loudness" then delete;
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   filename _delta;
+NOTE: View EMWS2.TRANS_TRAIN.VIEW used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+      
+MPRINT(EM_DIAGRAM):    proc printto;
+MPRINT(EM_DIAGRAM):   run;

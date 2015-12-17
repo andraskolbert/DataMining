@@ -9,92 +9,49 @@ Traverser: Beginning flow traversal
 MPRINT(EM_DIAGRAM):    data _null_;
 15518      file emwipmsg;
 MPRINT(EM_DIAGRAM):   file emwipmsg;
-15519      put '<Node Id="Ids2" Event="Run" Pid="7568" Gridid=""/>';
-MPRINT(EM_DIAGRAM):   put '<Node Id="Ids2" Event="Run" Pid="7568" Gridid=""/>';
+15519      put '<Node Id="Ids2" Event="Run" Pid="5648" Gridid=""/>';
+MPRINT(EM_DIAGRAM):   put '<Node Id="Ids2" Event="Run" Pid="5648" Gridid=""/>';
 15520      run;
 MPRINT(EM_DIAGRAM):   run;
 
 NOTE: The file EMWIPMSG is:
       Local Host Name=Andras,
-      Local Host IP addr=fe80::3868:c6be:91a4:3f35%9,
+      Local Host IP addr=fe80::2c54:133f:3f57:fe6c%8,
       Peer Hostname Name=Andras,
       Peer IP addr=127.0.0.1,Peer Name=N/A,
-      Peer Portno=51260,Lrecl=256,Recfm=Variable
+      Peer Portno=55616,Lrecl=256,Recfm=Variable
 
 NOTE: 1 record was written to the file EMWIPMSG.
       The minimum record length was 50.
       The maximum record length was 50.
 NOTE: DATA statement used (Total process time):
-      real time           0.00 seconds
-      cpu time            0.00 seconds
+      real time           0.01 seconds
+      cpu time            0.01 seconds
       
 
 15521      %let emloopmode =;
 *------------------------------------------------------------* 
 * 
 * Ids2 : Beginning update before running 
-* datetime : 15DEC2015:17:53:59 
+* datetime : 16DEC2015:17:11:03 
 * 
 *------------------------------------------------------------* 
-A LIST()[15115] 
-15522      *------------------------------------------------------------*;
-MPRINT(EM_DIAGRAM):     *------------------------------------------------------------*;
-15523      * Ids2: Update Variables Set;
-MPRINT(EM_DIAGRAM):   * Ids2: Update Variables Set;
-15524      *------------------------------------------------------------*;
-MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
-
-15525      data EMWS1.Ids2_VariableSet;
-MPRINT(EM_DIAGRAM):    data EMWS1.Ids2_VariableSet;
-15526      length ROLE $32;
-MPRINT(EM_DIAGRAM):   length ROLE $32;
-15527      length LEVEL $8;
-MPRINT(EM_DIAGRAM):   length LEVEL $8;
-15528      length REPORT $1;
-MPRINT(EM_DIAGRAM):   length REPORT $1;
-15529      label REPORT = "Report";
-MPRINT(EM_DIAGRAM):   label REPORT = "Report";
-15530      length ORDER $8;
-MPRINT(EM_DIAGRAM):   length ORDER $8;
-15531      length DROP $1;
-MPRINT(EM_DIAGRAM):   length DROP $1;
-15532      length LOWERLIMIT 8;
-MPRINT(EM_DIAGRAM):   length LOWERLIMIT 8;
-15533      length UPPERLIMIT 8;
-MPRINT(EM_DIAGRAM):   length UPPERLIMIT 8;
-15534      set EMWS1.Ids2_EMCMETADEFAULT;
-MPRINT(EM_DIAGRAM):   set EMWS1.Ids2_EMCMETADEFAULT;
-15535      run;
-MPRINT(EM_DIAGRAM):   run;
-
-NOTE: There were 17 observations read from the data set EMWS1.IDS2_EMCMETADEFAULT.
-NOTE: The data set EMWS1.IDS2_VARIABLESET has 17 observations and 21 variables.
-NOTE: DATA statement used (Total process time):
-      real time           0.00 seconds
-      cpu time            0.00 seconds
-      
-
-15536      * Ids2: End of Update Variables Set;
-MPRINT(EM_DIAGRAM):    * Ids2: End of Update Variables Set;
-15537      *------------------------------------------------------------*;
-MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
-
-MPRINT(EM_DIAGRAM):    filename _emtool_ 'F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Songs\SAS_Miner\Songs\Workspaces\EMWS1\Ids2\PROPERTIES.xml' encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):     filename _emtool_ 'F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Songs\SAS_Miner\Songs\Workspaces\EMWS1\Ids2\PROPERTIES.xml' encoding="UTF-8" NOBOM;
 *------------------------------------------------------------* 
 * 
 * Ids2 : End update 
-* datetime : 15DEC2015:17:53:59 
+* datetime : 16DEC2015:17:11:03 
 * 
 *------------------------------------------------------------* 
-15539      %em_getactionstatus(emlib =EMWS1, nodeid=Ids2);
+15523      %em_getactionstatus(emlib =EMWS1, nodeid=Ids2);
 MPRINT(EM_DIAGRAM):   
 MPRINT(EM_GETACTIONSTATUS):   proc display c=sashelp.emutil.getactionstatus.scl;
 MPRINT(EM_GETACTIONSTATUS):   run;
 
-15540      %let em_Train = Y;
-15541      %let em_Report = Y;
-15542      %let em_Score = Y;
-15543      %let em_Run = Y;
+15524      %let em_Train = N;
+15525      %let em_Score = N;
+15526      %let em_Report = N;
+15527      %let em_Run = N;
 NOTE: PROCEDURE DISPLAY used (Total process time):
       real time           0.00 seconds
       cpu time            0.00 seconds
@@ -103,18 +60,241 @@ NOTE: PROCEDURE DISPLAY used (Total process time):
 MPRINT(EM_GETACTIONSTATUS):   
 MPRINT(EM_DIAGRAM):  ;
 
-15544      %let emloopmode =;
-15545      %let emloopnumber =0;
-15546      %let emloopId =Ids2;
+Node "Ids2" has already run. 
+Node "Ids2" succeeded. 
+15528      data _null_;
+MPRINT(EM_DIAGRAM):    data _null_;
+15529      file emwipmsg;
+MPRINT(EM_DIAGRAM):   file emwipmsg;
+15530      put '<Node Id="Ids2" Event="Complete" Pid="5648" Gridid=""/>';
+MPRINT(EM_DIAGRAM):   put '<Node Id="Ids2" Event="Complete" Pid="5648" Gridid=""/>';
+15531      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: The file EMWIPMSG is:
+      Local Host Name=Andras,
+      Local Host IP addr=fe80::2c54:133f:3f57:fe6c%8,
+      Peer Hostname Name=Andras,
+      Peer IP addr=127.0.0.1,Peer Name=N/A,
+      Peer Portno=55616,Lrecl=256,Recfm=Variable
+
+NOTE: 1 record was written to the file EMWIPMSG.
+      The minimum record length was 55.
+      The maximum record length was 55.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+traverser_readyNode_note 
+15532      data _null_;
+MPRINT(EM_DIAGRAM):    data _null_;
+15533      file emwipmsg;
+MPRINT(EM_DIAGRAM):   file emwipmsg;
+15534      put '<Node Id="Clus" Event="Run" Pid="5648" Gridid=""/>';
+MPRINT(EM_DIAGRAM):   put '<Node Id="Clus" Event="Run" Pid="5648" Gridid=""/>';
+15535      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: The file EMWIPMSG is:
+      Local Host Name=Andras,
+      Local Host IP addr=fe80::2c54:133f:3f57:fe6c%8,
+      Peer Hostname Name=Andras,
+      Peer IP addr=127.0.0.1,Peer Name=N/A,
+      Peer Portno=55616,Lrecl=256,Recfm=Variable
+
+NOTE: 1 record was written to the file EMWIPMSG.
+      The minimum record length was 50.
+      The maximum record length was 50.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+15536      %let emloopmode =;
 *------------------------------------------------------------* 
 * 
-* Ids2 : Running 
-* datetime : 15DEC2015:17:53:59 
+* Clus : Beginning update before running 
+* datetime : 16DEC2015:17:11:04 
 * 
 *------------------------------------------------------------* 
-15547      %let SYSCC =0;
-15548      %let EMGROUPMODE =;
-15549      %let EMGROUPID =;
+MPRINT(EM_DIAGRAM):     data WORK.Clus_FILTERSET;
+MPRINT(EM_DIAGRAM):   length PORT $32 USE $1;
+MPRINT(EM_DIAGRAM):   DROP DELTACODE APPLYDELTA APPLYSCORE IMPORTPORT;
+MPRINT(EM_DIAGRAM):   set EMWS1.Ids2_exportSet ;
+MPRINT(EM_DIAGRAM):   PORT = '';
+MPRINT(EM_DIAGRAM):   USE = '';
+MPRINT(EM_DIAGRAM):   where role in( "RAW" "TRAIN" "VALIDATE" "TEST" ) and EXPORT = 'Y' ;
+MPRINT(EM_DIAGRAM):   run;
+NOTE: This SAS session is using a registry in WORK.  All changes will be lost at the end of this session.
+15555      data _null_;
+MPRINT(EM_DIAGRAM):    data _null_;
+15556      set EMWS1.Ids2_CMeta_DATA (obs=1);
+MPRINT(EM_DIAGRAM):   set EMWS1.Ids2_CMeta_DATA (obs=1);
+15557      retain _segFlag_ 0;
+MPRINT(EM_DIAGRAM):   retain _segFlag_ 0;
+15558      drop _segFlag_;
+MPRINT(EM_DIAGRAM):   drop _segFlag_;
+15559      if upcase(name) = '_SEGMENT_' then do;
+MPRINT(EM_DIAGRAM):   if upcase(name) = '_SEGMENT_' then do;
+15560      _segFlag_ = 1;
+MPRINT(EM_DIAGRAM):   _segFlag_ = 1;
+15561      role = 'SEGMENT';
+MPRINT(EM_DIAGRAM):   role = 'SEGMENT';
+15562      level = 'NOMINAL';
+MPRINT(EM_DIAGRAM):   level = 'NOMINAL';
+15563      label = 'Segment Variable';
+MPRINT(EM_DIAGRAM):   label = 'Segment Variable';
+15564      end;
+MPRINT(EM_DIAGRAM):   end;
+15565      else if upcase(name) = '_SEGMENT_LABEL_' then do;
+MPRINT(EM_DIAGRAM):   else if upcase(name) = '_SEGMENT_LABEL_' then do;
+15566      role = 'REJECTED';
+MPRINT(EM_DIAGRAM):   role = 'REJECTED';
+15567      level = 'NOMINAL';
+MPRINT(EM_DIAGRAM):   level = 'NOMINAL';
+15568      label = 'Segment Description';
+MPRINT(EM_DIAGRAM):   label = 'Segment Description';
+15569      end;
+MPRINT(EM_DIAGRAM):   end;
+15570      else if upcase(NAME) = 'DISTANCE' then do;
+MPRINT(EM_DIAGRAM):   else if upcase(NAME) = 'DISTANCE' then do;
+15571      role = 'REJECTED';
+MPRINT(EM_DIAGRAM):   role = 'REJECTED';
+15572      level = 'INTERVAL';
+MPRINT(EM_DIAGRAM):   level = 'INTERVAL';
+15573      end;
+MPRINT(EM_DIAGRAM):   end;
+15574      output;
+MPRINT(EM_DIAGRAM):   output;
+15575      if ^_segFlag_ and _eof_ then do;
+MPRINT(EM_DIAGRAM):   if ^_segFlag_ and _eof_ then do;
+15576      type = 'N';
+MPRINT(EM_DIAGRAM):   type = 'N';
+15577      index = 'N';
+MPRINT(EM_DIAGRAM):   index = 'N';
+15578      indexType = 'NONE';
+MPRINT(EM_DIAGRAM):   indexType = 'NONE';
+15579      format = '';
+MPRINT(EM_DIAGRAM):   format = '';
+15580      informat = '';
+MPRINT(EM_DIAGRAM):   informat = '';
+15581      name = '_SEGMENT_';
+MPRINT(EM_DIAGRAM):   name = '_SEGMENT_';
+15582      role = 'SEGMENT';
+MPRINT(EM_DIAGRAM):   role = 'SEGMENT';
+15583      level = 'NOMINAL';
+MPRINT(EM_DIAGRAM):   level = 'NOMINAL';
+15584      label = 'Segment Variable';
+MPRINT(EM_DIAGRAM):   label = 'Segment Variable';
+15585      output;
+MPRINT(EM_DIAGRAM):   output;
+15586      name = '_SEGMENT_LABEL_';
+MPRINT(EM_DIAGRAM):   name = '_SEGMENT_LABEL_';
+15587      role = 'REJECTED';
+MPRINT(EM_DIAGRAM):   role = 'REJECTED';
+15588      level = 'NOMINAL';
+MPRINT(EM_DIAGRAM):   level = 'NOMINAL';
+15589      label = 'Segment Description';
+MPRINT(EM_DIAGRAM):   label = 'Segment Description';
+15590      output;
+MPRINT(EM_DIAGRAM):   output;
+15591      name = 'Distance';
+MPRINT(EM_DIAGRAM):   name = 'Distance';
+15592      role = 'REJECTED';
+MPRINT(EM_DIAGRAM):   role = 'REJECTED';
+15593      level = 'INTERVAL';
+MPRINT(EM_DIAGRAM):   level = 'INTERVAL';
+15594      label = 'Distance to Cluster Seed';
+MPRINT(EM_DIAGRAM):   label = 'Distance to Cluster Seed';
+15595      output;
+MPRINT(EM_DIAGRAM):   output;
+15596      end;
+MPRINT(EM_DIAGRAM):   end;
+15597      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: Variable _eof_ is uninitialized.
+NOTE: There were 1 observations read from the data set EMWS1.IDS2_CMETA_DATA.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+15598      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):    *------------------------------------------------------------*;
+15599      * Clus: Update Variables Set;
+MPRINT(EM_DIAGRAM):   * Clus: Update Variables Set;
+15600      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+
+15601      data EMWS1.Clus_VariableSet;
+MPRINT(EM_DIAGRAM):    data EMWS1.Clus_VariableSet;
+15602      length USE $1;
+MPRINT(EM_DIAGRAM):   length USE $1;
+15603      label USE = "Use";
+MPRINT(EM_DIAGRAM):   label USE = "Use";
+15604      length REPORT $1;
+MPRINT(EM_DIAGRAM):   length REPORT $1;
+15605      label REPORT = "Report";
+MPRINT(EM_DIAGRAM):   label REPORT = "Report";
+15606      set EMWS1.Ids2_CMeta_DATA;
+MPRINT(EM_DIAGRAM):   set EMWS1.Ids2_CMeta_DATA;
+15607      where(ROLE in("INPUT" "REJECTED" "FREQ" "ID"));
+MPRINT(EM_DIAGRAM):   where(ROLE in("INPUT" "REJECTED" "FREQ" "ID"));
+15608      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: Variable USE is uninitialized.
+NOTE: There were 16 observations read from the data set EMWS1.IDS2_CMETA_DATA.
+      WHERE ROLE in ('FREQ', 'ID', 'INPUT', 'REJECTED');
+NOTE: The data set EMWS1.CLUS_VARIABLESET has 16 observations and 21 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+15609      * Clus: End of Update Variables Set;
+MPRINT(EM_DIAGRAM):    * Clus: End of Update Variables Set;
+15610      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+
+MPRINT(EM_DIAGRAM):    filename _emtool_ 'F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Songs\SAS_Miner\Songs\Workspaces\EMWS1\Clus\PROPERTIES.xml' encoding="UTF-8" NOBOM;
+*------------------------------------------------------------* 
+* 
+* Clus : End update 
+* datetime : 16DEC2015:17:11:04 
+* 
+*------------------------------------------------------------* 
+15612      %em_getactionstatus(emlib =EMWS1, nodeid=Clus);
+MPRINT(EM_DIAGRAM):   
+MPRINT(EM_GETACTIONSTATUS):   proc display c=sashelp.emutil.getactionstatus.scl;
+MPRINT(EM_GETACTIONSTATUS):   run;
+
+15613      %let em_Train = Y;
+15614      %let em_Report = Y;
+15615      %let em_Score = Y;
+15616      %let em_Run = Y;
+NOTE: PROCEDURE DISPLAY used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+MPRINT(EM_GETACTIONSTATUS):   
+MPRINT(EM_DIAGRAM):  ;
+
+15617      %let emloopmode =;
+15618      %let emloopnumber =0;
+15619      %let emloopId =Clus;
+*------------------------------------------------------------* 
+* 
+* Clus : Running 
+* datetime : 16DEC2015:17:11:04 
+* 
+*------------------------------------------------------------* 
+15620      %let SYSCC =0;
+15621      %let EMGROUPMODE =;
+15622      %let EMGROUPID =;
 MPRINT(EM_DIAGRAM):      filename temp catalog 'sashelp.emutil.em_vardist.source';
 MPRINT(EM_DIAGRAM):   filename temp;
 MPRINT(EM_DIAGRAM):   filename temp catalog 'sashelp.emutil.em_classdist.source';
@@ -131,6 +311,6 @@ MPRINT(EM_DIAGRAM):   filename temp catalog 'sashelp.emutil.em_getvarname.source
 MPRINT(EM_DIAGRAM):   filename temp;
 MPRINT(EM_DIAGRAM):   filename temp catalog 'sashelp.emassmt.em_assess.source';
 MPRINT(EM_DIAGRAM):   filename temp;
-MPRINT(EM_DIAGRAM):    filename L03GB7WK "F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Songs\SAS_Miner\Songs\Workspaces\EMWS1\Ids2\EMTRAIN.log" encoding="UTF-8" NOBOM;
-MPRINT(EM_DIAGRAM):   proc printto log=L03GB7WK new;
+MPRINT(EM_DIAGRAM):    filename L2K0JYLZ "F:\Dropbox\NOVA\1st\DataMining\Project\DataMining\Songs\SAS_Miner\Songs\Workspaces\EMWS1\Clus\EMTRAIN.log" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):   proc printto log=L2K0JYLZ new;
 MPRINT(EM_DIAGRAM):   run;

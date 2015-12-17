@@ -1,0 +1,38 @@
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+1 
+Traverser: Traverser invoked.  MPCONNECT command is sas. 
+Traverser: Beginning flow traversal 
+*------------------------------------------------------------* 
+* 
+* Ids : Beginning Update 
+* datetime : 16DEC2015:22:56:54 
+* 
+*------------------------------------------------------------* 
+A LIST()[12133] 
+*------------------------------------------------------------* 
+* 
+* Ids : End Update 
+* datetime : 16DEC2015:22:56:54 
+* 
+*------------------------------------------------------------* 
+traverser_readyNode_note 
+*------------------------------------------------------------* 
+* 
+* Filter : Beginning Update 
+* datetime : 16DEC2015:22:56:54 
+* 
+*------------------------------------------------------------* 
+*------------------------------------------------------------* 
+* 
+* Filter : End Update 
+* datetime : 16DEC2015:22:56:55 
+* 
+*------------------------------------------------------------* 
+Traverser: Run Completed 
+14765      proc printto;
+14766      run;
+

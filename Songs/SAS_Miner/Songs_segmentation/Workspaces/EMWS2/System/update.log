@@ -1,0 +1,114 @@
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+1 
+Traverser: Traverser invoked.  MPCONNECT command is sas. 
+Traverser: Beginning flow traversal 
+*------------------------------------------------------------* 
+* 
+* Ids : Beginning Update 
+* datetime : 17DEC2015:00:44:53 
+* 
+*------------------------------------------------------------* 
+*------------------------------------------------------------* 
+* 
+* Ids : End Update 
+* datetime : 17DEC2015:00:44:53 
+* 
+*------------------------------------------------------------* 
+Traverser: WaitingNode "TRANS" 
+traverser_readyNode_note 
+*------------------------------------------------------------* 
+* 
+* GrfExpl : Beginning Update 
+* datetime : 17DEC2015:00:44:53 
+* 
+*------------------------------------------------------------* 
+PERFORMANCE  DETAILS
+55974      %let emexceptionString =;
+55975      %let EMEXCEPTIONSTRING=;
+55976      *------------------------------------------------------------*;
+55977      * UPDATE: GrfExpl;
+55978      *------------------------------------------------------------*;
+55979      %let EM_ACTION = UPDATE;
+55980      %let syscc = 0;
+55981      %macro main;
+55982         filename temp catalog 'sashelp.emexpl.graphexplore_macros.source';
+55983         %include temp;
+55984         filename temp;
+55985      
+55986         %SetProperties;
+55987      
+55988         %if %upcase(&EM_ACTION) = CREATE %then %do;
+55989      
+55990             filename temp catalog 'sashelp.emexpl.graphexplore_create.source';
+55991             %include temp;
+55992             filename temp;
+55993             %create;
+55994         %end;
+55995         %else
+55996         %if %upcase(&EM_ACTION) = TRAIN %then %do;
+55997      
+55998             filename temp catalog 'sashelp.emexpl.graphexplore_train.source';
+55999             %include temp;
+56000             filename temp;
+56001             %train;
+56002      
+56003         %end;
+56004         %else
+56005         %if %upcase(&EM_ACTION) = REPORT %then %do;
+56006      
+56007             filename temp catalog 'sashelp.emexpl.graphexplore_report.source';
+56008             %include temp;
+56009             filename temp;
+56010      
+56011             %report;
+56012         %end;
+56013      
+56014      %mend main;
+56015      
+56016      %main;
+NOTE: %INCLUDE (level 1) file TEMP is file SASHELP.EMEXPL.GRAPHEXPLORE_MACROS.SOURCE.
+56017     +%macro SetProperties;
+56018     +   %em_checkmacro(name=EM_PROPERTY_INTERVALBYTARGET,      global=Y, value=Y);
+56019     +   %em_checkmacro(name=EM_PROPERTY_CLASSBYTARGET,         global=Y, value=Y);
+56020     +   %em_checkmacro(name=EM_PROPERTY_DATASOURCE,            global=Y, value=SAMPLE);
+56021     +   %em_checkmacro(name=EM_PROPERTY_EMSAMPLEMETHOD,        global=Y, value=FIRSTN);
+56022     +   %em_checkmacro(name=EM_PROPERTY_EMSAMPLESIZE,          global=Y, value=DEFAULT);
+56023     +   %em_checkmacro(name=EM_PROPERTY_EMRANDOMSEED,          global=Y, value=12345);
+56024     +
+56025     +%mend SetProperties;
+NOTE: %INCLUDE (level 1) ending.
+NOTE: Fileref TEMP has been deassigned.
+56026      *------------------------------------------------------------*;
+56027      * End UPDATE: GrfExpl;
+56028      *------------------------------------------------------------*;
+56029      
+
+56030      %em_delMacro;
+
+*------------------------------------------------------------* 
+* 
+* GrfExpl : End Update 
+* datetime : 17DEC2015:00:44:54 
+* 
+*------------------------------------------------------------* 
+traverser_readyNode_note 
+*------------------------------------------------------------* 
+* 
+* Trans : Beginning Update 
+* datetime : 17DEC2015:00:44:54 
+* 
+*------------------------------------------------------------* 
+*------------------------------------------------------------* 
+* 
+* Trans : End Update 
+* datetime : 17DEC2015:00:44:54 
+* 
+*------------------------------------------------------------* 
+Traverser: Run Completed 
+56051      proc printto;
+56052      run;
+
