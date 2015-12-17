@@ -1,0 +1,821 @@
+MPRINT(EM_DIAGRAM):    data _null_;
+MPRINT(EM_DIAGRAM):   call symput('NLDATE', strip(put(date(), NLDATE.)));
+MPRINT(EM_DIAGRAM):   call symput('NLTIME', strip(put(datetime(), NLTIME.)));
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   data _null_;
+MPRINT(EM_DIAGRAM):   nldate= sasmsg("sashelp.dmine", "log_date_note", 'N', "17-12-2015" );
+MPRINT(EM_DIAGRAM):   nltime= sasmsg("sashelp.dmine", "log_time_note", 'N', "00H42m" );
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   put "* Training Log";
+MPRINT(EM_DIAGRAM):   put nldate;
+MPRINT(EM_DIAGRAM):   put nltime;
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   run;
+*------------------------------------------------------------*
+* Training Log
+Date:                17-12-2015
+Time:                00H42m
+*------------------------------------------------------------*
+MPRINT(EM_DIAGRAM):    filename O314GPXY "C:\Users\VM-SAS\Documents\GitHub\DataMining\Songs\SAS_Miner\Songs_segmentation\Workspaces\EMWS2\Trans2\EMTRAIN.out" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):   proc printto print=O314GPXY new;
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):    filename _LOG "C:\Users\VM-SAS\Documents\GitHub\DataMining\Songs\SAS_Miner\Songs_segmentation\Workspaces\EMWS2\Trans2\EMLOG.log" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):    data _null_;
+MPRINT(EM_DIAGRAM):   call symput('NLDATE', strip(put(date(), NLDATE.)));
+MPRINT(EM_DIAGRAM):   call symput('NLTIME', strip(put(datetime(), NLTIME.)));
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   data _null_;
+MPRINT(EM_DIAGRAM):   nldate= sasmsg("sashelp.dmine", "log_date_note", 'N', "17-12-2015" );
+MPRINT(EM_DIAGRAM):   nltime= sasmsg("sashelp.dmine", "log_time_note", 'N', "00H42m" );
+MPRINT(EM_DIAGRAM):   file _LOG;
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   put "User:                VM-SAS";
+MPRINT(EM_DIAGRAM):   put nldate;
+MPRINT(EM_DIAGRAM):   put nltime;
+MPRINT(EM_DIAGRAM):   put "Site:                70107571";
+MPRINT(EM_DIAGRAM):   put "Platform:            X64_7PRO";
+MPRINT(EM_DIAGRAM):   put "Maintenance Release: 9.03.01M2P081512";
+MPRINT(EM_DIAGRAM):   put "EM Version:          12.1";
+MPRINT(EM_DIAGRAM):   put "* ";
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):    filename _LOGIN "C:\Users\VM-SAS\Documents\GitHub\DataMining\Songs\SAS_Miner\Songs_segmentation\Workspaces\EMWS2\Trans2\EMTRAIN.log" encoding="UTF-8" NOBOM;
+MPRINT(EM_COPYFILE):   data _null_;
+MPRINT(EM_COPYFILE):   length line $20000;
+MPRINT(EM_COPYFILE):   file _LOG MOD lrecl=20000;
+MPRINT(EM_COPYFILE):   fid=fopen("_LOGIN",'i',20000,'v');
+MPRINT(EM_COPYFILE):   if fid > 0 then do;
+MPRINT(EM_COPYFILE):   do while(^fread(fid));
+MPRINT(EM_COPYFILE):   rlen = frlen(fid);
+MPRINT(EM_COPYFILE):   rc= fget(fid,line,20000);
+MPRINT(EM_COPYFILE):   start = length(line)-length(left(line))+1;
+MPRINT(EM_COPYFILE):   line=strip(line);
+MPRINT(EM_COPYFILE):   put @start line;
+MPRINT(EM_COPYFILE):   end;
+MPRINT(EM_COPYFILE):   if fid > 0 then rc=fclose(fid);
+MPRINT(EM_COPYFILE):   end;
+MPRINT(EM_COPYFILE):   run;
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   filename _LOGIN;
+MPRINT(EM_DIAGRAM):    data _null_;
+MPRINT(EM_DIAGRAM):   file _LOG mod;
+MPRINT(EM_DIAGRAM):   put _page_;
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   filename _LOGIN "C:\Users\VM-SAS\Documents\GitHub\DataMining\Songs\SAS_Miner\Songs_segmentation\Workspaces\EMWS2\Trans2\EMSCORE.log" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   data _null_;
+MPRINT(EM_DIAGRAM):   file _LOG mod;
+MPRINT(EM_DIAGRAM):   put _page_;
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):    filename _LOGIN "C:\Users\VM-SAS\Documents\GitHub\DataMining\Songs\SAS_Miner\Songs_segmentation\Workspaces\EMWS2\Trans2\EMREPORT.log" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   filename _LOGIN;
+MPRINT(EM_DIAGRAM):    filename _LOG;
+MPRINT(EM_DIAGRAM):    filename _OUT "C:\Users\VM-SAS\Documents\GitHub\DataMining\Songs\SAS_Miner\Songs_segmentation\Workspaces\EMWS2\Trans2\EMOUTPUT.out" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):    data _null_;
+MPRINT(EM_DIAGRAM):   call symput('NLDATE', strip(put(date(), NLDATE.)));
+MPRINT(EM_DIAGRAM):   call symput('NLTIME', strip(put(datetime(), NLTIME.)));
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   data _null_;
+MPRINT(EM_DIAGRAM):   nldate= sasmsg("sashelp.dmine", "log_date_note", 'N', "17-12-2015" );
+MPRINT(EM_DIAGRAM):   nltime= sasmsg("sashelp.dmine", "log_time_note", 'N', "00H42m" );
+MPRINT(EM_DIAGRAM):   file _OUT;
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   put "User:                VM-SAS";
+MPRINT(EM_DIAGRAM):   put nldate;
+MPRINT(EM_DIAGRAM):   put nltime;
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   put "* Training Output";
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):    filename _OUTIN "C:\Users\VM-SAS\Documents\GitHub\DataMining\Songs\SAS_Miner\Songs_segmentation\Workspaces\EMWS2\Trans2\EMTRAIN.out" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):   ;
+MPRINT(EM_COPYFILE):   data _null_;
+MPRINT(EM_COPYFILE):   length line $20000;
+MPRINT(EM_COPYFILE):   file _OUT MOD lrecl=20000;
+MPRINT(EM_COPYFILE):   fid=fopen("_OUTIN",'i',20000,'v');
+MPRINT(EM_COPYFILE):   if fid > 0 then do;
+MPRINT(EM_COPYFILE):   do while(^fread(fid));
+MPRINT(EM_COPYFILE):   rlen = frlen(fid);
+MPRINT(EM_COPYFILE):   rc= fget(fid,line,20000);
+MPRINT(EM_COPYFILE):   start = length(line)-length(left(line))+1;
+MPRINT(EM_COPYFILE):   line=strip(line);
+MPRINT(EM_COPYFILE):   put @start line;
+MPRINT(EM_COPYFILE):   end;
+MPRINT(EM_COPYFILE):   if fid > 0 then rc=fclose(fid);
+MPRINT(EM_COPYFILE):   end;
+MPRINT(EM_COPYFILE):   run;
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   filename _OUTIN;
+MPRINT(EM_DIAGRAM):    data _null_;
+MPRINT(EM_DIAGRAM):   file _OUT mod;
+MPRINT(EM_DIAGRAM):   put _page_;
+MPRINT(EM_DIAGRAM):   put // "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   put "* Score Output";
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):    filename _OUTIN "C:\Users\VM-SAS\Documents\GitHub\DataMining\Songs\SAS_Miner\Songs_segmentation\Workspaces\EMWS2\Trans2\EMSCORE.out" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   filename _OUTIN;
+MPRINT(EM_DIAGRAM):    data _null_;
+MPRINT(EM_DIAGRAM):   file _OUT mod;
+MPRINT(EM_DIAGRAM):   put _page_;
+MPRINT(EM_DIAGRAM):   put // "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   put "* Report Output";
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):    filename _OUTIN "C:\Users\VM-SAS\Documents\GitHub\DataMining\Songs\SAS_Miner\Songs_segmentation\Workspaces\EMWS2\Trans2\EMREPORT.out" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   filename _OUTIN;
+MPRINT(EM_DIAGRAM):    filename _OUT;
+MPRINT(EM_DIAGRAM):    filename _emtool_ 'C:\Users\VM-SAS\Documents\GitHub\DataMining\Songs\SAS_Miner\Songs_segmentation\Workspaces\EMWS2\Trans2\EMRUNSTATUS.xml' encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):    filename _emtool_ 'C:\Users\VM-SAS\Documents\GitHub\DataMining\Songs\SAS_Miner\Songs_segmentation\Workspaces\EMWS2\Trans2\EMRUNSTATUS.xml' encoding="UTF-8" NOBOM;
+33963      proc freq data=EMWS2.Trans2_VariableSet noprint;
+MPRINT(EM_DIAGRAM):    proc freq data=EMWS2.Trans2_VariableSet noprint;
+33964      table ROLE*LEVEL/out=WORK.Trans2META;
+MPRINT(EM_DIAGRAM):   table ROLE*LEVEL/out=WORK.Trans2META;
+33965      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 13 observations read from the data set EMWS2.TRANS2_VARIABLESET.
+NOTE: The data set WORK.TRANS2META has 1 observations and 4 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.00 seconds
+      
+
+33966      proc print data=WORK.Trans2META label noobs;
+MPRINT(EM_DIAGRAM):   proc print data=WORK.Trans2META label noobs;
+33967      var ROLE LEVEL COUNT;
+MPRINT(EM_DIAGRAM):   var ROLE LEVEL COUNT;
+33968      label ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel, NOQUOTE))" LEVEL = "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel, NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel, NOQUOTE))";
+MPRINT(EM_DIAGRAM):   label ROLE = "Role" LEVEL = "Measurement Level" COUNT = "Frequency Count";
+33969      title9 ' ';
+MPRINT(EM_DIAGRAM):   title9 ' ';
+33970      title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_varSummary_title  , NOQUOTE))";
+MPRINT(EM_DIAGRAM):   title10 "Variable Summary";
+MPRINT(EM_DIAGRAM):   run;
+33971      run;
+
+NOTE: There were 1 observations read from the data set WORK.TRANS2META.
+NOTE: The PROCEDURE PRINT printed page 4.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+33972      title10;
+MPRINT(EM_DIAGRAM):   title10;
+33973      data WORK.M0BBE_U8;
+MPRINT(EM_DIAGRAM):    data WORK.M0BBE_U8;
+33974      set WORK.M0BBE_U8;
+MPRINT(EM_DIAGRAM):   set WORK.M0BBE_U8;
+33975      if (METHOD='NONE' and ROLE ne 'FREQ') or (role = 'REJECTED' and METHOD = 'DEFAULT') then delete;
+MPRINT(EM_DIAGRAM):   if (METHOD='NONE' and ROLE ne 'FREQ') or (role = 'REJECTED' and METHOD = 'DEFAULT') then delete;
+33976      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 13 observations read from the data set WORK.M0BBE_U8.
+NOTE: The data set WORK.M0BBE_U8 has 13 observations and 22 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+MPRINT(EM_DIAGRAM):   reset noprint;
+MPRINT(EM_DIAGRAM):   select count(*) into :_tmpnobs from EMWS2.Trans_TRAIN;
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.313212 danceability=0.452838 tempo=85.996 duration=252.25333 key=11 liveness=0.148278 speechiness=0.039638 instrumentalness=0.891819 loudness=-15.167 acousticness=0.711129 valence=0.309625 song_hotttnesss=0.252528
+song_name=Symphony No. 10 in E Minor, Op. 93: II. Allegro artist_name=Dmitri Shostakovich genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=1
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=3 energy=0.179012 danceability=0.146091 tempo=64.988 duration=616.13333 key=7 liveness=0.078427 speechiness=0.038795 instrumentalness=0.890309 loudness=-18.259 acousticness=0.957646 valence=0.035444 song_hotttnesss=0.070213
+song_name=Symphony No. 5, Op. 50, FS 97: II. I - Adagio artist_name=Carl Nielsen genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=2
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=3 energy=0.052711 danceability=0.467387 tempo=185.658 duration=170.85161 key=7 liveness=0.11216 speechiness=0.060327 instrumentalness=0.931092 loudness=-19.529 acousticness=0.993273 valence=0.33653 song_hotttnesss=0
+song_name=Blue Danube Waltz Medley ( Piano ) (feat. Falk Richter) artist_name=Johann Strauss genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=3
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.272164 danceability=0.455289 tempo=123.192 duration=559.28 key=1 liveness=0.07585 speechiness=0.093083 instrumentalness=0.409403 loudness=-16.032 acousticness=0.869741 valence=0.107688 song_hotttnesss=0.152375
+song_name=The Sorcerer's Apprentice artist_name=Leopold Stokowski genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=4
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=5 energy=0.132438 danceability=0.244539 tempo=110.767 duration=370.50667 key=4 liveness=0.13642 speechiness=0.042968 instrumentalness=0.011225 loudness=-19.745 acousticness=0.944901 valence=0.035444 song_hotttnesss=0.114513
+song_name=Cavalleria rusticana: "Voi lo sapete, o mama" (Romanza) artist_name=Pietro Mascagni genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=5
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=5 energy=0.069008 danceability=0.325568 tempo=124.331 duration=320.77333 key=9 liveness=0.167892 speechiness=0.043417 instrumentalness=0.004971 loudness=-17.13 acousticness=0.975952 valence=0.104561 song_hotttnesss=0.208228
+song_name=Lamento della ninfa artist_name=Claudio Monteverdi genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=6
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.465927 danceability=0.244865 tempo=44.028 duration=111.66621 key=0 liveness=0.29158 speechiness=0.034772 instrumentalness=0.704065 loudness=-14.224 acousticness=0.908625 valence=0.174658 song_hotttnesss=0.140427
+song_name=Von den Freuden-und Leidenschaften - artist_name=Richard Strauss genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=7
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.222475 danceability=0.614986 tempo=82.318 duration=280.63347 key=2 liveness=0.832892 speechiness=0.103856 instrumentalness=0.786516 loudness=-16.657 acousticness=0.966719 valence=0.241414 song_hotttnesss=0.120691
+song_name=Octet for Wind Instruments: I. Sinfonia artist_name=Igor Stravinsky genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=8
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=3 energy=0.148668 danceability=0.24524 tempo=98.624 duration=787.06358 key=4 liveness=0.149737 speechiness=0.039081 instrumentalness=0.307096 loudness=-17.039 acousticness=0.948768 valence=0.112897 song_hotttnesss=0.184726
+song_name=Violin Concerto in E Minor, Op. 64: I. Allegro molto appassionato artist_name=Felix Mendelssohn genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=9
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.0742 danceability=0.364268 tempo=143.203 duration=474 key=4 liveness=0.11522 speechiness=0.058598 instrumentalness=0.252514 loudness=-22.148 acousticness=0.896325 valence=0.186601 song_hotttnesss=0.163295
+song_name=La Gioconda: Dance of the Hours artist_name=Amilcare Ponchielli genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=10
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.494159 danceability=0.287429 tempo=113.148 duration=427.24961 key=0 liveness=0.238496 speechiness=0.038061 instrumentalness=0.960455 loudness=-8.222 acousticness=0.939583 valence=0.338053 song_hotttnesss=0.190243
+song_name=Orb and Sceptre artist_name=William Walton genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=11
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.176097 danceability=0.220713 tempo=91.922 duration=189.54667 key=8 liveness=0.094128 speechiness=0.038987 instrumentalness=0.011604 loudness=-14.853 acousticness=0.9613 valence=0.06476 song_hotttnesss=0.197551
+song_name=The Firebird Suite: Berceuse artist_name=Igor Stravinsky genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=12
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=3 energy=0.033779 danceability=0.431442 tempo=139.702 duration=305.73333 key=0 liveness=0.137949 speechiness=0.054351 instrumentalness=0.244432 loudness=-26.856 acousticness=0.87201 valence=0.329996 song_hotttnesss=0.212964
+song_name=Symphony No. 5 in D Minor, Op. 47: II. Allegretto artist_name=Dmitri Shostakovich genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=13
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.355302 danceability=0.471634 tempo=140.066 duration=136.36 key=4 liveness=0.131251 speechiness=0.035231 instrumentalness=0.939124 loudness=-13.161 acousticness=0.83061 valence=0.818984 song_hotttnesss=0.124365
+song_name=Concerto Grosso in F Major, Op. 6, No. 12: II. Allegro artist_name=Arcangelo Corelli genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=14
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=3 energy=0.003779 danceability=0.247826 tempo=66.682 duration=351 key=10 liveness=0.077616 speechiness=0.046802 instrumentalness=0.900456 loudness=-35.973 acousticness=0.991661 valence=0.045989 song_hotttnesss=0.281637
+song_name=Suite bergamasque: III. Clair de lune artist_name=Claude Debussy genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=15
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.154471 danceability=0.388602 tempo=126.536 duration=162.93288 key=2 liveness=0.147239 speechiness=0.033775 instrumentalness=0.75321 loudness=-14.917 acousticness=0.974386 valence=0.291776 song_hotttnesss=0.28542
+song_name=O Fortuna artist_name=Carl Orff genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=16
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.123481 danceability=0.513076 tempo=123.014 duration=247.93333 key=7 liveness=0.097146 speechiness=0.04499 instrumentalness=9E-6 loudness=-17.793 acousticness=0.981862 valence=0.18122 song_hotttnesss=0.123653
+song_name=La maja de Goya artist_name=Enrique Granados genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=17
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.030254 danceability=0.448393 tempo=118.721 duration=186.85333 key=4 liveness=0.223008 speechiness=0.037537 instrumentalness=0.123912 loudness=-23.025 acousticness=0.926143 valence=0.25903 song_hotttnesss=0.194578 song_name=TANGO
+artist_name=Igor Stravinsky genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=18
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=3 energy=0.030475 danceability=0.114936 tempo=67.459 duration=305.42667 key=7 liveness=0.084229 speechiness=0.050383 instrumentalness=0.243329 loudness=-30.687 acousticness=0.992586 valence=0.037311 song_hotttnesss=0.063842
+song_name=Miserere - Ed. Willcocks artist_name=Gregorio Allegri genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=19
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+WARNING: Limit set by ERRORS= option reached.  Further errors of this type will not be printed.
+time_signature=4 energy=0.077276 danceability=0.066605 tempo=62.461 duration=685.93333 key=9 liveness=0.16504 speechiness=0.040586 instrumentalness=0.897333 loudness=-20.848 acousticness=0.937582 valence=0.031834 song_hotttnesss=0.119809
+song_name=A Song Of Summer artist_name=Frederick Delius genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=20
+NOTE: Mathematical operations could not be performed at the following places. The results of the operations have been set to missing values.
+      Each place is given by: (Number of times) at (Line):(Column).
+      2272 at 81474:47   2272 at 81475:69   2272 at 81476:51   
+NOTE: There were 2272 observations read from the data set SONGS.SONGSNOMISSING.
+NOTE: There were 2272 observations read from the data set EMWS2.IDS_DATA.
+NOTE: View EMWS2.TRANS_TRAIN.VIEW used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.07 seconds
+      
+NOTE: There were 2272 observations read from the data set EMWS2.GRFEXPL_TRAIN.
+MPRINT(EM_DIAGRAM):   quit;
+34041      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):     *------------------------------------------------------------*;
+34042      * Trans: Computing Summary Statistics;
+MPRINT(EM_DIAGRAM):   * Trans: Computing Summary Statistics;
+34043      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+34044      data WORK.M1ACQE2W;
+MPRINT(EM_DIAGRAM):   data WORK.M1ACQE2W;
+34045      set WORK.M1ACQE2W;
+MPRINT(EM_DIAGRAM):   set WORK.M1ACQE2W;
+34046      if (role = 'REJECTED') then role = 'INPUT';
+MPRINT(EM_DIAGRAM):   if (role = 'REJECTED') then role = 'INPUT';
+34047      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 13 observations read from the data set WORK.M1ACQE2W.
+NOTE: The data set WORK.M1ACQE2W has 13 observations and 22 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+34048      *------------------------------------------------------------* ;
+MPRINT(EM_DIAGRAM):    *------------------------------------------------------------* ;
+34049      * EM: DMDBClass Macro ;
+MPRINT(EM_DIAGRAM):   * EM: DMDBClass Macro ;
+34050      *------------------------------------------------------------* ;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------* ;
+34051      %macro DMDBClass;
+34052      
+34053      %mend DMDBClass;
+34054      *------------------------------------------------------------* ;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------* ;
+34055      * EM: DMDBVar Macro ;
+MPRINT(EM_DIAGRAM):   * EM: DMDBVar Macro ;
+34056      *------------------------------------------------------------* ;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------* ;
+34057      %macro DMDBVar;
+34058          R_electro R_energy R_loud danceability duration instrumentalness key liveness
+34059         song_hotttnesss speechiness tempo time_signature valence
+34060      %mend DMDBVar;
+34061      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+34062      * EM: Create DMDB;
+MPRINT(EM_DIAGRAM):   * EM: Create DMDB;
+34063      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+34064      proc dmdb batch data=EMWS2.Trans_TRAIN
+34065      dmdbcat=WORK.EM_DMDB
+34066      maxlevel = 513
+34067      ;
+MPRINT(EM_DIAGRAM):   proc dmdb batch data=EMWS2.Trans_TRAIN dmdbcat=WORK.EM_DMDB maxlevel = 513 ;
+MPRINT(EM_DIAGRAM):   var
+34068      var %DMDBVar;
+MPRINT(DMDBVAR):   R_electro R_energy R_loud danceability duration instrumentalness key liveness song_hotttnesss speechiness tempo time_signature valence
+MPRINT(EM_DIAGRAM):  ;
+34069      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.313212 danceability=0.452838 tempo=85.996 duration=252.25333 key=11 liveness=0.148278 speechiness=0.039638 instrumentalness=0.891819 loudness=-15.167 acousticness=0.711129 valence=0.309625 song_hotttnesss=0.252528
+song_name=Symphony No. 10 in E Minor, Op. 93: II. Allegro artist_name=Dmitri Shostakovich genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=1
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=3 energy=0.179012 danceability=0.146091 tempo=64.988 duration=616.13333 key=7 liveness=0.078427 speechiness=0.038795 instrumentalness=0.890309 loudness=-18.259 acousticness=0.957646 valence=0.035444 song_hotttnesss=0.070213
+song_name=Symphony No. 5, Op. 50, FS 97: II. I - Adagio artist_name=Carl Nielsen genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=2
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=3 energy=0.052711 danceability=0.467387 tempo=185.658 duration=170.85161 key=7 liveness=0.11216 speechiness=0.060327 instrumentalness=0.931092 loudness=-19.529 acousticness=0.993273 valence=0.33653 song_hotttnesss=0
+song_name=Blue Danube Waltz Medley ( Piano ) (feat. Falk Richter) artist_name=Johann Strauss genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=3
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.272164 danceability=0.455289 tempo=123.192 duration=559.28 key=1 liveness=0.07585 speechiness=0.093083 instrumentalness=0.409403 loudness=-16.032 acousticness=0.869741 valence=0.107688 song_hotttnesss=0.152375
+song_name=The Sorcerer's Apprentice artist_name=Leopold Stokowski genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=4
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=5 energy=0.132438 danceability=0.244539 tempo=110.767 duration=370.50667 key=4 liveness=0.13642 speechiness=0.042968 instrumentalness=0.011225 loudness=-19.745 acousticness=0.944901 valence=0.035444 song_hotttnesss=0.114513
+song_name=Cavalleria rusticana: "Voi lo sapete, o mama" (Romanza) artist_name=Pietro Mascagni genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=5
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=5 energy=0.069008 danceability=0.325568 tempo=124.331 duration=320.77333 key=9 liveness=0.167892 speechiness=0.043417 instrumentalness=0.004971 loudness=-17.13 acousticness=0.975952 valence=0.104561 song_hotttnesss=0.208228
+song_name=Lamento della ninfa artist_name=Claudio Monteverdi genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=6
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.465927 danceability=0.244865 tempo=44.028 duration=111.66621 key=0 liveness=0.29158 speechiness=0.034772 instrumentalness=0.704065 loudness=-14.224 acousticness=0.908625 valence=0.174658 song_hotttnesss=0.140427
+song_name=Von den Freuden-und Leidenschaften - artist_name=Richard Strauss genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=7
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.222475 danceability=0.614986 tempo=82.318 duration=280.63347 key=2 liveness=0.832892 speechiness=0.103856 instrumentalness=0.786516 loudness=-16.657 acousticness=0.966719 valence=0.241414 song_hotttnesss=0.120691
+song_name=Octet for Wind Instruments: I. Sinfonia artist_name=Igor Stravinsky genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=8
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=3 energy=0.148668 danceability=0.24524 tempo=98.624 duration=787.06358 key=4 liveness=0.149737 speechiness=0.039081 instrumentalness=0.307096 loudness=-17.039 acousticness=0.948768 valence=0.112897 song_hotttnesss=0.184726
+song_name=Violin Concerto in E Minor, Op. 64: I. Allegro molto appassionato artist_name=Felix Mendelssohn genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=9
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.0742 danceability=0.364268 tempo=143.203 duration=474 key=4 liveness=0.11522 speechiness=0.058598 instrumentalness=0.252514 loudness=-22.148 acousticness=0.896325 valence=0.186601 song_hotttnesss=0.163295
+song_name=La Gioconda: Dance of the Hours artist_name=Amilcare Ponchielli genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=10
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.494159 danceability=0.287429 tempo=113.148 duration=427.24961 key=0 liveness=0.238496 speechiness=0.038061 instrumentalness=0.960455 loudness=-8.222 acousticness=0.939583 valence=0.338053 song_hotttnesss=0.190243
+song_name=Orb and Sceptre artist_name=William Walton genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=11
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.176097 danceability=0.220713 tempo=91.922 duration=189.54667 key=8 liveness=0.094128 speechiness=0.038987 instrumentalness=0.011604 loudness=-14.853 acousticness=0.9613 valence=0.06476 song_hotttnesss=0.197551
+song_name=The Firebird Suite: Berceuse artist_name=Igor Stravinsky genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=12
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=3 energy=0.033779 danceability=0.431442 tempo=139.702 duration=305.73333 key=0 liveness=0.137949 speechiness=0.054351 instrumentalness=0.244432 loudness=-26.856 acousticness=0.87201 valence=0.329996 song_hotttnesss=0.212964
+song_name=Symphony No. 5 in D Minor, Op. 47: II. Allegretto artist_name=Dmitri Shostakovich genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=13
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.355302 danceability=0.471634 tempo=140.066 duration=136.36 key=4 liveness=0.131251 speechiness=0.035231 instrumentalness=0.939124 loudness=-13.161 acousticness=0.83061 valence=0.818984 song_hotttnesss=0.124365
+song_name=Concerto Grosso in F Major, Op. 6, No. 12: II. Allegro artist_name=Arcangelo Corelli genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=14
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=3 energy=0.003779 danceability=0.247826 tempo=66.682 duration=351 key=10 liveness=0.077616 speechiness=0.046802 instrumentalness=0.900456 loudness=-35.973 acousticness=0.991661 valence=0.045989 song_hotttnesss=0.281637
+song_name=Suite bergamasque: III. Clair de lune artist_name=Claude Debussy genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=15
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.154471 danceability=0.388602 tempo=126.536 duration=162.93288 key=2 liveness=0.147239 speechiness=0.033775 instrumentalness=0.75321 loudness=-14.917 acousticness=0.974386 valence=0.291776 song_hotttnesss=0.28542
+song_name=O Fortuna artist_name=Carl Orff genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=16
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.123481 danceability=0.513076 tempo=123.014 duration=247.93333 key=7 liveness=0.097146 speechiness=0.04499 instrumentalness=9E-6 loudness=-17.793 acousticness=0.981862 valence=0.18122 song_hotttnesss=0.123653
+song_name=La maja de Goya artist_name=Enrique Granados genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=17
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.030254 danceability=0.448393 tempo=118.721 duration=186.85333 key=4 liveness=0.223008 speechiness=0.037537 instrumentalness=0.123912 loudness=-23.025 acousticness=0.926143 valence=0.25903 song_hotttnesss=0.194578 song_name=TANGO
+artist_name=Igor Stravinsky genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=18
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=3 energy=0.030475 danceability=0.114936 tempo=67.459 duration=305.42667 key=7 liveness=0.084229 speechiness=0.050383 instrumentalness=0.243329 loudness=-30.687 acousticness=0.992586 valence=0.037311 song_hotttnesss=0.063842
+song_name=Miserere - Ed. Willcocks artist_name=Gregorio Allegri genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=19
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+WARNING: Limit set by ERRORS= option reached.  Further errors of this type will not be printed.
+time_signature=4 energy=0.077276 danceability=0.066605 tempo=62.461 duration=685.93333 key=9 liveness=0.16504 speechiness=0.040586 instrumentalness=0.897333 loudness=-20.848 acousticness=0.937582 valence=0.031834 song_hotttnesss=0.119809
+song_name=A Song Of Summer artist_name=Frederick Delius genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=20
+NOTE: Records processed = 2272   Memory used = 511K.
+NOTE: There were 2272 observations read from the data set SONGS.SONGSNOMISSING.
+NOTE: There were 2272 observations read from the data set EMWS2.IDS_DATA.
+NOTE: Mathematical operations could not be performed at the following places. The results of the operations have been set to missing values.
+      Each place is given by: (Number of times) at (Line):(Column).
+      2272 at 81474:47   2272 at 81475:69   2272 at 81476:51   
+NOTE: View EMWS2.TRANS_TRAIN.VIEW used (Total process time):
+      real time           0.11 seconds
+      cpu time            0.07 seconds
+      
+NOTE: There were 2272 observations read from the data set EMWS2.GRFEXPL_TRAIN.
+NOTE: There were 2272 observations read from the data set EMWS2.TRANS_TRAIN.
+NOTE: PROCEDURE DMDB used (Total process time):
+      real time           0.12 seconds
+      cpu time            0.07 seconds
+      
+
+MPRINT(EM_DIAGRAM):   quit;
+MPRINT(EM_DIAGRAM):   *--- end code ---*;
+34070      quit;
+34071      *--- end code ---*;
+
+34072      data WORK.TransINTERVALMETA;
+MPRINT(EM_DIAGRAM):    data WORK.TransINTERVALMETA;
+34073      set WORK.M0BBE_U8;
+MPRINT(EM_DIAGRAM):   set WORK.M0BBE_U8;
+34074      if LEVEL ne 'INTERVAL' then delete;
+MPRINT(EM_DIAGRAM):   if LEVEL ne 'INTERVAL' then delete;
+34075      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 13 observations read from the data set WORK.M0BBE_U8.
+NOTE: The data set WORK.TRANSINTERVALMETA has 13 observations and 22 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+34076      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):    *------------------------------------------------------------*;
+34077      * Trans: Determining Variables to Scale;
+MPRINT(EM_DIAGRAM):   * Trans: Determining Variables to Scale;
+34078      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+34079      data WORK.M3IKHPYP;
+MPRINT(EM_DIAGRAM):   data WORK.M3IKHPYP;
+34080      set WORK.M3IKHPYP;
+MPRINT(EM_DIAGRAM):   set WORK.M3IKHPYP;
+34081      where (TYPE="N" and (METHOD in("MAX_NORM", "MAX_CORR", "EQUALIZE", "OP_MAX_NORM", "OP_EQUALIZE"))) or (ROLE eq "FREQ");
+MPRINT(EM_DIAGRAM):   where (TYPE="N" and (METHOD in("MAX_NORM", "MAX_CORR", "EQUALIZE", "OP_MAX_NORM", "OP_EQUALIZE"))) or (ROLE eq "FREQ");
+34082      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 0 observations read from the data set WORK.M3IKHPYP.
+      WHERE ((TYPE='N') and METHOD in ('EQUALIZE', 'MAX_CORR', 'MAX_NORM', 'OP_EQUALIZE', 'OP_MAX_NORM')) or (ROLE='FREQ');
+NOTE: The data set WORK.M3IKHPYP has 0 observations and 22 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.00 seconds
+      
+
+*------------------------------------------------------------* 
+*  Trans: Optimal binning transformation requires a targetvariable.  Transformation will be ignored. 
+*------------------------------------------------------------* 
+*------------------------------------------------------------* 
+*  Trans: Equalize transformation requires a class target variable.  Transformation will be ignored. 
+*------------------------------------------------------------* 
+*------------------------------------------------------------* 
+*  Trans: Optimize equalize max. transformation requires a class target variable.  Transformation will be ignored. 
+*------------------------------------------------------------* 
+NOTE: View EMWS2.TRANS_TRAIN.VIEW used (Total process time):
+      real time           0.42 seconds
+      cpu time            0.12 seconds
+      
+34085      %exploreSample(DATA=EMWS2.Trans_TRAIN, OUTPUT=EMWS2.Trans2_SAMPLE_DATA, METADATA=EMWS2.Trans_CMeta_TRAIN, VARS=, METHOD=FIRSTN, SIZE=DEFAULT, ALPHA=0.01, PVALUE=0.01, SEED=12345);
+MPRINT(EM_DIAGRAM):     
+MPRINT(EXPLORESAMPLE):   filename x catalog 'sashelp.emutil.exploreobs.source';
+NOTE: %INCLUDE (level 1) file X is file SASHELP.EMUTIL.EXPLOREOBS.SOURCE.
+34086     +/*------------------------------------------------------------------
+34087     +  MACRO EXPLOREOBS
+34089     +  SUPPORT:  SASDHD - David Duling
+34090     +  PRODUCT:  Enterprise Miner
+34092     +  DESCRIPTION:
+34093     +  Generates maximum and default numbers of observations to
+34094     +  download for visualization depending on the record length.
+34096     +  Values were determined by trial and error using typical
+34097     +  Windows workstation configurations.
+34099     +  Discrete sets of values are returned so that user experience
+34100     +  will be consitent with similar sized data sets.
+34102     +  These macro variables are set:
+34103     +  _exploreobs_max -- maximum number of obs downloadable
+34104     +  _exploreobs_def -- default number of obs to be downloaded
+34105     +  _exploreobs_recl - record length.  Might be useful for reporting.
+34107     +  Use the _exploreobs_max to set limit the GUI selection of
+34108     +  observations for downloading.  The GUI selection for obs
+34109     +  could be reduced to "Default" and "Max".
+34111     +  Parameters
+34112     +  data=   libname.memname of input data
+34113     +  vars=   subset list of variables.
+34114     +          downloading 1 out of 500 really does work like downloading
+34115     +          1 out of 1 vars.  Users may select a subset of vars for
+34116     +                   visualizations.  Pass in the list as space delimited
+34117     +          var names.  If vars is not specified, the record length
+34118     +          of the entire data will be used.
+34119     +  NBYTES=   maximum number of bytes that shouldn't be exceeded.
+34121     +  Control
+34122     +  Users may control the values by entering these macro variables.
+34123     +            EM_EXPLOREOBS_MAX
+34124     +            EM_EXPLOREOBS_DEFAULT
+34125     +  These values override the computed values.
+34127     +  Debugging
+34128     +  %let _exploreobs_debug=1 ;
+34129     +--------------------------------------------------------------------
+34130     +  HISTORY: 20APR2004. sasdhd. pushed.
+34131     +           18DEC2004. sasdhd. S0280556.
+34132     +           07SEP2007. sasdhd. HK1009586
+34133     +--------------------------------------------------------------------*/
+34135     +%macro exploreobs(data=,vars=, nbytes=) ;
+34137     +   /*--- variable definitions ---*/
+34138     +   %global _exploreobs_max _exploreobs_def _exploreobs_recl _exploreobs_debug ;
+34139     +   %local xobs xvars xlen vlen xi vname vlist ;
+34140     +   %local _exp_source _exp_notes ;
+34142     +   /*--- USER definitions ---*/
+34143     +   %global EM_EXPLOREOBS_MAX EM_EXPLOREOBS_DEFAULT ;
+34145     +   /*--- variable intializations ---*/
+34146     +   %let _exploreobs_max=0 ;
+34147     +   %let _exploreobs_def=0 ;
+34148     +   %let _exploreobs_recl=0 ;
+34149     +   %let xvars= 0 ;
+34150     +   %let xlen = 0 ;
+34151     +   %let xobs = 0 ;
+34153     +   /*--- data error checks ---*/
+34154     +   %if "&data" eq "" %then %do ;
+34155     +            %put NOTE: DATA is not specified. ;
+34156     +            %goto term ;
+34157     +      %end ;
+34159     +   %let dsid=%sysfunc(open(&data)) ;
+34160     +   %if not &dsid %then %do ;
+34161     +            %put NOTE: DATA &data is not available. ;
+34162     +            %goto term ;
+34163     +      %end ;
+34165     +   /*--- if a vars list exists generate a subset ---*/
+34166     +   %if &vars ne %then %do ;
+34167     +         %let dsid=%sysfunc(close(&dsid)) ;
+34168     +         %if &_exploreobs_debug ne 1 %then %do ;
+34169     +                  %let _exp_source=%sysfunc(getoption(SOURCE)) ;
+34170     +            %let _exp_notes =%sysfunc(getoption(NOTES)) ;
+34171     +                  options nosource nonotes ;
+34172     +         %end ;
+34173     +         data _exploreobs_temp_data ;
+34174     +         set &data(obs=0) ;
+34175     +          keep &vars ;
+34176     +         run;
+34177     +         %if &_exploreobs_debug ne 1 %then %do ;
+34178     +                  options &_exp_source &_exp_notes ;
+34179     +         %end ;
+34180     +         %let dsid=%sysfunc(open(_exploreobs_temp_data)) ;
+34181     +         %if &dsid eq 0 %then %do ;
+34182     +                  %put NOTE: Sample is not available.;
+34183     +                  %goto term ;
+34184     +            %end ;
+34185     +      %end ;
+34187     +   /*--- get var attributes ---*/
+34188     +   %let xvars=%sysfunc(attrn(&dsid,nvars)) ;
+34189     +   %let xobs= %sysfunc(attrn(&dsid,nobs )) ;
+34190     +   %let xlen= %sysfunc(attrn(&dsid,lrecl)) ;
+34191     +   %let dsid= %sysfunc(close(&dsid)) ;
+34193     +   /*--- set default and max obs ---*/
+34194     +   %let _exploreobs_recl=%eval(&xlen) ;
+34195     +   %if &_exploreobs_recl eq 0 %then %do ;
+34196     +             %let _exploreobs_max= 0 ;
+34197     +             %let _exploreobs_def= 0 ;
+34198     +             %goto term ;
+34200     +   %end ;
+34201     +   %else
+34202     +   %if &_exploreobs_recl le 32 %then %do ;
+34203     +             %let _exploreobs_max=100000 ;
+34204     +             %let _exploreobs_def= 10000 ;
+34205     +   %end ;
+34206     +   %else
+34207     +   %if &_exploreobs_recl le 128 %then %do ;
+34208     +             %let _exploreobs_max=60000 ;
+34209     +             %let _exploreobs_def= 6000 ;
+34210     +   %end ;
+34211     +   %else
+34212     +   %if &_exploreobs_recl lt 1000 %then %do ;
+34213     +             %let _exploreobs_max=20000 ;
+34214     +             %let _exploreobs_def= 2000 ;
+34215     +   %end ;
+34216     +   %else
+34217     +   %if &_exploreobs_recl lt 5000 %then %do ;
+34218     +             %let _exploreobs_max= 10000 ;
+34219     +             %let _exploreobs_def=  1000 ;
+34220     +   %end ;
+34221     +   %else
+34222     +   %if &_exploreobs_recl lt 20000 %then %do ;
+34223     +             %let _exploreobs_max= 5000 ;
+34224     +             %let _exploreobs_def=  500 ;
+34225     +   %end ;
+34226     +   %else %do ;
+34227     +             %let _exploreobs_max= 1000 ;
+34228     +             %let _exploreobs_def=  200 ;
+34229     +   %end ;
+34231     +   /*--- Users options ---*/
+34232     +   %if &EM_EXPLOREOBS_MAX ne %then %do ;
+34233     +            %let _exploreobs_max= %eval(&EM_EXPLOREOBS_MAX) ;
+34234     +   %end;
+34235     +   %if &EM_EXPLOREOBS_DEFAULT ne %then %do ;
+34236     +            %let _exploreobs_def= %eval(&EM_EXPLOREOBS_DEFAULT) ;
+34237     +   %end;
+34239     +    /*--- S0868273 ---*/
+34240     +    %if "&NBYTES" ne "" %then %do;
+34241     +       %let nbytes_nrows = %eval(&nbytes/ &_exploreobs_recl);
+34242     +       %if &EM_EXPLOREOBS_MAX ne %then %do ;
+34243     +           %let _exploreobs_max   = %sysfunc(min(&nbytes_nrows , &EM_EXPLOREOBS_MAX));
+34244     +       %end;
+34246     +       %if &EM_EXPLOREOBS_DEFAULT ne %then %do ;
+34247     +          %let nbytes_nrows      = %eval(&nbytes_nrows/10);
+34248     +          %let _exploreobs_def   = %sysfunc(min(&nbytes_nrows , &EM_EXPLOREOBS_DEFAULT));
+34249     +          %if ^&_exploreobs_def %then
+34250     +              %let _exploreobs_def = 1;
+34252     +       %end;
+34253     +    %end;
+34255     +   /*--- Terminate ---*/
+34256     +   %term:
+34258     +   %put NOTE: EXPLOREOBS &data : vars= &xvars : recl= &_exploreobs_recl : max=&_exploreobs_max : def= &_exploreobs_def ;
+34259     +%mend ;
+NOTE: %INCLUDE (level 1) ending.
+MPRINT(EXPLORESAMPLE):   filename x;
+NOTE: Fileref X has been deassigned.
+NOTE: EXPLOREOBS EMWS2.Trans_TRAIN : vars= 19 : recl= 306 : max=20000 : def= 2000
+MPRINT(EXPLORESAMPLE):   ;
+MPRINT(HPDM_PERFORMANCE):  ;
+PERFORMANCE  DETAILS
+MPRINT(EXPLORESAMPLE):  ;
+*------------------------------------------------------------*
+* FirstN/Top sample
+*------------------------------------------------------------*
+MPRINT(EXPLORESAMPLE):   data EMWS2.Trans2_SAMPLE_DATA;
+MPRINT(EXPLORESAMPLE):   set EMWS2.Trans_TRAIN(obs= 2000 );
+MPRINT(EXPLORESAMPLE):   run;
+
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.313212 danceability=0.452838 tempo=85.996 duration=252.25333 key=11 liveness=0.148278 speechiness=0.039638 instrumentalness=0.891819 loudness=-15.167 acousticness=0.711129 valence=0.309625 song_hotttnesss=0.252528
+song_name=Symphony No. 10 in E Minor, Op. 93: II. Allegro artist_name=Dmitri Shostakovich genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=1
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=3 energy=0.179012 danceability=0.146091 tempo=64.988 duration=616.13333 key=7 liveness=0.078427 speechiness=0.038795 instrumentalness=0.890309 loudness=-18.259 acousticness=0.957646 valence=0.035444 song_hotttnesss=0.070213
+song_name=Symphony No. 5, Op. 50, FS 97: II. I - Adagio artist_name=Carl Nielsen genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=2
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=3 energy=0.052711 danceability=0.467387 tempo=185.658 duration=170.85161 key=7 liveness=0.11216 speechiness=0.060327 instrumentalness=0.931092 loudness=-19.529 acousticness=0.993273 valence=0.33653 song_hotttnesss=0
+song_name=Blue Danube Waltz Medley ( Piano ) (feat. Falk Richter) artist_name=Johann Strauss genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=3
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.272164 danceability=0.455289 tempo=123.192 duration=559.28 key=1 liveness=0.07585 speechiness=0.093083 instrumentalness=0.409403 loudness=-16.032 acousticness=0.869741 valence=0.107688 song_hotttnesss=0.152375
+song_name=The Sorcerer's Apprentice artist_name=Leopold Stokowski genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=4
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=5 energy=0.132438 danceability=0.244539 tempo=110.767 duration=370.50667 key=4 liveness=0.13642 speechiness=0.042968 instrumentalness=0.011225 loudness=-19.745 acousticness=0.944901 valence=0.035444 song_hotttnesss=0.114513
+song_name=Cavalleria rusticana: "Voi lo sapete, o mama" (Romanza) artist_name=Pietro Mascagni genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=5
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=5 energy=0.069008 danceability=0.325568 tempo=124.331 duration=320.77333 key=9 liveness=0.167892 speechiness=0.043417 instrumentalness=0.004971 loudness=-17.13 acousticness=0.975952 valence=0.104561 song_hotttnesss=0.208228
+song_name=Lamento della ninfa artist_name=Claudio Monteverdi genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=6
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.465927 danceability=0.244865 tempo=44.028 duration=111.66621 key=0 liveness=0.29158 speechiness=0.034772 instrumentalness=0.704065 loudness=-14.224 acousticness=0.908625 valence=0.174658 song_hotttnesss=0.140427
+song_name=Von den Freuden-und Leidenschaften - artist_name=Richard Strauss genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=7
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.222475 danceability=0.614986 tempo=82.318 duration=280.63347 key=2 liveness=0.832892 speechiness=0.103856 instrumentalness=0.786516 loudness=-16.657 acousticness=0.966719 valence=0.241414 song_hotttnesss=0.120691
+song_name=Octet for Wind Instruments: I. Sinfonia artist_name=Igor Stravinsky genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=8
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=3 energy=0.148668 danceability=0.24524 tempo=98.624 duration=787.06358 key=4 liveness=0.149737 speechiness=0.039081 instrumentalness=0.307096 loudness=-17.039 acousticness=0.948768 valence=0.112897 song_hotttnesss=0.184726
+song_name=Violin Concerto in E Minor, Op. 64: I. Allegro molto appassionato artist_name=Felix Mendelssohn genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=9
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.0742 danceability=0.364268 tempo=143.203 duration=474 key=4 liveness=0.11522 speechiness=0.058598 instrumentalness=0.252514 loudness=-22.148 acousticness=0.896325 valence=0.186601 song_hotttnesss=0.163295
+song_name=La Gioconda: Dance of the Hours artist_name=Amilcare Ponchielli genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=10
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.494159 danceability=0.287429 tempo=113.148 duration=427.24961 key=0 liveness=0.238496 speechiness=0.038061 instrumentalness=0.960455 loudness=-8.222 acousticness=0.939583 valence=0.338053 song_hotttnesss=0.190243
+song_name=Orb and Sceptre artist_name=William Walton genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=11
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.176097 danceability=0.220713 tempo=91.922 duration=189.54667 key=8 liveness=0.094128 speechiness=0.038987 instrumentalness=0.011604 loudness=-14.853 acousticness=0.9613 valence=0.06476 song_hotttnesss=0.197551
+song_name=The Firebird Suite: Berceuse artist_name=Igor Stravinsky genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=12
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=3 energy=0.033779 danceability=0.431442 tempo=139.702 duration=305.73333 key=0 liveness=0.137949 speechiness=0.054351 instrumentalness=0.244432 loudness=-26.856 acousticness=0.87201 valence=0.329996 song_hotttnesss=0.212964
+song_name=Symphony No. 5 in D Minor, Op. 47: II. Allegretto artist_name=Dmitri Shostakovich genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=13
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.355302 danceability=0.471634 tempo=140.066 duration=136.36 key=4 liveness=0.131251 speechiness=0.035231 instrumentalness=0.939124 loudness=-13.161 acousticness=0.83061 valence=0.818984 song_hotttnesss=0.124365
+song_name=Concerto Grosso in F Major, Op. 6, No. 12: II. Allegro artist_name=Arcangelo Corelli genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=14
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=3 energy=0.003779 danceability=0.247826 tempo=66.682 duration=351 key=10 liveness=0.077616 speechiness=0.046802 instrumentalness=0.900456 loudness=-35.973 acousticness=0.991661 valence=0.045989 song_hotttnesss=0.281637
+song_name=Suite bergamasque: III. Clair de lune artist_name=Claude Debussy genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=15
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.154471 danceability=0.388602 tempo=126.536 duration=162.93288 key=2 liveness=0.147239 speechiness=0.033775 instrumentalness=0.75321 loudness=-14.917 acousticness=0.974386 valence=0.291776 song_hotttnesss=0.28542
+song_name=O Fortuna artist_name=Carl Orff genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=16
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.123481 danceability=0.513076 tempo=123.014 duration=247.93333 key=7 liveness=0.097146 speechiness=0.04499 instrumentalness=9E-6 loudness=-17.793 acousticness=0.981862 valence=0.18122 song_hotttnesss=0.123653
+song_name=La maja de Goya artist_name=Enrique Granados genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=17
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.030254 danceability=0.448393 tempo=118.721 duration=186.85333 key=4 liveness=0.223008 speechiness=0.037537 instrumentalness=0.123912 loudness=-23.025 acousticness=0.926143 valence=0.25903 song_hotttnesss=0.194578 song_name=TANGO
+artist_name=Igor Stravinsky genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=18
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=3 energy=0.030475 danceability=0.114936 tempo=67.459 duration=305.42667 key=7 liveness=0.084229 speechiness=0.050383 instrumentalness=0.243329 loudness=-30.687 acousticness=0.992586 valence=0.037311 song_hotttnesss=0.063842
+song_name=Miserere - Ed. Willcocks artist_name=Gregorio Allegri genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=19
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+WARNING: Limit set by ERRORS= option reached.  Further errors of this type will not be printed.
+time_signature=4 energy=0.077276 danceability=0.066605 tempo=62.461 duration=685.93333 key=9 liveness=0.16504 speechiness=0.040586 instrumentalness=0.897333 loudness=-20.848 acousticness=0.937582 valence=0.031834 song_hotttnesss=0.119809
+song_name=A Song Of Summer artist_name=Frederick Delius genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=20
+NOTE: There were 2272 observations read from the data set SONGS.SONGSNOMISSING.
+NOTE: There were 2272 observations read from the data set EMWS2.IDS_DATA.
+NOTE: Mathematical operations could not be performed at the following places. The results of the operations have been set to missing values.
+      Each place is given by: (Number of times) at (Line):(Column).
+      2272 at 81474:47   2272 at 81475:69   2272 at 81476:51   
+NOTE: View EMWS2.TRANS_TRAIN.VIEW used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.07 seconds
+      
+NOTE: There were 2272 observations read from the data set EMWS2.GRFEXPL_TRAIN.
+NOTE: There were 2000 observations read from the data set EMWS2.TRANS_TRAIN.
+NOTE: The data set EMWS2.TRANS2_SAMPLE_DATA has 2000 observations and 19 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.18 seconds
+      cpu time            0.07 seconds
+      
+
+MPRINT(EM_DIAGRAM):  ;
+
+MPRINT(EM_DIAGRAM):    proc printto;
+MPRINT(EM_DIAGRAM):   run;

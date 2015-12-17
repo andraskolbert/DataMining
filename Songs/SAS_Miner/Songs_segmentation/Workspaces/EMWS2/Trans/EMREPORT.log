@@ -1,0 +1,869 @@
+MPRINT(EM_DIAGRAM):    data _null_;
+MPRINT(EM_DIAGRAM):   call symput('NLDATE', strip(put(date(), NLDATE.)));
+MPRINT(EM_DIAGRAM):   call symput('NLTIME', strip(put(datetime(), NLTIME.)));
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   data _null_;
+MPRINT(EM_DIAGRAM):   nldate= sasmsg("sashelp.dmine", "log_date_note", 'N', "17-12-2015" );
+MPRINT(EM_DIAGRAM):   nltime= sasmsg("sashelp.dmine", "log_time_note", 'N', "00H42m" );
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   put "* Report Log";
+MPRINT(EM_DIAGRAM):   put nldate;
+MPRINT(EM_DIAGRAM):   put nltime;
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   run;
+*------------------------------------------------------------*
+* Report Log
+Date:                17-12-2015
+Time:                00H42m
+*------------------------------------------------------------*
+MPRINT(EM_DIAGRAM):    filename O1F_JW74 "C:\Users\VM-SAS\Documents\GitHub\DataMining\Songs\SAS_Miner\Songs_segmentation\Workspaces\EMWS2\Trans\EMREPORT.out" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):   proc printto print=O1F_JW74 new;
+MPRINT(EM_DIAGRAM):   run;
+28385      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):    *------------------------------------------------------------*;
+28386      * &msgString;
+MPRINT(EM_DIAGRAM):   * &msgString;
+28387      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+28388      filename _flowref "C:\Users\VM-SAS\Documents\GitHub\DataMining\Songs\SAS_Miner\Songs_segmentation\Workspaces\EMWS2\Trans\EMFLOWSCORE.sas";
+MPRINT(EM_DIAGRAM):   filename _flowref "C:\Users\VM-SAS\Documents\GitHub\DataMining\Songs\SAS_Miner\Songs_segmentation\Workspaces\EMWS2\Trans\EMFLOWSCORE.sas";
+28389      proc FCMP NOEXECUTE IMPUTEDDEPS OUTDEPS=WORK.TRANS_SCOREINPUTS;
+MPRINT(EM_DIAGRAM):   proc FCMP NOEXECUTE IMPUTEDDEPS OUTDEPS=WORK.TRANS_SCOREINPUTS;
+28390      %INCLUDE _flowref;
+NOTE: %INCLUDE (level 1) file _FLOWREF is file C:\Users\VM-SAS\Documents\GitHub\DataMining\Songs\SAS_Miner\Songs_segmentation\Workspaces\EMWS2\Trans\EMFLOWSCORE.sas.
+28391     +*------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+28392     +* Formula Code;
+MPRINT(EM_DIAGRAM):   * Formula Code;
+28393     +*------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+28394     +R_energy =(1/3)*(energy - MIN(energy,energy)) /(MAX(energy,energy) - MIN(energy,energy)) ;
+MPRINT(EM_DIAGRAM):   R_energy =(1/3)*(energy - MIN(energy,energy)) /(MAX(energy,energy) - MIN(energy,energy)) ;
+28395     +R_electro =(1/3)*(1-(acousticness - MIN(acousticness,acousticness)) /(MAX(acousticness,acousticness) - MIN(acousticness,acousticness))) ;
+MPRINT(EM_DIAGRAM):   R_electro =(1/3)*(1-(acousticness - MIN(acousticness,acousticness)) /(MAX(acousticness,acousticness) - MIN(acousticness,acousticness))) ;
+28396     +R_loud =(1/3)* (loudness- MIN(loudness,loudness)) /(MAX(loudness,loudness) - MIN(loudness,loudness)) ;
+MPRINT(EM_DIAGRAM):   R_loud =(1/3)* (loudness- MIN(loudness,loudness)) /(MAX(loudness,loudness) - MIN(loudness,loudness)) ;
+NOTE: %INCLUDE (level 1) ending.
+MPRINT(EM_DIAGRAM):   run;
+28397      run;
+
+NOTE: Dependency structure written to data set WORK.TRANS_SCOREINPUTS.
+NOTE: PROCEDURE FCMP used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+MPRINT(EM_DIAGRAM):   quit;
+28398      quit;
+28399      data WORK.TRANS_SCOREINPUTS;
+MPRINT(EM_DIAGRAM):   data WORK.TRANS_SCOREINPUTS;
+28400      set WORK.TRANS_SCOREINPUTS(keep=RHS rename=(RHS=NAME));
+MPRINT(EM_DIAGRAM):   set WORK.TRANS_SCOREINPUTS(keep=RHS rename=(RHS=NAME));
+28401      length UNAME $32;
+MPRINT(EM_DIAGRAM):   length UNAME $32;
+28402      UNAME = upcase(NAME);
+MPRINT(EM_DIAGRAM):   UNAME = upcase(NAME);
+28403      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 3 observations read from the data set WORK.TRANS_SCOREINPUTS.
+NOTE: The data set WORK.TRANS_SCOREINPUTS has 3 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+28404      proc sort data=WORK.TRANS_SCOREINPUTS NODUPKEY;
+MPRINT(EM_DIAGRAM):   proc sort data=WORK.TRANS_SCOREINPUTS NODUPKEY;
+28405      by UNAME;
+MPRINT(EM_DIAGRAM):   by UNAME;
+28406      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 3 observations read from the data set WORK.TRANS_SCOREINPUTS.
+NOTE: 0 observations with duplicate key values were deleted.
+NOTE: The data set WORK.TRANS_SCOREINPUTS has 3 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+28407      filename _flowref;
+MPRINT(EM_DIAGRAM):   filename _flowref;
+NOTE: Fileref _FLOWREF has been deassigned.
+28408      %let SYSCC = 0;
+28409      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):    *------------------------------------------------------------*;
+28410      * transformcombinevariables;
+MPRINT(EM_DIAGRAM):   * transformcombinevariables;
+28411      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+28412      data WORK.TRANS_OUTPUTVARS;
+MPRINT(EM_DIAGRAM):   data WORK.TRANS_OUTPUTVARS;
+28413      length Uname inputName $32 inputLevel $10 inputType $1 _MetaFlag 8;
+MPRINT(EM_DIAGRAM):   length Uname inputName $32 inputLevel $10 inputType $1 _MetaFlag 8;
+28414      set
+28415      EMWS2.Trans_FORMULA
+28416      ;
+MPRINT(EM_DIAGRAM):   set EMWS2.Trans_FORMULA ;
+28417      _MetaFlag=0;
+MPRINT(EM_DIAGRAM):   _MetaFlag=0;
+28418      uname = upcase(name);
+MPRINT(EM_DIAGRAM):   uname = upcase(name);
+28419      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: Variable inputName is uninitialized.
+NOTE: Variable inputLevel is uninitialized.
+NOTE: Variable inputType is uninitialized.
+NOTE: There were 3 observations read from the data set EMWS2.TRANS_FORMULA.
+NOTE: The data set WORK.TRANS_OUTPUTVARS has 3 observations and 22 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+28420      data _temp;
+MPRINT(EM_DIAGRAM):    data _temp;
+28421      length UNAME $32;
+MPRINT(EM_DIAGRAM):   length UNAME $32;
+28422      set EMWS2.Trans_CMeta_TRAIN(keep=NAME LEVEL ROLE TYPE CREATOR LABEL);
+MPRINT(EM_DIAGRAM):   set EMWS2.Trans_CMeta_TRAIN(keep=NAME LEVEL ROLE TYPE CREATOR LABEL);
+28423      UNAME = upcase(name);
+MPRINT(EM_DIAGRAM):   UNAME = upcase(name);
+28424      where upcase(CREATOR) = upcase("Trans");
+MPRINT(EM_DIAGRAM):   where upcase(CREATOR) = upcase("Trans");
+28425      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 3 observations read from the data set EMWS2.TRANS_CMETA_TRAIN.
+      WHERE UPCASE(CREATOR)='TRANS';
+NOTE: The data set WORK._TEMP has 3 observations and 7 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+28426      proc sort data=_temp(drop=CREATOR);
+MPRINT(EM_DIAGRAM):   proc sort data=_temp(drop=CREATOR);
+28427      by UNAME;
+MPRINT(EM_DIAGRAM):   by UNAME;
+28428      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 3 observations read from the data set WORK._TEMP.
+NOTE: The data set WORK._TEMP has 3 observations and 6 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+28429      proc sort data=WORK.TRANS_OUTPUTVARS;
+MPRINT(EM_DIAGRAM):    proc sort data=WORK.TRANS_OUTPUTVARS;
+28430      by UNAME;
+MPRINT(EM_DIAGRAM):   by UNAME;
+28431      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 3 observations read from the data set WORK.TRANS_OUTPUTVARS.
+NOTE: The data set WORK.TRANS_OUTPUTVARS has 3 observations and 22 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+28432      data WORK.TRANS_OUTPUTVARS;
+MPRINT(EM_DIAGRAM):   data WORK.TRANS_OUTPUTVARS;
+28433      merge WORK.TRANS_OUTPUTVARS _temp;
+MPRINT(EM_DIAGRAM):   merge WORK.TRANS_OUTPUTVARS _temp;
+28434      by UNAME;
+MPRINT(EM_DIAGRAM):   by UNAME;
+28435      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 3 observations read from the data set WORK.TRANS_OUTPUTVARS.
+NOTE: There were 3 observations read from the data set WORK._TEMP.
+NOTE: The data set WORK.TRANS_OUTPUTVARS has 3 observations and 22 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+28436      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):    *------------------------------------------------------------*;
+28437      * Trans: Get Metadata for the Score Inputs Variables;
+MPRINT(EM_DIAGRAM):   * Trans: Get Metadata for the Score Inputs Variables;
+28438      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+28439      data _temp;
+MPRINT(EM_DIAGRAM):   data _temp;
+28440      length UNAME $32;
+MPRINT(EM_DIAGRAM):   length UNAME $32;
+28441      set EMWS2.Trans_VariableSet(keep=NAME LEVEL TYPE LABEL);
+MPRINT(EM_DIAGRAM):   set EMWS2.Trans_VariableSet(keep=NAME LEVEL TYPE LABEL);
+28442      UNAME = upcase(name);
+MPRINT(EM_DIAGRAM):   UNAME = upcase(name);
+28443      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 13 observations read from the data set EMWS2.TRANS_VARIABLESET.
+NOTE: The data set WORK._TEMP has 13 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+28444      proc sort data=_temp;
+MPRINT(EM_DIAGRAM):   proc sort data=_temp;
+28445      by UNAME;
+MPRINT(EM_DIAGRAM):   by UNAME;
+28446      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 13 observations read from the data set WORK._TEMP.
+NOTE: The data set WORK._TEMP has 13 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+28447      data WORK.TRANS_SCOREINPUTS;
+MPRINT(EM_DIAGRAM):   data WORK.TRANS_SCOREINPUTS;
+28448      merge WORK.TRANS_SCOREINPUTS(in=_a) _temp(in=_b);
+MPRINT(EM_DIAGRAM):   merge WORK.TRANS_SCOREINPUTS(in=_a) _temp(in=_b);
+28449      by UNAME;
+MPRINT(EM_DIAGRAM):   by UNAME;
+28450      if _a and _b then output;
+MPRINT(EM_DIAGRAM):   if _a and _b then output;
+28451      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 3 observations read from the data set WORK.TRANS_SCOREINPUTS.
+NOTE: There were 13 observations read from the data set WORK._TEMP.
+NOTE: The data set WORK.TRANS_SCOREINPUTS has 3 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+28452      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):    *------------------------------------------------------------*;
+28453      * Trans: Computing Summary Statistics;
+MPRINT(EM_DIAGRAM):   * Trans: Computing Summary Statistics;
+28454      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+28455      proc dmdb data=EMWS2.Trans_TRAIN classout=WORK.TRANS_CLASSSTATS varout=WORK.TRANS_VARSTATS;
+MPRINT(EM_DIAGRAM):   proc dmdb data=EMWS2.Trans_TRAIN classout=WORK.TRANS_CLASSSTATS varout=WORK.TRANS_VARSTATS;
+28456      ;
+MPRINT(EM_DIAGRAM):   ;
+28457      var
+28458      acousticness
+28459      energy
+28460      loudness
+28461      R_electro
+28462      R_energy
+28463      R_loud
+28464      ;
+MPRINT(EM_DIAGRAM):   var acousticness energy loudness R_electro R_energy R_loud ;
+28465      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.313212 danceability=0.452838 tempo=85.996 duration=252.25333 key=11 liveness=0.148278 speechiness=0.039638 instrumentalness=0.891819 loudness=-15.167 acousticness=0.711129 valence=0.309625 song_hotttnesss=0.252528
+song_name=Symphony No. 10 in E Minor, Op. 93: II. Allegro artist_name=Dmitri Shostakovich genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=1
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=3 energy=0.179012 danceability=0.146091 tempo=64.988 duration=616.13333 key=7 liveness=0.078427 speechiness=0.038795 instrumentalness=0.890309 loudness=-18.259 acousticness=0.957646 valence=0.035444 song_hotttnesss=0.070213
+song_name=Symphony No. 5, Op. 50, FS 97: II. I - Adagio artist_name=Carl Nielsen genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=2
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=3 energy=0.052711 danceability=0.467387 tempo=185.658 duration=170.85161 key=7 liveness=0.11216 speechiness=0.060327 instrumentalness=0.931092 loudness=-19.529 acousticness=0.993273 valence=0.33653 song_hotttnesss=0
+song_name=Blue Danube Waltz Medley ( Piano ) (feat. Falk Richter) artist_name=Johann Strauss genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=3
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.272164 danceability=0.455289 tempo=123.192 duration=559.28 key=1 liveness=0.07585 speechiness=0.093083 instrumentalness=0.409403 loudness=-16.032 acousticness=0.869741 valence=0.107688 song_hotttnesss=0.152375
+song_name=The Sorcerer's Apprentice artist_name=Leopold Stokowski genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=4
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=5 energy=0.132438 danceability=0.244539 tempo=110.767 duration=370.50667 key=4 liveness=0.13642 speechiness=0.042968 instrumentalness=0.011225 loudness=-19.745 acousticness=0.944901 valence=0.035444 song_hotttnesss=0.114513
+song_name=Cavalleria rusticana: "Voi lo sapete, o mama" (Romanza) artist_name=Pietro Mascagni genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=5
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=5 energy=0.069008 danceability=0.325568 tempo=124.331 duration=320.77333 key=9 liveness=0.167892 speechiness=0.043417 instrumentalness=0.004971 loudness=-17.13 acousticness=0.975952 valence=0.104561 song_hotttnesss=0.208228
+song_name=Lamento della ninfa artist_name=Claudio Monteverdi genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=6
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.465927 danceability=0.244865 tempo=44.028 duration=111.66621 key=0 liveness=0.29158 speechiness=0.034772 instrumentalness=0.704065 loudness=-14.224 acousticness=0.908625 valence=0.174658 song_hotttnesss=0.140427
+song_name=Von den Freuden-und Leidenschaften - artist_name=Richard Strauss genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=7
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.222475 danceability=0.614986 tempo=82.318 duration=280.63347 key=2 liveness=0.832892 speechiness=0.103856 instrumentalness=0.786516 loudness=-16.657 acousticness=0.966719 valence=0.241414 song_hotttnesss=0.120691
+song_name=Octet for Wind Instruments: I. Sinfonia artist_name=Igor Stravinsky genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=8
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=3 energy=0.148668 danceability=0.24524 tempo=98.624 duration=787.06358 key=4 liveness=0.149737 speechiness=0.039081 instrumentalness=0.307096 loudness=-17.039 acousticness=0.948768 valence=0.112897 song_hotttnesss=0.184726
+song_name=Violin Concerto in E Minor, Op. 64: I. Allegro molto appassionato artist_name=Felix Mendelssohn genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=9
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.0742 danceability=0.364268 tempo=143.203 duration=474 key=4 liveness=0.11522 speechiness=0.058598 instrumentalness=0.252514 loudness=-22.148 acousticness=0.896325 valence=0.186601 song_hotttnesss=0.163295
+song_name=La Gioconda: Dance of the Hours artist_name=Amilcare Ponchielli genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=10
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.494159 danceability=0.287429 tempo=113.148 duration=427.24961 key=0 liveness=0.238496 speechiness=0.038061 instrumentalness=0.960455 loudness=-8.222 acousticness=0.939583 valence=0.338053 song_hotttnesss=0.190243
+song_name=Orb and Sceptre artist_name=William Walton genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=11
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.176097 danceability=0.220713 tempo=91.922 duration=189.54667 key=8 liveness=0.094128 speechiness=0.038987 instrumentalness=0.011604 loudness=-14.853 acousticness=0.9613 valence=0.06476 song_hotttnesss=0.197551
+song_name=The Firebird Suite: Berceuse artist_name=Igor Stravinsky genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=12
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=3 energy=0.033779 danceability=0.431442 tempo=139.702 duration=305.73333 key=0 liveness=0.137949 speechiness=0.054351 instrumentalness=0.244432 loudness=-26.856 acousticness=0.87201 valence=0.329996 song_hotttnesss=0.212964
+song_name=Symphony No. 5 in D Minor, Op. 47: II. Allegretto artist_name=Dmitri Shostakovich genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=13
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.355302 danceability=0.471634 tempo=140.066 duration=136.36 key=4 liveness=0.131251 speechiness=0.035231 instrumentalness=0.939124 loudness=-13.161 acousticness=0.83061 valence=0.818984 song_hotttnesss=0.124365
+song_name=Concerto Grosso in F Major, Op. 6, No. 12: II. Allegro artist_name=Arcangelo Corelli genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=14
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=3 energy=0.003779 danceability=0.247826 tempo=66.682 duration=351 key=10 liveness=0.077616 speechiness=0.046802 instrumentalness=0.900456 loudness=-35.973 acousticness=0.991661 valence=0.045989 song_hotttnesss=0.281637
+song_name=Suite bergamasque: III. Clair de lune artist_name=Claude Debussy genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=15
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.154471 danceability=0.388602 tempo=126.536 duration=162.93288 key=2 liveness=0.147239 speechiness=0.033775 instrumentalness=0.75321 loudness=-14.917 acousticness=0.974386 valence=0.291776 song_hotttnesss=0.28542
+song_name=O Fortuna artist_name=Carl Orff genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=16
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.123481 danceability=0.513076 tempo=123.014 duration=247.93333 key=7 liveness=0.097146 speechiness=0.04499 instrumentalness=9E-6 loudness=-17.793 acousticness=0.981862 valence=0.18122 song_hotttnesss=0.123653
+song_name=La maja de Goya artist_name=Enrique Granados genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=17
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=4 energy=0.030254 danceability=0.448393 tempo=118.721 duration=186.85333 key=4 liveness=0.223008 speechiness=0.037537 instrumentalness=0.123912 loudness=-23.025 acousticness=0.926143 valence=0.25903 song_hotttnesss=0.194578 song_name=TANGO
+artist_name=Igor Stravinsky genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=18
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+time_signature=3 energy=0.030475 danceability=0.114936 tempo=67.459 duration=305.42667 key=7 liveness=0.084229 speechiness=0.050383 instrumentalness=0.243329 loudness=-30.687 acousticness=0.992586 valence=0.037311 song_hotttnesss=0.063842
+song_name=Miserere - Ed. Willcocks artist_name=Gregorio Allegri genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=19
+NOTE: Division by zero detected at line 81474 column 47.
+NOTE: Division by zero detected at line 81475 column 69.
+NOTE: Division by zero detected at line 81476 column 51.
+WARNING: Limit set by ERRORS= option reached.  Further errors of this type will not be printed.
+time_signature=4 energy=0.077276 danceability=0.066605 tempo=62.461 duration=685.93333 key=9 liveness=0.16504 speechiness=0.040586 instrumentalness=0.897333 loudness=-20.848 acousticness=0.937582 valence=0.031834 song_hotttnesss=0.119809
+song_name=A Song Of Summer artist_name=Frederick Delius genre=classical R_energy=. R_electro=. R_loud=. _ERROR_=1 _N_=20
+NOTE: Records processed = 2272   Memory used = 511K.
+NOTE: There were 2272 observations read from the data set SONGS.SONGSNOMISSING.
+NOTE: There were 2272 observations read from the data set EMWS2.IDS_DATA.
+NOTE: Mathematical operations could not be performed at the following places. The results of the operations have been set to missing values.
+      Each place is given by: (Number of times) at (Line):(Column).
+      2272 at 81474:47   2272 at 81475:69   2272 at 81476:51   
+NOTE: View EMWS2.TRANS_TRAIN.VIEW used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.07 seconds
+      
+NOTE: There were 2272 observations read from the data set EMWS2.GRFEXPL_TRAIN.
+NOTE: There were 2272 observations read from the data set EMWS2.TRANS_TRAIN.
+NOTE: The data set WORK.TRANS_VARSTATS has 6 observations and 9 variables.
+NOTE: PROCEDURE DMDB used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.07 seconds
+      
+
+28466      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):    *------------------------------------------------------------*;
+28467      * Trans: Combine Information and Statistics for Class Variables;
+MPRINT(EM_DIAGRAM):   * Trans: Combine Information and Statistics for Class Variables;
+28468      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+28469      proc sort data=WORK.TRANS_OUTPUTVARS out=_temp;
+MPRINT(EM_DIAGRAM):   proc sort data=WORK.TRANS_OUTPUTVARS out=_temp;
+28470      by NAME;
+MPRINT(EM_DIAGRAM):   by NAME;
+28471      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 3 observations read from the data set WORK.TRANS_OUTPUTVARS.
+NOTE: The data set WORK._TEMP has 3 observations and 22 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+28472      proc sort data=WORK.TRANS_CLASSSTATS;
+MPRINT(EM_DIAGRAM):   proc sort data=WORK.TRANS_CLASSSTATS;
+28473      by NAME;
+MPRINT(EM_DIAGRAM):   by NAME;
+28474      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: Input data set is empty.
+NOTE: The data set WORK.TRANS_CLASSSTATS has 0 observations and 9 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+28475      data WORK.TRANS_CLASSSTATS(keep=name nlevel nmiss);
+MPRINT(EM_DIAGRAM):   data WORK.TRANS_CLASSSTATS(keep=name nlevel nmiss);
+28476      retain nlevel nmiss;
+MPRINT(EM_DIAGRAM):   retain nlevel nmiss;
+28477      set WORK.TRANS_CLASSSTATS;
+MPRINT(EM_DIAGRAM):   set WORK.TRANS_CLASSSTATS;
+28478      by Name;
+MPRINT(EM_DIAGRAM):   by Name;
+28479      if first.Name then do;
+MPRINT(EM_DIAGRAM):   if first.Name then do;
+28480      nlevel= 0;
+MPRINT(EM_DIAGRAM):   nlevel= 0;
+28481      nmiss= 0;
+MPRINT(EM_DIAGRAM):   nmiss= 0;
+28482      end;
+MPRINT(EM_DIAGRAM):   end;
+28483      if (type='C' and CRAW='') or (type='N' and NRAW=.) then nmiss = FREQUENCY;
+MPRINT(EM_DIAGRAM):   if (type='C' and CRAW='') or (type='N' and NRAW=.) then nmiss = FREQUENCY;
+28484      else nlevel + 1;
+MPRINT(EM_DIAGRAM):   else nlevel + 1;
+28485      if last.name then output;
+MPRINT(EM_DIAGRAM):   if last.name then output;
+28486      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 0 observations read from the data set WORK.TRANS_CLASSSTATS.
+NOTE: The data set WORK.TRANS_CLASSSTATS has 0 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+28487      /*Merge Statistics for Class Output Vars */
+28488      data WORK.TRANS_CLASSSTATS;
+MPRINT(EM_DIAGRAM):   data WORK.TRANS_CLASSSTATS;
+28489      length SOURCE $6 _METHOD_ $8 NAME $32 FORMULA $300;
+MPRINT(EM_DIAGRAM):   length SOURCE $6 _METHOD_ $8 NAME $32 FORMULA $300;
+28490      merge WORK.TRANS_CLASSSTATS(in=_a) _temp(in=_b keep=NAME InputName Formula _MetaFlag LEVEL TYPE LABEL);
+MPRINT(EM_DIAGRAM):   merge WORK.TRANS_CLASSSTATS(in=_a) _temp(in=_b keep=NAME InputName Formula _MetaFlag LEVEL TYPE LABEL);
+28491      by NAME;
+MPRINT(EM_DIAGRAM):   by NAME;
+28492      if _a and _b then do;
+MPRINT(EM_DIAGRAM):   if _a and _b then do;
+28493      SOURCE='Output';
+MPRINT(EM_DIAGRAM):   SOURCE='Output';
+28494      if _MetaFlag = 1 then _METHOD_="Meta";
+MPRINT(EM_DIAGRAM):   if _MetaFlag = 1 then _METHOD_="Meta";
+28495      else if Formula eq 'Interaction' then _METHOD_="Computed";
+MPRINT(EM_DIAGRAM):   else if Formula eq 'Interaction' then _METHOD_="Computed";
+28496      else if inputName eq '' then _METHOD_="Formula";
+MPRINT(EM_DIAGRAM):   else if inputName eq '' then _METHOD_="Formula";
+28497      else _METHOD_="Computed";
+MPRINT(EM_DIAGRAM):   else _METHOD_="Computed";
+28498      if Formula = '' then Formula = "User Code";
+MPRINT(EM_DIAGRAM):   if Formula = '' then Formula = "User Code";
+28499      end;
+MPRINT(EM_DIAGRAM):   end;
+28500      if _a then output;
+MPRINT(EM_DIAGRAM):   if _a then output;
+28501      drop inputName LEVEL TYPE _MetaFlag;
+MPRINT(EM_DIAGRAM):   drop inputName LEVEL TYPE _MetaFlag;
+28502      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 0 observations read from the data set WORK.TRANS_CLASSSTATS.
+NOTE: There were 3 observations read from the data set WORK._TEMP.
+NOTE: The data set WORK.TRANS_CLASSSTATS has 0 observations and 7 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+28503      /*Merge Statistics for Class Input Vars */
+28504      proc sort data=WORK.TRANS_SCOREINPUTS(drop=TYPE LEVEL) out=_temp nodupkey;
+MPRINT(EM_DIAGRAM):   proc sort data=WORK.TRANS_SCOREINPUTS(drop=TYPE LEVEL) out=_temp nodupkey;
+28505      by NAME;
+MPRINT(EM_DIAGRAM):   by NAME;
+28506      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 3 observations read from the data set WORK.TRANS_SCOREINPUTS.
+NOTE: 0 observations with duplicate key values were deleted.
+NOTE: The data set WORK._TEMP has 3 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+28507      data WORK.TRANS_CLASSSTATS;
+MPRINT(EM_DIAGRAM):   data WORK.TRANS_CLASSSTATS;
+28508      merge WORK.TRANS_CLASSSTATS(in=_a) _temp(in=_b);
+MPRINT(EM_DIAGRAM):   merge WORK.TRANS_CLASSSTATS(in=_a) _temp(in=_b);
+28509      by NAME;
+MPRINT(EM_DIAGRAM):   by NAME;
+28510      if _a and _b then do;
+MPRINT(EM_DIAGRAM):   if _a and _b then do;
+28511      SOURCE='Input';
+MPRINT(EM_DIAGRAM):   SOURCE='Input';
+28512      _METHOD_="Original";
+MPRINT(EM_DIAGRAM):   _METHOD_="Original";
+28513      end;
+MPRINT(EM_DIAGRAM):   end;
+28514      if _a then output;
+MPRINT(EM_DIAGRAM):   if _a then output;
+28515      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 0 observations read from the data set WORK.TRANS_CLASSSTATS.
+NOTE: There were 3 observations read from the data set WORK._TEMP.
+NOTE: The data set WORK.TRANS_CLASSSTATS has 0 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+28516      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):    *------------------------------------------------------------*;
+28517      * Trans: Combine Information and Statistics for Interval Variables;
+MPRINT(EM_DIAGRAM):   * Trans: Combine Information and Statistics for Interval Variables;
+28518      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+28519      proc sort data=WORK.TRANS_OUTPUTVARS out=_temp;
+MPRINT(EM_DIAGRAM):   proc sort data=WORK.TRANS_OUTPUTVARS out=_temp;
+28520      by NAME;
+MPRINT(EM_DIAGRAM):   by NAME;
+28521      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 3 observations read from the data set WORK.TRANS_OUTPUTVARS.
+NOTE: The data set WORK._TEMP has 3 observations and 22 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+28522      proc sort data=WORK.TRANS_VARSTATS;
+MPRINT(EM_DIAGRAM):   proc sort data=WORK.TRANS_VARSTATS;
+28523      by NAME;
+MPRINT(EM_DIAGRAM):   by NAME;
+28524      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 6 observations read from the data set WORK.TRANS_VARSTATS.
+NOTE: The data set WORK.TRANS_VARSTATS has 6 observations and 9 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+MPRINT(EM_DIAGRAM):   *Merge Statistics for Output Vars;
+28525      *Merge Statistics for Output Vars;
+28526      data WORK.TRANS_VARSTATS;
+MPRINT(EM_DIAGRAM):   data WORK.TRANS_VARSTATS;
+28527      length SOURCE $6 _METHOD_ $8 NAME $32 FORMULA $300;
+MPRINT(EM_DIAGRAM):   length SOURCE $6 _METHOD_ $8 NAME $32 FORMULA $300;
+28528      merge WORK.TRANS_VARSTATS(in=_a) _temp(in=_b keep=NAME Formula InputName _MetaFlag LEVEL TYPE LABEL);
+MPRINT(EM_DIAGRAM):   merge WORK.TRANS_VARSTATS(in=_a) _temp(in=_b keep=NAME Formula InputName _MetaFlag LEVEL TYPE LABEL);
+28529      by NAME;
+MPRINT(EM_DIAGRAM):   by NAME;
+28530      if _a and _b then do;
+MPRINT(EM_DIAGRAM):   if _a and _b then do;
+28531      SOURCE='Output';
+MPRINT(EM_DIAGRAM):   SOURCE='Output';
+28532      if _MetaFlag = 1 then _METHOD_="Meta";
+MPRINT(EM_DIAGRAM):   if _MetaFlag = 1 then _METHOD_="Meta";
+28533      else if Formula eq 'Interaction' then _METHOD_="Computed";
+MPRINT(EM_DIAGRAM):   else if Formula eq 'Interaction' then _METHOD_="Computed";
+28534      else if inputName eq '' then _METHOD_="Formula";
+MPRINT(EM_DIAGRAM):   else if inputName eq '' then _METHOD_="Formula";
+28535      else _METHOD_="Computed";
+MPRINT(EM_DIAGRAM):   else _METHOD_="Computed";
+28536      if Formula = '' then Formula = "Mixture of variables";
+MPRINT(EM_DIAGRAM):   if Formula = '' then Formula = "Mixture of variables";
+28537      end;
+MPRINT(EM_DIAGRAM):   end;
+28538      if _a then output;
+MPRINT(EM_DIAGRAM):   if _a then output;
+28539      drop inputName LEVEL TYPE _MetaFlag;
+MPRINT(EM_DIAGRAM):   drop inputName LEVEL TYPE _MetaFlag;
+28540      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 6 observations read from the data set WORK.TRANS_VARSTATS.
+NOTE: There were 3 observations read from the data set WORK._TEMP.
+NOTE: The data set WORK.TRANS_VARSTATS has 6 observations and 13 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.00 seconds
+      
+
+MPRINT(EM_DIAGRAM):   *Merge Statistics for Input Vars;
+28541      *Merge Statistics for Input Vars;
+28542      proc sort data=WORK.TRANS_SCOREINPUTS(drop=TYPE LEVEL) out=_temp nodupkey;
+MPRINT(EM_DIAGRAM):   proc sort data=WORK.TRANS_SCOREINPUTS(drop=TYPE LEVEL) out=_temp nodupkey;
+28543      by NAME;
+MPRINT(EM_DIAGRAM):   by NAME;
+28544      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 3 observations read from the data set WORK.TRANS_SCOREINPUTS.
+NOTE: 0 observations with duplicate key values were deleted.
+NOTE: The data set WORK._TEMP has 3 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+28545      data WORK.TRANS_VARSTATS;
+MPRINT(EM_DIAGRAM):   data WORK.TRANS_VARSTATS;
+28546      merge WORK.TRANS_VARSTATS(in=_a) _temp(in=_b);
+MPRINT(EM_DIAGRAM):   merge WORK.TRANS_VARSTATS(in=_a) _temp(in=_b);
+28547      by NAME;
+MPRINT(EM_DIAGRAM):   by NAME;
+28548      if _a and _b then do;
+MPRINT(EM_DIAGRAM):   if _a and _b then do;
+28549      SOURCE='Input';
+MPRINT(EM_DIAGRAM):   SOURCE='Input';
+28550      _METHOD_="Original";
+MPRINT(EM_DIAGRAM):   _METHOD_="Original";
+28551      end;
+MPRINT(EM_DIAGRAM):   end;
+28552      if _a then output;
+MPRINT(EM_DIAGRAM):   if _a then output;
+28553      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 6 observations read from the data set WORK.TRANS_VARSTATS.
+NOTE: There were 3 observations read from the data set WORK._TEMP.
+NOTE: The data set WORK.TRANS_VARSTATS has 6 observations and 14 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+28554      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):    *------------------------------------------------------------*;
+28555      * Trans: Combine statistics for class and interval variables;
+MPRINT(EM_DIAGRAM):   * Trans: Combine statistics for class and interval variables;
+28556      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+28557      data EMWS2.Trans_STATISTICS;
+MPRINT(EM_DIAGRAM):   data EMWS2.Trans_STATISTICS;
+28558      length SOURCE $6 _METHOD_ $8 NAME $32 FORMULA $300;
+MPRINT(EM_DIAGRAM):   length SOURCE $6 _METHOD_ $8 NAME $32 FORMULA $300;
+28559      label SOURCE = "%sysfunc(sasmsg(sashelp.dmine, rpt_source_vlabel,  NOQUOTE))" _METHOD_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_method_vlabel,  NOQUOTE))" NAME = "%sysfunc(sasmsg(sashelp.dmine, meta_name_vlabel,  NOQUOTE))" FORMULA =
+28560         "%sysfunc(sasmsg(sashelp.dmine, rpt_formula_vlabel,   NOQUOTE))" NLEVEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_numcat_vlabel,   NOQUOTE))" N = "%sysfunc(sasmsg(sashelp.dmine, rpt_nonmiss_vlabel, NOQUOTE))" NMISS =
+28561         "%sysfunc(sasmsg(sashelp.dmine, rpt_missing_vlabel, NOQUOTE))" MIN = "%sysfunc(sasmsg(sashelp.dmine, rpt_minimum_vlabel, NOQUOTE))" MAX = "%sysfunc(sasmsg(sashelp.dmine, rpt_maximum_vlabel, NOQUOTE))" MEAN =
+28562         "%sysfunc(sasmsg(sashelp.dmine, rpt_mean_vlabel,    NOQUOTE))" STD = "%sysfunc(sasmsg(sashelp.dmine, rpt_std_vlabel,     NOQUOTE))" SKEWNESS = "%sysfunc(sasmsg(sashelp.dmine, rpt_skewness_vlabel, NOQUOTE))" KURTOSIS =
+28563         "%sysfunc(sasmsg(sashelp.dmine, rpt_kurtosis_vlabel, NOQUOTE))" LABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_label_vlabel, NOQUOTE))";
+MPRINT(EM_DIAGRAM):   label SOURCE = "Source" _METHOD_ = "Method" NAME = "Variable Name" FORMULA = "Formula" NLEVEL = "Number of Levels" N = "Non Missing" NMISS = "Missing" MIN = "Minimum" MAX = "Maximum" MEAN = "Mean" STD = "Standard Deviation" SKEWNESS 
+= "Skewness" KURTOSIS = "Kurtosis" LABEL = "Label";
+28564      set
+28565      WORK.TRANS_CLASSSTATS
+28566      WORK.TRANS_VARSTATS
+28567      ;
+MPRINT(EM_DIAGRAM):   set WORK.TRANS_CLASSSTATS WORK.TRANS_VARSTATS ;
+28568      drop UNAME;
+MPRINT(EM_DIAGRAM):   drop UNAME;
+28569      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 0 observations read from the data set WORK.TRANS_CLASSSTATS.
+NOTE: There were 6 observations read from the data set WORK.TRANS_VARSTATS.
+NOTE: The data set EMWS2.TRANS_STATISTICS has 6 observations and 14 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+28570      proc sort data=EMWS2.Trans_STATISTICS;
+MPRINT(EM_DIAGRAM):   proc sort data=EMWS2.Trans_STATISTICS;
+28571      by SOURCE _METHOD_ NAME;
+MPRINT(EM_DIAGRAM):   by SOURCE _METHOD_ NAME;
+28572      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 6 observations read from the data set EMWS2.TRANS_STATISTICS.
+NOTE: The data set EMWS2.TRANS_STATISTICS has 6 observations and 14 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+28573      proc sort data = EMWS2.Trans_STATISTICS NOTHREADS;
+MPRINT(EM_DIAGRAM):    proc sort data = EMWS2.Trans_STATISTICS NOTHREADS;
+28574      by SOURCE NAME;
+MPRINT(EM_DIAGRAM):   by SOURCE NAME;
+28575      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 6 observations read from the data set EMWS2.TRANS_STATISTICS.
+NOTE: The data set EMWS2.TRANS_STATISTICS has 6 observations and 14 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+28576      title9 ' ';
+MPRINT(EM_DIAGRAM):   title9 ' ';
+28577      proc print data = EMWS2.Trans_STATISTICS(obs=500) noobs label;
+MPRINT(EM_DIAGRAM):   proc print data = EMWS2.Trans_STATISTICS(obs=500) noobs label;
+28578      title9 "%sysfunc(sasmsg(sashelp.dmine, rpt_intervalinputStats_title, NOQUOTE))";
+MPRINT(EM_DIAGRAM):   title9 "Summary Statistics for Input Interval Variables";
+28579      title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_maxObsPrinted_title, NOQUOTE))";
+MPRINT(EM_DIAGRAM):   title10 "(maximum 500 observations printed)";
+MPRINT(EM_DIAGRAM):   var Name NMISS MIN MAX MEAN STD SKEWNESS KURTOSIS;
+MPRINT(EM_DIAGRAM):   where SOURCE eq 'INPUT' and mean ne .;
+MPRINT(EM_DIAGRAM):   run;
+28580      var Name NMISS MIN MAX MEAN STD SKEWNESS KURTOSIS;
+28581      where SOURCE eq 'INPUT' and mean ne .;
+28582      run;
+
+NOTE: No observations were selected from data set EMWS2.TRANS_STATISTICS.
+NOTE: There were 0 observations read from the data set EMWS2.TRANS_STATISTICS.
+      WHERE (SOURCE='INPUT') and (mean not = .);
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+28583      proc print data = EMWS2.Trans_STATISTICS(obs=500) noobs label;
+MPRINT(EM_DIAGRAM):   proc print data = EMWS2.Trans_STATISTICS(obs=500) noobs label;
+28584      title9 "%sysfunc(sasmsg(sashelp.dmine, rpt_intervaloutputStats_title, NOQUOTE))";
+MPRINT(EM_DIAGRAM):   title9 "Summary Statistics for Output Interval Variables";
+28585      title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_maxObsPrinted_title, NOQUOTE))";
+MPRINT(EM_DIAGRAM):   title10 "(maximum 500 observations printed)";
+MPRINT(EM_DIAGRAM):   var Name _METHOD_ NMISS MIN MAX MEAN STD SKEWNESS KURTOSIS;
+MPRINT(EM_DIAGRAM):   where SOURCE eq 'OUTPUT' and mean ne .;
+MPRINT(EM_DIAGRAM):   run;
+28586      var Name _METHOD_ NMISS MIN MAX MEAN STD SKEWNESS KURTOSIS;
+28587      where SOURCE eq 'OUTPUT' and mean ne .;
+28588      run;
+
+NOTE: No observations were selected from data set EMWS2.TRANS_STATISTICS.
+NOTE: There were 0 observations read from the data set EMWS2.TRANS_STATISTICS.
+      WHERE (SOURCE='OUTPUT') and (mean not = .);
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+28589      proc print data = EMWS2.Trans_STATISTICS(obs=500) noobs label;
+MPRINT(EM_DIAGRAM):   proc print data = EMWS2.Trans_STATISTICS(obs=500) noobs label;
+28590      title9 "%sysfunc(sasmsg(sashelp.dmine, rpt_classinputStats_title, NOQUOTE))";
+MPRINT(EM_DIAGRAM):   title9 "Summary Statistics for Input Class Variables";
+28591      title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_maxObsPrinted_title, NOQUOTE))";
+MPRINT(EM_DIAGRAM):   title10 "(maximum 500 observations printed)";
+MPRINT(EM_DIAGRAM):   var Name NLEVEL NMISS;
+MPRINT(EM_DIAGRAM):   where SOURCE eq 'INPUT' and nlevel ne .;
+MPRINT(EM_DIAGRAM):   run;
+28592      var Name NLEVEL NMISS;
+28593      where SOURCE eq 'INPUT' and nlevel ne .;
+28594      run;
+
+NOTE: No observations were selected from data set EMWS2.TRANS_STATISTICS.
+NOTE: There were 0 observations read from the data set EMWS2.TRANS_STATISTICS.
+      WHERE (SOURCE='INPUT') and (nlevel not = .);
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+28595      proc print data = EMWS2.Trans_STATISTICS(obs=500) noobs label;
+MPRINT(EM_DIAGRAM):   proc print data = EMWS2.Trans_STATISTICS(obs=500) noobs label;
+28596      title9 "%sysfunc(sasmsg(sashelp.dmine, rpt_classoutputStats_title, NOQUOTE))";
+MPRINT(EM_DIAGRAM):   title9 "Summary Statistics for Output Class Variables";
+28597      title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_maxObsPrinted_title, NOQUOTE))";
+MPRINT(EM_DIAGRAM):   title10 "(maximum 500 observations printed)";
+MPRINT(EM_DIAGRAM):   var Name _METHOD_ NLEVEL NMISS;
+MPRINT(EM_DIAGRAM):   where SOURCE eq 'OUTPUT' and nlevel ne .;
+MPRINT(EM_DIAGRAM):   run;
+28598      var Name _METHOD_ NLEVEL NMISS;
+28599      where SOURCE eq 'OUTPUT' and nlevel ne .;
+28600      run;
+
+NOTE: No observations were selected from data set EMWS2.TRANS_STATISTICS.
+NOTE: There were 0 observations read from the data set EMWS2.TRANS_STATISTICS.
+      WHERE (SOURCE='OUTPUT') and (nlevel not = .);
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+28601      title9;
+MPRINT(EM_DIAGRAM):   title9;
+28602      title10;
+MPRINT(EM_DIAGRAM):   title10;
+28603      data EMWS2.Trans_EMSCOREVAR;
+MPRINT(EM_DIAGRAM):    data EMWS2.Trans_EMSCOREVAR;
+28604      length Name $32 formula $300 file $200;
+MPRINT(EM_DIAGRAM):   length Name $32 formula $300 file $200;
+28605      keep NAME Formula file;
+MPRINT(EM_DIAGRAM):   keep NAME Formula file;
+28606      set EMWS2.Trans_STATISTICS;
+MPRINT(EM_DIAGRAM):   set EMWS2.Trans_STATISTICS;
+28607      where SOURCE='Output';
+MPRINT(EM_DIAGRAM):   where SOURCE='Output';
+28608      select( _METHOD_);
+MPRINT(EM_DIAGRAM):   select( _METHOD_);
+28609      when('Computed') do;
+MPRINT(EM_DIAGRAM):   when('Computed') do;
+28610      file="TRANSFORMCODE\"!!strip(NAME)!!'.sas';
+MPRINT(EM_DIAGRAM):   file="TRANSFORMCODE\"!!strip(NAME)!!'.sas';
+28611      formula = '';
+MPRINT(EM_DIAGRAM):   formula = '';
+28612      end;
+MPRINT(EM_DIAGRAM):   end;
+28613      when('Formula') do;
+MPRINT(EM_DIAGRAM):   when('Formula') do;
+28614      if Formula eq 'Mixture of variables' then do;
+MPRINT(EM_DIAGRAM):   if Formula eq 'Mixture of variables' then do;
+28615      file= "EDITORCODE.sas";
+MPRINT(EM_DIAGRAM):   file= "EDITORCODE.sas";
+28616      formula = '';
+MPRINT(EM_DIAGRAM):   formula = '';
+28617      end;
+MPRINT(EM_DIAGRAM):   end;
+28618      if Formula = 'User Code' then do;
+MPRINT(EM_DIAGRAM):   if Formula = 'User Code' then do;
+28619      file= "EDITORCODE.sas";
+MPRINT(EM_DIAGRAM):   file= "EDITORCODE.sas";
+28620      formula = '';
+MPRINT(EM_DIAGRAM):   formula = '';
+28621      end;
+MPRINT(EM_DIAGRAM):   end;
+28622      end;
+MPRINT(EM_DIAGRAM):   end;
+28623      otherwise;
+MPRINT(EM_DIAGRAM):   otherwise;
+28624      end;
+MPRINT(EM_DIAGRAM):   end;
+28625      output;
+MPRINT(EM_DIAGRAM):   output;
+28626      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 3 observations read from the data set EMWS2.TRANS_STATISTICS.
+      WHERE SOURCE='Output';
+NOTE: The data set EMWS2.TRANS_EMSCOREVAR has 3 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+MPRINT(EM_DIAGRAM):    proc printto;
+MPRINT(EM_DIAGRAM):   run;

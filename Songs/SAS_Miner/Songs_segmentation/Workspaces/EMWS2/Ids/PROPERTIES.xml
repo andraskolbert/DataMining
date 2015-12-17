@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?><_ROOT_  DataSource="songsnomissing" Scope="LOCAL" Role="RAW" Library="SONGS" Table="SONGSNOMISSING"
+ NCols="16" NObs="2272" NBytes="672768" Segment="" DataSourceRole="RAW" OutputType="VIEW"
+ ForceRun="N" ComputeStatistics="N" DataSelection="DATASOURCE" NewTable="" MetaAdvisor="BASIC"
+ ApplyIntervalLevelLowerLimit="Y" IntervalLowerLimit="20" ApplyMaxPercentMissing="Y"
+ MaxPercentMissing="50" ApplyMaxClassLevels="Y" MaxClassLevels="20" IdentifyEmptyColumns="Y"
+ VariableValidation="STRICT" NewVariableRole="REJECT" DropMapVariables="Y" DsId="songsnomissing"
+ DsSampleName="" DsSampleSizeType="" DsSampleSize="" DsCreatedBy="VM-SAS" DsCreateDate="1765930621.3"
+ DsModifiedBy="VM-SAS" DsModifyDate="1765930621.4" DsScope="LOCAL" Sample="D" SampleSizeType="PERCENT"
+ SampleSizePercent="20" SampleSizeObs="10000" DBPassThrough="Y" RunAction="Train"
+ Component="DataSource" RawCreateTime="1765930753.1" CreateTime="17DEC2015:00:19:13"
+ Description="" Data="SONGS.SONGSNOMISSING" CMeta="WORK.M3QA0HUT" RunId="0cc242ad-626e-4166-b77d-8d51912a4fb2"
+>
+<VARIABLEPROPERTIES/>
+<FILEPROPERTIES/>
+</_ROOT_>
